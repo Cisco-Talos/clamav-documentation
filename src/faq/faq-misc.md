@@ -1,0 +1,60 @@
+# Miscellaneous FAQ
+
+## Can phishing be considered one kind of spam? ClamAV should not detect it as some kind of malware.
+
+Starting from release 0.90, ClamAV allows you to choose whether to detect phish as some kind of malware or not. This should put an end to the endless threads on our mailing lists. So long, and  thanks for all the phish.
+
+## Why is my legitimate HTML newsletter/email detected by ClamAV as Phishing.Heuristics.Email.SpoofedDomain?
+
+If it contains links in the form of `href="http://yourdomain.example.tld"> otherdomain.tld`, where `otherdomain.tld` (ProtectedDomain) doesn't belong to you and is listed in ClamAV database (like amazon.com, ebay.com, ...) then ClamAV detects it as a phishing attempt.
+
+## My legitimate emails from yourdomain.tld are detected as Phishing.Heuristics.Email.SpoofedDomain
+
+Please [submit a sample](https://www.clamav.net/reports/malware), marking it as a false positive, phishing. If it's really a false positive, we will add an allow list entry for it.
+
+## Can I convert the new database format to the old one?
+
+Yes, install a recent version of sigtool and run:
+
+`sigtool --unpack-current daily.cvd; sigtool --unpack-current main.cvd`
+
+## How do I read inside the CVD files?
+
+See previous FAQ.
+
+## I'm using ClamAV in a production environment and a brand new virus is not being recognized by ClamAV. How long do I have to wait before ClamAV can start filtering the virus?
+
+No time at all! Find a signature for that virus and modify your virus database accordingly (see our [signature writing documentation](manual/Signatures.md) for details).
+Remember to [submit](https://www.clamav.net/reports/malware) the sample to the virusdb team.
+
+## Why is ClamAV calling the XXX virus with another name?
+
+This usually happens when we add a signature _before_ other  AV vendors. No well-known name is available at that moment so we have to invent one. Renaming the virus after a few days would just confuse people more, so we usually keep on using  our name for that virus. The only exception is when a new name is established soon after the signature addition.
+
+## I get many false positives of Oversized.zip
+
+Whenever a file exceeds ArchiveMaxCompressionRatio (see clamd.conf man page), it's considered a logic bomb and marked as `Oversized.zip`. Try increasing your ArchiveMaxCompressionRatio setting.
+
+## What is PUA? I get a lot of false positives named PUA.
+
+With the release of ClamAV 0.91.2 we introduce the option to scan for Potentially Unwanted Applications.
+
+The PUA database contains detection for applications that are not malicious by itself but can be used in a malicious or unwanted context. As an example: A tool to retrieve passwords from a system can be useful as long as the person who uses it, is authorized to do so. However, the same tool can be used to steal passwords from a system. To make use of the PUA database you can use the __`--detect-pua` switch__ for clamscan or enable it in the config file for clamd (add: `DetectPUA yes`).
+
+At this point we DO NOT recommend using it in production environments, because the detection may be too aggressive and lead to false positives. In one of the next releases we will provide additional features for fine-tuning allowing better adjustments to different setups. NOTE: A detection as PUA does NOT tell if an application is good or bad. All it says is, that a file MAY BE unwanted or MAYBE could compromise your system security and it MAY BE a good idea to check it twice.
+
+## Can ClamAV disinfect files?
+
+No, it can't. We will add support for disinfecting OLE2 files in one of the next stable releases. There are no plans for disinfecting other types of files. There are many reasons for it: cleaning viruses from files is virtually pointless these days. It is very seldom that there is anything useful left after cleaning, and even if there is, would you trust it?
+
+## When using clamscan, is there a way to know which message within an mbox is infected?
+
+There are two solutions: Run `clamscan --debug`, look for _Deal with email number xxx_ Alternatively you can convert the mbox to Maildir  format, run clamscan on it and then convert it back to mbox format. There are many tools available which can convert to and from Maildir format: formail, mbox2maildir and maildir2mbox
+
+## What platforms does it support?
+
+Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, Mac OS X, Cygwin B20 on  multiple architectures such as Intel, Alpha, Sparc, Cobalt MIPS boxes, PowerPC, RISC 6000.
+
+## Where can I find more information about ClamAV?
+
+Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation](https://www.clamav.net/manual/installing.md) section of this website. You can also try searching the [mailing list archives](https://www.clamav.net/contact#ml).  If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.

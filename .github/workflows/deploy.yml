@@ -1,0 +1,25 @@
+name: Deploy
+on:
+  release:
+    types: [created]
+
+jobs:
+  pages:
+    name: GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: Install Rust (rustup)
+      run: rustup update stable --no-self-update && rustup default stable
+    - name: Install mdBook
+      run: cargo install mdbook
+    - name: Build book
+      run: mdbook build .
+    - name: Deploy to GitHub
+      env:
+        GITHUB_DEPLOY_KEY: ${{ secrets.GITHUB_DEPLOY_KEY }}
+      run: |
+        touch book/.nojekyll
+        rustc deploy.rs -o /tmp/deploy
+        cd book
+        /tmp/deploy
