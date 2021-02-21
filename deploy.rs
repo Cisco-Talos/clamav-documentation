@@ -38,7 +38,7 @@ use std::process::{Command, Stdio};
 
 fn main() {
     let slug = env::var("GITHUB_REPOSITORY").unwrap();
-    let key = env::var("DEPLOY_KEY").unwrap();
+    let key = env::var("GITHUB_DEPLOY_KEY").unwrap();
 
     let socket = "/tmp/.github-deploy-socket";
     run(Command::new("ssh-agent").arg("-a").arg(&socket));

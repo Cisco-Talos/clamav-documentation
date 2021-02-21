@@ -17,7 +17,7 @@ jobs:
       run: mdbook build .
     - name: Deploy to GitHub
       env:
-        GITHUB_DEPLOY_KEY: ${{ secrets.GITHUB_DEPLOY_KEY }}
+        GITHUB_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         touch book/.nojekyll
         rustc deploy.rs -o /tmp/deploy
