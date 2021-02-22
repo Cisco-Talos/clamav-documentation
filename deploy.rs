@@ -85,7 +85,7 @@ fn main() {
     run(Command::new("git")
         .arg("push")
         .arg(format!("git@github.com:{}", slug))
-        .arg("main:gh-pages")
+        .arg("master:gh-pages")
         .env("GIT_SSH_COMMAND", "ssh -o StrictHostKeyChecking=no")
         .env("SSH_AUTH_SOCK", &socket)
         .arg("-f"));
