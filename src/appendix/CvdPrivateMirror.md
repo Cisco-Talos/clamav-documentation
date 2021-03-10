@@ -32,128 +32,41 @@ First the database will be downloaded to the local webserver and then the other 
 
 ## 3. Serve CVD and CDIFF files from a local web server
 
-This solution is bandwidth efficient but it's a little bit trickier to set up and involves the use of custom scripts in place of freshclam.
+This solution will be more bandwidth efficient for you. It will llow you to host a mirror that functions in the same way as the fficial database CDN, serving CVD and CDIFF files.
 
-Because of this, the scripts might need to be updated from time to time to cope with the corresponding changes in freshclam.
+These instructions use a tool named [cvdupdate](https://github.om/micahsnyder/cvdupdate). `cvdupdate` requires:
 
-Configure a local webserver on one of your machines (say `machine1.mylan`) and use this script developed by Frederic Vanden Poel to download the `cvd` and `cdiff` files into the *DocumentRoot*.
+- Python 3.6 or newer.
+- An internet connection with DNS enabled.
+- It should work fine on Linux/Unix and on Windows.
 
-`clamdownloader.pl` by *Frederic Vanden Poel*:
+**IMPORTANT**: Please do NOT use [cvdupdate](https://github.com/icahsnyder/cvdupdate) if you don't need to host a private atabase mirror. Freshclam is far more efficient, even for a small luster of installs, because it will update with CDIFF patches fter the initial database downloads.
 
-```bash
-    #!/usr/bin/env perl
-    #
-    # File name: clamdownloader.pl
-    # Author:    Frederic Vanden Poel
-    #
-    #############################################################################
-    #
-    use strict;
-    use warnings;
+You can easily install `cvdupdate` Python3's Pip package manager:
 
-    use Net::DNS;
-    my $clamdb="/tmp/clam";
-    # mirror where files such as daily-12133.cdiff exist
-    my $mirror="http://database.clamav.net";
+`pip3 install cvdupdate`
 
-    # get the TXT record for current.cvd.clamav.net
-    my $txt = getTXT("current.cvd.clamav.net");
+(optional) Once installed, you may wish to configure where the atabases are stored:
 
-    exit unless $txt;
+`cvd config set --dbdir <your www path>`
 
-    chdir($clamdb) || die ("Can't chdir to $clamdb : $!\n");
+Now run this as often as you need, or at least once a day to ownload/update the databases:
 
-    # dump the record in a file
-    print "TXT from DNS: $txt\n";
-    open D, ">dns.txt";
-    print D "$txt";
-    close D;
+`cvd update`
 
-    # temp dir for wget updates
-    mkdir("$clamdb/temp");
+If you didn't set a custom database path, the databases will be tored in `~/.cvdupdate/database`
 
-    # get what we need
-    my ( $clamv, $mainv , $dailyv, $x, $y, $z, $safebrowsingv, $bytecodev ) = split /:/, $txt ;
+You can use `--help` with any `cvd` command to learn more. For ore detailed instructions, or to report issues, please visit: https://github.com/micahsnyder/cvdupdate](https://github.com/icahsnyder/cvdupdate)
 
-    print "FIELDS main=$mainv daily=$dailyv bytecode=$bytecodev\n";
+Once you have the database files, host them with your favorite ebserver, or use the `cvd serve` test-webserver (not intended for roduction).
 
-    updateFile('main',$mainv);
-    updateFile('daily',$dailyv);
-    updateFile('bytecode',$bytecodev);
+Set up your Freshclam clients' `freshclam.conf` config file to oint to:
 
-    sub getTXT {
-      use Net::DNS;
-      my $domain = shift @_;
-      my $rr;
-      my $res = Net::DNS::Resolver->new;
-      my $txt_query = $res->query($domain,"TXT");
-      if ($txt_query) {
-      return ($txt_query->answer)[0]->txtdata;
-      } else {
-        warn "Unable to get TXT Record : ", $res->errorstring, "\n";
-        return 0;
-      }
-    }
+`DatabaseMirror http://machine1.mylan`
 
-    sub getLocalVersion {
-      my $file=shift @_;
-      my $cmd="sigtool -i $clamdb/$file.cvd";
-      open P, "$cmd |" || die("Can't run $cmd : $!");
-      while (&lt;P&gt;) {
-        next unless /Version: (\d+)/;
-        return $1;
-      }
-      return -1;
-    }
+You may wish to set up a proxy to enable HTTPS.  If you do, use:
 
-    sub updateFile {
-      my $file=shift @_;
-      my $currentversion=shift @_;
-      my $old=0;
-      if  ( ! -e "$file.cvd" ) {
-        warn "file $file.cvd does not exists, skipping\n";
-      }
-      if  ( ! -z "$file.cvd" ) {
-        $old = getLocalVersion($file);
-        if ( $old > 0 ) {
-          print "$file old: $old current: $currentversion\n";
-           # mirror all the diffs
-           for (my $count = $old + 1 ; $count <= $currentversion; $count++) {
-             print `wget -nH -nd -N -nv $mirror/$file-$count.cdiff 2>&1`;
-          }
-        } else {
-           warn "file $file.cvd version unknown, skipping cdiffs\n";
-        }
-      } else {
-        warn "file $file.cvd is zero, skipping cdiffs\n";
-      }
-
-    return if ( $currentversion == $old );
-
-    # update the full file using a copy, then move back
-    print `cp -v -a $file.cvd temp/$file.cvd 2>&1`;
-    print `cd temp && wget -nH -nd -N -nv $mirror/$file.cvd 2>&1`;
-    if  ( -e "temp/$file.cvd" && ! -z "temp/$file.cvd" ) {
-      if ( (stat("temp/$file.cvd"))[9] > (stat("$file.cvd"))[9] ) {
-        print "file temp/$file.cvd is newer than $file.cvd\n";
-        print `mv -v temp/$file.cvd $file.cvd 2>&1`;
-      } else {
-        print "file temp/$file.cvd not touched by wget\n";
-        print `rm -v temp/$file.cvd`;
-      }
-    } else {
-      warn "temp/$file.cvd is not valid, not copying back !\n";
-      unlink "temp/$file.cvd";
-      }
-    }
-    __END__
-```
-
-First the `cvd` and `cdiff` files will be downloaded to the local webserver and then the other clients on the network will update their copy of the database from it. For this to work you have to change `freshclam.conf` on your clients so that it reads:
-
-```bash
-    DatabaseMirror machine1.mylan
-```
+`DatabaseMirror https://machine1.mylan`
 
 ## 4. Serving a private mirror from Cloud Foundry
 

@@ -13,7 +13,7 @@ We provide both two install packages for Windows:
 In addition to the above ClamAV versions that run on Windows, Cisco offers two more endpoint security products powered in-part by ClamAV. These are:
 
 * Immunet
-    * Immunet is a malware and antivirus protection system that utilizes cloud computing to provide enhanced community-based security.
+    * Immunet is a malware and antivirus protection system that utilizes cloud computing to provide enhanced community-based security.
     * Immunet is free for non-commercial use.
     * Commercial users should consider Cisco AMP.
 
