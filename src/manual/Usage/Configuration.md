@@ -2,8 +2,6 @@
 
 Table Of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Configuration](#configuration)
   - [First Time Set-Up](#first-time-set-up)
     - [Unix](#unix)
@@ -15,8 +13,6 @@ Table Of Contents
   - [clamav-milter.conf](#clamav-milterconf)
   - [ClamConf](#clamconf)
   - [Next Steps](#next-steps)
-
-<!-- /TOC -->
 
 ## First Time Set-Up
 
@@ -54,20 +50,20 @@ In a PowerShell terminal in the install directory, perform the following tasks:
 
 Run:
 ```ps1
-    copy .\conf_examples\freshclam.conf.sample .\freshclam.conf
-    copy .\conf_examples\clamd.conf.sample .\clamd.conf
+copy .\conf_examples\freshclam.conf.sample .\freshclam.conf
+copy .\conf_examples\clamd.conf.sample .\clamd.conf
 ```
 
 Run:
 ```ps1
-    write.exe .\freshclam.conf
+write.exe .\freshclam.conf
 ```
 
 WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as the receive-timeout. Save the file and close WordPad.
 
 Run:
 ```ps1
-    write.exe .\clamd.conf
+write.exe .\clamd.conf
 ```
 
 WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as enabling logging. Save the file and close WordPad.
@@ -103,35 +99,35 @@ Database files path search order:
 
 **Quick test: run freshclam (as superuser) with no parameters and check the output.**
 
-> `$ freshclam`
+> `freshclam`
 
 If everything is OK you may create the log file in /var/log (ensure the directory is owned either by *clamav* or whichever user `freshclam` will be running as):
 
 ```bash
-    # touch /var/log/freshclam.log
-    # chmod 600 /var/log/freshclam.log
-    # chown clamav /var/log/freshclam.log
+touch /var/log/freshclam.log
+chmod 600 /var/log/freshclam.log
+chown clamav /var/log/freshclam.log
 ```
 
 Now you *should* edit the configuration file `freshclam.conf` and point the *UpdateLogFile* directive to the log file. Finally, to run `freshclam` in the daemon mode, execute:
 
 ```bash
-    # freshclam -d
+freshclam -d
 ```
 
 The other way is to use the *cron* daemon. You have to add the following line to the *crontab* of **root** or **clamav** user:
 
-```bash
-    N * * * *   /usr/local/bin/freshclam --quiet
+```
+N * * * *   /usr/local/bin/freshclam --quiet
 ```
 
 to check for a new database every hour. **N should be a number between 3 and 57 of your choice. Please don’t choose any multiple of 10, because there are already too many clients using those time slots.** Proxy settings are only configurable via the configuration file and `freshclam` will require strict permission settings for the config file when `HTTPProxyPassword` is turned on.
 
-```bash
-    HTTPProxyServer myproxyserver.com
-    HTTPProxyPort 1234
-    HTTPProxyUsername myusername
-    HTTPProxyPassword mypass
+```
+HTTPProxyServer myproxyserver.com
+HTTPProxyPort 1234
+HTTPProxyUsername myusername
+HTTPProxyPassword mypass
 ```
 
 ## clamd.conf
@@ -147,7 +143,7 @@ You will also need to rename `clamd.conf.example` to `clamd.conf` via:
 
 > `$ mv ./clamd.conf.example ./clamd.conf`
 
-If you are setting up a simple, local [`clamd` instance](manual/Usage/Scanning.md#clamd) then some other configuration options of interests to you will be as follows:
+If you are setting up a simple, local [`clamd` instance](Scanning.md#clamd) then some other configuration options of interests to you will be as follows:
 
 ```ini
     91 # Path to a local socket file the daemon will listen on.
@@ -171,11 +167,11 @@ If needed, you can find out even more about the formatting and options available
 
 You can configure On-Access Scanning through `clamd.conf`.  Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.sample". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
 
-Also read the [on-access](manual/OnAccess.md) section of the Usage manual for further details on using On-Access Scanning.
+Also read the [on-access](../OnAccess.md) section of the Usage manual for further details on using On-Access Scanning.
 
 ## clamav-milter.conf
 
-ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfaces directly with `clamd`, and thus requires a working [`clamd` instance](manual/Usage/Scanning.md#clamd) to run. However, `clamav-milter`'s configuration and log files are separate from that of `clamd`.
+ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfaces directly with `clamd`, and thus requires a working [`clamd` instance](Scanning.md#clamd) to run. However, `clamav-milter`'s configuration and log files are separate from that of `clamd`.
 
 Ensuring ClamAV compiles with `clamav-milter` must be done at configure time with the command:
 
@@ -184,8 +180,8 @@ Ensuring ClamAV compiles with `clamav-milter` must be done at configure time wit
 This requires having the milter library installed on your system. If *libmilter* is not installed, `./configure` will exit with this error message:
 
 ```bash
-    checking for mi_stop in -lmilter... no
-    configure: error: Cannot find libmilter
+checking for mi_stop in -lmilter... no
+configure: error: Cannot find libmilter
 ```
 
 While not necessarily *complicated*, setting up the `clamav-milter` is an involved process. Thus, we recommend consulting your MTA’s manual on how to best connect ClamAV with the `clamav-milter`.
@@ -198,15 +194,21 @@ It can also generate example configuration files for [`clamd.conf`](#clamdconf) 
 
 To use `clamconf`, and see all the information it provides, simply run the following command:
 
-> `$ clamconf`
+```bash
+clamconf
+```
 
 For more detailed information on `clamconf`, run:
 
-> `$ clamconf --help`
+```bash
+clamconf --help
+```
 
 or on Unix systems:
 
-> `$ man clamconf`
+```
+man clamconf
+```
 
 ## Next Steps
 

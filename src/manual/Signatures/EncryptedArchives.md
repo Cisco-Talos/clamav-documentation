@@ -1,9 +1,10 @@
 # Passwords for archive files \[experimental\]
 
-ClamAV 0.99 allows for users to specify password attempts for certain password-compatible archives. Passwords will be attempted in order of appearance in the password signature file which use the extension of `.pwdb`. If no passwords apply or none are provided, ClamAV will default to the original behavior of parsing the file. Currently, as of ClamAV 0.99 \[flevel 81\], only `.zip` archives using the traditional PKWARE encryption are supported. The signature format is
+ClamAV allows for users to specify password attempts for certain password-compatible archives. Passwords will be attempted in order of appearance in the password signature file which use the extension of `.pwdb`. If no passwords apply or none are provided, ClamAV will default to the original behavior of parsing the file.
 
-```bash
-    SignatureName;TargetDescriptionBlock;PWStorageType;Password
+Currently, as of ClamAV 0.99 \[flevel 81\], only `.zip` archives using the traditional PKWARE encryption are supported. The signature format is:
+```
+SignatureName;TargetDescriptionBlock;PWStorageType;Password
 ```
 
 where:

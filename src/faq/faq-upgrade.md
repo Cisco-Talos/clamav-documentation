@@ -13,9 +13,11 @@ If there are no new packages, you have three options:
 
 If you installed from sources, first uninstall the old version:
 
-`./configure`
+```
+./configure
 
-`sudo make uninstall`
+sudo make uninstall
+```
 
 Compile and install the new one: see [Installing ClamAV]
 
@@ -27,9 +29,11 @@ Backup your database signature (located in `/usr/local/share/clamav` by default)
 
 To obtain a new version:
 
-`yum list clamav`
+```bash
+yum list clamav
 
-`yum update clamav`
+yum update clamav
+```
 
 If everything updated properly, run `freshclam` to update your signature database.
 
@@ -45,13 +49,17 @@ You'll get this message whenever a new version of ClamAV is released.  In order 
 
 Make sure there is really only one version of ClamAV installed on your system:
 
-`$ whereis freshclam`
+```bash
+whereis freshclam
 
-`$ whereis clamscan`
+whereis clamscan
+```
 
 Also make sure that you haven't got old libraries (`libclamav.so*`) lying around your filesystem. You can verify it using:
 
-`$ ldd $(which freshclam)`
+```bash
+ldd $(which freshclam)
+```
 
 ### What does "*Malformed hexstring: This ClamAV version has reached End of Life*" mean?
 
@@ -61,11 +69,15 @@ Please refer to: [eol-clamav]
 
 Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring:
 
-`$ gpg --import vrt.gpg`
+```bash
+gpg --import vrt.gpg
+```
 
 Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]:
 
-`$ gpg --verify clamav-X.XX.tar.gz.sig`
+```bash
+gpg --verify clamav-X.XX.tar.gz.sig
+```
 
 Please note that the resulting output should look like the following:
 
@@ -96,11 +108,9 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]: http://www.gnupg.org/
 [sources]: https://github.com/Cisco-Talos/clamav-devel
-[Wiki]: https://github.com/Cisco-Talos/clamav-faq/blob/master/faq/Upgrading.md
 [precompiled packages]: http://www.clamav.net/download.html#otherversions
 [Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads
 [gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
-[gcc's Options That Control Optimization]: https://gcc.gnu.org/onlinedocs/gcc/Optimize-Options.html
 [our bugzilla]: https://bugzilla.clamav.net/
 [Installing ClamAV]: http://www.clamav.net/documents/installing-clamav

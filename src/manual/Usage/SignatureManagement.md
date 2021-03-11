@@ -2,8 +2,6 @@
 
 Table Of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Signature Testing and Management](#signature-testing-and-management)
   - [Freshclam](#freshclam)
   - [Sigtool](#sigtool)
@@ -11,15 +9,13 @@ Table Of Contents
   - [Next Steps](#next-steps)
   - [Create your own signatures](#create-your-own-signatures)
 
-<!-- /TOC -->
-
 _Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
 
 ## Freshclam
 
 Before you can start the ClamAV scanning engine (using either `clamd` or `clamscan`), you must _first_ have ClamAV Virus Database (.cvd) file(s) installed in the appropriate location on your system.
 
-The tool `freshclam` is used to download and update ClamAV’s official virus signature databases. While easy to use in its base configuration, `freshclam` does require a working [`freshclam.conf` configuration file](Usage/Configuration.md#freshclamconf) to run (the location of which can be passed in via command line if the default search location does not fit your needs).
+The tool `freshclam` is used to download and update ClamAV’s official virus signature databases. While easy to use in its base configuration, `freshclam` does require a working [`freshclam.conf` configuration file](Configuration.md#freshclamconf) to run (the location of which can be passed in via command line if the default search location does not fit your needs).
 
 Once you have a valid configuration file, you can invoke Freshclam with the following command:
 
@@ -27,7 +23,7 @@ Once you have a valid configuration file, you can invoke Freshclam with the foll
 
 By default, `freshclam` will then attempt to connect to ClamAV's virus signature database distribution network. If no databases exist in the directory specified, `freshclam` will do a fresh download of the requested databases. Otherwise, `freshclam` will attempt to update existing databases, pairing them against downloaded cdiffs. If a database is found to be corrupted, it is not updated and instead replaced with a fresh download.
 
-Of course, all this behaviour--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](Usage/Configuration.md#freshclamconf).
+Of course, all this behaviour--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](Configuration.md#freshclamconf).
 
 You can find more information about Freshclam with the commands:
 

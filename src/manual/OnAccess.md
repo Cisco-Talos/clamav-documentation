@@ -35,7 +35,7 @@ Next, you will need to configure `clamonacc`. For a very simple configuration, f
     5. Set `OnAccessExcludeUname` to `clamd`'s uname
     6. Save your work and close `clamd.conf`
 
-For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](manual/OnAccess.md#configuration-and-recipes).
+For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](#configuration-and-recipes).
 
 Then, run `clamonacc` with elevated permissions
 
@@ -64,7 +64,7 @@ Next, you will need to configure On Access Scanning using the `clamd.conf` file.
     4. Set `OnAccessPrevention` to `yes`
     6. Save your work and close `clamd.conf`
 
-For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](manual/OnAccess.md#configuration-and-recipes).
+For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](configuration-and-recipes).
 
 Then, run `clamd` with elevated permissions
 

@@ -2,8 +2,6 @@
 
 Table of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [ClamAV Development](#clamav-development)
   - [Introduction](#introduction)
   - [Contributing to ClamAV](#contributing-to-clamav)
@@ -39,8 +37,6 @@ Table of Contents
   - [System Call Tracing / Fault Injection](#system-call-tracing--fault-injection)
   - [Running ClamAV with AddressSanitizer (ASAN)](#running-clamav-with-addresssanitizer-asan)
 
-<!-- /TOC -->
-
 ## Introduction
 
 This page aims to provide information useful when developing, debugging, or profiling ClamAV.
@@ -49,7 +45,7 @@ This page aims to provide information useful when developing, debugging, or prof
 
 If you're interested in contributing to ClamAV, we've assembled a page of bugs that need fixing as well as other project ideas that we feel might be great new-contributor projects.
 
-Check out the [project ideas list](manual/Contribute.md) to find out how you might be able to help out the project!
+Check out the [project ideas list](Contribute.md) to find out how you might be able to help out the project!
 
 ## Building ClamAV for Development
 
@@ -599,7 +595,7 @@ strace can be used to track the system calls that are performed and provide the 
 
 `strace` can also be used for cool things like system call fault injection.  For instance, let's say you are curious whether the `read` bytecode API call is implemented in such a way that the underlying `read` system call could handle `EINTR` being returned (which can happen periodically).  To test this, write the following bytecode rule:
 
-```bash
+```c
     VIRUSNAME_PREFIX("BC.Heuristic.Test.Read.Passed")
     VIRUSNAMES("")
     TARGET(0)
@@ -652,7 +648,7 @@ It uses `pread64` under the hood, so the following command could be used for fau
 
 This command tells `strace` to skip the first 20 `pread64` calls (these appear to be used by the loader, which didn't seem to handle `EINTR` correctly) but to inject `EINTR` for every 10th call afterward.  We can see the injection in action and that the system call is retried successfully:
 
-```bash
+```c
     pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15007744) = 65536
     pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15073280) = 65536
     pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15138816) = 65536

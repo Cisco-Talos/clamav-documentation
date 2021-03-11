@@ -3,8 +3,8 @@
 ClamAV is widely available on package managers for most operating systems. The ClamAV project also provides traditional installers and portable ZIP installations for Windows 32bit and 64bit systems.
 
 If you need, you can also compile and install ClamAV *from source*:
-- [Unix/Linux/Mac Instructions](Installing-from-source-Unix.md).
-- [Windows Instructions](Installing-from-source-Windows.md).
+- [Unix/Linux/Mac Instructions](Installing-from-source/Installing-from-source-Unix.md).
+- [Windows Instructions](Installing-from-source/Installing-from-source-Windows.md).
 
 ## Installing From Packages
 

@@ -7,9 +7,9 @@ ClamAV stores all body-based (content-based) signatures in a hexadecimal format,
 You can use `sigtool --hex-dump` to convert any data into a hex-string:
 
 ```bash
-    zolw@localhost:/tmp/test$ sigtool --hex-dump
-    How do I look in hex?
-    486f7720646f2049206c6f6f6b20696e206865783f0a
+zolw@localhost:/tmp/test$ sigtool --hex-dump
+How do I look in hex?
+486f7720646f2049206c6f6f6b20696e206865783f0a
 ```
 
 ## Wildcards

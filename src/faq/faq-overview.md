@@ -18,6 +18,14 @@ When `clamd` is running, use these tools to interact with it:
 
   A command line program to scan files and directories through `clamd`.
 
+* `clamav-milter`
+
+  A daemon that performs email filter scannning through `clamd`.
+
+* `clamonacc` (Linux-only)
+
+  A daemon that receives on-access events from the kernel for real-time protection scanning through `clamd`.
+
 ## `freshclam`
 
 The signature database (cvd) update tool.
@@ -25,6 +33,10 @@ The signature database (cvd) update tool.
 ## `libclamav`
 
 The ClamAV library - so you can build the ClamAV engine into your programs.
+
+## `libfreshclam`
+
+The Freshclam library - so you can build the signature update update features into your programs.
 
 ## `sigtool`
 
@@ -40,4 +52,8 @@ A tool to check or generate ClamAV configuration files and collect additional in
 
 ## `clamav-config`
 
-An additional tool for checking how ClamAV was compiled.
+A script for checking how ClamAV was compiled.
+
+## `clamav-bytecode-compiler`
+
+A compiler for the bytecode executable signature plugins. _Note_: Shipped separately. See the [ClamAV Bytecode Compiler project on Github](https://github.com/Cisco-Talos/clamav-bytecode-compiler).

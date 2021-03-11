@@ -92,7 +92,7 @@ Libclamav can handle various obfuscators, encoders, files vulnerable to security
 
 Every program using libclamav must include the header file `clamav.h`:
 
-```bash
+```c
     #include "clamav.h"
 ```
 
@@ -100,7 +100,7 @@ Every program using libclamav must include the header file `clamav.h`:
 
 Before using libclamav, you should call `cl_init()` to initialize it. `CL_INIT_DEFAULT` is a macro that can be passed to `cl_init()` representing the default initialization settings. When it’s done, you’re ready to create a new scan engine by calling `cl_engine_new()`. To free resources allocated by the engine use `cl_engine_free()`. Function prototypes:
 
-```bash
+```c
     int cl_init(unsigned int options);
     struct cl_engine *cl_engine_new(void);
     int cl_engine_free(struct cl_engine *engine);
@@ -112,7 +112,7 @@ Before using libclamav, you should call `cl_init()` to initialize it. `CL_INIT_D
 
 The following set of functions provides an interface for loading the virus database:
 
-```bash
+```c
     const char *cl_retdbdir(void);
 
     int cl_load(const char *path, struct cl_engine *engine,
@@ -137,7 +137,7 @@ The following set of functions provides an interface for loading the virus datab
 
 `cl_load()` returns `CL_SUCCESS` on success and another code on failure.
 
-```bash
+```c
         ...
         struct cl_engine *engine;
         unsigned int sigs = 0;
@@ -160,7 +160,7 @@ The following set of functions provides an interface for loading the virus datab
 
 Use `cl_strerror()` to convert error codes into human readable messages. The function returns a statically allocated string:
 
-```bash
+```c
     if(ret != CL_SUCCESS) {
         printf("cl_load() error: %s\n", cl_strerror(ret));
         cl_engine_free(engine);
@@ -172,13 +172,13 @@ Use `cl_strerror()` to convert error codes into human readable messages. The fun
 
 When all required databases are loaded you should prepare the detection engine by calling `cl_engine_compile()`. In case of failure you should still free the memory allocated to the engine with `cl_engine_free()`:
 
-```bash
+```c
     int cl_engine_compile(struct cl_engine *engine);
 ```
 
 In our example:
 
-```bash
+```c
     if((ret = cl_engine_compile(engine)) != CL_SUCCESS) {
         printf("cl_engine_compile() error: %s\n", cl_strerror(ret));
         cl_engine_free(engine);
@@ -190,7 +190,7 @@ In our example:
 
 When you create a new engine with `cl_engine_new()`, it will have all internal settings set to default values as recommended by the ClamAV authors. It’s possible to check and modify the values (numerical and strings) using the following set of functions:
 
-```bash
+```c
     int cl_engine_set_num(struct cl_engine *engine,
     enum cl_engine_field field, long long num);
 
@@ -210,7 +210,7 @@ Please don’t modify the default values unless you know what you’re doing. Re
 
 It’s very important to keep the internal instance of the database up to date. You can watch database changes with the `cl_stat..()` family of functions.
 
-```bash
+```c
     int cl_statinidir(const char *dirname, struct cl_stat *dbstat);
     int cl_statchkdir(const struct cl_stat *dbstat);
     int cl_statfree(struct cl_stat *dbstat);
@@ -218,7 +218,7 @@ It’s very important to keep the internal instance of the database up to date. 
 
 Initialization:
 
-```bash
+```c
         ...
         struct cl_stat dbstat;
 
@@ -228,7 +228,7 @@ Initialization:
 
 To check for a change you just need to call `cl_statchkdir` and check its return value (0 - no change, 1 - some change occurred). Remember to reset the `cl_stat` structure after reloading the database.
 
-```bash
+```c
     if(cl_statchkdir(&dbstat) == 1) {
         reload_database...;
         cl_statfree(&dbstat);
@@ -236,9 +236,9 @@ To check for a change you just need to call `cl_statchkdir` and check its return
     }
 ```
 
-Libclamav \(\ge0.96\) includes and additional call to check the number of signatures that can be loaded from a given directory:
+Libclamav includes and additional call to check the number of signatures that can be loaded from a given directory:
 
-```bash
+```c
     int cl_countsigs(const char *path, unsigned int countoptions,
         unsigned int *sigs);
 ```
@@ -249,7 +249,7 @@ The first argument points to the database directory, the second one specifies wh
 
 It’s possible to scan a file or descriptor using:
 
-```bash
+```c
     int cl_scanfile(
         const char *filename,
         const char **virname,
@@ -268,7 +268,7 @@ It’s possible to scan a file or descriptor using:
 
 Both functions will store a virus name under the pointer `virname`, the virus name is part of the engine structure and must not be released directly. If the third argument (`scanned`) is not NULL, the functions will increase its value with the size of scanned data (in `CL_COUNT_PRECISION` units). The last argument (`options`) requires a pointer to a data structure that specifies the scan options.  The data structure should be `memset()` Each variable in the structure is a bit-flag field.  The structure definition is:
 
-```bash
+```c
     struct cl_scan_options {
         uint32_t general;
         uint32_t parse;
@@ -354,7 +354,7 @@ Supported flags for each of the fields are as follows:
 
 All functions return `CL_CLEAN` when the file seems clean, `CL_VIRUS` when a virus is detected and another value on failure.
 
-```bash
+```c
         ...
         const char *virname;
 
@@ -399,7 +399,7 @@ You will find an example scanner application in the clamav source package (/exam
 
 CVD (ClamAV Virus Database) is a digitally signed tarball containing one or more databases. The header is a 512-bytes long string with colon separated fields:
 
-```bash
+```
     ClamAV-VDB:build time:version:number of signatures:functionality
     level required:MD5 checksum:digital signature:builder name:build time (sec)
 ```

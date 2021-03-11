@@ -2,9 +2,9 @@
 
 Logical signatures allow combining of multiple signatures in extended format using logical operators. They can provide both more detailed and flexible pattern matching. The logical sigs are stored inside `*.ldb` files in the following format:
 
-```bash
-    SignatureName;TargetDescriptionBlock;LogicalExpression;Subsig0;
-    Subsig1;Subsig2;...
+```
+SignatureName;TargetDescriptionBlock;LogicalExpression;Subsig0;
+Subsig1;Subsig2;...
 ```
 
 where:
@@ -17,9 +17,9 @@ where:
 
 Keywords used in `TargetDescriptionBlock`:
 
-- `Target:X`: A number specifying the type of the target file: [Target Types](appendix/FileTypes.md#Target-Types).
+- `Target:X`: A number specifying the type of the target file: [Target Types](../../appendix/FileTypes.md#Target-Types).
 
-- `Engine:X-Y`: Required engine functionality level (range; 0.96). Note that if the `Engine` keyword is used, it must be the first one in the `TargetDescriptionBlock` for backwards compatibility. See the [FLEVEL reference](appendix/FunctionalityLevels.md) for details.
+- `Engine:X-Y`: Required engine functionality level (range; 0.96). Note that if the `Engine` keyword is used, it must be the first one in the `TargetDescriptionBlock` for backwards compatibility. See the [FLEVEL reference](../../appendix/FunctionalityLevels.md) for details.
 
 - `FileSize:X-Y`: Required file size (range in bytes; 0.96)
 
@@ -31,13 +31,13 @@ Keywords used in `TargetDescriptionBlock`:
 
   Specifying `CL_TYPE_ANY` matches on root objects only (i.e. the target file is explicitely _not_ in a container). Chances slim that you would want to use `CL_TYPE_ANY` in a signature, because placing the malicious file in an archive will then prevent it from alerting.
 
-  Every ClamAV file type has the potential to be a container for additional files, although some are more likely than others. When a file is parsed and data in the file is identified to be scanned as a unique type, that parent file becomes a container the moment the embedded content is scanned. For a list of possible CL_TYPEs, refer to the [File Types Reference](appendix/FileTypes.md).
+  Every ClamAV file type has the potential to be a container for additional files, although some are more likely than others. When a file is parsed and data in the file is identified to be scanned as a unique type, that parent file becomes a container the moment the embedded content is scanned. For a list of possible CL_TYPEs, refer to the [File Types Reference](../../appendix/FileTypes.md).
 
 - `Intermediates:CL_TYPE_*>CL_TYPE_*`: Specify one or more layers of file types containing the scanned file. _This is an alternative to using `Container`._
 
   You may specify up to 16 layers of file types separated by ’`>`’ in top-down order. Note that the ’`>`’ separator is not needed if you only specify a single container. The last type should be the immediate container containing the malicious file. Unlike with the `Container` option, `CL_TYPE_ANY` can be used as a wildcard file type. (expr; 0.100.0)
 
-  For a list of possible CL_TYPEs, refer to the [File Types Reference](appendix/FileTypes.md).
+  For a list of possible CL_TYPEs, refer to the [File Types Reference](../../appendix/FileTypes.md).
 
 - `IconGroup1`: Icon group name 1 from .idb signature Required engine functionality (range; 0.96)
 
@@ -63,20 +63,20 @@ Modifiers for subexpressions:
 
 Examples:
 
-```bash
-    Sig1;Target:0;(0&1&2&3)&(4|1);6b6f74656b;616c61;7a6f6c77;7374656
-    6616e;deadbeef
+```
+Sig1;Target:0;(0&1&2&3)&(4|1);6b6f74656b;616c61;7a6f6c77;7374656
+6616e;deadbeef
 
-    Sig2;Target:0;((0|1|2)>5,2)&(3|1);6b6f74656b;616c61;7a6f6c77;737
-    46566616e
+Sig2;Target:0;((0|1|2)>5,2)&(3|1);6b6f74656b;616c61;7a6f6c77;737
+46566616e
 
-    Sig3;Target:0;((0|1|2|3)=2)&(4|1);6b6f74656b;616c61;7a6f6c77;737
-    46566616e;deadbeef
+Sig3;Target:0;((0|1|2|3)=2)&(4|1);6b6f74656b;616c61;7a6f6c77;737
+46566616e;deadbeef
 
-    Sig4;Engine:51-255,Target:1;((0|1)&(2|3))&4;EP+123:33c06834f04100
-    f2aef7d14951684cf04100e8110a00;S2+78:22??232c2d252229{-15}6e6573
-    (63|64)61706528;S3+50:68efa311c3b9963cb1ee8e586d32aeb9043e;f9c58
-    dcf43987e4f519d629b103375;SL+550:6300680065005c0046006900
+Sig4;Engine:51-255,Target:1;((0|1)&(2|3))&4;EP+123:33c06834f04100
+f2aef7d14951684cf04100e8110a00;S2+78:22??232c2d252229{-15}6e6573
+(63|64)61706528;S3+50:68efa311c3b9963cb1ee8e586d32aeb9043e;f9c58
+dcf43987e4f519d629b103375;SL+550:6300680065005c0046006900
 ```
 
 ## Subsignature Modifiers
@@ -105,20 +105,35 @@ backwards-compatibility.
 
 Examples:
 
-```bash
-    clamav-nocase-A;Engine:81-255,Target:0;0&1;41414141::i;424242424242::i
-        -matches 'AAAA'(nocase) and 'BBBBBB'(nocase)
+  - Match 'AAAA'(nocase) and 'BBBBBB'(nocase)
 
-    clamav-fullword-A;Engine:81-255,Target:0;0&1;414141;68656c6c6f::f
-        -matches 'AAA' and 'hello'(fullword)
-    clamav-fullword-B;Engine:81-255,Target:0;0&1;414141;68656c6c6f::fi
-        -matches 'AAA' and 'hello'(fullword nocase)
+  ```
+  clamav-nocase-A;Engine:81-255,Target:0;0&1;41414141::i;424242424242::i
+  ```
 
-    clamav-wide-B2;Engine:81-255,Target:0;0&1;414141;68656c6c6f::wa
-        -matches 'AAA' and 'hello'(wide ascii)
-    clamav-wide-C0;Engine:81-255,Target:0;0&1;414141;68656c6c6f::iwfa
-        -matches 'AAA' and 'hello'(nocase wide fullword ascii)
-```
+  - Match 'AAA' and 'hello'(fullword)
+
+  ```
+  clamav-fullword-A;Engine:81-255,Target:0;0&1;414141;68656c6c6f::f
+  ```
+
+  - Match 'AAA' and 'hello'(fullword nocase)
+
+  ```
+  clamav-fullword-B;Engine:81-255,Target:0;0&1;414141;68656c6c6f::fi
+  ```
+
+  - Match 'AAA' and 'hello'(wide ascii)
+
+  ```
+  clamav-wide-B2;Engine:81-255,Target:0;0&1;414141;68656c6c6f::wa
+  ```
+
+  - Match 'AAA' and 'hello'(nocase wide fullword ascii)
+
+  ```
+  clamav-wide-C0;Engine:81-255,Target:0;0&1;414141;68656c6c6f::iwfa
+  ```
 
 ## Special Subsignature Types
 
@@ -135,21 +150,21 @@ signature (`.ldb`). Signatures using macro subsignatures require
 
 Example:
 
-```bash
-    test.ldb:
-        TestMacro;Engine:51-255,Target:0;0&1;616161;${6-7}12$
+```
+test.ldb:
+    TestMacro;Engine:51-255,Target:0;0&1;616161;${6-7}12$
 
-    test.ndb:
-        D1:0:$12:626262
-        D2:0:$12:636363
-        D3:0:$30:626264
+test.ndb:
+    D1:0:$12:626262
+    D2:0:$12:636363
+    D3:0:$30:626264
 ```
 
 The example logical signature `TestMacro` is functionally equivalent
 to:
 
-```bash
-    `TestMacro;Engine:51-255,Target:0;0;616161{3-4}(626262|636363)`
+```
+TestMacro;Engine:51-255,Target:0;0;616161{3-4}(626262|636363)
 ```
 
 - `MACROID` points to a group of signatures; there can be at most 32 macro groups.
@@ -230,23 +245,23 @@ PCRE subsignatures are used within a logical signature (`.ldb`) to specify regex
 
 Examples:
 
-```bash
-    Find.All.ClamAV;Engine:81-255,Target:0;1;6265676c6164697427736e6f7462797465636f6465;0/clamav/g
+```
+Find.All.ClamAV;Engine:81-255,Target:0;1;6265676c6164697427736e6f7462797465636f6465;0/clamav/g
 
-    Find.ClamAV.OnlyAt.299;Engine:81-255,Target:0;2;7374756c747a67657473;7063726572656765786c6f6c;299:0&1/clamav/
+Find.ClamAV.OnlyAt.299;Engine:81-255,Target:0;2;7374756c747a67657473;7063726572656765786c6f6c;299:0&1/clamav/
 
-    Find.ClamAV.StartAt.300;Engine:81-255,Target:0;3;616c61696e;62756731393238;636c6f736564;300:0&1&2/clamav/r
+Find.ClamAV.StartAt.300;Engine:81-255,Target:0;3;616c61696e;62756731393238;636c6f736564;300:0&1&2/clamav/r
 
-    Find.All.Encompassed.ClamAV;Engine:81-255,Target:0;3;7768796172656e2774;796f757573696e67;79617261;200,300:0&1&2/clamav/ge
+Find.All.Encompassed.ClamAV;Engine:81-255,Target:0;3;7768796172656e2774;796f757573696e67;79617261;200,300:0&1&2/clamav/ge
 
-    Named.CapGroup.Pcre;Engine:81-255,Target:0;3;636f75727479617264;616c62756d;74657272696572;50:0&1&2/variable=(?&lt;nilshell&gt;.{16})end/gr
+Named.CapGroup.Pcre;Engine:81-255,Target:0;3;636f75727479617264;616c62756d;74657272696572;50:0&1&2/variable=(?&lt;nilshell&gt;.{16})end/gr
 
-    Firefox.TreeRange.UseAfterFree;Engine:81-255,Target:0,Engine:81-255;0&1&2;2e766965772e73656c656374696f6e;2e696e76616c696461746553656c656374696f6e;0&1/\x2Eview\x2Eselection.*?\x2Etree\s*\x3D\s*null.*?\x2Einvalidate/smi
+Firefox.TreeRange.UseAfterFree;Engine:81-255,Target:0,Engine:81-255;0&1&2;2e766965772e73656c656374696f6e;2e696e76616c696461746553656c656374696f6e;0&1/\x2Eview\x2Eselection.*?\x2Etree\s*\x3D\s*null.*?\x2Einvalidate/smi
 
-    Firefox.IDB.UseAfterFree;Engine:81-255,Target:0;0&1;4944424b657952616e6765;0/^\x2e(only|lowerBound|upperBound|bound)\x28.*?\x29.*?\x2e(lower|upper|lowerOpen|upperOpen)/smi
+Firefox.IDB.UseAfterFree;Engine:81-255,Target:0;0&1;4944424b657952616e6765;0/^\x2e(only|lowerBound|upperBound|bound)\x28.*?\x29.*?\x2e(lower|upper|lowerOpen|upperOpen)/smi
 
-    Firefox.boundElements;Engine:81-255,Target:0;0&1&2;6576656e742e6
-    26f756e64456c656d656e7473;77696e646f772e636c6f7365;0&1/on(load|click)\s*=\s*\x22?window\.close\s*\x28/si
+Firefox.boundElements;Engine:81-255,Target:0;0&1&2;6576656e742e6
+26f756e64456c656d656e7473;77696e646f772e636c6f7365;0&1/on(load|click)\s*=\s*\x22?window\.close\s*\x28/si
 ```
 
 ## Signatures for Version Information (VI) metadata in PE files
@@ -261,64 +276,62 @@ To match a versioninfo key/value pair, the special file offset anchor `VI` was i
 
 For example `clamscan --debug freecell.exe` produces:
 
-```bash
-    [...]
-    Recognized MS-EXE/DLL file
-    in cli_peheader
-    versioninfo_cb: type: 10, name: 1, lang: 410, rva: 9608
-    cli_peheader: parsing version info @ rva 9608 (1/1)
-    VersionInfo (d2de): 'CompanyName'='Microsoft Corporation' -
-    VI:43006f006d00700061006e0079004e0061006d006500000000004d006900
-    630072006f0073006f0066007400200043006f00720070006f0072006100740
-    069006f006e000000
-    VersionInfo (d32a): 'FileDescription'='Entertainment Pack
-    FreeCell Game' - VI:460069006c006500440065007300630072006900700
-    0740069006f006e000000000045006e007400650072007400610069006e006d
-    0065006e00740020005000610063006b0020004600720065006500430065006
-    c006c002000470061006d0065000000
-    VersionInfo (d396): 'FileVersion'='5.1.2600.0 (xpclient.010817
-    -1148)' - VI:460069006c006500560065007200730069006f006e00000000
-    0035002e0031002e0032003600300030002e003000200028007800700063006
-    c00690065006e0074002e003000310030003800310037002d00310031003400
-    380029000000
-    VersionInfo (d3fa): 'InternalName'='freecell' - VI:49006e007400
-    650072006e0061006c004e0061006d006500000066007200650065006300650
-    06c006c000000
-    VersionInfo (d4ba): 'OriginalFilename'='freecell' - VI:4f007200
-    6900670069006e0061006c00460069006c0065006e0061006d0065000000660
-    0720065006500630065006c006c000000
-    VersionInfo (d4f6): 'ProductName'='Sistema operativo Microsoft
-    Windows' - VI:500072006f0064007500630074004e0061006d00650000000
-    000530069007300740065006d00610020006f00700065007200610074006900
-    76006f0020004d006900630072006f0073006f0066007400ae0020005700690
-    06e0064006f0077007300ae000000
-    VersionInfo (d562): 'ProductVersion'='5.1.2600.0' - VI:50007200
-    6f006400750063007400560065007200730069006f006e00000035002e00310
-    02e0032003600300030002e0030000000
-    [...]
+```
+[...]
+Recognized MS-EXE/DLL file
+in cli_peheader
+versioninfo_cb: type: 10, name: 1, lang: 410, rva: 9608
+cli_peheader: parsing version info @ rva 9608 (1/1)
+VersionInfo (d2de): 'CompanyName'='Microsoft Corporation' -
+VI:43006f006d00700061006e0079004e0061006d006500000000004d006900
+630072006f0073006f0066007400200043006f00720070006f0072006100740
+069006f006e000000
+VersionInfo (d32a): 'FileDescription'='Entertainment Pack
+FreeCell Game' - VI:460069006c006500440065007300630072006900700
+0740069006f006e000000000045006e007400650072007400610069006e006d
+0065006e00740020005000610063006b0020004600720065006500430065006
+c006c002000470061006d0065000000
+VersionInfo (d396): 'FileVersion'='5.1.2600.0 (xpclient.010817
+-1148)' - VI:460069006c006500560065007200730069006f006e00000000
+0035002e0031002e0032003600300030002e003000200028007800700063006
+c00690065006e0074002e003000310030003800310037002d00310031003400
+380029000000
+VersionInfo (d3fa): 'InternalName'='freecell' - VI:49006e007400
+650072006e0061006c004e0061006d006500000066007200650065006300650
+06c006c000000
+VersionInfo (d4ba): 'OriginalFilename'='freecell' - VI:4f007200
+6900670069006e0061006c00460069006c0065006e0061006d0065000000660
+0720065006500630065006c006c000000
+VersionInfo (d4f6): 'ProductName'='Sistema operativo Microsoft
+Windows' - VI:500072006f0064007500630074004e0061006d00650000000
+000530069007300740065006d00610020006f00700065007200610074006900
+76006f0020004d006900630072006f0073006f0066007400ae0020005700690
+06e0064006f0077007300ae000000
+VersionInfo (d562): 'ProductVersion'='5.1.2600.0' - VI:50007200
+6f006400750063007400560065007200730069006f006e00000035002e00310
+02e0032003600300030002e0030000000
+[...]
 ```
 
 Although VI-based signatures are intended for use in logical signatures you can test them using ordinary `.ndb` files. For example:
 
-```bash
-    my_test_vi_sig:1:VI:paste_your_hex_sig_here
+```
+my_test_vi_sig:1:VI:paste_your_hex_sig_here
 ```
 
 Final note. If you want to decode a VI-based signature into a human readable form you can use:
 
 ```bash
-    echo hex_string | xxd -r -p | strings -el
+echo hex_string | xxd -r -p | strings -el
 ```
 
 For example:
 
 ```bash
-    $ echo 460069006c0065004400650073006300720069007000740069006f006e
-    000000000045006e007400650072007400610069006e006d0065006e007400200
-    05000610063006b0020004600720065006500430065006c006c00200047006100
-    6d0065000000 | xxd -r -p | strings -el
-    FileDescription
-    Entertainment Pack FreeCell Game
+echo 460069006c0065004400650073006300720069007000740069006f006e000000000045006e007400650072007400610069006e006d0065006e00740020005000610063006b0020004600720065006500430065006c006c00200047006100
+6d0065000000 | xxd -r -p | strings -el
+FileDescription
+Entertainment Pack FreeCell Game
 ```
 
 ## Icon Signatures for PE files
@@ -329,8 +342,8 @@ ClamAV 0.96 includes an approximate/fuzzy icon matcher to help detecting malicio
 
 Icon matching is only triggered by Logical Signatures (`.ldb`) using the special attribute tokens `IconGroup1` or `IconGroup2`. These identify two (optional) groups of icons defined in a `.idb` database file. The format of the `.idb` file is:
 
-```bash
-    ICONNAME:GROUP1:GROUP2:ICON_HASH
+```
+ICONNAME:GROUP1:GROUP2:ICON_HASH
 ```
 
 where:
@@ -345,7 +358,7 @@ where:
 
 The `ICON_HASH` field can be obtained from the debug output of libclamav. For example:
 
-```bash
-    LibClamAV debug: ICO SIGNATURE:
-    ICON_NAME:GROUP1:GROUP2:18e2e0304ce60a0cc3a09053a30000414100057e000afe0000e 80006e510078b0a08910d11ad04105e0811510f084e01040c080a1d0b0021000a39002a41
+```
+LibClamAV debug: ICO SIGNATURE:
+ICON_NAME:GROUP1:GROUP2:18e2e0304ce60a0cc3a09053a30000414100057e000afe0000e 80006e510078b0a08910d11ad04105e0811510f084e01040c080a1d0b0021000a39002a41
 ```

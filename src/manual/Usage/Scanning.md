@@ -2,8 +2,6 @@
 
 Table Of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Scanning](#scanning)
 	- [Daemon](#daemon)
 		- [ClamD](#clamd)
@@ -20,8 +18,6 @@ Table Of Contents
 		- [Globbing](#globbing)
 		- [File paths](#file-paths)
 			- [Socket and libclamav API Input](#socket-and-libclamav-api-input)
-
-<!-- /TOC -->
 
 _Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
 
@@ -105,7 +101,7 @@ _Disclaimer_: Enabling Prevention mode will seriously impact performance if used
 
 _Tip_: You can run ClamOnAcc multiple times simultaneously, each with a different config. If you want to enable Prevention-mode for one directory, while sticking to notify-only mode for any other monitored directories, that's an option!
 
-On-Access Scanning is primarily set up [through `clamd.conf`](Usage/Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](manual/OnAccess.md).
+On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](../OnAccess.md).
 
 Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will first need to run `clamd` before you can start it. If your `clamd` instance is local, it is required you run clamd as a user that is excluded (via `OnAccessExcludeUname` or `OnAccessExcludeUID`) from On-Access scanning events (e.g.) to prevent `clamonacc` from triggering events endlessly as it sends scan requests to `clamd`:
 
@@ -121,7 +117,7 @@ It will run a number of startup checks to test for a sane configuration, and ens
 
 In older versions, ClamAV's On-Access Scanner is a thread that runs within a `clamd` instance. The On-Access Scanner is capable of blocking access to/from any malicious files it discovers--based on the verdict it finds using the engine it shares with `clamd`--but by default it is configured to run in `notify-only` mode, which means it will simply alert the user if a malicious file is detected, but it will not actively prevent processes from reading or writing to that file.
 
-On-Access Scanning is primarily set up [through `clamd.conf`](Usage/Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](manual/OnAccess.md).
+On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](../OnAccess.md).
 
 Once you have set up the On-Access Scanner to your liking, you will need to run `clamd` will elevated permissions to start it.
 

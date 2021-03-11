@@ -20,10 +20,7 @@ You will have to decide how to distribute this database file to the systems whic
 
 [*] For efficiency, the API permits downloading differences, in much the same way that ClamAV itself uses `.cdiff` files. The clamav-safebrowsing tool uses a MySQL database to store the Safe Browsing data so it can apply these differences the next time you use it.
 
-For more information, please visit:
-
-https://github.com/Cisco-Talos/clamav-safebrowsing
-
+For more information, please visit [the ClamAV Safebrowsing project on Github](https://github.com/Cisco-Talos/clamav-safebrowsing).
 
 ## History
 

@@ -8,15 +8,19 @@ You will need to edit the `freshclam.conf.example` file located in `/usr/local/e
 
 You can check for database update as often as 4 times per hour provided that you have the following options in `freshclam.conf`:
 
-`DNSDatabaseInfo current.cvd.clamav.net`
+```ini
+DNSDatabaseInfo current.cvd.clamav.net
 
-`DatabaseMirror database.clamav.net`
+DatabaseMirror database.clamav.net
+```
 
 ## I get this error when running FreshClam: _Invalid DNS reply. Falling back to HTTP mode_ or _ERROR: Can't query current.cvd.clamav.net_ . What does it mean?
 
 There is a problem with your DNS server. Please check the entries in /etc/resolv.conf and verify that you can resolve the TXT record manually:
 
-`$ host -t txt current.cvd.clamav.net`
+```bash
+host -t txt current.cvd.clamav.net
+```
 
 If you can't, it means your network is broken. You'll be still able to download the updates, but you'll waste a lot of bandwidth checking for updates.
 
@@ -24,7 +28,9 @@ If you can't, it means your network is broken. You'll be still able to download 
 
 Freshclam attempts to detect potential problems with DNS caches and switches to use HTTPS if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run FreshClam, check your system clock. If it is set correctly, check your dns settings.  If those didn't help, try putting this at the top of your cronjob:
 
- `host -t txt current.cvd.clamav.net; perl -e 'printf "%d\n", time;' `
+```bash
+host -t txt current.cvd.clamav.net; perl -e 'printf "%d\n", time;'
+```
 
 The 4th field of the first line should be less than 3 &lowast; 3600 behind the output of the second line. If not, you have a caching DNS server somewhere  misbehaving.
 
@@ -32,13 +38,17 @@ The 4th field of the first line should be less than 3 &lowast; 3600 behind the o
 
 Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve hostnames with:
 
-`$ host database.clamav.net`
+```bash
+host database.clamav.net
+```
 
 If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, check that you can receive dns answers longer than 512 bytes, e.g. check that your firewall is not blocking packets which originate from `port 53/tcp`.
 
 An easy way to find it out is:
 
-`$ dig @ns1.clamav.net db.us.big.clamav.net`
+```bash
+dig @ns1.clamav.net db.us.big.clamav.net
+```
 
 ## How do I know if my IP address has been blocked?
 
@@ -48,7 +58,9 @@ Run FreshClam in verbose-mode (`-v`) to view the HTTP requests and responses. If
 
 current.cvd.clamav.net has got only a TXT record, not a type A record! Try this command:
 
-`$ host -t txt current.cvd.clamav.net`
+```bash
+$ host -t txt current.cvd.clamav.net
+```
 
 Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the flag `--enable-dns-fix` if using `./configure` or `-D ENABLE_FRESHCLAM_DNS_FIX=ON` if using CMake.
 

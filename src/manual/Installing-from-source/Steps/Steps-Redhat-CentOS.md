@@ -7,28 +7,28 @@ Below are the steps for installing ClamAV from source on Redhat and CentOS Linux
 1. Install ClamAV dependencies
     1. Install the developer tools
         ```bash
-            sudo yum groupinstall "Development Tools"
+        sudo yum groupinstall "Development Tools"
         ```
     2. Install library dependencies
         ```bash
-            sudo yum install openssl openssl-devel libcurl-devel zlib-devel libpng-devel libxml2-devel json-c-devel bzip2-devel pcre2-devel ncurses-devel
+        sudo yum install openssl openssl-devel libcurl-devel zlib-devel libpng-devel libxml2-devel json-c-devel bzip2-devel pcre2-devel ncurses-devel
         ```
     3. (very optional) Those wishing to use clamav-milter may wish to install the following
         ```bash
-            sudo yum install sendmail sendmail-devel
+        sudo yum install sendmail sendmail-devel
         ```
 
     _CentOS 8 Tip_:  Some of the above packages such as `json-c-devel` and `sendmail-devel` may not be available for CentOS 8 unless you install the EPEL repository and enable PowerTools. To enable EPEL and PowerTools, run the following:
     ```bash
-        sudo yum install epel-release
-        sudo yum config-manager --set-enabled PowerTools
-        sudo yum update
-        sudo yum repolist
+    sudo yum install epel-release
+    sudo yum config-manager --set-enabled PowerTools
+    sudo yum update
+    sudo yum repolist
     ```
 
 2. Install the unit testing dependencies
     ```bash
-        sudo yum install valgrind check check-devel
+    sudo yum install valgrind check check-devel
     ```
 
 _Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
@@ -41,9 +41,9 @@ _Note_: LLVM is also an optional dependency. LLVM will not provide any additiona
 ## Extract the source archive
 
 ```bash
-    cd ~/Downloads
-    tar xzf clamav-[ver].tar.gz
-    cd clamav-[ver]
+cd ~/Downloads
+tar xzf clamav-<version>.tar.gz
+cd clamav-<version>
 ```
 
 ## Configure the build
@@ -53,7 +53,7 @@ ClamAV's configure script should detect each of the above dependencies automatic
 ### Typical `./configure` usage
 
 ```bash
-    ./configure --enable-check
+./configure --enable-check
 ```
 
 Once `./configure` completes, it will print a summary. Verify that the packages you installed are in fact being detected.
@@ -61,60 +61,60 @@ Once `./configure` completes, it will print a summary. Verify that the packages 
 Example configure summary output:
 
 ```bash
-    configure: Summary of detected features follows
-                OS          : linux-gnu
-                pthreads    : yes (-lpthread)
-    configure: Summary of miscellaneous features
-                check       : -lcheck_pic -pthread -lrt -lm -lsubunit
-                fanotify    : yes
-                fdpassing   : 1
-                IPv6        : yes
-    configure: Summary of optional tools
-                clamdtop    : -lncurses (auto)
-                milter      : yes (disabled)
-                clamsubmit  : yes (libjson-c-dev found at /usr), libcurl-devel found at /usr)
-    configure: Summary of engine performance features
-                release mode: yes
-                llvm        : no (disabled)
-                mempool     : yes
-    configure: Summary of engine detection features
-                bzip2       : ok
-                zlib        : /usr
-                unrar       : yes
-                preclass    : yes (libjson-c-dev found at /usr)
-                pcre        : /usr
-                libmspack   : yes (Internal)
-                libxml2     : yes, from /usr
-                yara        : yes
-                fts         : yes (libc)
+configure: Summary of detected features follows
+            OS          : linux-gnu
+            pthreads    : yes (-lpthread)
+configure: Summary of miscellaneous features
+            check       : -lcheck_pic -pthread -lrt -lm -lsubunit
+            fanotify    : yes
+            fdpassing   : 1
+            IPv6        : yes
+configure: Summary of optional tools
+            clamdtop    : -lncurses (auto)
+            milter      : yes (disabled)
+            clamsubmit  : yes (libjson-c-dev found at /usr), libcurl-devel found at /usr)
+configure: Summary of engine performance features
+            release mode: yes
+            llvm        : no (disabled)
+            mempool     : yes
+configure: Summary of engine detection features
+            bzip2       : ok
+            zlib        : /usr
+            unrar       : yes
+            preclass    : yes (libjson-c-dev found at /usr)
+            pcre        : /usr
+            libmspack   : yes (Internal)
+            libxml2     : yes, from /usr
+            yara        : yes
+            fts         : yes (libc)
 ```
 
 ### Additional popular `./configure` options
 
 * `--with-systemdsystemunitdir` - Do not install `systemd` socket files. This option disables systemd support, but will allow you to `make install` to a user-owned directory without requiring `sudo`/root privileges:
     ```bash
-        ./configure --with-systemdsystemunitdir=no
+    ./configure --with-systemdsystemunitdir=no
     ```
 * `--sysconfdir` - Install the configuration files to `/etc` instead of `/usr/local/etc`:
     ```bash
-        ./configure --sysconfdir=/etc
+    ./configure --sysconfdir=/etc
     ```
 * `--prefix` - Install ClamAV to a directory other than `/usr/local/`:
     * Example 1: Install to a local `./install` directory.
         ```bash
-            ./configure --prefix=`pwd`/install
+        ./configure --prefix=`pwd`/install
         ```
     * Example 2: Install ClamAV locally on an unprivileged shell account.
         ```bash
-            ./configure --prefix=$HOME/clamav --disable-clamav --with-systemdsystemunitdir=no
+        ./configure --prefix=$HOME/clamav --disable-clamav --with-systemdsystemunitdir=no
         ```
 * `--disable-clamav` - _Don't_ drop super-user priveleges to run `freshclam` or `clamd` as the `clamav`* user.
     ```bash
-        ./configure --disable-clamav
+    ./configure --disable-clamav
     ```
-    *_Tip_: Using this `--disable-clamav` means that `freshclam` and `clamd` will run with _root privleges_ if invoked using `sudo`. Running `clamd` or `clamscan` as root is **not recommended**. Instead of using this option, you can configure `freshclam` or `clamd` to drop to any other user by:
-    * setting the `DatabaseOwner` option in `freshclam.conf` and
-    * setting the `User` option in `clamd.conf`.
+    > _Tip_: Using this `--disable-clamav` means that `freshclam` and `clamd` will run with _root privleges_ if invoked using `sudo`. Running `clamd` or `clamscan` as root is **not recommended**. Instead of using this option, you can configure `freshclam` or `clamd` to drop to any other user by:
+    >   - setting the `DatabaseOwner` option in `freshclam.conf` and
+    >   - setting the `User` option in `clamd.conf`.
 
 Please see the `./configure --help` for additional options.
 
@@ -122,7 +122,7 @@ Please see the `./configure --help` for additional options.
 
 Compile ClamAV with:
 ```bash
-    make -j2
+make -j2
 ```
 
 ## Run ClamAV Unit Tests (Optional)
@@ -131,72 +131,74 @@ For peace of mind, it can be helpful to run a small suite of unit and system tes
 
 Run:
 ```bash
-    make check
+make check
 ```
 
 All tests should pass.* Output will look something like this:
 
 ```bash
-        ...
-    PASS: check_clamav
-    PASS: check_freshclam.sh
-    PASS: check_sigtool.sh
-    PASS: check_unit_vg.sh
-    PASS: check1_clamscan.sh
-    PASS: check2_clamd.sh
-    PASS: check3_clamd.sh
-    PASS: check4_clamd.sh
-    PASS: check5_clamd_vg.sh
-    PASS: check6_clamd_vg.sh
-    SKIP: check7_clamd_hg.sh
-    PASS: check8_clamd_hg.sh
-    PASS: check9_clamscan_vg.sh
-        ...
-    ============================================================================
-    Testsuite summary for ClamAV 0.100.2
-    ============================================================================
-    # TOTAL: 13
-    # PASS:  12
-    # SKIP:  1
-    # XFAIL: 0
-    # FAIL:  0
-    # XPASS: 0
-    # ERROR: 0
+...
+PASS: check_clamav
+PASS: check_freshclam.sh
+PASS: check_sigtool.sh
+PASS: check_unit_vg.sh
+PASS: check1_clamscan.sh
+PASS: check2_clamd.sh
+PASS: check3_clamd.sh
+PASS: check4_clamd.sh
+PASS: check5_clamd_vg.sh
+PASS: check6_clamd_vg.sh
+SKIP: check7_clamd_hg.sh
+PASS: check8_clamd_hg.sh
+PASS: check9_clamscan_vg.sh
+...
+============================================================================
+Testsuite summary for ClamAV 0.100.2
+============================================================================
+# TOTAL: 13
+# PASS:  12
+# SKIP:  1
+# XFAIL: 0
+# FAIL:  0
+# XPASS: 0
+# ERROR: 0
 ```
 
-_Notes_:
-
-* The `*.vg.sh` tests will be skipped unless you run `make check VG=1`.
-* The `check7_clamd.hg.sh` (helgrind) is presently disabled and will be skipped.
-  * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav-devel/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
+> _Notes_:
+>
+> * The `*.vg.sh` tests will be skipped unless you run `make check VG=1`.
+> * The `check7_clamd.hg.sh` (helgrind) is presently disabled and will be skipped.
+>   * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav-devel/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
 
 If you have a failure or an error in the unit tests, it could be that you are missing one or more of the prerequisites.
 
 If you are investigating a failure, please do the following:
 
-`cd unit_tests`
+```
+cd unit_tests
+```
 
 Use `less` to read the log for the failed test.
 Example:
 
 ```bash
-    less check4_clamd.sh.log`
+less check4_clamd.sh.log`
 ```
 
-To submit a bug report regarding unit text failures, please follow these [bug reporting steps](manual/Installing-from-source-Unix.md#Reporting-a-unit-test-failure-bug).
+To submit a bug report regarding unit text failures, please follow these [bug reporting steps](../Installing-from-source-Unix.md#Reporting-a-unit-test-failure-bug).
 
 ## Install ClamAV
 
 Install ClamAV with:
 ```bash
-    make install
+make install
 ```
 
 _Tip_: If installing to the default or other system-owned directory, you may need to use `sudo`.
 
 ## First time set-up
 
-_Note_: The following instructions assume you used the default install paths (i.e. `/usr/local`). If you modified the install locations using `--prefix` or `--sysconfdir` options, replace `/usr/local` with your chosen install path.
+> _Note_: The following instructions assume you used the default install paths (i.e. `/usr/local`). If you modified the install locations using `--prefix` or `--sysconfdir` options, replace `/usr/local` with your chosen install path.
 
 ### `freshclam` config
 
@@ -204,7 +206,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
 
 1. Copy the sample config. You may need to use `sudo`:
     ```bash
-        cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
+    cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
     ```
 2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
@@ -220,7 +222,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
 
 3. Create the database directory. *Tip: _You may need to use `sudo`._
     ```bash
-        mkdir /usr/local/share/clamav
+    mkdir /usr/local/share/clamav
     ```
 
 ### `clamd` config (optional)
@@ -229,11 +231,11 @@ You can run `clamscan` without setting the config options for `clamd`. However, 
 
 Additionally, if you are a running modern versions of Linux where the FANOTIFY kernel feature is enabled, `clamd` has a feature run with On-Access Scanning*. *When properly configured*, On-Access Scanning can scan files as they are accessed and optionally block access to the file in the event that a signature alerted.
 
-  _Note_: At this time, for On-Access Scanning to work, `clamd` must run with `sudo`/root privileges. For more details, please see our documentation on On-Access Scanning.
+> _Note_: At this time, for On-Access Scanning to work, `clamd` must run with `sudo`/root privileges. For more details, please see our documentation on On-Access Scanning.
 
 1. Copy the sample config. You may need to use `sudo`:
     ```bash
-        cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
+    cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
     ```
 2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
@@ -261,12 +263,12 @@ Certain distributions (notably RedHat variants) when operating with SELinux enab
 At this time, libclamav only sets the `clamd_can_scan_system` option, so you may need to manually enable `antivirus_can_scan_system`. If you don't perform this step, freshclam will log something like this when it tests the newly downloaded signature databases:
 
 ```bash
-    During database load : LibClamAV Warning: RWX mapping denied: Can't allocate RWX Memory: Permission denied
+During database load : LibClamAV Warning: RWX mapping denied: Can't allocate RWX Memory: Permission denied
 ```
 
 To allow ClamAV to operate under SELinux, run the following:
 ```bash
-    setsebool -P antivirus_can_scan_system 1
+setsebool -P antivirus_can_scan_system 1
 ```
 
 ### Download / Update the signature database
@@ -275,12 +277,12 @@ Before you can run a scan, you'll need to download the signature databases. Once
 
 If you installed to a location in your system PATH:
 ```bash
-    freshclam
+freshclam
 ```
 
 If you installed to another location:
 ```bash
-    /{path}/{to}/{clamav}/bin/freshclam
+/<path>/<to>/<clamav>/bin/freshclam
 ```
 
 ### Users and on user privileges
@@ -292,18 +294,18 @@ The user that `clamd`, `clamdscan`, and `clamscan` run as may be the same user, 
 If you choose to use the default `clamav` user to run `freshclam` and `clamd`, you'll need to create the clamav group and the clamav user account the first time you install ClamAV.
 
 ```bash
-    groupadd clamav
-    useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
+groupadd clamav
+useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
 ```
 
 Finally, you will want to set user ownership of the database directory.
 For example:
 ```bash
-    sudo chown -R clamav:clamav /usr/local/share/clamav
+sudo chown -R clamav:clamav /usr/local/share/clamav
 ```
 
 ## Usage
 
 You should be all set up to run scans.
 
-Take a look at our [usage documentation](manual/Usage.md) to learn about how to use ClamAV each of the utilities.
+Take a look at our [usage documentation](../Usage.md) to learn about how to use ClamAV each of the utilities.

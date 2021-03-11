@@ -34,7 +34,7 @@ First the database will be downloaded to the local webserver and then the other 
 
 This solution will be more bandwidth efficient for you. It will llow you to host a mirror that functions in the same way as the fficial database CDN, serving CVD and CDIFF files.
 
-These instructions use a tool named [cvdupdate](https://github.om/micahsnyder/cvdupdate). `cvdupdate` requires:
+These instructions use a tool named [cvdupdate](https://github.com/micahsnyder/cvdupdate). `cvdupdate` requires:
 
 - Python 3.6 or newer.
 - An internet connection with DNS enabled.

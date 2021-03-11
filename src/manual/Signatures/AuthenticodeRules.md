@@ -2,9 +2,9 @@
 
 Clamav 0.98 checks signed PE files for certificates and verifies each certificate in the chain against a database of trusted and revoked certificates. The signature format is
 
-```bash
-    Name;Trusted;Subject;Serial;Pubkey;Exponent;CodeSign;TimeSign;CertSign;
-    NotBefore;Comment[;minFL[;maxFL]]
+```
+Name;Trusted;Subject;Serial;Pubkey;Exponent;CodeSign;TimeSign;CertSign;
+NotBefore;Comment[;minFL[;maxFL]]
 ```
 
 where the corresponding fields are:

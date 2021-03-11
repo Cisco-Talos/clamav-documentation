@@ -24,7 +24,7 @@ See previous FAQ.
 
 ## I'm using ClamAV in a production environment and a brand new virus is not being recognized by ClamAV. How long do I have to wait before ClamAV can start filtering the virus?
 
-No time at all! Find a signature for that virus and modify your virus database accordingly (see our [signature writing documentation](manual/Signatures.md) for details).
+No time at all! Find a signature for that virus and modify your virus database accordingly (see our [signature writing documentation](../manual/Signatures.md) for details).
 Remember to [submit](https://www.clamav.net/reports/malware) the sample to the virusdb team.
 
 ## Why is ClamAV calling the XXX virus with another name?

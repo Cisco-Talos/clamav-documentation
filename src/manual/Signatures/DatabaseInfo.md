@@ -4,8 +4,8 @@ The `.info` file format specifies information about the other database files unp
 
 The format is simply:
 
-```bash
-    name:size:sha256
+```
+name:size:sha256
 ```
 
 `name`: The database file name.

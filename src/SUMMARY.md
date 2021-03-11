@@ -23,14 +23,11 @@
     - [Bytecode Signatures](manual/Signatures/BytecodeSignatures.md)
     - [Container Metadata Signatures](manual/Signatures/ContainerMetadata.md)
     - [Archive Passwords (experimental)](manual/Signatures/EncryptedArchives.md)
-    - [ClamAV File Types](manual/Signatures/FileTypes.md)
-    - [ClamAV Functionality Levels](manual/Signatures/FunctionalityLevels.md)
 - [For Developers](manual/Development.md)
     - [Contribute](manual/Contribute.md)
 - [Frequently Asked Questions](faq/faq.md)
     - [Overview](faq/faq-overview.md)
     - [Selecting the Right Version of ClamAV for You](faq/faq-whichversion.md)
-    - [Installation](faq/Installing.md)
     - [Freshclam (Signature Updater)](faq/faq-freshclam.md)
     - [Signature Database (CVD)](faq/faq-cvd.md)
     - [Misc](faq/faq-misc.md)
@@ -44,10 +41,11 @@
     - [PUA (Potentially Unwanted Application)](faq/faq-pua.md)
     - [Ignore](faq/faq-ignore.md)
     - [Uninstall](faq/faq-uninstall.md)
+
 -----------
 
 - [Appendix](appendix/Appendix.md)
     - [Hosting a Private Database Mirror](appendix/CvdPrivateMirror.md)
     - [Microsoft Authenticode Signature Verification](appendix/Authenticode.md)
     - [ClamAV File Types and Target Types](appendix/FileTypes.md)
-    - [ClamAV Functionality Levels](appendix/FunctionalityLevels.md)
+    - [ClamAV Versions and Functionality Levels](appendix/FunctionalityLevels.md)

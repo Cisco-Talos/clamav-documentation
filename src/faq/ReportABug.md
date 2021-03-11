@@ -40,38 +40,47 @@ If the file is too big to mail it, you can upload it to a password protected web
 
 ## Backtrace Instructions
 
-Backtrace of clamscan: If possible, please send us the backtrace obtained from gdb, the GNU Project Debugger.
+Backtrace of clamscan: If possible, please send us the backtrace obtained from `gdb`, the GNU Project Debugger.
 Here are step by step instructions which will guide you through the process.
+
 __Assuming you get something like:__
 
-`$ clamscan --some-options some_file`
+```bash
+clamscan --some-options some_file
 
-`Segmentation fault`
+Segmentation fault
+```
 
 1. Have the kernel write a core dump.
   For bourne-like shells (e.g. bash):
 
-  `$ ulimit -c unlimited`
+  ```bash
+  ulimit -c unlimited
+  ```
 
   For C-like shells (e.g. tcsh):
 
-  `limit coredumpsize unlimited`
+  ```sh
+  limit coredumpsize unlimited
+  ```
 
 2. Now you should see the core dumped message:
 
-  `$ clamscan --some-options some_file`
+  ```bash
+  clamscan --some-options some_file
 
-  `Segmentation fault (core dumped)`
+  Segmentation fault (core dumped)
+  ```
 
   Looking at your current working directory should reveal a file named core.
 
 3. Load the core file into gdb:
 
-  `$ gdb -core=core --args clamscan --some-options some_file`
+  ```bash
+  gdb -core=core --args clamscan --some-options some_file
+  ```
 
-  `(gdb)`
-
-  You should now see the gdb prompt.
+  You should now see the gdb prompt, as: `(gdb)`
 
 4. Just use the `bt` command at the prompt to make gdb print a full backtrace.  Copy and paste it into the bug report. You can use the `q` command to leave gdb.
 
@@ -79,23 +88,25 @@ __Assuming you get something like:__
 
 Use `ps` to get the PID of clamd (first number from the left):
 
-`$ ps -aux (or ps -elf on SysV)`
+```bash
+ps -aux (or ps -elf on SysV)
 
-`clamav 24897 0.0 1.9 38032 10068 ? S Jan13 0:00 clamd  `
+clamav 24897 0.0 1.9 38032 10068 ? S Jan13 0:00 clamd
+```
 
 Attach gdb to the running process:
 
-`$ gdb /usr/sbin/clamd 24897`
+```bash
+gdb /usr/sbin/clamd 24897
+```
 
 Replace 24897 with the pid of clamd and adjust the path of clamd.
 
-You should now get the gdb prompt, as:
-
-`(gdb)`
+You should now get the gdb prompt, as: `(gdb)`
 
 If you want clamd to continue running (i.e. until a segmentation fault occurs), issue the `continue gdb` command, and __wait for an error__, at which point gdb will return to its prompt.
 
-### Commands
+### GDB Commands
 
 + `bt`
 

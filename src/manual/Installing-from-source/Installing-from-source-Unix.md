@@ -1,5 +1,7 @@
 # Installing ClamAV on Unix / Linux / macOS from Source
 
+Updated instructions for how to build ClamAV with CMake are coming soon. For now, please see the `INSTALL.cmake.md` file located in the source repository.
+
 ## Step-by-Step Instructions
 
 - [Debian & Ubuntu](Steps/Steps-Debian-Ubuntu.md)
@@ -22,8 +24,8 @@ Recommended tools:
 ***Required*** libraries (including development sources (i.e. `...-dev` or `...-devel`)):
 
 - zlib
-- openssl version 1.0.2 or higher
-- curl library:     _required for libfreshclam, freshclam, clamsubmit_
+- openssl version 1.0.2 or higher (libcrypto, libssl)
+- libcurl:     _required for libfreshclam, freshclam, clamsubmit_
 
 **Recommended** libraries (including development sources (i.e. `...-dev` or `...-devel`)):
 
@@ -39,11 +41,11 @@ Optional libraries (including development sources (i.e. `...-dev` or `...-devel`
 ClamAV may execute Bytecode signatures using:
 
 - ClamAV's built-in bytecode interpreter
-- LLVM for Just-In-Time (JIT) compilation*
+- LLVM for Just-In-Time (JIT) compilation`*`
   - System-installed LLVM library (3.2-3.6)
   - ClamAV's built-in version of LLVM 2.8
 
-    *The performance difference between using LLVM and using the interpeter is negligible. If you prefer to use LLVM / JIT for bytecode signature execution, be advised that we presently only support up to LLVM version 3.6.
+> `*` LLVM is more performant than the bytecode interpreter. Unfortunately we presently only support up to LLVM version 3.6. Until we're able to update to support a modern version of LLVM, you may have to use the bytecode interpreter.
 
 The following are thus optional, but *required* to use system-LLVM in place of the built-in LLVM or the bytecode interpeter:
 
@@ -66,8 +68,8 @@ Certain versions on certain OSes will cause failures loading virus database:
 To install ClamAV locally on an unprivileged shell account you need not create any additional users or groups. Assuming your home directory is `/home/gary` you should build it as follows:
 
 ```bash
-    ./configure --prefix=/home/gary/clamav --disable-clamav
-    make; make install
+./configure --prefix=/home/gary/clamav --disable-clamav
+make; make install
 ```
 
 The `--disable-clamav` switch disables the check for existence of the `clamav` user and group but `clamscan` would still require an unprivileged account to work in a superuser mode.
@@ -91,16 +93,16 @@ If your operating system isn't specified above, and your OS does not have the `g
 Once you have created the clamav user and group, please extract the archive:
 
 ```bash
-    tar xzf clamav-[ver].tar.gz
-    cd clamav-[ver]
+tar xzf clamav-[ver].tar.gz
+cd clamav-[ver]
 ```
 
 Assuming you want to install the configuration files in `/etc`, configure and build the software as follows:
 
 ```bash
-    ./configure --sysconfdir=/etc
-    make
-    su -c "make install"
+./configure --sysconfdir=/etc
+make
+su -c "make install"
 ```
 
 In the last step, the software is installed into the `/usr/local` directory and the config files into `/etc`. **WARNING: Never enable the SUID or SGID bits for Clam AntiVirus binaries.**
@@ -132,15 +134,15 @@ For additional recommendations, please read:
 To test your local installation execute:
 
 ```bash
-    ~/clamav/bin/freshclam
-    ~/clamav/bin/clamscan ~
+~/clamav/bin/freshclam
+~/clamav/bin/clamscan ~
 ```
 
 To test your system installation execute:
 
 ```bash
-    sudo freshclam
-    sudo clamscan ~
+sudo freshclam
+sudo clamscan ~
 ```
 
 ## Compilation with clamav-milter enabled
@@ -148,7 +150,7 @@ To test your system installation execute:
 The `libmilter` package and its development files are required. To enable clamav-milter, configure ClamAV with
 
 ```bash
-    ./configure --enable-milter
+./configure --enable-milter
 ```
 
 ## Using a system-installed LLVM library
@@ -156,9 +158,9 @@ The `libmilter` package and its development files are required. To enable clamav
 To configure ClamAV to use a system-installed LLVM library:
 
 ```bash
-    ./configure --with-system-llvm=/myllvm/bin/llvm-config
-    make
-    sudo make install
+./configure --with-system-llvm=/myllvm/bin/llvm-config
+make
+sudo make install
 ```
 
 The argument to `--with-system-llvm` indicates the path name of the LLVM configuration utility (llvm-config). Alternatively, you may use `--enable-llvm` and `./configure` will search for LLVM in /usr/local/ and then /usr.
@@ -176,43 +178,43 @@ To help clamav’s configure script locate `check`, it is recommended that you i
 The recommended way to run unit-tests is the following, which ensures you will get an error if unit tests cannot be built:
 
 ```bash
-    ./configure --enable-check
-    make
-    make check
+./configure --enable-check
+make
+make check
 ```
 
 When `make check` is finished, you should get a message similar to this:
 
 ```bash
-    ==================
-    All 8 tests passed
-    ==================
+==================
+All 8 tests passed
+==================
 ```
 
 If a unit test fails, you get a message similar to the following. Note that in older versions of make check may report failures due to the absence of optional packages. Please make sure you have the latest versions of the components noted in section /refsec:components. See the next section on how to report a bug when a unit test fails.
 
 ```bash
-    ========================================
-    1 of 8 tests failed
-    Please report to https://bugzilla.clamav.net/
-    ========================================
+========================================
+1 of 8 tests failed
+Please report to https://bugzilla.clamav.net/
+========================================
 ```
 
 If unit tests are disabled (and you didn’t use `--enable-check`), you will get this message:
 
 ```bash
-    *** Unit tests disabled in this build
-    *** Use ./configure --enable-check to enable them
+*** Unit tests disabled in this build
+*** Use ./configure --enable-check to enable them
 
-    SKIP: check_clamav
-    PASS: check_clamd.sh
-    PASS: check_freshclam.sh
-    PASS: check_sigtool.sh
-    PASS: check_clamscan.sh
-    ======================
-    All 4 tests passed
-    (1 tests were not run)
-    ======================
+SKIP: check_clamav
+PASS: check_clamd.sh
+PASS: check_freshclam.sh
+PASS: check_sigtool.sh
+PASS: check_clamscan.sh
+======================
+All 4 tests passed
+(1 tests were not run)
+======================
 ```
 
 Running `./configure --enable-check` should tell you why.
@@ -236,8 +238,8 @@ When writing a bug report regarding failed unit tests, please provide the follow
 - Output of `pkg-config check --cflags --libs`
 - Optionally if `valgrind` is available on your platform, the output of the following:
     ```bash
-        make check
-        CK_FORK=no ./libtool --mode=execute valgrind unit_tests/check_clamav
+    make check
+    CK_FORK=no ./libtool --mode=execute valgrind unit_tests/check_clamav
     ```
 
 ## Obtain Latest ClamAV anti-virus signature databases
@@ -246,11 +248,10 @@ Before you can run `clamd`, `clamdscan`, or `clamscan`, you must have ClamAV Vir
 
 Here is a listing of currently available ClamAV Virus Database Files:
 
-- bytecode.cvd (signatures to detect bytecode in files)
 - main.cvd (main ClamAV virus database file)
 - daily.cvd (daily update file for ClamAV virus databases)
-- safebrowsing.cvd (virus signatures for safe browsing)
+- bytecode.cvd (signatures to detect bytecode in files)
 
 These files should be downloaded using the `freshclam` utility on a periodic basis. While using HTTPS to directly download the CVDs is possible, using `freshclam` is the preferred method of keeping the ClamAV virus database files up to date. `freshclam` can download database difference files (`.cdiff`) to get the latest signature definitions without downloading whole CVD files. This saves a considerable amount of bandwidth.
 
-Please see the [freshclam usage section](Usage/SignatureManagement.md#freshclam) for additional details on freshclam).
+Please see the [freshclam usage section](../Usage/SignatureManagement.md#freshclam) for additional details on freshclam).

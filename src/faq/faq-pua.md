@@ -6,25 +6,25 @@ ClamAV supports the detection of Potentially Unwanted Applications (PUA).
 
 You can customize PUA detection for ClamD with these `clamd.conf` options:
 
-  ```bash
-    DetectPUA yes        # Detect Possibly Unwanted Applications
-    ExcludePUA CAT       # Skip PUA sigs of category CAT
-    IncludePUA CAT       # Load PUA sigs of category CAT
-  ```
+```bash
+  DetectPUA yes        # Detect Possibly Unwanted Applications
+  ExcludePUA CAT       # Skip PUA sigs of category CAT
+  IncludePUA CAT       # Load PUA sigs of category CAT
+```
 
 You can customize PUA detection for ClamScan with these command-line options:
 
-  ```bash
-    --detect-pua         # Detect Possibly Unwanted Applications
-    --exclude-pua=CAT    # Skip PUA sigs of category CAT
-    --include-pua=CAT    # Load PUA sigs of category CAT
-  ```
+```bash
+  --detect-pua         # Detect Possibly Unwanted Applications
+  --exclude-pua=CAT    # Skip PUA sigs of category CAT
+  --include-pua=CAT    # Load PUA sigs of category CAT
+```
 
 The category name is a string match with the 2nd token in a `PUA.*` signature name.
 
-  ```bash
-    PUA.category.subcategory.description-version
-  ```
+```bash
+  PUA.category.subcategory.description-version
+```
 
 Some examples:
 
@@ -44,65 +44,65 @@ _Disclaimer 2_ - The `Virus`/`Ransomeware`/`Trojan`/etc malware categories or su
 
 The following is a snapshot of the PUA signature name categories and subcategories from daily.cvd & main.cvd (Jan 29, 2020):
 
-  ```bash
-    PUA.Andr.Adware
-    PUA.Andr.Downloader
-    PUA.Andr.Dropper
-    PUA.Andr.Tool
-    PUA.Andr.Trojan
-    PUA.Andr.Virus
-    PUA.Cert.Revoked
-    PUA.Doc.Dropper
-    PUA.Doc.Packed
-    PUA.Doc.Tool
-    PUA.Doc.Trojan
-    PUA.Email.Phishing
-    PUA.Email.Trojan
-    PUA.Embedded.File
-    PUA.Html.Exploit
-    PUA.Html.Tool
-    PUA.Html.Trojan
-    PUA.Java.Exploit
-    PUA.Java.Packer
-    PUA.Js.Exploit
-    PUA.Osx.File
-    PUA.Osx.Trojan
-    PUA.Packed.Tool
-    PUA.Pdf.Exploit
-    PUA.Pdf.Trojan
-    PUA.Php.Trojan
-    PUA.Rtf.Exploit
-    PUA.Spy.Tool
-    PUA.Swf.Spyware
-    PUA.Tool.Countermeasure
-    PUA.Tool.Tool
-    PUA.Unix.Adware
-    PUA.Unix.Coinminer
-    PUA.Unix.Downloader
-    PUA.Unix.File
-    PUA.Unix.Malware
-    PUA.Unix.Tool
-    PUA.Unix.Trojan
-    PUA.Unix.Virus
-    PUA.Win.Adware
-    PUA.Win.Coinminer
-    PUA.Win.Downloader
-    PUA.Win.Dropper
-    PUA.Win.Exploit
-    PUA.Win.File
-    PUA.Win.Ircbot
-    PUA.Win.Joke
-    PUA.Win.Keylogger
-    PUA.Win.Malware
-    PUA.Win.Packed
-    PUA.Win.Packer
-    PUA.Win.Proxy
-    PUA.Win.Ransomware
-    PUA.Win.Spyware
-    PUA.Win.Tool
-    PUA.Win.Trojan
-    PUA.Win.Virus
-  ```
+```
+PUA.Andr.Adware
+PUA.Andr.Downloader
+PUA.Andr.Dropper
+PUA.Andr.Tool
+PUA.Andr.Trojan
+PUA.Andr.Virus
+PUA.Cert.Revoked
+PUA.Doc.Dropper
+PUA.Doc.Packed
+PUA.Doc.Tool
+PUA.Doc.Trojan
+PUA.Email.Phishing
+PUA.Email.Trojan
+PUA.Embedded.File
+PUA.Html.Exploit
+PUA.Html.Tool
+PUA.Html.Trojan
+PUA.Java.Exploit
+PUA.Java.Packer
+PUA.Js.Exploit
+PUA.Osx.File
+PUA.Osx.Trojan
+PUA.Packed.Tool
+PUA.Pdf.Exploit
+PUA.Pdf.Trojan
+PUA.Php.Trojan
+PUA.Rtf.Exploit
+PUA.Spy.Tool
+PUA.Swf.Spyware
+PUA.Tool.Countermeasure
+PUA.Tool.Tool
+PUA.Unix.Adware
+PUA.Unix.Coinminer
+PUA.Unix.Downloader
+PUA.Unix.File
+PUA.Unix.Malware
+PUA.Unix.Tool
+PUA.Unix.Trojan
+PUA.Unix.Virus
+PUA.Win.Adware
+PUA.Win.Coinminer
+PUA.Win.Downloader
+PUA.Win.Dropper
+PUA.Win.Exploit
+PUA.Win.File
+PUA.Win.Ircbot
+PUA.Win.Joke
+PUA.Win.Keylogger
+PUA.Win.Malware
+PUA.Win.Packed
+PUA.Win.Packer
+PUA.Win.Proxy
+PUA.Win.Ransomware
+PUA.Win.Spyware
+PUA.Win.Tool
+PUA.Win.Trojan
+PUA.Win.Virus
+```
 
 ## PUA Category Descriptions
 

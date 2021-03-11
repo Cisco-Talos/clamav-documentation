@@ -2,7 +2,7 @@
 
 ClamAV maintains it's own file typing format and assigns these types using either:
 
-- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](manual/Signatures/FileTypeMagic.md)).
+- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](../manual/Signatures/FileTypeMagic.md)).
 - File type indicators when parsing container files.
   - For example:
     CL_TYPE_SCRIPT may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"
@@ -45,7 +45,8 @@ This is the current list of available Targe Types:
 
 ClamAV Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list of all current CL_TYPE's.
 
-```bash
+This table is generated from a spreadsheet using: <https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/>.
+
 | CL_TYPE                | Description                                                  |
 |------------------------|--------------------------------------------------------------|
 | `CL_TYPE_7Z`           | 7-Zip Archive                                                |
@@ -124,4 +125,3 @@ ClamAV Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list 
 | `CL_TYPE_XZ`           | XZ Archive                                                   |
 | `CL_TYPE_ZIP`          | Zip Archive                                                  |
 | `CL_TYPE_ZIPSFX`       | Self-Extracting Zip Archive                                  |
-```

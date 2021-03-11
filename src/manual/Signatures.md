@@ -2,8 +2,6 @@
 
 Table Of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Creating signatures for ClamAV](#creating-signatures-for-clamav)
   - [Introduction](#introduction)
   - [Database formats](#database-formats)
@@ -24,8 +22,6 @@ Table Of Contents
     - [Using `sigtool`](#using-sigtool)
     - [Inspecting signatures inside a CVD file](#inspecting-signatures-inside-a-cvd-file)
     - [External tools](#external-tools)
-
-<!-- /TOC -->
 
 ## Introduction
 

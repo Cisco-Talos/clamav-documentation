@@ -2,16 +2,12 @@
 
 Table Of Contents
 
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
-
 - [Usage](#usage)
   - [Purpose](#purpose)
   - [Daemon](#daemon)
   - [Scanner](#scanner)
   - [Signature Testing and Management](#signature-testing-and-management)
   - [Configuration](#configuration)
-
-<!-- /TOC -->
 
 ## Purpose
 

@@ -2,9 +2,11 @@
 
 ## If you installed from source
 
-    `./configure`
+```bash
+./configure
 
-    `sudo make uninstall`
+sudo make uninstall
+```
 
 ## If you installed from packages
 
@@ -45,11 +47,13 @@
 Make sure that you haven’t got old libraries (_libclamav.so_) lying around your filesystem. You can verify it using:
 
 ```bash
-    $ ldd `which freshclam`
+ldd `which freshclam`
 ```
 
 Also make sure there is really only one version of ClamAV installed on your system:
 
-    `$ whereis freshclam`
+```bash
+whereis freshclam
 
-    `$ whereis clamscan`
+whereis clamscan
+```
