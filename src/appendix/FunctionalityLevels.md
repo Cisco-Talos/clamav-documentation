@@ -1,4 +1,4 @@
-# Functionality Levels (FLEVELs)
+# Versions & Functionality Levels (FLEVELs)
 
 The Functionality Level (or FLEVEL) is an integer that signatures may use to define which versions of ClamAV the signature features support. It is up to the signature writers to select the correct FLEVEL or range of FLEVELs when writing a signature so that it does not cause failures in older versions of ClamAV.
 
@@ -64,4 +64,4 @@ Setting appropriate FLEVELs in signatures is particularly crucial when using fea
 
 ----
 
-For more inforamtion on ClamAV file type support, see the [File Types Reference](FileTypes.md).
+For more information on ClamAV file type support, see the [File Types Reference](FileTypes.md).

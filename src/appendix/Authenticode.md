@@ -2,18 +2,13 @@
 
 ## About Microsoft Authenticode
 
-Authenticode is Microsoft's system for using digital signatures to ensure that
-programs to be run/installed on Windows systems come from a verified source
-and has not been modified by anyone else.  At a high level, it works by having
-software developers:
+Authenticode is Microsoft's system for using digital signatures to ensure that programs to be run/installed on Windows systems come from a verified source and has not been modified by anyone else.  At a high level, it works by having software developers:
 
-1. obtain a code-signing certificate from a certificate authority trusted by the Windows OS
-2. compute digital signatures for executables and related software installation files using that certificate
-3. include the signatures as part of the software execution/installation process so that Windows can use them in the verification process
+1. Obtain a code-signing certificate from a certificate authority trusted by the Windows OS.
+2. Compute digital signatures for executables and related software installation files using that certificate.
+3. Include the signatures as part of the software execution/installation process so that Windows can use them in the verification process.
 
-In addition, Authenticode signatures can be countersigned by a time-stamping
-service that allows signature verification to succeed even if the code-signing
-certificate expires or gets revoked.
+In addition, Authenticode signatures can be countersigned by a time-stamping service that allows signature verification to succeed even if the code-signing certificate expires or gets revoked.
 
 For more information, check-out the following resources:
 
@@ -27,47 +22,25 @@ For more information, check-out the following resources:
 
 ## Authenticode and ClamAV
 
-ClamAV supports parsing the Authenticode section and performing signature
-verification on a given executable to determine whether it should be
-trusted (based on rules loaded in from ClamAV .crb files).  An overview
-of this process, including information on the .crb file format and on how to
-add new trusted certificate entries, is explained in the
-[Authenticode Certificate Chain Verification](https://blog.clamav.net/2013/02/authenticode-certificate-chain.html)
-ClamAV blog post.
+ClamAV supports parsing the Authenticode section and performing signature verification on a given executable to determine whether it should be trusted (based on rules loaded in from ClamAV `.crb` files).  An overview of this process, including information on the `.crb` file format and on how to add new trusted certificate entries, is explained in the [Authenticode Certificate Chain Verification](https://blog.clamav.net/2013/02/authenticode-certificate-chain.html) ClamAV blog post.
 
 There are a few things not covered in the blog post that are worth mentioning:
 
-- As of ClamAV 0.102, leaf certificates (the ones actually issued to the entity
-  signing the binary) may be used for certificate verification in addition to
-  certificates that issued the leaf certificate (and certificates higher up in
-  the chain) can be used.
+- As of ClamAV 0.102, leaf certificates (the ones actually issued to the entity signing the binary) may be used for certificate verification in addition to certificates that issued the leaf certificate (and certificates higher up in the chain) can be used.
 
-- As of ClamAV 0.102, .crb rules may also be used to block malicious executables
-  where in previous versions these block list entries just override `.crb` rules
-  that would otherwise trust a given sample.
+- As of ClamAV 0.102, `.crb` rules may also be used to block malicious executables where in previous versions these block list entries just override `.crb` rules that would otherwise trust a given sample.
 
-- sigtool offers the `--print-certs` flag, which can be used to show
-  information about embedded Authenticode signatures without having to first
-  match on a signature (which is currently a requirement for clamscan)
+- sigtool offers the `--print-certs` flag, which can be used to show information about embedded Authenticode signatures without having to first match on a signature (which is currently a requirement for clamscan)
 
-- External Authenticode signatures contained in .cat files can be loaded in
-  to ClamAV by passing a `-d` flag and indicating the path to the .cat file
-  from which to load signatures.  Note, however, that at least one certificate
-  in the .cat file's certificate chain must be trusted (in other words, it must
-  have a backing .crb trusted certificate rule.)
+- External Authenticode signatures contained in `.cat` files can be loaded in to ClamAV by passing a `-d` flag and indicating the path to the .cat file from which to load signatures.  Note, however, that at least one certificate in the `.cat` file's certificate chain must be trusted (in other words, it must have a backing `.crb` trusted certificate rule.)
 
 # Helpful Info for Working with Authenticode Signatures
 
-Below is some useful information collected when improving ClamAV support for
-Authenticode signatures.
+Below is some useful information collected when improving ClamAV support for Authenticode signatures.
 
 ## Format Specifications
 
-The Windows Authenticode 2008 specification document can be found at the link
-below.  Note, however, that it is not 100% accurate.  For instance, the
-documented steps for computing the Authenticode hash are not correct in the
-case where you have sections that overlap with the PE header or with one
-another.
+The Windows Authenticode 2008 specification document can be found at the link below.  Note, however, that it is not 100% accurate.  For instance, the documented steps for computing the Authenticode hash are not correct in the case where you have sections that overlap with the PE header or with one another.
 
 - [Windows Authenticode PE Signature Format](http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Authenticode_PE.docx)
 
@@ -104,36 +77,29 @@ On Linux, osslsigncode can be used to verify a signature:
 
 On Windows,
 
-[AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/)
- is a great tool for displaying signature information.  In addition,
-[signtool](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples)
- can be used.
+[AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/) is a great tool for displaying signature information.  In addition,
+[signtool](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples) can be used.
 
-NOTE that the machine on which these commands is run should have Internet
-connectivity so that revocation lists can be consulted.  Otherwise, Windows
-may default to assuming that none of the certificates are revoked.
+NOTE that the machine on which these commands is run should have Internet connectivity so that revocation lists can be consulted.  Otherwise, Windows may default to assuming that none of the certificates are revoked.
 
-There is also the [verify-sigs](http://code.google.com/p/verify-sigs) python
-script that performs verification, but this script is no longer maintained.
+There is also the [verify-sigs](http://code.google.com/p/verify-sigs) python script that performs verification, but this script is no longer maintained.
 
 ## Extracting the Signature
 
-On Linux, the osslsigncode command can be used to extract the contents of the
-PE security section:
+On Linux, the osslsigncode command can be used to extract the contents of the PE security section:
 
 `osslsigncode extract-signature -in /path/to/exe -out /path/to/extracted`
 
-
-Note: This will also extract the 8-byte
-[WIN_CERTIFICATE](https://docs.microsoft.com/en-us/windows/desktop/api/wintrust/ns-wintrust-_win_certificate)
-structure data. To skip this data, use:
-
-`dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8`
+> _Note_: This will also extract the 8-byte [WIN_CERTIFICATE](https://docs.microsoft.com/en-us/windows/desktop/api/wintrust/ns-wintrust-_win_certificate) structure data.
+> To skip this data, use:
+>
+> ```bash
+> dd if=/path/to/extracted of=/path/to/extracted.p7b bs=1 skip=8`
+> ```
 
 ## Inspecting the Signature
 
-On Linux, openssl has some useful functions for printing the certificate
-information and parsing the PKCS7 ASN1:
+On Linux, `openssl` has some useful functions for printing the certificate information and parsing the PKCS7 ASN1:
 
 ```bash
     $ openssl pkcs7 -inform der -print_certs -in extracted.p7b -noout -text
@@ -249,7 +215,7 @@ information and parsing the PKCS7 ASN1:
     ...
 ```
 
-On Windows, the certutil executable has a great ASN parser:
+On Windows, the `certutil` executable has a great ASN parser:
 
 ```bash
     C:\>certutil -asn extracted.p7b
@@ -288,13 +254,11 @@ hide/view parts of the structure:
 
 ## Creating Signed Executables
 
-For Linux, Didier Stevens has a great post about how to create signed binaries
-using self-signed certificates:
+For Linux, Didier Stevens has a great post about how to create signed binaries using self-signed certificates:
 
 - [Signing Windows Executables on Kali](https://blog.didierstevens.com/2018/09/24/quickpost-signing-windows-executables-on-kali/)
 
-On Windows, a program called signtool ships with the Windows SDK and can be
-used.  See the following for tutorials/examples:
+On Windows, a program called signtool ships with the Windows SDK and can be used.  See the following for tutorials/examples:
 
 - [Authenticode Code Signing with Microsoft SignTool](https://www.digicert.com/code-signing/signcode-signtool-command-line.htm)
 
@@ -302,77 +266,73 @@ used.  See the following for tutorials/examples:
 
 ## Samples with Interesting Authenticode Signatures
 
-Below are some PE files with interesting Authenticode signatures.  These are
-probably only interesting to other researchers who are looking at Authenticode
-in-depth.  All samples are available via VirusTotal.
+Below are some PE files with interesting Authenticode signatures.  These are probably only interesting to other researchers who are looking at Authenticode in-depth.  All samples are available via VirusTotal.
 
-```bash
-    - SHA256-based code-signing signature without a countersignature
-      - 8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03
+- SHA256-based code-signing signature without a countersignature
+  - `8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03`
 
-    - SHA256-based code-signing sig and SHA1-based timestamping countersig
-      - 20367d0e3a5ad12154095d424b8d9818c33e7d6087525e6a3304ef6c22a53665
+- SHA256-based code-signing sig and SHA1-based timestamping countersig
+  - `20367d0e3a5ad12154095d424b8d9818c33e7d6087525e6a3304ef6c22a53665`
 
-    - SHA384-based cert used in the code-signing chain
-      - 2249611fef630d666f667ac9dc7b665d3b9382956e41f10704e40bd900decbb8
+- SHA384-based cert used in the code-signing chain
+  - `2249611fef630d666f667ac9dc7b665d3b9382956e41f10704e40bd900decbb8`
 
-    - Uses SHA512 to compute the Authenticode hash
-      - eeb5469a214d5aac1dcd7e8415f93eca14edc38f47d1e360d3d97d432695207a
+- Uses SHA512 to compute the Authenticode hash
+  - `eeb5469a214d5aac1dcd7e8415f93eca14edc38f47d1e360d3d97d432695207a`
 
-    - Signed by an MS root cert that doesn't have a KU or EKU specified
-      - 69b61b2c00323cea3686315617d0f452e205dae10c47e02cbe1ea96fea38f582
+- Signed by an MS root cert that doesn't have a KU or EKU specified
+  - `69b61b2c00323cea3686315617d0f452e205dae10c47e02cbe1ea96fea38f582`
 
-    - Has a v1 x509 cert and uses MD2-based hashing
-      - 1cb16f94cebdcad7dd05c8537375a6ff6379fcdb08528fc83889f26efaa84e2a
+- Has a v1 x509 cert and uses MD2-based hashing
+  - `1cb16f94cebdcad7dd05c8537375a6ff6379fcdb08528fc83889f26efaa84e2a`
 
-    - Countersignature with version 0 instead of version 1
-      - 145fbbf59b1071493686bf41f4eb364627d8be3c9dc8fb927bbe853e593864ec
+- Countersignature with version 0 instead of version 1
+  - `145fbbf59b1071493686bf41f4eb364627d8be3c9dc8fb927bbe853e593864ec`
 
-    - Countersignature with contentType == timestampToken instead of pkcs7-data
-      - 8a364e0881fd7201cd6f0a0ff747451c9b93182d5699afb28ad8466f7f726660
+- Countersignature with contentType == timestampToken instead of pkcs7-data
+  - `8a364e0881fd7201cd6f0a0ff747451c9b93182d5699afb28ad8466f7f726660`
 
-    - Countersignature with AlgoIdentifier sha1WithRSAEncryption instead of SHA1
-      - 2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
+- Countersignature with AlgoIdentifier sha1WithRSAEncryption instead of SHA1
+  - `2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d`
 
-    - Countersignature uses v1 x509 certs
-      - 934860a4ac2446240e4c7053ddc27ff4c2463d4ad433cc28c9fcc2ea4690fb86
+- Countersignature uses v1 x509 certs
+  - `934860a4ac2446240e4c7053ddc27ff4c2463d4ad433cc28c9fcc2ea4690fb86`
 
-    - Certificate chain has old certificates without a version
-      - 374a31b20fbafdcd31d52ae11a0dcad58baba556c8942a3cdfae0bb96ae117a1
+- Certificate chain has old certificates without a version
+  - `374a31b20fbafdcd31d52ae11a0dcad58baba556c8942a3cdfae0bb96ae117a1`
 
-    - Has extra data after the PKCS7, a violation of [MS13-098](https://docs.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-098)
-      - 0ee196bb23f0eafe4f61d30bf6c676fd7365cb12ae66a6bde278851e91901ac1
+- Has extra data after the PKCS7, a violation of [MS13-098](https://docs.microsoft.com/en-us/security-updates/securitybulletins/2013/ms13-098)
+  - `0ee196bb23f0eafe4f61d30bf6c676fd7365cb12ae66a6bde278851e91901ac1`
 
-    - Authenticode signature covers data not in a section
-      - 0123c163ac981e639565caff72ee3af2df7174613ee12003ac89124be461c6e6
+- Authenticode signature covers data not in a section
+  - `0123c163ac981e639565caff72ee3af2df7174613ee12003ac89124be461c6e6`
 
-    - Authenticode signature with a section that overlaps the PE header (UPX-packed)
-      - 0059fb3f225c5784789622eeccb97197d591972851b63d59f5bd107ddfdb7a21
+- Authenticode signature with a section that overlaps the PE header (UPX-packed)
+  - `0059fb3f225c5784789622eeccb97197d591972851b63d59f5bd107ddfdb7a21`
 
-    - Authenticode signature with overlapping sections
-      - 014b66cf2cef39620e9a985d237971b8cf272043e9ac372d5dcef44db754a1d2
+- Authenticode signature with overlapping sections
+  - `014b66cf2cef39620e9a985d237971b8cf272043e9ac372d5dcef44db754a1d2`
 
-    - Uses certs with no NULL after AlgorithmIdentifier OID
-      - 66b797b3b4f99488f53c2b676610dfe9868984c779536891a8d8f73ee214bc4b
+- Uses certs with no NULL after AlgorithmIdentifier OID
+  - `66b797b3b4f99488f53c2b676610dfe9868984c779536891a8d8f73ee214bc4b`
 
-    - Uses an ASN1 indefinite length object
-      - 8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695
+- Uses an ASN1 indefinite length object
+  - `8ca912e397a9e1b0cc54c216144ff550da9d43610392208193c0781b1aa5d695`
 
-    - Unexpected contentType for embedded mode signature (copied from a .cat?)
-      - 6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1
+- Unexpected contentType for embedded mode signature (copied from a .cat?)
+  - `6ed9b5f6d32f94b3d06456b176c8536be123e1047763cc0a31c6e8fd6a0242b1`
 
-    - Security directory appears to overlap with the PE header
-      - ff482f69f2183b5fd3c1b45d9006156524b8f8a5f518e33d6e92ea079787e64d
+- Security directory appears to overlap with the PE header
+  - `ff482f69f2183b5fd3c1b45d9006156524b8f8a5f518e33d6e92ea079787e64d`
 
-    - x509 cert with a public key using exponent 3
-      - 012760e582e541c6dd34a2cbd5d053f402eebcb8b60ed4a88fecb5589bd17bb9
+- x509 cert with a public key using exponent 3
+  - `012760e582e541c6dd34a2cbd5d053f402eebcb8b60ed4a88fecb5589bd17bb9`
 
-    - x509 UTCDate is missing the seconds field
-      - 05de45fd6a406dc147a4c8040a54eee947cd6eba02f28c0279ffd1a229e17130
+- x509 UTCDate is missing the seconds field
+  - `05de45fd6a406dc147a4c8040a54eee947cd6eba02f28c0279ffd1a229e17130`
 
-    - x509 cert with a negative serial number
-      - 6218d50eb5c898acd3482daaea8f615b4f1f87ef0d06220cc1d7f700bc35888b
-```
+- x509 cert with a negative serial number
+  - `6218d50eb5c898acd3482daaea8f615b4f1f87ef0d06220cc1d7f700bc35888b`
 
 ## Additional References
 

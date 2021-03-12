@@ -26,14 +26,11 @@ This is the current list of available Target Types:
 | 11          | Flash files                                                                                         |
 | 12          | Java class files                                                                                    |
 
-> _Important_: HTML, ASCII, Javascript are all normalized.
-
-- ASCII:
-  - All lowercase.
-- HTML:
-  - Whitespace transformed to spaces, tags/tag attributes normalized, all lowercase.
-- Javascript:
-  - All strings are normalized (hex encoding is decoded), numbers are parsed and normalized, local variables/function names are normalized to ’n001’ format, argument to eval() is parsed as JS again, unescape() is handled, some simple JS packers are handled, output is whitespace normalized.
+> _Important_: HTML, ASCII, Javascript are all normalized:
+>
+> - ASCII - All lowercase.
+> - HTML - Whitespace transformed to spaces, tags/tag attributes normalized, all lowercase.
+> - Javascript - All strings are normalized (hex encoding is decoded), numbers are parsed and normalized, local variables/function names are normalized to ’n001’ format, argument to eval() is parsed as JS again, unescape() is handled, some simple JS packers are handled, output is whitespace normalized.
 
 ## File Types
 
