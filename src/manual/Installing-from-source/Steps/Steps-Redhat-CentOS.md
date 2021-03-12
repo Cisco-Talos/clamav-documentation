@@ -18,20 +18,20 @@ Below are the steps for installing ClamAV from source on Redhat and CentOS Linux
         sudo yum install sendmail sendmail-devel
         ```
 
-    _CentOS 8 Tip_:  Some of the above packages such as `json-c-devel` and `sendmail-devel` may not be available for CentOS 8 unless you install the EPEL repository and enable PowerTools. To enable EPEL and PowerTools, run the following:
-    ```bash
-    sudo yum install epel-release
-    sudo yum config-manager --set-enabled PowerTools
-    sudo yum update
-    sudo yum repolist
-    ```
+    > _CentOS 8 Tip_:  Some of the above packages such as `json-c-devel` and `sendmail-devel` may not be available for CentOS 8 unless you install the EPEL repository and enable PowerTools. The capitalization has changed so to enable EPEL and PowerTools, run the following:
+    > ```bash
+    > sudo yum install epel-release
+    > sudo dnf config-manager --set-enabled PowerTools | sudo dnf config-manager --set-enabled powertools | true
+    > sudo yum update
+    > sudo yum repolist
+    > ```
 
 2. Install the unit testing dependencies
     ```bash
     sudo yum install valgrind check check-devel
     ```
 
-_Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
+> _Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
 
 ## Download the latest stable release
 
@@ -174,7 +174,7 @@ If you have a failure or an error in the unit tests, it could be that you are mi
 
 If you are investigating a failure, please do the following:
 
-```
+```bash
 cd unit_tests
 ```
 
@@ -194,7 +194,7 @@ Install ClamAV with:
 make install
 ```
 
-_Tip_: If installing to the default or other system-owned directory, you may need to use `sudo`.
+> _Tip_: If installing to the default or other system-owned directory, you may need to use `sudo`.
 
 ## First time set-up
 
@@ -220,10 +220,11 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
     * `NotifyClamd`
     * `DatabaseOwner`
 
-3. Create the database directory. *Tip: _You may need to use `sudo`._
+3. Create the database directory.
     ```bash
     mkdir /usr/local/share/clamav
     ```
+    > _Tip_ You may need to use `sudo`.
 
 ### `clamd` config (optional)
 

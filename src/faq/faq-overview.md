@@ -56,4 +56,6 @@ A script for checking how ClamAV was compiled.
 
 ## `clamav-bytecode-compiler`
 
-A compiler for the bytecode executable signature plugins. _Note_: Shipped separately. See the [ClamAV Bytecode Compiler project on Github](https://github.com/Cisco-Talos/clamav-bytecode-compiler).
+A compiler for the bytecode executable signature plugins.
+
+> _Note_: This tool shipped separately. See the [ClamAV Bytecode Compiler project on Github](https://github.com/Cisco-Talos/clamav-bytecode-compiler).

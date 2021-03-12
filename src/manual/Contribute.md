@@ -4,7 +4,7 @@ For ClamAV library & application projects, submit pull-requests to: <https://git
 
 For ClamAV documentation projects, submit pull-requests to: <https://github.com/Cisco-Talos/clamav-faq/pulls>
 
-**Tip**: If you find that any of the bugs or projects have already been completed, you can help out simply by updating the list in a pull-request to update [this document](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/UserManual/Contribute.md).
+> _Tip_: If you find that any of the bugs or projects have already been completed, you can help out simply by updating the list in a pull-request to update [this document](https://github.com/Cisco-Talos/clamav-faq/blob/master/manual/UserManual/Contribute.md).
 
 - [Contribute](#contribute)
   - [Bugs](#bugs)
@@ -140,7 +140,7 @@ The goal of project would be to create a proof-of-concept WebAssembly (wasm) run
 
 For a proof-of-concept, executing a local wasm plugin that has access to the file being scanned (without copying the data) would be fine. A production solution would need to convert the wasm plugin to an ascii-text encoding so it can be distributed much the same way the current bytecode signature `.cbc` plugins are distributed. As with the bytecode signatures, `clamscan` and `clamd` *must not* load the plugins unless they've been digitally signed or the `--bytecode-unsigned`/`BytecodeUnsigned` options are set, which would disable this safety precaution.
 
-_Important Notes_: The ClamAV bytecode compiler project is currently undergoing a major re-write. Once complete, the new bytecode compiler will effectively be a Python script that invokes `clang` with a collection of custom compiler passes that effectively compile C code into ClamAV-bytecode plugins. This project would have you extend that project to instead use `rustc` to compile Rust ClamAV-WASM plugins.
+> _Important Notes_: The ClamAV bytecode compiler project is currently undergoing a major re-write. Once complete, the new bytecode compiler will effectively be a Python script that invokes `clang` with a collection of custom compiler passes that effectively compile C code into ClamAV-bytecode plugins. This project would have you extend that project to instead use `rustc` to compile Rust ClamAV-WASM plugins.
 
 **Category**: Core Development, Fun
 
@@ -188,7 +188,7 @@ Yara extracts certain properties of .NET executables and makes them available fo
 
 Can ClamAV do something similar?  For instance, extract the GUIDs and allow matching on those the way we do entries in the PE VersionInfo section?
 
-_Tip_: An ideal solution for this and any new file parsing feature should be written in Rust and called by our existing C code.
+> _Tip_: An ideal solution for this and any new file parsing feature should be written in Rust and called by our existing C code.
 
 **Category**: Fun/Peripheral
 
@@ -210,7 +210,7 @@ _Tip_: An ideal solution for this and any new file parsing feature should be wri
 
 ClamAV and Sigtool currently support parsing OLE Office files to decompress and extract macros for scanning. The newer version OOXML Office files do not have this support, resulting in detection possible for macros in these documents. The ability to both extract and scan macros would enable better coverage. This might mean creating a new target type to prevent creating two signatures one for OLE macros and another for OOXML macros.
 
-_Tip_: An ideal solution for this and any new file parsing feature should be written in Rust and called by our existing C code.
+> _Tip_: An ideal solution for this and any new file parsing feature should be written in Rust and called by our existing C code.
 
 **Category**:
 
@@ -343,7 +343,7 @@ Add a callback function to give libclamav file parsers the ability to request ad
 
 This feature would enable support for split-archive scans, if all components of the split archive are present and available to the scanning application.  To make this work for `clamdscan`+`clamd`, or `clamonacc`+`clamd`, the request would also have to be relayed by `clamd` over the socket API to the scanning client, and the client would have to respond with additional data, filepath, or file descriptor for `clamd` to provide via the callback to file parser.
 
-_Disclaimer_: It's entirely likely that this idea is bogus and wouldn't work over the `clamd`+`clamdscan` socket API. This task would require a fair amount exploratory coding.
+> **Disclaimer**: It's entirely likely that this idea is bogus and wouldn't work over the `clamd`+`clamdscan` socket API. This task would require a fair amount exploratory coding.
 
 When a file is scanned, the scanner (eg `cli_scanrar`) may call a callback function provided by clamscan or clamd to request scan access to other files by name, with the expectation that it would receive an `fmap` in response. Specifically, when the first file in a split archive is scanned, the parser could request `fmap`s for subsequent files to provide to the archive extraction library.  Direct scanning of files other than the first file in a split archive will skip, because they are split and are not the first file.
 

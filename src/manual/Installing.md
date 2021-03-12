@@ -142,7 +142,9 @@ This script can be used to build a ClamAV package for Slackware 10.0 or higher w
   VERSION=1.23.4 ./clamav.SlackBuild
 ```
 
-…substituting, of course, the appropriate ClamAV version for `1.23.4`. Note: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
+…substituting, of course, the appropriate ClamAV version for `1.23.4`.
+
+> _Note_: there is no need to be root to use this build script; it will ask for your root password after building the binaries and just before creating the package (and if you have fakeroot installed, even that isn't necessary).
 
 ### macOS <a id="macos" class="anchor">&nbsp;</a>
 

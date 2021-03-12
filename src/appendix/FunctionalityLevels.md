@@ -6,7 +6,7 @@ Setting appropriate FLEVELs in signatures is particularly crucial when using fea
 
 ## ClamAV Version to FLEVEL chart
 
-This table is generated from a spreadsheet using: <https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/>.
+> _Note_: This markdown table is generated from a spreadsheet using [this tool](https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/).
 
 | Release Date | Release | FLEVEL | FunctionalityLevel (bytecode enum) | clamav lib | .so    | freshclam lib | .so   | API/ABI changes, major features, other notes                                                                                                                                                                                                                                           |
 |--------------|---------|--------|------------------------------------|------------|--------|---------------|-------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

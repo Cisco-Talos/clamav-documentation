@@ -13,7 +13,7 @@ If there are no new packages, you have three options:
 
 If you installed from sources, first uninstall the old version:
 
-```
+```bash
 ./configure
 
 sudo make uninstall

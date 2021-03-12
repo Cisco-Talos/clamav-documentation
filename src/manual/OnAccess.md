@@ -37,9 +37,11 @@ Next, you will need to configure `clamonacc`. For a very simple configuration, f
 
 For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](#configuration-and-recipes).
 
-Then, run `clamonacc` with elevated permissions
+Then, run `clamonacc` with elevated permissions:
 
-> `$ sudo clamonacc`
+```bash
+sudo clamonacc
+```
 
 If all went well, the On-Access scanner will fork to the background, and will now be actively protecting the path(s) specified with `OnAccessIncludePath`. You can test this by dropping an eicar file into the specified path, and attempting to read/access it (e.g. `cat eicar.txt`). This will result in an "Operation not permitted" message, triggered by fanotify blocking the access attempt at the kernel level.
 
@@ -66,9 +68,11 @@ Next, you will need to configure On Access Scanning using the `clamd.conf` file.
 
 For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](configuration-and-recipes).
 
-Then, run `clamd` with elevated permissions
+Then, run `clamd` with elevated permissions:
 
-> `$ sudo clamd`
+```bash
+sudo clamd
+```
 
 If all went well, the On-Access scanner will fork to the background, and will now be actively protecting the path(s) specified with `OnAccessIncludePath`. You can test this by dropping an eicar file into the specified path, and attempting to read/access it (e.g. `cat eicar.txt`). This will result in an "Operation not permitted" message, triggered by fanotify blocking the access attempt at the kernel level.
 
@@ -76,26 +80,30 @@ If all went well, the On-Access scanner will fork to the background, and will no
 
 Some OS distributors have disabled fanotify, despite kernel support. You can check for fanotify support on your kernel by running the command:
 
-> `$ cat /boot/config-<kernel_version> | grep FANOTIFY`
+```bash
+cat /boot/config-<kernel_version> | grep FANOTIFY
+```
 
 You should see the following:
 
 ```bash
-    CONFIG_FANOTIFY=y
-    CONFIG_FANOTIFY_ACCESS_PERMISSIONS=y
+CONFIG_FANOTIFY=y
+CONFIG_FANOTIFY_ACCESS_PERMISSIONS=y
 ```
 
-If you see:
+If you see this...
 
 ```bash
-    # CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
+CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
 ```
 
-Then ClamAV's On-Access Scanner will still function, scanning and alerting on files normally in real time. However, it will be unable to block access attempts on malicious files. We call this `notify-only` mode.
+... then ClamAV's On-Access Scanner will still function, scanning and alerting on files normally in real time. However, it will be unable to block access attempts on malicious files. We call this `notify-only` mode.
 
 ClamAV's On-Access Scanning system uses a scheme called Dynamic Directory Determination (DDD for short) which is a shorthand way of saying that it tracks the layout of every directory specified with `OnAccessIncludePath` dynamically, and recursively, in real time. It does this by leveraging [inotify](http://man7.org/linux/man-pages/man7/inotify.7.html) which by default has a limited number of watchpoints available for use by a process at any given time. Given the complexity of some directory hierarchies, ClamAV may warn you that it has exhausted its supply of inotify watchpoints (8192 by default). To increase the number of inotify watchpoints available for use by ClamAV (to 524288), run the following command:
 
-> `$ echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches`
+```bash
+echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
+```
 
 The `OnAccessIncludePath` option will not accept `/` as a valid path. This is because fanotify works by blocking a process' access to a file until a access_ok or access_denied determination has been made by the original fanotify calling process. Thus, by placing fanotify watchpoints on the entire filesystem, key system files may have their access blocked to key processes at the kernel level, which will result in a system lockup.
 

@@ -186,7 +186,7 @@ Install ClamAV with:
 make install
 ```
 
-_Tip_: If installing to the default or other system-owned directory, you may need to use `sudo`.
+> _Tip_: If installing to the default or other system-owned directory, you may need to use `sudo`.
 
 ## First time set-up
 
@@ -212,10 +212,11 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
     * `NotifyClamd`
     * `DatabaseOwner`
 
-3. Create the database directory. *Tip: _You may need to use `sudo`._
+3. Create the database directory.
     ```bash
     mkdir /usr/local/share/clamav
     ```
+    > _Tip_ You may need to use `sudo`.
 
 ### `clamd` config (optional)
 

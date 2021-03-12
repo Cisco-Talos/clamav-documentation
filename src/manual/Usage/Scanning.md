@@ -19,7 +19,7 @@ Table Of Contents
 		- [File paths](#file-paths)
 			- [Socket and libclamav API Input](#socket-and-libclamav-api-input)
 
-_Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
+> _Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
 
 ## Daemon
 
@@ -51,7 +51,9 @@ Here is a quick list of the commands accepted by `clamd` over the socket.
 
 As with most ClamAV tools, you can find out more about these by invoking the command:
 
-> `$ man clamd`
+```bash
+man clamd
+```
 
 The daemon also handles the following signals as so:
 
@@ -63,7 +65,9 @@ It should be noted that `clamd` should not be started using the shell operator `
 
 Once you have set up your configuration to your liking, and understand how you will be sending commands to the daemon, running `clamd` itself is simple. Simply execute the command:
 
-> `$ clamd`
+```bash
+clamd
+```
 
 ### ClamDScan
 
@@ -75,7 +79,9 @@ Please keep in mind, that as a simple scanning client, `clamdscan` cannot change
 
 Again, running `clamdscan`, once you have a working `clamd` instance, is simple:
 
-> `$ clamdscan [*options*] [*file/directory/-*]`
+```bash
+clamdscan [*options*] [*file/directory/-*]
+```
 
 ### ClamDTop
 
@@ -83,11 +89,15 @@ Again, running `clamdscan`, once you have a working `clamd` instance, is simple:
 
 To learn more, use the commands
 
-> `$ man clamdtop`
+```bash
+man clamdtop
+```
 
 or
 
-> `$ clamdtop --help`
+```bash
+clamdtop --help
+```
 
 ### On-Access Scanning
 
@@ -97,19 +107,23 @@ On-Access Scanning is available for Linux systems. On-Access Scanning is a form 
 
 ClamAV's On-Access Scanning (`clamonacc`) is a client that runs in its own application alongside, but separately from the `clamd` instance. The On-Access Scanner is capable of preventing access to/from any malicious files it discovers--based on the verdict it receives from `clamd`--but by default it is configured to run in notify-only mode, which means it will simply alert the user if a malicious file is detected, then take any additional actions that the user may have specified at the command line, but it will not actively prevent processes from reading or writing to that file.
 
-_Disclaimer_: Enabling Prevention mode will seriously impact performance if used on commonly accessed directories.
+> **Disclaimer**: Enabling Prevention mode will seriously impact performance if used on commonly accessed directories.
 
-_Tip_: You can run ClamOnAcc multiple times simultaneously, each with a different config. If you want to enable Prevention-mode for one directory, while sticking to notify-only mode for any other monitored directories, that's an option!
+> _Tip_: You can run ClamOnAcc multiple times simultaneously, each with a different config. If you want to enable Prevention-mode for one directory, while sticking to notify-only mode for any other monitored directories, that's an option!
 
 On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](../OnAccess.md).
 
 Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will first need to run `clamd` before you can start it. If your `clamd` instance is local, it is required you run clamd as a user that is excluded (via `OnAccessExcludeUname` or `OnAccessExcludeUID`) from On-Access scanning events (e.g.) to prevent `clamonacc` from triggering events endlessly as it sends scan requests to `clamd`:
 
-> `$ su - clamuser -c "/usr/local/bin/clamd`
+```bash
+su - clamuser -c "/usr/local/bin/clamd
+```
 
 After the daemon is running, you can start the On-Access Scanner. `clamonacc` must be run as root in order to utilize its kernel event detection and intervention features:
 
-> `$ sudo clamonacc`
+```bash
+sudo clamonacc
+```
 
 It will run a number of startup checks to test for a sane configuration, and ensure it can connect to `clamd`, and if everything checks out `clamonacc` will automatically fork to the background and begin monitoring your system for events.
 
@@ -121,7 +135,9 @@ On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#o
 
 Once you have set up the On-Access Scanner to your liking, you will need to run `clamd` will elevated permissions to start it.
 
-> `$ sudo clamd`
+```bash
+sudo clamd
+```
 
 ## One-Time Scanning
 
@@ -153,43 +169,57 @@ There are too many options to list all of them here. So we'll only cover a few c
 
 To learn more about the options available when using `clamscan` please reference:
 
-> `$ man clamscan`
+```bash
+man clamscan
+```
 
 and
 
-> `$ clamscan --help`
+```bash
+clamscan --help
+```
 
 Otherwise, the general usage of clamscan is:
 
-> `clamscan [options] [file/directory/-]`
+```bash
+clamscan [options] [file/directory/-]
+```
 
 #### Some basic scans
 
 Run this to scan the files in the current directory:
 
-> `$ clamscan .`
+```bash
+clamscan .
+```
 
 This will scan the current directory. At the end of the scan, it will display a summary. If you notice in the clamscan output, it only scanned something like 60 files, even though there are more files in subdirectories. By default, clamscan will only scan files in the current directory.
 
 Run this to scan all the files in the current directory:
 
-> `$ clamscan --recursive .`
+```bash
+clamscan --recursive .
+```
 
 Run this to scan ALL the files on your system, it will take **quite** a while. Keep in mind that you can cancel it at any time by pressing `Ctrl-C`:
 
 Linux/Unix:
 
-> `$ clamscan.exe --recursive /`
+```bash
+clamscan.exe --recursive /
+```
 
 Windows:
 
-> `$ clamscan.exe --recursive C:\`
+```bash
+clamscan.exe --recursive C:\
+```
 
 ## Disclaimers
 
-_Disclaimer 1_: ClamAV doesn't have a "quick scan" mode. ClamAV is malware detection toolkit, not an endpoint security suite. It's up to you to decide what to scan. A full system scan is going to take a long time with ClamAV or with any anti-virus software.
+> **Disclaimer**: ClamAV doesn't have a "quick scan" mode. ClamAV is malware detection toolkit, not an endpoint security suite. It's up to you to decide what to scan. A full system scan is going to take a long time with ClamAV or with any anti-virus software.
 
-_Disclaimer 2_: ClamScan, ClamOnAcc, and ClamDScan each include `--remove` options for deleting any file which alerts during a scan. This is generally a terrible idea, unless your monitoring an upload/downloads directory. False positives happen! You do not want to have the wrong file accidentally deleted. Instead, consider using `--move` or perhaps just `--copy` and set up script with the ClamD `VirusEvent` feature to notify you when something has been detected.
+> **Disclaimer 2**: ClamScan, ClamOnAcc, and ClamDScan each include `--remove` options for deleting any file which alerts during a scan. This is generally a terrible idea, unless your monitoring an upload/downloads directory. False positives happen! You do not want to have the wrong file accidentally deleted. Instead, consider using `--move` or perhaps just `--copy` and set up script with the ClamD `VirusEvent` feature to notify you when something has been detected.
 
 ## Windows-specific Issues
 

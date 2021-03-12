@@ -1,14 +1,6 @@
 # ClamAV File Types
 
-ClamAV maintains it's own file typing format and assigns these types using either:
-
-- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](../manual/Signatures/FileTypeMagic.md)).
-- File type indicators when parsing container files.
-  - For example:
-    CL_TYPE_SCRIPT may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"
-- File type determination based on the names or characteristics contained within the file.
-  - For example:
-    CL_TYPE_OOXML_WORD may be assigned to a Zip file containing files with specific names.
+ClamAV has two file typing systems for filtering signature matches: Target Types and File Types.
 
 ## Target Types
 
@@ -16,23 +8,25 @@ A Target Type is an integer that indicates which kind of file the signature will
 
 Although the newer CL_TYPE string name notation has replaced the Target Type for some signature formats, many signature formats require a target type number.
 
-This is the current list of available Targe Types:
+This is the current list of available Target Types:
 
-- 0 = any file
-- 1 = Portable Executable, both 32- and 64-bit.
-- 2 = OLE2 containers, including their specific macros. The OLE2 format is primarily used by MS Office and MSI installation files.
-- 3 = HTML (normalized)
-- 4 = Mail file
-- 5 = Graphics
-- 6 = ELF
-- 7 = ASCII text file (normalized)
-- 8 = Unused
-- 9 = Mach-O files
-- 10 = PDF files
-- 11 = Flash files
-- 12 = Java class files
+| Target Type | Description                                                                                         |
+|-------------|-----------------------------------------------------------------------------------------------------|
+| 0           | any file                                                                                            |
+| 1           | Portable Executable, both 32- and 64-bit.                                                           |
+| 2           | OLE2 containers, including specific macros. Primarily used by MS Office and MSI installation files. |
+| 3           | HTML (normalized)                                                                                   |
+| 4           | Mail file                                                                                           |
+| 5           | Graphics                                                                                            |
+| 6           | ELF                                                                                                 |
+| 7           | ASCII text file (normalized)                                                                        |
+| 8           | Unused                                                                                              |
+| 9           | Mach-O files                                                                                        |
+| 10          | PDF files                                                                                           |
+| 11          | Flash files                                                                                         |
+| 12          | Java class files                                                                                    |
 
-**_Important_: HTML, ASCII, Javascript are all normalized.
+> _Important_: HTML, ASCII, Javascript are all normalized.
 
 - ASCII:
   - All lowercase.
@@ -41,11 +35,21 @@ This is the current list of available Targe Types:
 - Javascript:
   - All strings are normalized (hex encoding is decoded), numbers are parsed and normalized, local variables/function names are normalized to ’n001’ format, argument to eval() is parsed as JS again, unescape() is handled, some simple JS packers are handled, output is whitespace normalized.
 
-## CL_TYPEs
+## File Types
 
-ClamAV Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list of all current CL_TYPE's.
+ClamAV maintains it's own file typing format and assigns these types using either:
 
-This table is generated from a spreadsheet using: <https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/>.
+- Evaluation of a unique sequence of bytes at the start of a file ([File Type Magic](../manual/Signatures/FileTypeMagic.md)).
+
+- File type indicators when parsing container files.
+  - For example:
+    CL_TYPE_SCRIPT may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"
+
+- File type determination based on the names or characteristics contained within the file.
+  - For example:
+    CL_TYPE_OOXML_WORD may be assigned to a Zip file containing files with specific names.
+
+ClamAV File Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list of all current CL_TYPE's.
 
 | CL_TYPE                | Description                                                  |
 |------------------------|--------------------------------------------------------------|

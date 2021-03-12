@@ -87,4 +87,4 @@ ClamAV supports the following character classes for hex-signatures:
   - Signature modifiers and nibble wildcards (eg: `??, a?, ?a`) can be applied.
   - Ranged wildcards (eg: `{n-m}`) are limited to a fixed range of less than 128 bytes (eg: `{1} -> {127}`).
 
-Note that using signature modifiers and wildcards classifies the alternate type to be a generic alternate. Thus single-byte alternates and multi-byte fixed length alternates can use signature modifiers and wildcards but will be classified as generic alternate. This means that negation cannot be applied in this situation and there is a slight performance impact.
+> _Note_: Using signature modifiers and wildcards classifies the alternate type to be a generic alternate. Thus single-byte alternates and multi-byte fixed length alternates can use signature modifiers and wildcards but will be classified as generic alternate. This means that negation cannot be applied in this situation and there is a slight performance impact.

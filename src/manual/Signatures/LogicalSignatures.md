@@ -227,7 +227,8 @@ PCRE subsignatures are used within a logical signature (`.ldb`) to specify regex
 
   - `r [CLAMAV_ROLLING]` specifies to use the given offset as the starting location to search for a match as opposed to the only location; applies to subsigs without maxshifts. By default, in order to facilatate normal ClamAV offset behavior, PCREs are auto-anchored (only attempt match on first offset); using the rolling option disables the auto-anchoring.
 
-  - `e [CLAMAV_ENCOMPASS]` specifies to CONFINE matching between the specified offset and maxshift; applies only when maxshift is specified. Note: DECREASES time needed to run the PCRE.
+  - `e [CLAMAV_ENCOMPASS]` specifies to CONFINE matching between the specified offset and maxshift; applies only when maxshift is specified.
+    > _Note_: DECREASES time needed to run the PCRE.
 
   - `i [PCRE_CASELESS]`
 

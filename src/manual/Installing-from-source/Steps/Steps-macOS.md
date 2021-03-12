@@ -49,7 +49,7 @@ To configure the ClamAV build using our homebrew-installed dependencies, you may
 
 ### Typical `./configure` usage
 
-*_Note_: Your Homebrew-installed package version directories may differ slightly.
+> _Note_: Your Homebrew-installed package version directories may differ slightly.
 
 ```bash
 ./configure --with-openssl=/usr/local/Cellar/openssl/1.0.2l --with-zlib=/usr/local/Cellar/zlib/1.2.11/ --with-libjson=yes --enable-check
@@ -218,10 +218,11 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
     * `NotifyClamd`
     * `DatabaseOwner`
 
-3. Create the database directory. *Tip: _You may need to use `sudo`._
+3. Create the database directory.
     ```bash
     mkdir /usr/local/share/clamav
     ```
+    > _Tip_ You may need to use `sudo`.
 
 ### `clamd` config (optional)
 
@@ -324,7 +325,7 @@ xcode-select --switch /Applications/Xcode.app
 xcode-select --switch /Library/Developer/CommandLineTools
 ```
 
-> Solution shamelessly lifted from [apple stackexchange](https://apple.stackexchange.com/questions/254380/macos-mojave-invalid-active-developer-path)
+> _Credit_: Solution shamelessly lifted from [apple stackexchange](https://apple.stackexchange.com/questions/254380/macos-mojave-invalid-active-developer-path)
 
 ### Make -- failed to find correct openssl header or library files
 
@@ -358,4 +359,4 @@ Open Terminal, and run the following:
 sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
 ```
 
-> Solution shamelessly lifted from [the pyenv github issue tracker](https://github.com/pyenv/pyenv/issues/1219)
+> _Credit_: Solution shamelessly lifted from [the pyenv github issue tracker](https://github.com/pyenv/pyenv/issues/1219)

@@ -38,7 +38,7 @@ Sure, you can find more details on our [Private Local Mirror page](../appendix/C
 
   * Finally, change `freshclam.conf` on your clients so that it includes:
 
-    ```
+    ```ini
     DatabaseMirror machine1.mylan
 
     ScriptedUpdates off

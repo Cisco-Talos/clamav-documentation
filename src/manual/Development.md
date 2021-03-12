@@ -81,11 +81,11 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
 
 #### Ubuntu
 
-**Tip**: You may wish to set `DEBIAN_FRONTEND=noninteractive` if scripting the following so that the install will not hang while prompting you to select your geographic area.
-
-```bash
-    sudo export DEBIAN_FRONTEND=noninteractive
-```
+> _Tip_: You may wish to set `DEBIAN_FRONTEND=noninteractive` if scripting the following so that the install will not hang while prompting you to select your geographic area.
+>
+> ```bash
+> sudo export DEBIAN_FRONTEND=noninteractive
+> ```
 
 *Install build tools:*
 ```bash
@@ -302,7 +302,7 @@ ninja install
 
 ClamAV version 0.104+ will include unit tests, integration tests, & feature tests performed via CMake's `ctest` toolset. All tests are executed within through `ctest` but within a Python test framework build around Python's `unittest` module. See `clamav-devel/unit_tests/testcase.py`. Python 3.5+ is required.
 
-*Note*: Valgrind tests are performed on Linux if Valgrind is installed.
+> _Note_: Valgrind tests are performed on Linux if Valgrind is installed.
 
 #### Unit Tests
 
@@ -444,7 +444,8 @@ writing:
 
 - `--leave-temps --tmpdir=/tmp`: By default, ClamAV will attempt to extract embedded files that it finds, normalize certain text files before looking for matches, and unpack packed executables that it has unpacking support for. These flags tell ClamAV to write these intermediate files out to the directory specified.  Usually when a file is written, it will mention the file name in the --debug output, so you can have some idea at what stage in the scanning process a tmp file was created.
 
-- `--dump-certs`: For signed PE files that match a rule, display information about the certificates stored within the binary.  Note - sigtool has this functionality as well and doesn't require a rule match to view the cert data
+- `--dump-certs`: For signed PE files that match a rule, display information about the certificates stored within the binary.
+  > _Note_: sigtool has this functionality as well and doesn't require a rule match to view the cert data
 
 ### Using gdb
 

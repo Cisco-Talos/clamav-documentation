@@ -383,6 +383,7 @@ Use `clamav-config` to check compilation information for libclamav.
 ```bash
     $ clamav-config --libs
     -L/usr/local/lib -lz -lbz2 -lgmp -lpthread
+
     $ clamav-config --cflags
     -I/usr/local/include -g -O2
 ```

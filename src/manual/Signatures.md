@@ -47,7 +47,7 @@ ClamAV provides a handful of configuration related databases along side the sign
 
 ### Signature databases
 
-_Note_: Signature databases with an extension ending in `u` are only loaded when Potentially Unwanted Application (PUA) signatures are enabled (default: off).
+> _Note_: Signature databases with an extension ending in `u` are only loaded when Potentially Unwanted Application (PUA) signatures are enabled (default: off).
 
 #### Body-based Signatures
 

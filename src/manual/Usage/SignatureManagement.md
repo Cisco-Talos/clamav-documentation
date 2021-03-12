@@ -9,7 +9,7 @@ Table Of Contents
   - [Next Steps](#next-steps)
   - [Create your own signatures](#create-your-own-signatures)
 
-_Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
+> _Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
 
 ## Freshclam
 
@@ -19,7 +19,9 @@ The tool `freshclam` is used to download and update ClamAV’s official virus si
 
 Once you have a valid configuration file, you can invoke Freshclam with the following command:
 
-> `$ freshclam`
+```bash
+freshclam
+```
 
 By default, `freshclam` will then attempt to connect to ClamAV's virus signature database distribution network. If no databases exist in the directory specified, `freshclam` will do a fresh download of the requested databases. Otherwise, `freshclam` will attempt to update existing databases, pairing them against downloaded cdiffs. If a database is found to be corrupted, it is not updated and instead replaced with a fresh download.
 
@@ -29,13 +31,17 @@ You can find more information about Freshclam with the commands:
 
 Unix/Linux:
 
-> `$ freshclam --help`
+```bash
+freshclam --help
+```
 
 Or (Unix/Linux only):
 
-> $ `man freshclam`
+```bash
+man freshclam
+```
 
-_Tip_: Newer versions of Freshclam will create your database directory if it doesn't already exist. Older versions won't, and may fail unless you create it first.
+> _Tip_: Newer versions of Freshclam will create your database directory if it doesn't already exist. Older versions won't, and may fail unless you create it first.
 
 ## Sigtool
 
@@ -43,15 +49,21 @@ ClamAV provides `sigtool` as a command-line testing tool for assisting users in 
 
 This can be accomplished by using the command:
 
-> $ `sigtool --unpack=FILE`
+```bash
+sigtool --unpack=FILE
+```
 
 Where FILE points to your virus signature databases. Then, once `sigtool` has finished unpacking the database into the directory from which you ran the command, you can search for the offending signature name (provided either by [`clamscan`](Scanning.md#clamscan) scan reports or [`clamd`](Scanning.md#clamd) logs). As an example:
 
-> $ `grep "Win.Test.EICAR" ./*`
+```bash
+grep "Win.Test.EICAR" ./*
+```
 
 Or, do all that in one step with:
 
-> $ `sigtool --find="Win.Test.EICAR"`
+```bash
+sigtool --find="Win.Test.EICAR"
+```
 
 This should give you the offending signature(s) in question, which can then be included as part of your [false positive report](https://www.clamav.net/reports/fp).
 
@@ -59,11 +71,15 @@ To learn more in depth information on how `sigtool` can be used to help create v
 
 Otherwise, information on available sigtool functions can be easily referenced with:
 
-> $ `sigtool --help`
+```bash
+sigtool --help
+```
 
 Or (Unix/Linux only):
 
-> $ `man sigtool`
+```bash
+man sigtool
+```
 
 ## ClamBC
 
@@ -71,11 +87,15 @@ Or (Unix/Linux only):
 
 For more detailed help, please use:
 
-> $ `clambc --help`
+```bash
+clambc --help
+```
 
 Or (Unix/Linux only):
 
-> $ `man clambc`
+```bash
+man clambc
+```
 
 ## Next Steps
 

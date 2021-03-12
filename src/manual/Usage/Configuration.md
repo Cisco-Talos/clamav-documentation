@@ -99,7 +99,9 @@ Database files path search order:
 
 **Quick test: run freshclam (as superuser) with no parameters and check the output.**
 
-> `freshclam`
+```bash
+freshclam
+```
 
 If everything is OK you may create the log file in /var/log (ensure the directory is owned either by *clamav* or whichever user `freshclam` will be running as):
 
@@ -123,7 +125,7 @@ N * * * *   /usr/local/bin/freshclam --quiet
 
 to check for a new database every hour. **N should be a number between 3 and 57 of your choice. Please don’t choose any multiple of 10, because there are already too many clients using those time slots.** Proxy settings are only configurable via the configuration file and `freshclam` will require strict permission settings for the config file when `HTTPProxyPassword` is turned on.
 
-```
+```ini
 HTTPProxyServer myproxyserver.com
 HTTPProxyPort 1234
 HTTPProxyUsername myusername
@@ -135,33 +137,37 @@ HTTPProxyPassword mypass
 Currently, ClamAV requires users to edit their `clamd.conf.example` file before they can run the daemon. At a bare minimum, users will need to comment out the line that reads "Example", else `clamd` will consider the configuration invalid, ala:
 
 ```ini
-    7 # Comment or remove the line below.
-    8 #Example
+# Comment or remove the line below.
+#Example
 ```
 
 You will also need to rename `clamd.conf.example` to `clamd.conf` via:
 
-> `$ mv ./clamd.conf.example ./clamd.conf`
+```bash
+mv ./clamd.conf.example ./clamd.conf
+```
 
 If you are setting up a simple, local [`clamd` instance](Scanning.md#clamd) then some other configuration options of interests to you will be as follows:
 
 ```ini
-    91 # Path to a local socket file the daemon will listen on.
-    92 # Default: disabled (must be specified by a user)
-    93 LocalSocket /tmp/clamd.socket
+# Path to a local socket file the daemon will listen on.
+# Default: disabled (must be specified by a user)
+LocalSocket /tmp/clamd.socket
 
-    ...
+...
 
-    99 # Sets the permissions on the unix socket to the specified mode.
-    100 # Default: disabled (socket is world accessible)
-    101 LocalSocketMode 660
+# Sets the permissions on the unix socket to the specified mode.
+# Default: disabled (socket is world accessible)
+LocalSocketMode 660
 ```
 
 Beyond that, `clamd.conf` is well commented and configuration should be straightforward.
 
 If needed, you can find out even more about the formatting and options available in `clamd.conf` with the command:
 
-> `man clamd.conf`
+```bash
+man clamd.conf
+```
 
 ### On-Access Scanning
 
@@ -175,7 +181,9 @@ ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfac
 
 Ensuring ClamAV compiles with `clamav-milter` must be done at configure time with the command:
 
-> `$ ./configure [options] --enable-milter`
+```bash
+./configure [options] --enable-milter
+```
 
 This requires having the milter library installed on your system. If *libmilter* is not installed, `./configure` will exit with this error message:
 
@@ -206,7 +214,7 @@ clamconf --help
 
 or on Unix systems:
 
-```
+```bash
 man clamconf
 ```
 
