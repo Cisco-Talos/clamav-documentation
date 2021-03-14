@@ -10,6 +10,9 @@ edition = "2018"
 [output.html]
 mathjax-support = true
 site-url = "/"
+theme = "theme"
+default-theme = "clamav"
+preferred-dark-theme  = "clamav"
 
 [output.html.playground]
 editable = true

@@ -1,18 +1,17 @@
-<img align="right" img width="100" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/cisco.png" alt='Cisco Systems, Inc'><br>
 
-# Introduction
+# ClamAV <a href="https://www.cisco.com/"><img align="right" img width="100" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/cisco.png" alt='Cisco Systems, Inc'></a>
 
-<p align="center">
-  <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/logo.png" alt='Maeve, the ClamAV mascot'>
-</p>
-
-Clam AntiVirus is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways.  It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates.  The core of the package is an anti-virus engine available in a form of shared library.
+ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways.  It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates.  The core of the package is an anti-virus engine available in a form of shared library.
 
 ClamAV is brought to you by Cisco Systems, Inc.
 
-## Features
+<p align="center">
+  <a href="https://www.clamav.net/">
+    <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/logo.png" alt='Maeve, the ClamAV mascot'>
+  </a>
+</p>
 
-### Capabilities
+## Features
 
 - ClamAV is designed to scan files quickly.
 - Real time protection (Linux only).  Our scanning daemon supports on-access scanning on modern versions of Linux, including the ability to block file access until a file has been scanned.
@@ -70,11 +69,11 @@ ClamAV is brought to you by Cisco Systems, Inc.
   - TNEF (winmail.dat)
 - Advanced database updater with support for scripted updates, digital signatures and DNS based database version queries
 
-### License
+## License
 
 ClamAV is licensed under the GNU General Public License, Version 2.
 
-### Supported platforms
+## Supported platforms
 
 Clam AntiVirus is highly cross-platform.  The development team cannot test every OS, so we have chosen to test ClamAV using the two most recent Long Term Support (LTS) versions of each of the most popular desktop operating systems.  Our regularly tested operating systems include:
 
@@ -160,3 +159,9 @@ If you've got a virus which is not detected by the current version of ClamAV usi
 Likewise, if you have a benign file that is flagging as a virus and you wish to report a False Positive, please submit the sample for review at our website:
 
 <https://www.clamav.net/reports/fp>
+
+<p align="center">
+  <a href="https://www.cisco.com/">
+    <img align="center" img width="80" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/cisco.png" alt='Cisco Systems, Inc'>
+  </a>
+</p>

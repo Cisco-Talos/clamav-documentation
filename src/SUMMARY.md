@@ -28,7 +28,7 @@
     - [Container Metadata Signatures](manual/Signatures/ContainerMetadata.md)
     - [Archive Passwords (experimental)](manual/Signatures/EncryptedArchives.md)
 - [For Developers](manual/Development.md)
-    - [libclamav](manual/libclamav.md)
+    - [Libclamav](manual/libclamav.md)
     - [Contribute](manual/Contribute.md)
 - [Frequently Asked Questions](faq/faq.md)
     - [Overview](faq/faq-overview.md)

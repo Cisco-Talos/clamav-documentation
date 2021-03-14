@@ -312,4 +312,4 @@ Finally, you will want to set user ownership of the database directory. For exam
 
 You should be all set up to run scans.
 
-Take a look at our [usage documentation](../Usage.md) to learn about how to use ClamAV each of the utilities.
+Take a look at our [usage documentation](../../Usage.md) to learn about how to use ClamAV each of the utilities.

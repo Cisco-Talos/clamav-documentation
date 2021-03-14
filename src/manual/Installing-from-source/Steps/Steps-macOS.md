@@ -303,7 +303,7 @@ sudo chown -R clamav:clamav /usr/local/share/clamav
 
 You should be all set up to run scans.
 
-Take a look at our [usage documentation](../Usage.md) to learn about how to use ClamAV each of the utilities.
+Take a look at our [usage documentation](../../Usage.md) to learn about how to use ClamAV each of the utilities.
 
 ## Troubleshooting
 
