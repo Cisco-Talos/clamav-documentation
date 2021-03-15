@@ -33,7 +33,7 @@
 - [Frequently Asked Questions](faq/faq.md)
     - [Overview](faq/faq-overview.md)
     - [Selecting the Right Version of ClamAV for You](faq/faq-whichversion.md)
-    - [Freshclam (Signature Updater)](faq/faq-freshclam.md)
+    - [FreshClam (Signature Updater)](faq/faq-freshclam.md)
     - [Signature Database (CVD)](faq/faq-cvd.md)
     - [Misc](faq/faq-misc.md)
     - [Mailing Lists](faq/faq-ml.md)

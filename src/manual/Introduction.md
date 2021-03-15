@@ -1,7 +1,7 @@
 
 # ClamAV <a href="https://www.cisco.com/"><img align="right" img width="100" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/cisco.png" alt='Cisco Systems, Inc'></a>
 
-ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways.  It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates.  The core of the package is an anti-virus engine available in a form of shared library.
+ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways. It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates. The core of the package is an anti-virus engine available in a form of shared library.
 
 ClamAV is brought to you by Cisco Systems, Inc.
 
@@ -14,11 +14,11 @@ ClamAV is brought to you by Cisco Systems, Inc.
 ## Features
 
 - ClamAV is designed to scan files quickly.
-- Real time protection (Linux only).  Our scanning daemon supports on-access scanning on modern versions of Linux, including the ability to block file access until a file has been scanned.
+- Real time protection (Linux only). Our scanning daemon supports on-access scanning on modern versions of Linux, including the ability to block file access until a file has been scanned.
 - ClamAV detects over 1 million viruses, worms and trojans, including Microsoft Office macro viruses, mobile malware, and other threats.
 - The built-in bytecode interpreter allows the ClamAV signature writers to create and distribute very complex detection routines and remotely enhance the scanner’s functionality.
 - Signed signature databases ensure that ClamAV will only execute trusted signature definitions.
-- ClamAV scans within archives and compressed files but also protects against archive bombs.  Built-in archive extraction capabilities include:
+- ClamAV scans within archives and compressed files but also protects against archive bombs. Built-in archive extraction capabilities include:
   - Zip (including SFX)
   - RAR (including SFX)
   - 7Zip
@@ -75,7 +75,7 @@ ClamAV is licensed under the GNU General Public License, Version 2.
 
 ## Supported platforms
 
-Clam AntiVirus is highly cross-platform.  The development team cannot test every OS, so we have chosen to test ClamAV using the two most recent Long Term Support (LTS) versions of each of the most popular desktop operating systems.  Our regularly tested operating systems include:
+Clam AntiVirus is highly cross-platform. The development team cannot test every OS, so we have chosen to test ClamAV using the two most recent Long Term Support (LTS) versions of each of the most popular desktop operating systems. Our regularly tested operating systems include:
 
 - GNU/Linux
   - Alpine
@@ -117,7 +117,7 @@ Minimum recommended RAM for ClamAV:
 
 Minimum recommended CPU for ClamAV:
 
--  1 CPUs at 2.0 Ghz+
+- 1 CPU at 2.0 Ghz+
 
 Minimum available hard disk space required:
 
@@ -141,7 +141,7 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-Alternatively you can try asking on the `#clamav` IRC channel - launch your favourite irc client and type:
+Alternatively you can try asking on the `#clamav` IRC channel - launch your favorite irc client and type:
 
 ```bash
 /server irc.freenode.net

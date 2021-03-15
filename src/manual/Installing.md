@@ -75,7 +75,7 @@ See package entry on [Portage].
 
 ### FreeBSD, OpenBSD, NetBSD <a id="bsd" class="anchor">&nbsp;</a>
 
-Althought all these systems offer the possibility to use ports or pkgsrc, you can install the pre-built package:
+Although all these systems offer the possibility to use ports or pkgsrc, you can install the pre-built package:
 
 #### FreeBSD
 
@@ -202,7 +202,7 @@ Official ClamAV builds for Windows users are available [here](https://www.clamav
 
 ## What now?
 
-Now that ClamAV is installed, you will want to customize your configuration and perhaps set up some scanning automation and alerting mechnisms.
+Now that ClamAV is installed, you will want to customize your configuration and perhaps set up some scanning automation and alerting mechanisms.
 
 [Continue on to "Configuration"...](Configuration.md)
 

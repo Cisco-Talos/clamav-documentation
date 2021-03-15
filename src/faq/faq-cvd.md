@@ -6,7 +6,7 @@ ClamAV comes with _FreshClam_, a tool which periodically checks for new database
 
 ## How often is the virus database updated?
 
-The virus database is usually updated once or twice per day. Sign up for our [VirusDB mailing list](https://lists.clamav.net/mailman/listinfo/clamav-virusdb) to see our response times to new threats. The virusdb team tries to keep up with the latest threats in the wild.  You can contribute to make the virusdb updating process more efficient by submitting samples of viruses via our "[Contact](https://www.clamav.net/contact)" page on ClamAV.net.
+The virus database is usually updated once or twice per day. Sign up for our [VirusDB mailing list](https://lists.clamav.net/mailman/listinfo/clamav-virusdb) to see our response times to new threats. The virusdb team tries to keep up with the latest threats in the wild. You can contribute to make the virusdb updating process more efficient by submitting samples of viruses via our "[Contact](https://www.clamav.net/contact)" page on ClamAV.net.
 
 ## The last CVD update crashed my ClamAV installation. Why?
 
@@ -58,4 +58,4 @@ Yes, the virusdb can be downloaded from the _Latest releases_ section on our hom
 
 ----
 
-For other questions regarding issues with Freshclam, see our [Freshclam Troubleshooting FAQ](faq-troubleshoot.md).
+For other questions regarding issues with FreshClam, see our [FreshClam Troubleshooting FAQ](faq-troubleshoot.md).

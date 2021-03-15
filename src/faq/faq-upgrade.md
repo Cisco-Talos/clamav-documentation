@@ -43,7 +43,7 @@ The *functionality level* of the database determines which scanner engine versio
 
 ### What does "*Your ClamAV installation is OUTDATED*" mean?
 
-You'll get this message whenever a new version of ClamAV is released.  In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [precompiled packages] for your operating system/distribution.  Remember: running the latest stable release also improves stability.
+You'll get this message whenever a new version of ClamAV is released. In order to detect all the latest viruses, it's not enough to keep your database up to date. You also need to run the latest version of the scanner. You can download the [sources] of the latest release from our website. If you are afraid to break something while upgrading, use  the [pre-compiled packages] for your operating system/distribution. Remember: running the latest stable release also improves stability.
 
 ### I upgraded to the latest stable version but I still get the message "*Your ClamAV installation is OUTDATED*", why?
 

@@ -99,19 +99,19 @@ CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
 
 ... then ClamAV's On-Access Scanner will still function, scanning and alerting on files normally in real time. However, it will be unable to block access attempts on malicious files. We call this `notify-only` mode.
 
-ClamAV's On-Access Scanning system uses a scheme called Dynamic Directory Determination (DDD for short) which is a shorthand way of saying that it tracks the layout of every directory specified with `OnAccessIncludePath` dynamically, and recursively, in real time. It does this by leveraging [inotify](http://man7.org/linux/man-pages/man7/inotify.7.html) which by default has a limited number of watchpoints available for use by a process at any given time. Given the complexity of some directory hierarchies, ClamAV may warn you that it has exhausted its supply of inotify watchpoints (8192 by default). To increase the number of inotify watchpoints available for use by ClamAV (to 524288), run the following command:
+ClamAV's On-Access Scanning system uses a scheme called Dynamic Directory Determination (DDD for short) which is a shorthand way of saying that it tracks the layout of every directory specified with `OnAccessIncludePath` dynamically, and recursively, in real time. It does this by leveraging [`inotify`](http://man7.org/linux/man-pages/man7/inotify.7.html) which by default has a limited number of watch-points available for use by a process at any given time. Given the complexity of some directory hierarchies, ClamAV may warn you that it has exhausted its supply of `inotify` watch-points (8192 by default). To increase the number of `inotify` watch-points available for use by ClamAV (to 524288), run the following command:
 
 ```bash
 echo 524288 | sudo tee -a /proc/sys/fs/inotify/max_user_watches
 ```
 
-The `OnAccessIncludePath` option will not accept `/` as a valid path. This is because fanotify works by blocking a process' access to a file until a access_ok or access_denied determination has been made by the original fanotify calling process. Thus, by placing fanotify watchpoints on the entire filesystem, key system files may have their access blocked to key processes at the kernel level, which will result in a system lockup.
+The `OnAccessIncludePath` option will not accept `/` as a valid path. This is because fanotify works by blocking a process' access to a file until a access_ok or access_denied determination has been made by the original fanotify calling process. Thus, by placing fanotify watch-points on the entire filesystem, key system files may have their access blocked to key processes at the kernel level, which will result in a system lockup.
 
 This restriction was made to prevent users from "shooting themselves in the foot." However, clever users will find it's possible to circumvent this restriction by using multiple `OnAccessIncludePath` options to recursively protect most of the filesystem anyways, or better still, simply the paths they truly care about.
 
-The `OnAccessMountPath` option uses a different fanotify api configuration which makes it incompatible with `OnAccessIncludePath` and the DDD System. Therefore, inotify watchpoint limitations will not be a concern when using this option. Unfortunately, this also means that the following options cannot be used in conjunction with `OnAccessMountPath`:
+The `OnAccessMountPath` option uses a different fanotify api configuration which makes it incompatible with `OnAccessIncludePath` and the DDD System. Therefore, `inotify` watch-point limitations will not be a concern when using this option. Unfortunately, this also means that the following options cannot be used in conjunction with `OnAccessMountPath`:
 
-- `OnAccessExtraScanning` - is built around catching inotify events.
+- `OnAccessExtraScanning` - is built around catching `inotify` events.
 - `OnAccessExcludePath` - is built upon the DDD System.
 - `OnAccessPrevention` - would lock up the system if `/` was selected for `OnAccessMountPath`. If you need `OnAccessPrevention`, you should use `OnAccessIncludePath` instead of `OnAccessMountPath`.
 
@@ -161,13 +161,13 @@ The configuration above will result in non-recursive real-time protection of the
 
 ## Command Line Options for Versions >= 0.102
 
-Beyond `clamd.conf` configuration, you can change the behaviour of the On-Access scanner by passing in a number of command line options. A list of all options can be retrieved with `--help`, but below is a list and explanation of some of options you might find most useful.
+Beyond `clamd.conf` configuration, you can change the behavior of the On-Access scanner by passing in a number of command line options. A list of all options can be retrieved with `--help`, but below is a list and explanation of some of options you might find most useful.
 
-- `--log=FILE` `-l FILE` - passing this option is important if you want a record of scan results, otherwise `clamonacc` will operate silently.
-- `--verbose` `-v` - primarily for debugging as this will increase the amount of noise in your log by quite a lot, but useful for troubleshooting potential connection problems
-- `--foreground` `-F` - forces `clamonacc` to not for the background, which is useful for debugging potential issues with during startup or runtime
-- `--include-list=FILE` `-e FILE` - allows users to pass a list of directories for clamonacc to watch, each directory must be a full path and seperated by a newline
-- `--exclude-list=FILE` `-e FILE` - same as include-list option, but for excluding at startup
+- `--log=FILE` (`-l FILE`) - passing this option is important if you want a record of scan results, otherwise `clamonacc` will operate silently.
+- `--verbose` (`-v`) - primarily for debugging as this will increase the amount of noise in your log by quite a lot, but useful for troubleshooting potential connection problems
+- `--foreground` (`-F`) - forces `clamonacc` to not for the background, which is useful for debugging potential issues with during startup or runtime
+- `--include-list=FILE` (`-e FILE`) - allows users to pass a list of directories for clamonacc to watch, each directory must be a full path and separated by a newline
+- `--exclude-list=FILE` (`-e FILE`) - same as include-list option, but for excluding at startup
 - `--remove` - after an infected verdict, an attempt will be made to remove the infected file
 - `--move=DIRECTORY` - just like the remove option, but infected file will be moved to the specified quarantine location instead
 - `--copy=DIRECTORY` - just like the move, except infected file is also left in place

@@ -20,7 +20,7 @@ When `clamd` is running, use these tools to interact with it:
 
 * `clamav-milter`
 
-  A daemon that performs email filter scannning through `clamd`.
+  A daemon that performs email filter scanning through `clamd`.
 
 * `clamonacc` (Linux-only)
 
@@ -36,11 +36,11 @@ The ClamAV library - so you can build the ClamAV engine into your programs.
 
 ## `libfreshclam`
 
-The Freshclam library - so you can build the signature update update features into your programs.
+The FreshClam library - so you can build the signature update update features into your programs.
 
 ## `sigtool`
 
-A signature database (cvd) manipulation tool - for malware analysts and signaure writers.
+A signature database (cvd) manipulation tool - for malware analysts and signature writers.
 
 ## `clambc`
 

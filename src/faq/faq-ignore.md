@@ -2,7 +2,7 @@
 
 ## Creating an ignore file
 
-Change Directory into the location where your ClamAV databases are stored.  Create a file called `ignore_list.ign2`, for example, like this:
+Change Directory into the location where your ClamAV databases are stored. Create a file called `ignore_list.ign2`, for example, like this:
 
 `touch ignore_list.ign2`
 

@@ -3,21 +3,21 @@
 Table Of Contents
 
 - [Signature Testing and Management](#signature-testing-and-management)
-  - [Freshclam](#freshclam)
-  - [Sigtool](#sigtool)
+  - [FreshClam](#freshclam)
+  - [SigTool](#sigtool)
   - [ClamBC](#clambc)
   - [Next Steps](#next-steps)
   - [Create your own signatures](#create-your-own-signatures)
 
 > _Tip_: The commands on Windows are generally the same, but you may need to add the `.exe` extension to run the ClamAV applications.
 
-## Freshclam
+## FreshClam
 
 Before you can start the ClamAV scanning engine (using either `clamd` or `clamscan`), you must _first_ have ClamAV Virus Database (.cvd) file(s) installed in the appropriate location on your system.
 
 The tool `freshclam` is used to download and update ClamAV’s official virus signature databases. While easy to use in its base configuration, `freshclam` does require a working [`freshclam.conf` configuration file](Configuration.md#freshclamconf) to run (the location of which can be passed in via command line if the default search location does not fit your needs).
 
-Once you have a valid configuration file, you can invoke Freshclam with the following command:
+Once you have a valid configuration file, you can invoke FreshClam with the following command:
 
 ```bash
 freshclam
@@ -25,9 +25,9 @@ freshclam
 
 By default, `freshclam` will then attempt to connect to ClamAV's virus signature database distribution network. If no databases exist in the directory specified, `freshclam` will do a fresh download of the requested databases. Otherwise, `freshclam` will attempt to update existing databases, pairing them against downloaded cdiffs. If a database is found to be corrupted, it is not updated and instead replaced with a fresh download.
 
-Of course, all this behaviour--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](Configuration.md#freshclamconf).
+Of course, all this behavior--and more--can be changed to suit your needs by [modifying `freshclam.conf` and/or using various command line options](Configuration.md#freshclamconf).
 
-You can find more information about Freshclam with the commands:
+You can find more information about FreshClam with the commands:
 
 Unix/Linux:
 
@@ -41,9 +41,9 @@ Or (Unix/Linux only):
 man freshclam
 ```
 
-> _Tip_: Newer versions of Freshclam will create your database directory if it doesn't already exist. Older versions won't, and may fail unless you create it first.
+> _Tip_: Newer versions of FreshClam will create your database directory if it doesn't already exist. Older versions won't, and may fail unless you create it first.
 
-## Sigtool
+## SigTool
 
 ClamAV provides `sigtool` as a command-line testing tool for assisting users in their efforts creating and working with virus signatures. While sigtool has many uses--including crafting signatures--of particular note, is sigtool's ability to help users and analysts in determining if a file detected by *libclamav*'s virus signatures is a false positive.
 
@@ -99,7 +99,7 @@ man clambc
 
 ## Next Steps
 
-Now that you know more about Freshclam and tools to work with the signature databases, it's time to [run your first scan](Scanning.md).
+Now that you know more about FreshClam and tools to work with the signature databases, it's time to [run your first scan](Scanning.md).
 
 ## Create your own signatures
 

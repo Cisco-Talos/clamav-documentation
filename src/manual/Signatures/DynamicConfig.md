@@ -45,7 +45,7 @@ This is the [FLEVEL](../../appendix/FunctionalityLevels.md) of the minimum ClamA
 
 `EndFlevel`:
 
-This is the [FLEVEL](../../appendix/FunctionalityLevels.md) of the maximum ClamAV engine for which you want the settings to be in effect.  You may wish to select `255` to override the defaults of future releases.
+This is the [FLEVEL](../../appendix/FunctionalityLevels.md) of the maximum ClamAV engine for which you want the settings to be in effect. You may wish to select `255` to override the defaults of future releases.
 
 ## Example
 

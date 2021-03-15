@@ -12,13 +12,13 @@ For people who face these problems, we recommend using one of the following 3 se
 
 This solution is really easy to implement and is bandwidth efficient.
 
-Install a proxy server (e.g. squid) and then tell your freshclam clients to use it. This can be done by setting the _HTTPProxyServer_ parameter in _freshclam.conf_ (see man 5 freshclam.conf for the details).
+Install a proxy server (e.g. squid) and then tell your FreshClam clients to use it. This can be done by setting the _HTTPProxyServer_ parameter in _freshclam.conf_ (see `man 5 freshclam.conf` for the details).
 
 ## 2. Serve CVD files from a local web server
 
 This solution is really simple to implement but it's only effective if your clients are all on the same local network and bandwidth is not an issue for you.
 
-Configure a local webserver on one of your machines (say `machine1.mylan`) and let freshclam download the `*.cvd` files from http://database.clamav.net to the webserver’s *DocumentRoot*.
+Configure a local webserver on one of your machines (say `machine1.mylan`) and let FreshClam download the `*.cvd` files from http://database.clamav.net to the webserver’s *DocumentRoot*.
 
 Add the following line to `freshclam.conf` on `machine1.mylan`:
 
@@ -32,7 +32,7 @@ First the database will be downloaded to the local webserver and then the other 
 
 ## 3. Serve CVD and CDIFF files from a local web server
 
-This solution will be more bandwidth efficient for you. It will llow you to host a mirror that functions in the same way as the fficial database CDN, serving CVD and CDIFF files.
+This solution will be more bandwidth efficient for you. It will allow you to host a mirror that functions in the same way as the official database CDN, serving CVD and CDIFF files.
 
 These instructions use a tool named [cvdupdate](https://github.com/micahsnyder/cvdupdate). `cvdupdate` requires:
 
@@ -40,31 +40,31 @@ These instructions use a tool named [cvdupdate](https://github.com/micahsnyder/c
 - An internet connection with DNS enabled.
 - It should work fine on Linux/Unix and on Windows.
 
-**IMPORTANT**: Please do NOT use [cvdupdate](https://github.com/icahsnyder/cvdupdate) if you don't need to host a private atabase mirror. Freshclam is far more efficient, even for a small luster of installs, because it will update with CDIFF patches fter the initial database downloads.
+**IMPORTANT**: Please do NOT use [cvdupdate](https://github.com/icahsnyder/cvdupdate) if you don't need to host a private database mirror. FreshClam is far more efficient, even for a small cluster of installs, because it will update with CDIFF patches after the initial database downloads.
 
 You can easily install `cvdupdate` Python3's Pip package manager:
 
 `pip3 install cvdupdate`
 
-(optional) Once installed, you may wish to configure where the atabases are stored:
+(optional) Once installed, you may wish to configure where the databases are stored:
 
 `cvd config set --dbdir <your www path>`
 
-Now run this as often as you need, or at least once a day to ownload/update the databases:
+Now run this as often as you need, or at least once a day to download/update the databases:
 
 `cvd update`
 
-If you didn't set a custom database path, the databases will be tored in `~/.cvdupdate/database`
+If you didn't set a custom database path, the databases will be stored in `~/.cvdupdate/database`
 
 You can use `--help` with any `cvd` command to learn more. For ore detailed instructions, or to report issues, please visit: https://github.com/micahsnyder/cvdupdate](https://github.com/icahsnyder/cvdupdate)
 
-Once you have the database files, host them with your favorite ebserver, or use the `cvd serve` test-webserver (not intended for roduction).
+Once you have the database files, host them with your favorite webserver, or use the `cvd serve` test-webserver (not intended for production).
 
-Set up your Freshclam clients' `freshclam.conf` config file to oint to:
+Set up your FreshClam clients' `freshclam.conf` config file to point to:
 
 `DatabaseMirror http://machine1.mylan`
 
-You may wish to set up a proxy to enable HTTPS.  If you do, use:
+You may wish to set up a proxy to enable HTTPS. If you do, use:
 
 `DatabaseMirror https://machine1.mylan`
 

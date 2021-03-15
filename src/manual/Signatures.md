@@ -25,9 +25,9 @@ Table Of Contents
 
 ## Introduction
 
-In order to detect malware and other file-based threats, ClamAV relies on signatures to differentiate clean and malicious/unwanted files.  ClamAV signatures are primarily text-based and conform to one of the ClamAV-specific signature formats associated with a given method of detection.  These formats are explained in the [Signature formats](#signature-formats) section below.  In addition, ClamAV 0.99 and above support signatures written in the YARA format.  More information on this can be found in the [Using YARA rules in ClamAV](#using-yara-rules-in-clamav) section.
+In order to detect malware and other file-based threats, ClamAV relies on signatures to differentiate clean and malicious/unwanted files. ClamAV signatures are primarily text-based and conform to one of the ClamAV-specific signature formats associated with a given method of detection. These formats are explained in the [Signature formats](#signature-formats) section below. In addition, ClamAV 0.99 and above support signatures written in the YARA format. More information on this can be found in the [Using YARA rules in ClamAV](#using-yara-rules-in-clamav) section.
 
-The ClamAV project distributes a collection of signatures in the form of CVD (ClamAV Virus Database) files.  The CVD file format provides a digitally-signed container that encapsulates the signatures and ensures that they can't be modified by a malicious third-party.  This signature set is actively maintained by [Cisco Talos](https://www.talosintelligence.com/) and can be downloaded using the `freshclam` application that ships with ClamAV.  For more details on this, see the [CVD file](#inspecting-signatures-inside-a-CVD-file) section.
+The ClamAV project distributes a collection of signatures in the form of CVD (ClamAV Virus Database) files. The CVD file format provides a digitally-signed container that encapsulates the signatures and ensures that they can't be modified by a malicious third-party. This signature set is actively maintained by [Cisco Talos](https://www.talosintelligence.com/) and can be downloaded using the `freshclam` application that ships with ClamAV. For more details on this, see the [CVD file](#inspecting-signatures-inside-a-CVD-file) section.
 
 ## Database formats
 
@@ -75,7 +75,7 @@ ClamAV body-based signature content has a [special format](manual/Signatures/Bod
 
 #### Alternative signature support
 
-`*.yar` `*.yara`: [Yara rules](manual/Signatures/YaraRules.md)
+`*.yar` `*.yara`: [YARA rules](manual/Signatures/YaraRules.md)
 
 ### Other database files
 
@@ -113,21 +113,21 @@ ClamAV uses the following prefixes for signature names:
 
 Important rules of the naming convention:
 
-- always use a -zippwd suffix in the malware name for signatures of type zmd,
-- always use a -rarpwd suffix in the malware name for signatures of type rmd,
-- only use alphanumeric characters, dash (-), dot (.), underscores (_) in malware names, never use space, apostrophe or quote mark.
+- always use a `-zippwd` suffix in the malware name for signatures of type zmd,
+- always use a `-rarpwd` suffix in the malware name for signatures of type rmd,
+- only use alphanumeric characters, dash (`-`), dot (`.`), underscores (`_`) in malware names, never use space, apostrophe or quote mark.
 
 ## Signature Writing Tips and Tricks
 
 ### Testing rules with `clamscan`
 
-To test a new signature, first create a text file with the extension corresponding to the signature type (Ex: `.ldb` for logical signatures).  Then, add the signature as it's own line within the file. This file can be passed to `clamscan` via the `-d` option, which tells ClamAV to load signatures from the file specified.  If the signature is not formatted correctly, ClamAV will display an error - run `clamscan` with `--debug --verbose` to see additional information about the error message.  Some common causes of errors include:
+To test a new signature, first create a text file with the extension corresponding to the signature type (Ex: `.ldb` for logical signatures). Then, add the signature as it's own line within the file. This file can be passed to `clamscan` via the `-d` option, which tells ClamAV to load signatures from the file specified. If the signature is not formatted correctly, ClamAV will display an error - run `clamscan` with `--debug --verbose` to see additional information about the error message. Some common causes of errors include:
 
 - The signature file has the incorrect extension type for the signatures contained within
 - The file has one or more blank lines
 - For logical signatures, a semicolon exists at the end of the file
 
-If the rule is formatted correctly, `clamscan` will load the signature(s) in and scan any files specified via the command line invocation (or all files in the current directory if none are specified).  A successful detection will look like the following:
+If the rule is formatted correctly, `clamscan` will load the signature(s) in and scan any files specified via the command line invocation (or all files in the current directory if none are specified). A successful detection will look like the following:
 
 ```bash
 clamscan -d test.ldb text.exe
@@ -146,11 +146,11 @@ Time: 0.400 sec (0 m 0 s)
 
 If the rule did not match as intended:
 
-- The file may have exceeded one or more of the default scanning limits built-in to ClamAV.  Try running `clamscan` with the following options to see if raising the limits addresses the issue: `--max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000 --max-htmlnotags=2000000 --max-scriptnormalize=2000000 --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000 --max-rechwp3=2000000 --pcre-match-limit=2000000 --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M`.
-- If matching on HTML or text files, ClamAV might be performing normalization that causes the content of the scanned file to change.  See the [HTML](#html) and [Text file](#text-file) sections for more details.
-- libclamav may have been unable to unpack or otherwise process the file.  See [Debug information from libclamav](#debug-information-from-libclamav) for more details.
+- The file may have exceeded one or more of the default scanning limits built-in to ClamAV. Try running `clamscan` with the following options to see if raising the limits addresses the issue: `--max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000 --max-htmlnotags=2000000 --max-scriptnormalize=2000000 --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000 --max-rechwp3=2000000 --pcre-match-limit=2000000 --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M`.
+- If matching on HTML or text files, ClamAV might be performing normalization that causes the content of the scanned file to change. See the [HTML](#html) and [Text file](#text-file) sections for more details.
+- libclamav may have been unable to unpack or otherwise process the file. See [Debug information from libclamav](#debug-information-from-libclamav) for more details.
 
-NOTE: If you run `clamscan` with a `-d` flag, ClamAV will not load in the signatures downloaded via `freshclam`.  This means that:
+NOTE: If you run `clamscan` with a `-d` flag, ClamAV will not load in the signatures downloaded via `freshclam`. This means that:
 
 - some of ClamAV's unpacking support might be disabled, since some unpackers are implemented as bytecode signatures
 - PE certificate trust verification based on Authenticode signatures won't work, since this functionality relies on `.crb` rules
@@ -314,7 +314,7 @@ This method should be applied to all files for which you want to create signatur
 
 #### HTML
 
-ClamAV contains HTML normalization code which makes it easier to write signatures for HTML data that might differ based on white space, capitalization, and other insignificant differences. Running `sigtool --html-normalise` on a HTML file can be used to see what a file's contents will look like after normalization.  This command should generate the following files:
+ClamAV contains HTML normalization code which makes it easier to write signatures for HTML data that might differ based on white space, capitalization, and other insignificant differences. Running `sigtool --html-normalise` on a HTML file can be used to see what a file's contents will look like after normalization. This command should generate the following files:
 
 - nocomment.html - the file is normalized, lower-case, with all comments and superfluous white space removed
 
@@ -322,15 +322,15 @@ ClamAV contains HTML normalization code which makes it easier to write signature
 
 - javascript - any script contents are normalized and the results appended to this file
 
-The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files.  Signatures matching on normalized HTML should have a target type of 3.  For reference, see [Target Types](appendix/FileTypes.md).
+The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files. Signatures matching on normalized HTML should have a target type of 3. For reference, see [Target Types](appendix/FileTypes.md).
 
 #### Text files
 
-Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named 'normalised\_text'.  Rules matching on normalized ASCII text should have a target type of 7.  For reference, see [Target Types](appendix/FileTypes.md).
+Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named `normalised\_text`. Rules matching on normalized ASCII text should have a target type of 7. For reference, see [Target Types](appendix/FileTypes.md).
 
 #### Compressed Portable Executable files
 
-If the file is compressed with UPX, FSG, Petite or another PE packer supported by libclamav, ClamAV will attempt to automatically unpack the executable and evaluate signatures against the unpacked executable.  To inspect the executable that results from ClamAV's unpacking process, run `clamscan` with `--debug --leave-temps`. Example output for a FSG compressed file:
+If the file is compressed with UPX, FSG, Petite or another PE packer supported by libclamav, ClamAV will attempt to automatically unpack the executable and evaluate signatures against the unpacked executable. To inspect the executable that results from ClamAV's unpacking process, run `clamscan` with `--debug --leave-temps`. Example output for a FSG compressed file:
 
 ```bash
     LibClamAV debug: UPX/FSG/MEW: empty section found - assuming compression
@@ -343,19 +343,19 @@ In the example above, `/tmp/clamav-f592b20f9329ac1c91f0e12137bcce6c` is the unpa
 
 ### Using `sigtool`
 
-`sigtool` pulls in libclamav and provides shortcuts to doing tasks that `clamscan` does behind the scenes.  These can be really useful when writing a signature or trying to get information about a signature that might be causing FPs or performance problems.
+`sigtool` pulls in libclamav and provides shortcuts to doing tasks that `clamscan` does behind the scenes. These can be really useful when writing a signature or trying to get information about a signature that might be causing FPs or performance problems.
 
 The following `sigtool` flags can be especially useful for signature writing:
 
 - `--md5` / `--sha1` / `--sha256`: Generate the MD5/SHA1/SHA256 hash and calculate the file size, outputting both as a properly-formatted `.hdb`/`.hsb` signature
 
-- `--mdb`: Generate section hashes of the specified file.  This is useful when generating `.mdb` signatures.
+- `--mdb`: Generate section hashes of the specified file. This is useful when generating `.mdb` signatures.
 
-- `--decode`: Given a ClamAV signature from STDIN, show a more user-friendly representation of it.  An example usage of this flag is `cat test.ldb | sigtool --decode`.
+- `--decode`: Given a ClamAV signature from STDIN, show a more user-friendly representation of it. An example usage of this flag is `cat test.ldb | sigtool --decode`.
 
 - `--hex-dump`: Given a sequence of bytes from STDIN, print the hex equivalent. An example usage of this flag is `echo -n "Match on this" | sigtool --hex-dump`.
 
-- `--html-normalise`: Normalize the specified HTML file in the way that `clamscan` will before looking for rule matches.  Writing signatures off of these files makes it easier to write rules for target type HTML (you'll know what white space, capitalization, etc. to expect). See the [HTML](#html) section for more details.
+- `--html-normalise`: Normalize the specified HTML file in the way that `clamscan` will before looking for rule matches. Writing signatures off of these files makes it easier to write rules for target type HTML (you'll know what white space, capitalization, etc. to expect). See the [HTML](#html) section for more details.
 
 - `--ascii-normalise`: Normalize the specified ASCII text file in the way that `clamscan` will before looking for rule matches. Writing signatures off of this normalized file data makes it easier to write rules for target type Txt (you'll know what white space, capitalization, etc. to expect). See the [Text files](#text-files) sectino for more details.
 
@@ -364,7 +364,7 @@ The following `sigtool` flags can be especially useful for signature writing:
 
 - `--vba`: Extract VBA/Word6 macro code
 
-- `--test-sigs`: Given a signature and a sample, determine whether the signature matches and, if so, display the offset into the file where the match occurred.  This can be useful for investigating false positive matches in clean files.
+- `--test-sigs`: Given a signature and a sample, determine whether the signature matches and, if so, display the offset into the file where the match occurred. This can be useful for investigating false positive matches in clean files.
 
 ### Inspecting signatures inside a CVD file
 
@@ -393,7 +393,7 @@ CVD (ClamAV Virus Database) is a digitally signed container that includes signat
 
 The ClamAV project distributes a number of CVD files, including `main.cvd` and `daily.cvd`.
 
-To view the signature associated with a given detection name, the CVD files can be unpacked and the underlying text files searched for a rule definition using a tool like `grep`.  To do this, use `sigtool`'s `--unpack` flag as follows:
+To view the signature associated with a given detection name, the CVD files can be unpacked and the underlying text files searched for a rule definition using a tool like `grep`. To do this, use `sigtool`'s `--unpack` flag as follows:
 
 ```bash
     $ mkdir /tmp/clamav-sigs
@@ -408,4 +408,4 @@ To view the signature associated with a given detection name, the CVD files can 
 
 Below are tools that can be helpful when writing ClamAV signatures:
 
-- [CASC](https://github.com/Cisco-Talos/CASC) - CASC is a plugin for IDA Pro that allows the user to highlight sections of code and create a signature based on the underlying instructions (with options to ignore bytes associated with registers, addresses, and offsets).  It also contains SigAlyzer, a tool to take an existing signature and locate the regions within the binary that match the subsignatures.
+- [CASC](https://github.com/Cisco-Talos/CASC) - CASC is a plugin for IDA Pro that allows the user to highlight sections of code and create a signature based on the underlying instructions (with options to ignore bytes associated with registers, addresses, and offsets). It also contains SigAlyzer, a tool to take an existing signature and locate the regions within the binary that match the subsignatures.

@@ -37,8 +37,8 @@ A number of tools allow for [testing and management of signatures](Usage/Signatu
 
 The more complex tools ClamAV provides each require some degree of [configuration](Usage/Configuration.md). ClamAV supplies two example configuration files:
 
-  - [`clamd.conf`](Usage/Configuration.md#clamdconf) - for configuring the behaviour of the ClamAV Daemon `clamd` and associated tools
-  - [`freschclam.conf`](Usage/Configuration.md#freshclamconf) - for configuring the behaviour of the signature database update tool, `freshclam`
+  - [`clamd.conf`](Usage/Configuration.md#clamdconf) - for configuring the behavior of the ClamAV Daemon `clamd` and associated tools
+  - [`freschclam.conf`](Usage/Configuration.md#freshclamconf) - for configuring the behavior of the signature database update tool, `freshclam`
 
 ClamAV also provides a mail filtering tool called [`clamav-milter`](Usage/Configuration.md#clamav-milter) which can be attached to a `clamd` instance for mail scanning purposes.
 

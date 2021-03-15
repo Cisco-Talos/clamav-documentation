@@ -26,7 +26,7 @@ If you can't, it means your network is broken. You'll be still able to download 
 
 ## What does _WARNING: DNS record is older than 3 hours_ mean?
 
-Freshclam attempts to detect potential problems with DNS caches and switches to use HTTPS if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error everytime you run FreshClam, check your system clock. If it is set correctly, check your dns settings.  If those didn't help, try putting this at the top of your cronjob:
+FreshClam attempts to detect potential problems with DNS caches and switches to use HTTPS if something looks suspicious. If this message appears seldomly, you can safely ignore it. If you get the error every time you run FreshClam, check your system clock. If it is set correctly, check your dns settings. If those didn't help, try putting this at the top of your cronjob:
 
 ```bash
 host -t txt current.cvd.clamav.net; perl -e 'printf "%d\n", time;'
@@ -36,7 +36,7 @@ The 4th field of the first line should be less than 3 &lowast; 3600 behind the o
 
 ## I get this error when running FreshClam: _ERROR: Connection with ??? failed_ . What shall I do?
 
-Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve hostnames with:
+Either your dns servers are not working or you are blocking port 53/tcp. You should manually check that you can resolve host names with:
 
 ```bash
 host database.clamav.net
@@ -52,7 +52,7 @@ dig @ns1.clamav.net db.us.big.clamav.net
 
 ## How do I know if my IP address has been blocked?
 
-Run FreshClam in verbose-mode (`-v`) to view the HTTP requests and responses. If you're seeing an HTTP 403 response, then you may have been blocked. If think you've been blocked, feel free to contact us for help getting un-blocked. For more information about HTTP error codes, see the [Freshclam FAQ](faq-freshclam.md)
+Run FreshClam in verbose-mode (`-v`) to view the HTTP requests and responses. If you're seeing an HTTP 403 response, then you may have been blocked. If think you've been blocked, feel free to contact us for help getting un-blocked. For more information about HTTP error codes, see the [FreshClam FAQ](faq-freshclam.md)
 
 ## I can't resolve `current.cvd.clamav.net`! Is there a problem with your/my DNS servers?
 

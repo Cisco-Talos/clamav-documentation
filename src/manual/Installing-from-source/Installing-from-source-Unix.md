@@ -45,9 +45,9 @@ ClamAV may execute Bytecode signatures using:
   - System-installed LLVM library (3.2-3.6)
   - ClamAV's built-in version of LLVM 2.8
 
-> `*` LLVM is more performant than the bytecode interpreter. Unfortunately we presently only support up to LLVM version 3.6. Until we're able to update to support a modern version of LLVM, you may have to use the bytecode interpreter.
+> `*` LLVM's runtime performance is better than that of the bytecode interpreter. Unfortunately we presently only support up to LLVM version 3.6. Until we're able to update to support a modern version of LLVM, you may have to use the bytecode interpreter.
 
-The following are thus optional, but *required* to use system-LLVM in place of the built-in LLVM or the bytecode interpeter:
+The following are thus optional, but *required* to use system-LLVM in place of the built-in LLVM or the bytecode interpreter:
 
 - LLVM 3.2 - 3.6
 - A supported CPU for LLVM JIT, either of: X86, X86-64, PowerPC, PowerPC64
@@ -191,7 +191,7 @@ All 8 tests passed
 ==================
 ```
 
-If a unit test fails, you get a message similar to the following. Note that in older versions of make check may report failures due to the absence of optional packages. Please make sure you have the latest versions of the components noted in section /refsec:components. See the next section on how to report a bug when a unit test fails.
+If a unit test fails, you get a message similar to the following. Note that in older versions of `make check` may report failures due to the absence of optional packages. Please make sure you have the latest versions of the dependencies noted in the [Requirements section](#Requirements). See the next section on how to report a bug when a unit test fails.
 
 ```bash
 ========================================

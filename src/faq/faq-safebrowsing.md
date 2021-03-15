@@ -1,4 +1,4 @@
-# Safebrowsing  #
+# Safebrowsing
 
 ## About
 

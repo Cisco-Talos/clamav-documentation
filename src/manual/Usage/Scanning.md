@@ -25,7 +25,7 @@ Table Of Contents
 
 ### ClamD
 
-`clamd` is a multi-threaded daemon that uses *libclamav* to scan files for viruses. Scanning behaviour can be fully configured to fit most needs by modifying `clamd.conf`.
+`clamd` is a multi-threaded daemon that uses *libclamav* to scan files for viruses. Scanning behavior can be fully configured to fit most needs by modifying `clamd.conf`.
 
 As `clamd` requires a virus signature database to run, we recommend setting up ClamAV's official signatures before running `clamd` using `freshclam`.
 
@@ -116,7 +116,7 @@ On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#o
 Once you have set up the On-Access Scanner (and `clamd`) to your liking, you will first need to run `clamd` before you can start it. If your `clamd` instance is local, it is required you run clamd as a user that is excluded (via `OnAccessExcludeUname` or `OnAccessExcludeUID`) from On-Access scanning events (e.g.) to prevent `clamonacc` from triggering events endlessly as it sends scan requests to `clamd`:
 
 ```bash
-su - clamuser -c "/usr/local/bin/clamd
+su - clamav -c "/usr/local/bin/clamd
 ```
 
 After the daemon is running, you can start the On-Access Scanner. `clamonacc` must be run as root in order to utilize its kernel event detection and intervention features:
@@ -145,7 +145,7 @@ sudo clamd
 
 `clamscan` is a command line tool which uses *libclamav* to scan files and/or directories for viruses. Unlike `clamdscan`, `clamscan` does *not* require a running `clamd` instance to function. Instead, `clamscan` will create a new engine and load in the virus database each time it is run. It will then scan the files and/or directories specified at the command line, create a scan report, and exit.
 
-By default, when loading databases, `clamscan` will check the location to which `freshclam` installed the virus database signatures. This behaviour, along with a myriad of other scanning and engine controls, can be modified by providing flags and other options at the command line.
+By default, when loading databases, `clamscan` will check the location to which `freshclam` installed the virus database signatures. This behavior, along with a myriad of other scanning and engine controls, can be modified by providing flags and other options at the command line.
 
 There are too many options to list all of them here. So we'll only cover a few common and more interesting ones:
 
@@ -238,7 +238,7 @@ The Windows version of ClamAV requires all the input to be UTF-8 encoded.
 This affects:
 
 - The API, notably the `cl_scanfile()` function
-- ClamD socket input, e.g. the commands SCAN, CONTSCAN, MUTLISCAN, etc.
+- ClamD socket input, e.g. the commands `SCAN`, `CONTSCAN`, `MUTLISCAN`, etc.
 - ClamD socket output, i.e replies to the above queries
 
 For legacy reasons ANSI (i.e. `CP_ACP`) input will still be accepted and processed as before, but with two important remarks:

@@ -38,7 +38,7 @@ There is presently _no_ support for including or excluding by subcategory.
 
 PUA categories are the product of signature naming conventions. These vary over time as new signatures are added.
 
-> **Disclaimer**: PUA signatures are not as carefully curated as malware signatures because they are not as commonly used. You should expect more false positives when using PUA signatures. Further, inclusion or exclusion of specific categories may not be very intuitive or predictable. Specifically, excluding the `Win` category will not exclude all Windows application PUA signatures. There are undoubtedly more Windows PUA signatures in the `Packed`, `Tool`, `Spy`, `NetTool`, etc categories that target Windows applications. Similarly, excluding the `Packed` category will not guarantee that you exclude signatures like `PUA.Win.Packer.Whatever-0123`. In short, the inclusion and exclusion of PUA signatures will likely be frustrating. Improvements to PUA include/exclude options to support subcategories as well as SigTool features to enumerate current PUA categories and subcategores would be a good candidate for a community contribution project.
+> **Disclaimer**: PUA signatures are not as carefully curated as malware signatures because they are not as commonly used. You should expect more false positives when using PUA signatures. Further, inclusion or exclusion of specific categories may not be very intuitive or predictable. Specifically, excluding the `Win` category will not exclude all Windows application PUA signatures. There are undoubtedly more Windows PUA signatures in the `Packed`, `Tool`, `Spy`, `NetTool`, etc categories that target Windows applications. Similarly, excluding the `Packed` category will not guarantee that you exclude signatures like `PUA.Win.Packer.Whatever-0123`. In short, the inclusion and exclusion of PUA signatures will likely be frustrating. Improvements to PUA include/exclude options to support subcategories as well as SigTool features to enumerate current PUA categories and subcategories would be a good candidate for a community contribution project.
 
 > **Disclaimer 2**: The `Virus`/`Ransomeware`/`Trojan`/etc malware categories or subcategories for PUA signatures were mistakenly selected by automated tools. Those tools have since been fixed and no new signatures should appear with these names. The existing malware-name categories for these PUA signatures are expected to be removed/renamed as time permits.
 
@@ -118,7 +118,7 @@ The following category descriptions should give you some idea of how the PUA sig
 
 * NetTool
 
-    Applications that can be used to sniff, filter, manipulate or scan network traffic or networks.  While a networkscanner - for example - can be a extremely helpful tool for admins, you may not want to see an average user playing around with it. Same goes for tools like netcat and the like.
+    Applications that can be used to sniff, filter, manipulate or scan network traffic or networks. While a network scanner - for example - can be a extremely helpful tool for admins, you may not want to see an average user playing around with it. Same goes for tools like `netcat` and the like.
 
 * P2P
 
@@ -126,7 +126,7 @@ The following category descriptions should give you some idea of how the PUA sig
 
 * Packed
 
-    This is a detection for files that use some kind of runtime packer. A runtime packer  can be used to reduce the size of executable files without the need for an external unpacker. While this can't be considered malicious in general, runtime packers are widely used with malicious files since they can prevent a already known malware from detection by an Antivirus product.
+    This is a detection for files that use some kind of runtime packer. A runtime packer  can be used to reduce the size of executable files without the need for an external unpacker. While this can't be considered malicious in general, runtime packers are widely used with malicious files since they can prevent a already known malware from detection by an anti-virus product.
 
 * PwTool
 

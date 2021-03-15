@@ -18,9 +18,9 @@ Table Of Contents
 
 Depending on your install method and your operating system, some configuration options may have been pre-configured. For example a clamav install on Ubuntu with `apt install` will place configs in `/etc/clamav`.
 
-However, it is likely that you will need to create new config files or modify the existing ones with custom settings that make the most sense for your use case. A from-source install will require you to create a `freshclam.conf` before you can use Freshclam, a `clamd.conf` before you can use ClamD, and a `clamav-milter.conf` before you can use ClamAV-Milter.
+However, it is likely that you will need to create new config files or modify the existing ones with custom settings that make the most sense for your use case. A from-source install will require you to create a `freshclam.conf` before you can use FreshClam, a `clamd.conf` before you can use ClamD, and a `clamav-milter.conf` before you can use ClamAV-Milter.
 
-A default install from source will place the example configs in `/usr/local/etc/` on Unix/Linux systems and in the install directory under `conf_examples` on Windows. These examples demonstrate each of the options and may help you decide how to configure ClamAV to suit your needs. But again the location of these examples may vary depending on how you installed ClamAV. To continue with the Ubuntu example, you may find the Freshclam config from an `apt install` in `/usr/share/doc/clamav-freshclam/examples/`. So if you're unsure where the example configs are on your system, you may wish to use [ClamConf](#clamconf) to generate them.
+A default install from source will place the example configs in `/usr/local/etc/` on Unix/Linux systems and in the install directory under `conf_examples` on Windows. These examples demonstrate each of the options and may help you decide how to configure ClamAV to suit your needs. But again the location of these examples may vary depending on how you installed ClamAV. To continue with the Ubuntu example, you may find the FreshClam config from an `apt install` in `/usr/share/doc/clamav-freshclam/examples/`. So if you're unsure where the example configs are on your system, you may wish to use [ClamConf](#clamconf) to generate them.
 
 Here are some quick steps to get you started.
 
@@ -171,7 +171,7 @@ man clamd.conf
 
 ### On-Access Scanning
 
-You can configure On-Access Scanning through `clamd.conf`.  Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.sample". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
+You can configure On-Access Scanning through `clamd.conf`. Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.sample". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
 
 Also read the [on-access](../OnAccess.md) section of the Usage manual for further details on using On-Access Scanning.
 

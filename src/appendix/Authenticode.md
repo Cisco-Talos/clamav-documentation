@@ -2,7 +2,7 @@
 
 ## About Microsoft Authenticode
 
-Authenticode is Microsoft's system for using digital signatures to ensure that programs to be run/installed on Windows systems come from a verified source and has not been modified by anyone else.  At a high level, it works by having software developers:
+Authenticode is Microsoft's system for using digital signatures to ensure that programs to be run/installed on Windows systems come from a verified source and has not been modified by anyone else. At a high level, it works by having software developers:
 
 1. Obtain a code-signing certificate from a certificate authority trusted by the Windows OS.
 2. Compute digital signatures for executables and related software installation files using that certificate.
@@ -22,7 +22,7 @@ For more information, check-out the following resources:
 
 ## Authenticode and ClamAV
 
-ClamAV supports parsing the Authenticode section and performing signature verification on a given executable to determine whether it should be trusted (based on rules loaded in from ClamAV `.crb` files).  An overview of this process, including information on the `.crb` file format and on how to add new trusted certificate entries, is explained in the [Authenticode Certificate Chain Verification](https://blog.clamav.net/2013/02/authenticode-certificate-chain.html) ClamAV blog post.
+ClamAV supports parsing the Authenticode section and performing signature verification on a given executable to determine whether it should be trusted (based on rules loaded in from ClamAV `.crb` files). An overview of this process, including information on the `.crb` file format and on how to add new trusted certificate entries, is explained in the [Authenticode Certificate Chain Verification](https://blog.clamav.net/2013/02/authenticode-certificate-chain.html) ClamAV blog post.
 
 There are a few things not covered in the blog post that are worth mentioning:
 
@@ -30,9 +30,9 @@ There are a few things not covered in the blog post that are worth mentioning:
 
 - As of ClamAV 0.102, `.crb` rules may also be used to block malicious executables where in previous versions these block list entries just override `.crb` rules that would otherwise trust a given sample.
 
-- sigtool offers the `--print-certs` flag, which can be used to show information about embedded Authenticode signatures without having to first match on a signature (which is currently a requirement for clamscan)
+- SigTool offers the `--print-certs` flag, which can be used to show information about embedded Authenticode signatures without having to first match on a signature (which is currently a requirement for clamscan)
 
-- External Authenticode signatures contained in `.cat` files can be loaded in to ClamAV by passing a `-d` flag and indicating the path to the .cat file from which to load signatures.  Note, however, that at least one certificate in the `.cat` file's certificate chain must be trusted (in other words, it must have a backing `.crb` trusted certificate rule.)
+- External Authenticode signatures contained in `.cat` files can be loaded in to ClamAV by passing a `-d` flag and indicating the path to the .cat file from which to load signatures. Note, however, that at least one certificate in the `.cat` file's certificate chain must be trusted (in other words, it must have a backing `.crb` trusted certificate rule.)
 
 # Helpful Info for Working with Authenticode Signatures
 
@@ -40,7 +40,7 @@ Below is some useful information collected when improving ClamAV support for Aut
 
 ## Format Specifications
 
-The Windows Authenticode 2008 specification document can be found at the link below.  Note, however, that it is not 100% accurate.  For instance, the documented steps for computing the Authenticode hash are not correct in the case where you have sections that overlap with the PE header or with one another.
+The Windows Authenticode 2008 specification document can be found at the link below. Note, however, that it is not 100% accurate. For instance, the documented steps for computing the Authenticode hash are not correct in the case where you have sections that overlap with the PE header or with one another.
 
 - [Windows Authenticode PE Signature Format](http://download.microsoft.com/download/9/c/5/9c5b2167-8017-4bae-9fde-d599bac8184a/Authenticode_PE.docx)
 
@@ -77,10 +77,10 @@ On Linux, osslsigncode can be used to verify a signature:
 
 On Windows,
 
-[AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/) is a great tool for displaying signature information.  In addition,
+[AnalyzePESig](https://blog.didierstevens.com/programs/authenticode-tools/) is a great tool for displaying signature information. In addition,
 [signtool](https://docs.microsoft.com/en-us/dotnet/framework/tools/signtool-exe#examples) can be used.
 
-NOTE that the machine on which these commands is run should have Internet connectivity so that revocation lists can be consulted.  Otherwise, Windows may default to assuming that none of the certificates are revoked.
+NOTE that the machine on which these commands is run should have Internet connectivity so that revocation lists can be consulted. Otherwise, Windows may default to assuming that none of the certificates are revoked.
 
 There is also the [verify-sigs](http://code.google.com/p/verify-sigs) python script that performs verification, but this script is no longer maintained.
 
@@ -258,7 +258,7 @@ For Linux, Didier Stevens has a great post about how to create signed binaries u
 
 - [Signing Windows Executables on Kali](https://blog.didierstevens.com/2018/09/24/quickpost-signing-windows-executables-on-kali/)
 
-On Windows, a program called signtool ships with the Windows SDK and can be used.  See the following for tutorials/examples:
+On Windows, a program called `signtool` ships with the Windows SDK and can be used. See the following for tutorials/examples:
 
 - [Authenticode Code Signing with Microsoft SignTool](https://www.digicert.com/code-signing/signcode-signtool-command-line.htm)
 
@@ -266,7 +266,7 @@ On Windows, a program called signtool ships with the Windows SDK and can be used
 
 ## Samples with Interesting Authenticode Signatures
 
-Below are some PE files with interesting Authenticode signatures.  These are probably only interesting to other researchers who are looking at Authenticode in-depth.  All samples are available via VirusTotal.
+Below are some PE files with interesting Authenticode signatures. These are probably only interesting to other researchers who are looking at Authenticode in-depth. All samples are available via VirusTotal.
 
 - SHA256-based code-signing signature without a countersignature
   - `8886d96e9ed475e4686ffba3d242e97836de8a56b75cc915e21bb324cc89de03`

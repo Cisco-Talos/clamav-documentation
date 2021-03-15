@@ -1,6 +1,6 @@
 # Interpreting Scan Alerts FAQ
 
-## ClamAV alerted on a file during a scan.  What do I do?
+## ClamAV alerted on a file during a scan. What do I do?
 
 ClamAV may have found a malicious or suspicious file. However, you're probably asking yourself if the alert is a False Positive (FP). It may well be, so don't just delete the file out-of-hand.
 
@@ -20,7 +20,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
     user@laptop:~$  cd /tmp/sigdump
     ```
 
-2. Use the `sigtool` program to unpack the ClamAV databases into their separate components.  Sigtool should be installed alongside clamscan, probably in `/usr/local/bin/sigtool`.  The ClamAV databases are traditionally installed in `/usr/local/share/clamav` although if you installed from a package manager, your paths may vary:
+2. Use the `sigtool` program to unpack the ClamAV databases into their separate components. SigTool should be installed alongside clamscan, probably in `/usr/local/bin/sigtool`. The ClamAV databases are traditionally installed in `/usr/local/share/clamav` although if you installed from a package manager, your paths may vary:
 
     ```bash
     user@laptop:/tmp/sigdump$  sigtool -u /usr/local/share/clamav/main.cvd
@@ -53,7 +53,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
     3986229.cbc    3986301.cbc    4526683.cbc    6335427.cbc    6395243.cbc    daily.cdb      daily.mdu      main.sfp
     ```
 
-4. Use `grep` to search for the signature in question.  For example:
+4. Use `grep` to search for the signature in question. For example:
 
     ```bash
     user@laptop:/tmp/sigdump$  grep -r Win.Downloader.DDECmdExec-6683887-5
@@ -104,11 +104,11 @@ Second, if you're technically inclined, you may want to try to read the signatur
              +-> CFLAGS: i
     ```
 
-6. Interpet the results. ClamAV signatures can be as simple as a hash-based signature of a known-malicious file, but they can also be a complex logical test. You may not learn enough to make an educated decision. The above example is a pretty complicated one, so I will try to walk you through it.
+6. Interpret the results. ClamAV signatures can be as simple as a hash-based signature of a known-malicious file, but they can also be a complex logical test. You may not learn enough to make an educated decision. The above example is a pretty complicated one, so I will try to walk you through it.
 
     You can see that there are 5 subsignatures (numbered 0 - 4). The `LOGICICAL EXPRESSION` indicates which subsignature(s) matter and why. This could be something like `0 AND 1` to indicate that 2 subsignatures must both trigger in order for the overall signature to alert. In this case, only subsignature `4` is required by the `LOGICAL EXPRESSION`.
 
-    If you look at `SUBSIG ID 4`, you'll see that has a has a `TRIGGER` which acts in much the same way as the above `LOGICAL EXPRESSION`.  If the subsignatures in the logical expression are satisfied, then the regular expression `REGEX` will be tested. If the regular expression matches, then the SUBSIG ID 4 will trigger and the overall signature will alert.
+    If you look at `SUBSIG ID 4`, you'll see that has a has a `TRIGGER` which acts in much the same way as the above `LOGICAL EXPRESSION`. If the subsignatures in the logical expression are satisfied, then the regular expression `REGEX` will be tested. If the regular expression matches, then the SUBSIG ID 4 will trigger and the overall signature will alert.
 
 ### Reporting
 

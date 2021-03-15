@@ -13,8 +13,8 @@ This is the current list of available Target Types:
 | Target Type | Description                                                                                         |
 |-------------|-----------------------------------------------------------------------------------------------------|
 | 0           | any file                                                                                            |
-| 1           | Portable Executable, both 32- and 64-bit.                                                           |
-| 2           | OLE2 containers, including specific macros. Primarily used by MS Office and MSI installation files. |
+| 1           | Portable Executable, both 32- and 64-bit                                                            |
+| 2           | OLE2 containers, including specific macros. Primarily used by MS Office and MSI installation files  |
 | 3           | HTML (normalized)                                                                                   |
 | 4           | Mail file                                                                                           |
 | 5           | Graphics                                                                                            |
@@ -30,7 +30,7 @@ This is the current list of available Target Types:
 >
 > - ASCII - All lowercase.
 > - HTML - Whitespace transformed to spaces, tags/tag attributes normalized, all lowercase.
-> - Javascript - All strings are normalized (hex encoding is decoded), numbers are parsed and normalized, local variables/function names are normalized to ’n001’ format, argument to eval() is parsed as JS again, unescape() is handled, some simple JS packers are handled, output is whitespace normalized.
+> - Javascript - All strings are normalized (hex encoding is decoded), numbers are parsed and normalized, local variables/function names are normalized to `n001` format, argument to `eval()` is parsed as JS again, unescape() is handled, some simple JS packers are handled, output is whitespace normalized.
 
 ## File Types
 
@@ -40,13 +40,13 @@ ClamAV maintains it's own file typing format and assigns these types using eithe
 
 - File type indicators when parsing container files.
   - For example:
-    CL_TYPE_SCRIPT may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"
+    `CL_TYPE_SCRIPT` may be assigned to data contained in a PDF when the PDF indicates that a stream of bytes is "Javascript"
 
 - File type determination based on the names or characteristics contained within the file.
   - For example:
-    CL_TYPE_OOXML_WORD may be assigned to a Zip file containing files with specific names.
+    `CL_TYPE_OOXML_WORD` may be assigned to a Zip file containing files with specific names.
 
-ClamAV File Types are prefixed with `CL_TYPE_`.  The following is an exhaustive list of all current CL_TYPE's.
+ClamAV File Types are prefixed with `CL_TYPE_`. The following is an exhaustive list of all current file types.
 
 | CL_TYPE                | Description                                                  |
 |------------------------|--------------------------------------------------------------|

@@ -206,7 +206,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
     ```bash
     cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
     ```
-2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
+2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
 
     Take the time to look through the options. You can enable the sample options by deleting the `#` comment characters.
@@ -232,7 +232,7 @@ You can run `clamscan` without setting the config options for `clamd`. However, 
     ```bash
     cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
     ```
-2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
+2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
     * You also _need_ to select a Socket option for `clamd` so `clamdscan` and other utilities can communicate with `clamd`. You must enable _one_ of the following.
         * `LocalSocket`
@@ -263,7 +263,7 @@ If you installed to another location:
 
 ### Users and on user privileges
 
-If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitely configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature udpates.
+If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitely configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature updates.
 
 The user that `clamd`, `clamdscan`, and `clamscan` run as may be the same user, but if it isn't -- it merely needs _read_ access to the database directory.
 

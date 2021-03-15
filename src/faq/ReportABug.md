@@ -28,7 +28,7 @@ Please be sure to include all of the following information so that we can effect
 
 + __How to reproduce the problem:__
 
-  if the issue is reproducible only when scanning a specific file, attach it to the message.  _Don’t forget to encrypt it or you may cause damage to the mail servers between you and us!_
+  if the issue is reproducible only when scanning a specific file, attach it to the message. _Don’t forget to encrypt it or you may cause damage to the mail servers between you and us!_
 
   E.g.: `zip -P virus -e file.zip file.ext`.
 
@@ -82,7 +82,7 @@ Segmentation fault
 
   You should now see the gdb prompt, as: `(gdb)`
 
-4. Just use the `bt` command at the prompt to make gdb print a full backtrace.  Copy and paste it into the bug report. You can use the `q` command to leave gdb.
+4. Just use the `bt` command at the prompt to make gdb print a full backtrace. Copy and paste it into the bug report. You can use the `q` command to leave gdb.
 
 ## Obtain a Backtrace of clamd
 

@@ -200,7 +200,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
     ```bash
         cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
     ```
-2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
+2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
 
     Take the time to look through the options. You can enable the sample options by deleting the `#` comment characters.
@@ -222,7 +222,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
 
 You can run `clamscan` without setting the config options for `clamd`. However, the `clamd` scanning daemon allows you to use `clamdscan` to perform faster a-la-carte scans, allows you to run multi-threaded scans, and allows you to use `clamav-milter` if you want to use ClamAV as a mail filter if you host an email server.
 
-Additionally, if you are a running modern versions of Linux where the FANOTIFY kernel feature is enabled, `clamd` has a feature run with On-Access Scanning*. *When properly configured*, On-Access Scanning can scan files as they are accessed and optionally block access to the file in the event that a signature alerted.
+Additionally, if you are a running modern versions of Linux where the `FANOTIFY` kernel feature is enabled, `clamd` has a feature run with On-Access Scanning*. *When properly configured*, On-Access Scanning can scan files as they are accessed and optionally block access to the file in the event that a signature alerted.
 
 > _Note_: At this time, for On-Access Scanning to work, `clamd` must run with `sudo`/root privileges. For more details, please see our documentation on On-Access Scanning.
 
@@ -230,7 +230,7 @@ Additionally, if you are a running modern versions of Linux where the FANOTIFY k
     ```bash
         cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
     ```
-2. Modify the config file using your favourite text editor. Again, you may need to use `sudo`.
+2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
     * You also _need_ to select a Socket option for `clamd` so `clamdscan` and other utilities can communicate with `clamd`. You must enable _one_ of the following.
         * `LocalSocket`
@@ -292,7 +292,7 @@ If you installed to another location:
 
 ### Users and on user privileges
 
-If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitely configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature udpates.
+If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitly configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature updates.
 
 The user that `clamd`, `clamdscan`, and `clamscan` run as may be the same user, but if it isn't -- it merely needs _read_ access to the database directory.
 

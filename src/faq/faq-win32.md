@@ -41,7 +41,7 @@ For a complete overview please see the [privacy policy].
 
 ## Are you going to make use of the Cloud in the \*nix version of ClamAV?
 
-The simple answer is “yes”.  The complex answer is “when”. We are currently working on that roadmap and will keep everyone informed as that information becomes available.
+The simple answer is “yes”. The complex answer is “when”. We are currently working on that roadmap and will keep everyone informed as that information becomes available.
 
 ## Can I use Immunet with my current AV solution?
 
@@ -55,8 +55,8 @@ Please report __False Positives__ [here](https://www.clamav.net/reports/fp).
 
 ## Are there 64 bit versions of ClamAV for Windows as well as 32 bit?
 
-Yes. You can find both versions at [Clamav/downloads].
+Yes. You can find both versions at [ClamAV/downloads].
 
 [privacy policy]: https://www.cisco.com/c/en/us/about/legal/privacy.html
-[Clamav/downloads]: https://www.clamav.net/downloads#otherversions
+[ClamAV/downloads]: https://www.clamav.net/downloads#otherversions
 [AMP for Endpoints]: https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html

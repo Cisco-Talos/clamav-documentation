@@ -193,7 +193,7 @@ Byte compare subsignatures can be used to evaluate a numeric value at a given of
 
   - `offset` must be a positive hex or decimal value. This will be the number of bytes from the start of the referenced `subsigid_trigger` match within the file buffer to begin the comparison.
 
-- `byte_options` are used to specify the numeric type and endianess of the extracted byte sequence in that order as well as the number of bytes to be read. By default ClamAV will attempt to matchup up to the number of byte specified, unless the `e` (exact) option is specified or the numeric type is `b` (binary).  This field follows the form `[h|d|a|i][l|b][e]num_bytes`
+- `byte_options` are used to specify the numeric type and endianess of the extracted byte sequence in that order as well as the number of bytes to be read. By default ClamAV will attempt to matchup up to the number of byte specified, unless the `e` (exact) option is specified or the numeric type is `b` (binary). This field follows the form `[h|d|a|i][l|b][e]num_bytes`
 
   - `h|d|a|i` where `h` specifies the byte sequence will be in hex, `d` decimal, `a` automatic detection of hex or decimal at runtime, and `i` signifies raw binary data.
 

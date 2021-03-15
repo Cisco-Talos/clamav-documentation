@@ -20,7 +20,7 @@ Where:
 * `1` - The `magicbytes` use the body-based content matching [format](BodySignatureFormat.md).
 * `4` - direct memory comparison of `magicbytes` for partition types (HFS+, HFSX)
 
-`offset`: The offset from start of the file to match against.  May be `*` if `magictype` is 1.
+`offset`: The offset from start of the file to match against. May be `*` if `magictype` is 1.
 
 `name`: A descriptive name for the file type.
 

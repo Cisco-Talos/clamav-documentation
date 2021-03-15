@@ -4,7 +4,7 @@ Table Of Contents
 
 1. [Overview](faq-overview.md)
 2. [Selecting the Right Version of ClamAV for You](faq-whichversion.md)
-3. [Freshclam (Signature Updater)](faq-freshclam.md)
+3. [FreshClam (Signature Updater)](faq-freshclam.md)
 4. [Signature Database (CVD)](faq-cvd.md)
 5. [Misc](faq-misc.md)
 6. [Mailing Lists](faq-ml.md)

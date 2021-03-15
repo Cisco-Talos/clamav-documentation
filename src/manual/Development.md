@@ -76,7 +76,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre3-dev libssl-dev libxml2-dev zlib1g-dev
+    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
 
 #### Ubuntu
@@ -95,7 +95,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
         git valgrind
 ```
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using `apt`/`apt-get`.
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `apt`/`apt-get`.
 
 ```bash
     sudo apt-get install -y python3-pip
@@ -106,7 +106,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre3-dev libssl-dev libxml2-dev zlib1g-dev
+    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
 
 #### Fedora
@@ -119,7 +119,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
         git valgrind
 ```
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using `dnf`.
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
 
 ```bash
     sudo dnf install -y python3-pip
@@ -143,7 +143,7 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
         git valgrind
 ```
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using `dnf`.
+To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
 
 ```bash
     sudo dnf install -y python3-pip
@@ -288,7 +288,7 @@ foreach {
 popd
 Write-Host "`nVisual Studio 2017 Command Prompt variables set." -ForegroundColor Yellow
 
-cmake ..  -G Ninja                                                          `
+cmake .. -G Ninja                                                          `
     -D CMAKE_BUILD_TYPE="Debug"                                             `
     -D CMAKE_TOOLCHAIN_FILE="$VCPKG_PATH\scripts\buildsystems\vcpkg.cmake"  `
     -D CMAKE_INSTALL_PREFIX="install"
@@ -314,7 +314,7 @@ ClamAV is presently light on integration tests for libclamav, though you may thi
 
 #### Feature Tests
 
-ClamAV primarily has feature tests for ClamD and ClamScan, though basic verion tests do exist for FreshClam and SigTool as well. See `clamav-devel/unit_tests/CMakeLists.txt` and `clamav-devel/unit_tests/clamscan_test.py` for an example.
+ClamAV primarily has feature tests for ClamD and ClamScan, though basic version tests do exist for FreshClam and SigTool as well. See `clamav-devel/unit_tests/CMakeLists.txt` and `clamav-devel/unit_tests/clamscan_test.py` for an example.
 
 ### Building ClamAV with Autotools
 
@@ -341,9 +341,9 @@ Run `../configure --help` to see a full list of options. The following suggestio
 
 - Modify the `CFLAGS`, `CXXFLAGS`, `OBJCFLAGS` variables as follows (assuming you're build with `gcc`):
 
-  - Include `gdb` debugging information (`-ggdb`).  This will make it easier to debug with `gdb`.
+  - Include `gdb` debugging information (`-ggdb`). This will make it easier to debug with `gdb`.
 
-  - Disable optimizations (`-O0`).  This will ensure the line numbers you see in `gdb` match up with what is actually being executed.
+  - Disable optimizations (`-O0`). This will ensure the line numbers you see in `gdb` match up with what is actually being executed.
 
   Example:
 
@@ -377,15 +377,15 @@ Altogether, the following configure command can be used:
     CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
 ```
 
-NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `../configure` with `--enable-static --disable-shared`).  This is useful for using tools like `gprof` that do not support profiling code in shared objects.  However, there are two drawbacks to doing this:
+NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `../configure` with `--enable-static --disable-shared`). This is useful for using tools like `gprof` that do not support profiling code in shared objects. However, there are two drawbacks to doing this:
 
-- `clamscan`/`clamd` will not be able to extract files from RAR archives.  Based on the software license of the unrar library that ClamAV uses, the library can only be dynamically loaded.  ClamAV will attempt to dlopen the unrar library shared object and will continue on without RAR extraction support if the library can't be found (or if it doesn't get built, which is what happens if you indicate that shared libraries should not be built).
+- `clamscan`/`clamd` will not be able to extract files from RAR archives. Based on the software license of the unrar library that ClamAV uses, the library can only be dynamically loaded. ClamAV will attempt to dlopen the unrar library shared object and will continue on without RAR extraction support if the library can't be found (or if it doesn't get built, which is what happens if you indicate that shared libraries should not be built).
 
-- If you make changes to libclamav, you'll need to `make clean`, `make`, and `make install` again to have `clamscan`/`clamd` rebuilt using the new `libclamav.a`.  The makefiles don't seem to know to rebuild `clamscan`/`clamd` when `libclamav.a` changes (TODO, fix this).
+- If you make changes to libclamav, you'll need to `make clean`, `make`, and `make install` again to have `clamscan`/`clamd` rebuilt using the new `libclamav.a`. The makefiles don't seem to know to rebuild `clamscan`/`clamd` when `libclamav.a` changes (TODO, fix this).
 
 #### Running make
 
-Run the following to finishing building.  `-j2` in the code below is used to indicate that the build process should use 2 cores.  Increase this if your machine is more powerful.
+Run the following to finishing building. `-j2` in the code below is used to indicate that the build process should use 2 cores. Increase this if your machine is more powerful.
 
 ```bash
     make -j2
@@ -427,11 +427,11 @@ The following are useful flags to include when debugging clamscan:
 
 - `--dev-performance`: Print per-file statistics regarding how long scanning took and the times spent in various scanning stages
 
-- `--alert-broken`: This will attempt to detect broken executable files.  If an executable is determined to be broken, some functionality might not get invoked for the sample, and this could be an indication of an issue parsing the PE header or file.  This causes those binary to generate an alert instead of just continuing on. This flag replaces the `--detect-broken` flag from releases prior to 0.101.
+- `--alert-broken`: This will attempt to detect broken executable files. If an executable is determined to be broken, some functionality might not get invoked for the sample, and this could be an indication of an issue parsing the PE header or file. This causes those binary to generate an alert instead of just continuing on. This flag replaces the `--detect-broken` flag from releases prior to 0.101.
 
 - `--max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000 --max-htmlnotags=2000000 --max-scriptnormalize=2000000 --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000 --max-rechwp3=2000000 --pcre-match-limit=2000000 --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M --max-scantime=2000000`:
 
-  Effectively disables all file limits and maximums for scanning.  This is useful if you'd like to ensure that all files in a set get scanned, and would prefer clam to just run slowly or crash rather than skip a file because it encounters one of these thresholds
+  Effectively disables all file limits and maximums for scanning. This is useful if you'd like to ensure that all files in a set get scanned, and would prefer clam to just run slowly or crash rather than skip a file because it encounters one of these thresholds
 
 The following are useful flags to include when debugging rules that you're
 writing:
@@ -442,14 +442,14 @@ writing:
 
 - `--all-match`: Allows multiple signatures to match on a file being scanned
 
-- `--leave-temps --tmpdir=/tmp`: By default, ClamAV will attempt to extract embedded files that it finds, normalize certain text files before looking for matches, and unpack packed executables that it has unpacking support for. These flags tell ClamAV to write these intermediate files out to the directory specified.  Usually when a file is written, it will mention the file name in the --debug output, so you can have some idea at what stage in the scanning process a tmp file was created.
+- `--leave-temps --tmpdir=/tmp`: By default, ClamAV will attempt to extract embedded files that it finds, normalize certain text files before looking for matches, and unpack packed executables that it has unpacking support for. These flags tell ClamAV to write these intermediate files out to the directory specified. Usually when a file is written, it will mention the file name in the --debug output, so you can have some idea at what stage in the scanning process a tmp file was created.
 
 - `--dump-certs`: For signed PE files that match a rule, display information about the certificates stored within the binary.
   > _Note_: sigtool has this functionality as well and doesn't require a rule match to view the cert data
 
 ### Using gdb
 
-Given that you might want to pass a lot of arguments to `gdb`, consider taking advantage of the `--args` parameter.  For example:
+Given that you might want to pass a lot of arguments to `gdb`, consider taking advantage of the `--args` parameter. For example:
 
 ```bash
     gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/block_list.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515
@@ -464,9 +464,9 @@ For other documentation about how to use `gdb`, check out the following resource
 
 ## Hunting for Memory Leaks
 
-You can easily hunt for memory leaks with valgrind.  Check out this guide to get started: [Valgrind Quick Start](http://valgrind.org/docs/manual/quick-start.html)
+You can easily hunt for memory leaks with valgrind. Check out this guide to get started: [Valgrind Quick Start](http://valgrind.org/docs/manual/quick-start.html)
 
-If checking for leaks, be sure to run `clamscan` with samples that will hit as many of the unique code paths in the code you are testing.  An example invocation is as follows:
+If checking for leaks, be sure to run `clamscan` with samples that will hit as many of the unique code paths in the code you are testing. An example invocation is as follows:
 
 ```bash
     valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1
@@ -482,7 +482,7 @@ See the [mallopt man page](http://manpages.ubuntu.com/manpages/trusty/man3/mallo
 
 ## Computing Code Coverage
 
-gcov/lcov can be used to produce a code coverage report indicating which lines of code were executed on a single run or by multiple runs of `clamscan`.  NOTE: for these metrics to be collected, ClamAV needs to have been configured with the `--enable-coverage` option.
+gcov/lcov can be used to produce a code coverage report indicating which lines of code were executed on a single run or by multiple runs of `clamscan`. NOTE: for these metrics to be collected, ClamAV needs to have been configured with the `--enable-coverage` option.
 
 First, run the following to zero out all of the performance metrics:
 
@@ -490,7 +490,7 @@ First, run the following to zero out all of the performance metrics:
     lcov -z --directory . --output-file coverage.lcov.data
 ```
 
-Next, run ClamAV through whatever test cases you have.  Then, run lcov again to collect the coverage data as follows:
+Next, run ClamAV through whatever test cases you have. Then, run lcov again to collect the coverage data as follows:
 
 ```bash
     lcov -c --directory . --output-file coverage.lcov.data
@@ -508,7 +508,7 @@ For more information, visit the [lcov webpage](http://ltp.sourceforge.net/covera
 
 ## Profiling - Flame Graphs
 
-[FlameGraph](https://github.com/brendangregg/FlameGraph) is a great tool for generating interactive flamegraphs based collected profiling data.  The github page has thorough documentation on how to use the tool, but an overview is presented below:
+[FlameGraph](https://github.com/brendangregg/FlameGraph) is a great tool for generating interactive flamegraphs based collected profiling data. The github page has thorough documentation on how to use the tool, but an overview is presented below:
 
 First, install `perf`, which on Linux can be done via:
 
@@ -532,7 +532,7 @@ Invoke `clamscan` via `perf record` as follows, and run `perf script` to collect
     perf script > out.perf
 ```
 
-The `-F` parameter indicates how many samples should be collected during program execution.  If your scan will take a long time to run, a lower value should be sufficient.  Otherwise, consider choosing a higher value (on Ubuntu 18.04, 7250 is the max frequency, but it can be increased via `/proc/sys/kernel/perf_event_max_sample_rate`.
+The `-F` parameter indicates how many samples should be collected during program execution. If your scan will take a long time to run, a lower value should be sufficient. Otherwise, consider choosing a higher value (on Ubuntu 18.04, 7250 is the max frequency, but it can be increased via `/proc/sys/kernel/perf_event_max_sample_rate`.
 
 Check out the FlameGraph project and run the following commands to generate the flame graph:
 
@@ -546,13 +546,13 @@ Be sure to open it in a web browser like Chrome to be able to take full advantag
 
 ## Profiling - Callgrind
 
-Callgrind is a profiling tool included with `valgrind`.  This can be done by prepending `valgrind --tool=callgrind ` to the `clamscan` command.
+Callgrind is a profiling tool included with `valgrind`. This can be done by prepending `valgrind --tool=callgrind ` to the `clamscan` command.
 
 [kcachegrind](https://kcachegrind.github.io/html/Home.html) is a follow-on tool that will graphically present the profiling data and allow you to explore it visually, although if you don't already use KDE you'll have to install lots of extra packages to use it.
 
 ## System Call Tracing / Fault Injection
 
-strace can be used to track the system calls that are performed and provide the number of calls / time spent in each system call.  This can be done by prepending `strace -c ` to a `clamscan` command.  Results will look something like this:
+strace can be used to track the system calls that are performed and provide the number of calls / time spent in each system call. This can be done by prepending `strace -c ` to a `clamscan` command. Results will look something like this:
 
 ```bash
     % time     seconds  usecs/call     calls    errors syscall
@@ -594,7 +594,7 @@ strace can be used to track the system calls that are performed and provide the 
     100.00    0.874790                 69970        31 total
 ```
 
-`strace` can also be used for cool things like system call fault injection.  For instance, let's say you are curious whether the `read` bytecode API call is implemented in such a way that the underlying `read` system call could handle `EINTR` being returned (which can happen periodically).  To test this, write the following bytecode rule:
+`strace` can also be used for cool things like system call fault injection. For instance, let's say you are curious whether the `read` bytecode API call is implemented in such a way that the underlying `read` system call could handle `EINTR` being returned (which can happen periodically). To test this, write the following bytecode rule:
 
 ```c
     VIRUSNAME_PREFIX("BC.Heuristic.Test.Read.Passed")
@@ -647,7 +647,7 @@ It uses `pread64` under the hood, so the following command could be used for fau
     strace -e fault=pread64:error=EINTR:when=20+10 clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
 ```
 
-This command tells `strace` to skip the first 20 `pread64` calls (these appear to be used by the loader, which didn't seem to handle `EINTR` correctly) but to inject `EINTR` for every 10th call afterward.  We can see the injection in action and that the system call is retried successfully:
+This command tells `strace` to skip the first 20 `pread64` calls (these appear to be used by the loader, which didn't seem to handle `EINTR` correctly) but to inject `EINTR` for every 10th call afterward. We can see the injection in action and that the system call is retried successfully:
 
 ```c
     pread64(3, "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0"..., 65536, 15007744) = 65536

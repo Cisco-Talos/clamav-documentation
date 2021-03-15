@@ -20,4 +20,4 @@ Additionally, you can follow the signature name with the MD5 of the entire datab
 Eicar-Test-Signature:bc356bae4c42f19a3de16e333ba3569c
 ```
 
-Historically, signature ignores were added to `.ign` files.  This format is still functional, though it has been replaced by the `.ign2` database.
+Historically, signature ignores were added to `.ign` files. This format is still functional, though it has been replaced by the `.ign2` database.

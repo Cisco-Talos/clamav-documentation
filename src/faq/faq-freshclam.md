@@ -1,4 +1,4 @@
-# Freshclam FAQ
+# FreshClam FAQ
 
 The following FAQ should help you understand why `freshclam` may have failed to fetch the latest updates.
 
@@ -22,7 +22,7 @@ If it doesn't work, check your dns settings in `/etc/resolv.conf`. If it works, 
 
 ## WARNING: Incremental update failed, trying to download daily.cvd
 
-For some reason, incremental update failed. Freshclam can recover from this situation by downloading the whole daily.cvd.
+For some reason, incremental update failed. FreshClam can recover from this situation by downloading the whole daily.cvd.
 
 ## Database update process failed: Downloaded database had lower version than advertised
 
@@ -48,7 +48,7 @@ The functionality level of the database determines which scanner engine version 
 
 ## Ignoring mirror &lt;IP&gt; (has connected too many times with an outdated version)
 
-If you are experiencing this problem, please do the following:  Stop the `freshclam` daemon if it's running, delete both `mirrors.dat` and `daily.cvd`, then restart the `freshclam` daemon. Freshclam will then download a new `daily.cvd` and will be up-to-date.
+If you are experiencing this problem, please do the following:  Stop the `freshclam` daemon if it's running, delete both `mirrors.dat` and `daily.cvd`, then restart the `freshclam` daemon. FreshClam will then download a new `daily.cvd` and will be up-to-date.
 
 ## HTTP Error Codes
 
@@ -56,9 +56,9 @@ If you are receiving a 403, 503, or 1020 error codes when downloading from Cloud
 
 If FreshClam is failing and you're not sure why, you may run `freshclam -v` for "Verbose Mode" to see the HTTP request & response details (ClamAV 0.102+).
 
-After checking that you are using a current version of ClamAV, please discontinue whatever method of download you are using and immediately move to using either FreshClam or [cvdupdate](https://github.com/micahsnyder/cvdupdate).  These are the two supported methods for downloading AV updates from ClamAV.  All other methods may be rate limited, or blocked at our discretion.  Use of Wget, Curl, or other command line tools that are scripted are explicitly denied.
+After checking that you are using a current version of ClamAV, please discontinue whatever method of download you are using and immediately move to using either FreshClam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). These are the two supported methods for downloading AV updates from ClamAV. All other methods may be rate limited, or blocked at our discretion. Use of Wget, Curl, or other command line tools that are scripted are explicitly denied.
 
-If you are receiving a 429, that means you are rate limited.  You're download too fast or too much.  Please use Freshclam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limted, however cvdupdate should handle this gracefully.
+If you are receiving a 429, that means you are rate limited. You're download too fast or too much. Please use FreshClam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limited, however cvdupdate should handle this gracefully.
 
 If you have checked all of the above and you are still seeing errors, please open a ticket using the below link.
 

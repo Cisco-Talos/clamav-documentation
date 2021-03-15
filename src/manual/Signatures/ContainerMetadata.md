@@ -12,7 +12,7 @@ where the corresponding fields are:
 
 - `VirusName:` Virus name to be displayed when signature matches.
 
-- `ContainerType:` The file type containing the target file.  For example:
+- `ContainerType:` The file type containing the target file. For example:
   - `CL_TYPE_ZIP`,
   - `CL_TYPE_RAR`,
   - `CL_TYPE_ARJ`,

@@ -266,7 +266,7 @@ It’s possible to scan a file or descriptor using:
         struct cl_scan_options *options);
 ```
 
-Both functions will store a virus name under the pointer `virname`, the virus name is part of the engine structure and must not be released directly. If the third argument (`scanned`) is not NULL, the functions will increase its value with the size of scanned data (in `CL_COUNT_PRECISION` units). The last argument (`options`) requires a pointer to a data structure that specifies the scan options.  The data structure should be `memset()` Each variable in the structure is a bit-flag field.  The structure definition is:
+Both functions will store a virus name under the pointer `virname`, the virus name is part of the engine structure and must not be released directly. If the third argument (`scanned`) is not NULL, the functions will increase its value with the size of scanned data (in `CL_COUNT_PRECISION` units). The last argument (`options`) requires a pointer to a data structure that specifies the scan options. The data structure should be `memset()` Each variable in the structure is a bit-flag field. The structure definition is:
 
 ```c
     struct cl_scan_options {
@@ -288,9 +288,9 @@ Supported flags for each of the fields are as follows:
 - **CL_SCAN_GENERAL_COLLECT_METADATA**
     Collect metadata (--gen-json)
 - **CL_SCAN_GENERAL_HEURISTICS**
-    Option to enable heuristic alerts.  Required for any of the heuristic alerting options to work.
+    Option to enable heuristic alerts. Required for any of the heuristic alerting options to work.
 
-`parse` - Options to enable/disable specific parsing capabilities.  Generally you will want to enable all parsers.  The easiest way to do this is to set the parse flags to ~0.
+`parse` - Options to enable/disable specific parsing capabilities. Generally you will want to enable all parsers. The easiest way to do this is to set the parse flags to ~0.
 
 - **CL_SCAN_PARSE_ARCHIVE**
     This flag enables transparent scanning of various archive formats.
@@ -303,13 +303,13 @@ Supported flags for each of the fields are as follows:
 - **CL_SCAN_PARSE_HWP**
     Enables scanning of Hangul Word Processor (HWP) files.
 - **CL_SCAN_PARSE_XMLDOCS**
-    Enables scanning of XML-formatted documents (e.g. Word, Excel, Powerpoint, HWP).
+    Enables scanning of XML-formatted documents (e.g. Word, Excel, PowerPoint, HWP).
 - **CL_SCAN_PARSE_MAIL**
     Enable support for mail files.
 - **CL_SCAN_PARSE_OLE2**
     Enables support for OLE2 containers (used by MS Office and .msi files).
 - **CL_SCAN_PARSE_HTML**
-    This flag enables HTML normalisation (including ScrEnc decryption).
+    This flag enables HTML normalization (including ScrEnc decryption).
 - **CL_SCAN_PARSE_PE**
     This flag enables deep scanning of Portable Executable files and allows libclamav to unpack executables compressed with run-time unpackers.
 
@@ -320,11 +320,11 @@ Supported flags for each of the fields are as follows:
 - **CL_SCAN_HEURISTIC_ENCRYPTED_ARCHIVE**
     With this flag the library will mark encrypted archives as viruses (encrypted .zip, .7zip, .rar).
 - **CL_SCAN_HEURISTIC_ENCRYPTED_DOC**
-    With this flag the library will mark encrypted docuemnts as viruses (encrypted .pdf).
+    With this flag the library will mark encrypted documents as viruses (encrypted .pdf).
 - **CL_SCAN_HEURISTIC_BROKEN**
     libclamav will try to detect broken executables and mark them as Broken.Executable.
 - **CL_SCAN_HEURISTIC_EXCEEDS_MAX**
-    Alert when the scan of any file exceeds maximums such as max filesize, max scansize, max recursion level.
+    Alert when the scan of any file exceeds maximums such as max-filesize, max-scansize, max-recursion level.
 - **CL_SCAN_HEURISTIC_PHISHING_SSL_MISMATCH**
     Heuristic for phishing module: alert on SSL mismatches in URLs.
 - **CL_SCAN_HEURISTIC_PHISHING_CLOAK**
@@ -390,7 +390,7 @@ Use `clamav-config` to check compilation information for libclamav.
 
 ### Example
 
-You will find an example scanner application in the clamav source package (/example). Provided you have ClamAV already installed, execute the following to compile it:
+You will find an example scanner application in the clamav source under `/example`. Provided you have ClamAV already installed, execute the following to compile it:
 
 ```bash
     gcc -Wall ex1.c -o ex1 -lclamav

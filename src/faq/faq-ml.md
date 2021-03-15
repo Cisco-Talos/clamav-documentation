@@ -25,7 +25,7 @@ See previous FAQ.
 
 ## I've been unsubscribed from one of the mailing-lists. What happened?
 
-There are two possible reasons: If your account generates too many bounces you'll be automatically unsubscribed.  Please subscribe again with a more reliable account. If we receive even one _out of office notification_ from your vacation program,  your address will be unsubscribed and banned from our mailing-lists forever.  Sorry for that, there are just too many stupid people out there.
+There are two possible reasons: If your account generates too many bounces you'll be automatically unsubscribed. Please subscribe again with a more reliable account. If we receive even one _out of office notification_ from your vacation program, your address will be unsubscribed and banned from our mailing-lists forever. Sorry for that, there are just too many stupid people out there.
 
 ## How do I disable mail delivery from the mailing-list I'm subscribed to?
 
