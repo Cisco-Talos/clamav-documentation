@@ -1,6 +1,6 @@
 # Body-based Signature Content Format
 
-ClamAV stores all body-based (content-based) signatures in a hexadecimal format, with exception to ClamAV's Yara rule support. In this section by a hex-signature we mean a fragment of malware’s body converted into a hexadecimal string which can be additionally extended using various wildcards.
+ClamAV stores all body-based (content-based) signatures in a hexadecimal format, with exception to ClamAV's YARA rule support. In this section by a hex-signature we mean a fragment of malware’s body converted into a hexadecimal string which can be additionally extended using various wildcards.
 
 ## Hexadecimal format
 

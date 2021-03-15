@@ -184,7 +184,7 @@ Improvements to existing executable (PE/ELF/MachO) parsing code would likely be 
 
 ### Add Support for Matching on .NET Internals
 
-Yara extracts certain properties of .NET executables and makes them available for signatures to use for detection: https://yara.readthedocs.io/en/v3.6.0/modules/dotnet.html
+YARA extracts certain properties of .NET executables and makes them available for signatures to use for detection: https://yara.readthedocs.io/en/v3.6.0/modules/dotnet.html
 
 Can ClamAV do something similar?  For instance, extract the GUIDs and allow matching on those the way we do entries in the PE VersionInfo section?
 

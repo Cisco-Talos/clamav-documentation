@@ -22,7 +22,7 @@
     - [Content-based Signature Format](manual/Signatures/BodySignatureFormat.md)
         - [Logical Signatures](manual/Signatures/LogicalSignatures.md)
         - [Extended Signatures](manual/Signatures/ExtendedSignatures.md)
-    - [Yara Rules](manual/Signatures/YaraRules.md)
+    - [YARA Rules](manual/Signatures/YaraRules.md)
     - [Phishing Signatures](manual/Signatures/PhishSigs.md)
     - [Bytecode Signatures](manual/Signatures/BytecodeSignatures.md)
     - [Container Metadata Signatures](manual/Signatures/ContainerMetadata.md)
