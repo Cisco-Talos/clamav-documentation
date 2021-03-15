@@ -1,5 +1,5 @@
 
-# ClamAV <a href="https://www.cisco.com/"><img align="right" img width="100" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/cisco.png" alt='Cisco Systems, Inc'></a>
+# ClamAV
 
 ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways. It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates. The core of the package is an anti-virus engine available in a form of shared library.
 
