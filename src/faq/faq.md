@@ -2,23 +2,22 @@
 
 Table Of Contents
 
-1. [Overview](faq-overview.md)
-2. [Selecting the Right Version of ClamAV for You](faq-whichversion.md)
-3. [FreshClam (Signature Updater)](faq-freshclam.md)
-4. [Signature Database (CVD)](faq-cvd.md)
-5. [Misc](faq-misc.md)
-6. [Mailing Lists](faq-ml.md)
-7. [Safe Browsing](faq-safebrowsing.md)
-8. [Troubleshooting](faq-troubleshoot.md)
-9. [Interpreting Scan Alerts](faq-scan-alerts.md)
-10. [Upgrading](faq-upgrade.md)
-11. [Win32](faq-win32.md)
-12. [ClamAV EOL Policy](faq-eol.md)
-13. [PUA (Potentially Unwanted Application)](faq-pua.md)
-14. [Ignore](faq-ignore.md)
-15. [Uninstall](faq-uninstall.md)
+1. [Selecting the Right Version of ClamAV for You](faq-whichversion.md)
+2. [FreshClam (Signature Updater)](faq-freshclam.md)
+3. [Signature Database (CVD)](faq-cvd.md)
+4. [Misc](faq-misc.md)
+5. [Mailing Lists](faq-ml.md)
+6. [Safe Browsing](faq-safebrowsing.md)
+7. [Troubleshooting](faq-troubleshoot.md)
+8. [Interpreting Scan Alerts](faq-scan-alerts.md)
+9.  [Upgrading](faq-upgrade.md)
+10. [Win32](faq-win32.md)
+11. [ClamAV EOL Policy](faq-eol.md)
+12. [PUA (Potentially Unwanted Application)](faq-pua.md)
+13. [Ignore](faq-ignore.md)
+14. [Uninstall](faq-uninstall.md)
 
-ClamAV FAQ © 2019 Cisco Systems, Inc.
+ClamAV FAQ © 2021 Cisco Systems, Inc.
 
 This document is distributed under the terms of the GNU General Public License v2.
 

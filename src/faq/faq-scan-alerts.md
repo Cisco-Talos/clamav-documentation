@@ -61,7 +61,7 @@ Second, if you're technically inclined, you may want to try to read the signatur
     Win.Downloader.DDECmdExec-6683887-5;Engine:81-255,Target:0;4;0:1f8b;0:255044462d;0:4d5a{-100}50450000;7c27{-255}2721;(0=0&1=0&2=0)&3/(?<!\x20)[=+\-@]\s*?(\w+\s*?\x28)?.{0,50}(certutil|cmd|cmstp|cscript|dnscmd|msiexec|netsh|regsvr32|rpcping|rundll32|schtasks|telnet|tscon|tsdiscon|wmic|wscript).{0,50}\|\s*?\x27[^\x27]{5,255}\x27\s*?\x21/i
     ```
 
-5. Reading ClamAV signatures is hard. You can familiarize yourself with the ClamAV signature format by reading the documentation on [writing ClamAV Signatures](https://github.com/Cisco-Talos/clamav-devel/blob/dev/0.101/docs/UserManual/Signatures.md#introduction).
+5. Reading ClamAV signatures is hard. You can familiarize yourself with the ClamAV signature format by reading the documentation on [writing ClamAV Signatures](https://github.com/Cisco-Talos/clamav/blob/dev/0.101/docs/UserManual/Signatures.md#introduction).
 
     To get a jump start, you can make `sigtool` print out a more human readable represenation of what the signature is looking for. Pipe the output from grep directly into sigtool by using the `--decode-sigs` option:
 

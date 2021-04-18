@@ -8,8 +8,8 @@ This database is small, and the settings are largely vestigial. The team has not
 
 The strings and values referenced in `daily.cfg` are best cross-referenced with the macros and structures defined here:
 
-* https://github.com/Cisco-Talos/clamav-devel/blob/main/libclamav/dconf.h#L49
-* https://github.com/Cisco-Talos/clamav-devel/blob/main/libclamav/dconf.c#L54
+* https://github.com/Cisco-Talos/clamav/blob/main/libclamav/dconf.h#L49
+* https://github.com/Cisco-Talos/clamav/blob/main/libclamav/dconf.c#L54
 
 The format for a DCONF signature is:
 

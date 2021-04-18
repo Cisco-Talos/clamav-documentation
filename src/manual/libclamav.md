@@ -13,7 +13,9 @@ Libclamav is licensed under the GNU GPL v2 license. This means you are **not all
 The library has a built-in support for 32- and 64-bit Portable Executable, ELF and Mach-O files. Additionally, it can handle PE files compressed or obfuscated with the following tools:
 
 - Aspack (2.12)
-- UPX (all versions)
+- UPX
+  - PE (Windows) built-in
+  - ELF, Mach-O enabled via bytecode signatures
 - FSG (1.3, 1.31, 1.33, 2.0)
 - Petite (2.x)
 - PeSpin (1.1)

@@ -107,7 +107,7 @@ Our configure scripts will detect if your compiler is affected by this bug and r
 
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]: http://www.gnupg.org/
-[sources]: https://github.com/Cisco-Talos/clamav-devel
+[sources]: https://github.com/Cisco-Talos/clamav
 [precompiled packages]: http://www.clamav.net/download.html#otherversions
 [Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads
