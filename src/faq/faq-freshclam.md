@@ -56,9 +56,9 @@ If you are receiving a 403, 503, or 1020 error codes when downloading from Cloud
 
 If FreshClam is failing and you're not sure why, you may run `freshclam -v` for "Verbose Mode" to see the HTTP request & response details (ClamAV 0.102+).
 
-After checking that you are using a current version of ClamAV, please discontinue whatever method of download you are using and immediately move to using either FreshClam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). These are the two supported methods for downloading AV updates from ClamAV. All other methods may be rate limited, or blocked at our discretion. Use of Wget, Curl, or other command line tools that are scripted are explicitly denied.
+After checking that you are using a current version of ClamAV, please discontinue whatever method of download you are using and immediately move to using either FreshClam or [cvdupdate](https://github.com/Cisco-Talos/cvdupdate). These are the two supported methods for downloading AV updates from ClamAV. All other methods may be rate limited, or blocked at our discretion. Use of Wget, Curl, or other command line tools that are scripted are explicitly denied.
 
-If you are receiving a 429, that means you are rate limited. You're download too fast or too much. Please use FreshClam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limited, however cvdupdate should handle this gracefully.
+If you are receiving a 429, that means you are rate limited. You're download too fast or too much. Please use FreshClam or [cvdupdate](https://github.com/Cisco-Talos/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limited, however cvdupdate should handle this gracefully.
 
 If you have checked all of the above and you are still seeing errors, please open a ticket using the below link.
 
