@@ -11,7 +11,7 @@ Table Of Contents
 
 ## Purpose
 
-This User Guide presents an overview of the various ways that *libclamav* can be used through the tools provided by ClamAV. To learn more about how to better use each facet of ClamAV that interests you, please follow the links provided.
+This user guide presents an overview of the various ways that *libclamav* can be used through the tools provided by ClamAV. To learn more about how to better use each facet of ClamAV that interests you, please follow the links provided.
 
 ## Daemon
 

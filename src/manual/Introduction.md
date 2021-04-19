@@ -1,22 +1,28 @@
 
 # ClamAV
 
-ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways. It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates. The core of the package is an anti-virus engine available in a form of shared library.
-
-ClamAV is brought to you by Cisco Systems, Inc.
-
 <p align="center">
   <a href="https://www.clamav.net/">
     <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/clam-antivirus/clamav-docs/main/images/logo.png" alt='Maeve, the ClamAV mascot'>
   </a>
 </p>
 
+ClamAV is an open source (GPLv2) anti-virus toolkit, designed especially for e-mail scanning on mail gateways. It provides a number of utilities including a flexible and scalable multi-threaded daemon, a command line scanner and advanced tool for automatic database updates. The core of the package is an anti-virus engine available in a form of shared library.
+
+> _Tip_: ClamAV is not a traditional anti-virus or endpoint security suite. For a fully featured modern endpoint security suite, check out *Cisco Secure Endpoint*. See ["related products"](#related-products), below, for more details.
+
+ClamAV is brought to you by Cisco Systems, Inc.
+
+## Community Projects
+
+ClamAV has a diverse ecosystem of [community projects, products, and other tools](Installing/Community-projects.md) that either depend on ClamAV to provide malware detection capabilities or supplement ClamAV with new features such as improved support for 3rd party signature databases, graphical user interfaces (GUI), and more.
+
 ## Features
 
 - ClamAV is designed to scan files quickly.
-- Real time protection (Linux only). Our scanning daemon supports on-access scanning on modern versions of Linux, including the ability to block file access until a file has been scanned.
-- ClamAV detects over 1 million viruses, worms and trojans, including Microsoft Office macro viruses, mobile malware, and other threats.
-- The built-in bytecode interpreter allows the ClamAV signature writers to create and distribute very complex detection routines and remotely enhance the scanner’s functionality.
+- Real time protection (Linux only). The ClamOnAcc client for the ClamD scanning daemon provides on-access scanning on modern versions of Linux. This includes an optional capability to block file access until a file has been scanned (on-access prevention).
+- ClamAV detects millions of viruses, worms, trojans, and other malware, including Microsoft Office macro viruses, mobile malware, and other threats.
+- ClamAV's bytecode signature runtime, powered by either LLVM or our custom bytecode interpreter, allows the ClamAV signature writers to create and distribute very complex detection routines and remotely enhance the scanner’s functionality.
 - Signed signature databases ensure that ClamAV will only execute trusted signature definitions.
 - ClamAV scans within archives and compressed files but also protects against archive bombs. Built-in archive extraction capabilities include:
   - Zip (including SFX)
@@ -105,7 +111,7 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
 
 ## Recommended System Requirements
 
-The following minimum recommended system requirements are for using `clamscan` or `clamd` and `clamdscan` binaries with the standard ClamAV signature database provided by Cisco.
+The following minimum recommended system requirements are for using ClamScan or ClamD applications with the standard ClamAV signature database provided by Cisco.
 
 Minimum recommended RAM for ClamAV:
 
@@ -123,7 +129,7 @@ Minimum available hard disk space required:
 
 For the ClamAV application we recommend having 5 GB of free space available. This recommendation is in addition to the recommended disk space for each OS.
 
-_Please note_: The tests to determine these minimum requirements were performed on systems that were not running other applications. If other applications are being run on the system, additional resources will be required in addition to our recommended minimums.
+> _Note_: The tests to determine these minimum requirements were performed on systems that were not running other applications. If other applications are being run on the system, additional resources will be required in addition to our recommended minimums.
 
 ## Mailing lists and IRC channel
 
@@ -138,17 +144,12 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
   - technical discussions
 - **clamav-virusdb (at) lists.clamav.net**
   - database update announcements, moderated
+- **clamav-binary (at) lists.clamav.net**
+  - discussion and announcements for package maintainers
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-Alternatively you can try asking on the `#clamav` IRC channel - launch your favorite irc client and type:
-
-```bash
-/server irc.freenode.net
-/join #clamav
-```
-
-If you prefer Discord over IRC, join the [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw). The ClamAV Discord `#general`, and `#irc-verbose` channels are bridged with the `#clamav` IRC channel using a pair of bots to relay messages.
+You can also join the community on our [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw). If you prefer IRC, the Discord `#general`, and `#irc-verbose` channels are bridged with the `#clamav` IRC channel on `irc.freenode.net` using a pair of bots to relay messages.
 
 ## Submitting New or Otherwise Undetected Malware
 
@@ -159,6 +160,12 @@ If you've got a virus which is not detected by the current version of ClamAV usi
 Likewise, if you have a benign file that is flagging as a virus and you wish to report a False Positive, please submit the sample for review at our website:
 
 <https://www.clamav.net/reports/fp>
+
+## Related Products
+
+[Cisco Secure Endpoint](https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html) (formerly AMP for Endpoints) is Cisco's cloud-based security suite for commercial and enterprise customers. Secure Endpoint is available for Windows, Linux, and macOS and provides superior malware detection capabilities, behavioral monitoring, dynamic file analysis, endpoint isolation, analytics, and threat hunting. Secure Endpoint sports a modern administrative web interface (dashboard).
+
+[Immunet](https://www.immunet.com/) is a cloud-based antivirus application for Windows that is free for non-commercial use. Immunet offers great malware detection efficacy but, as a completely free product, Immunet's does not have same features or the quality user experience that Secure Endpoint offers. There is an Immunet user forum but Cisco offers no official user support.
 
 <p align="center">
   <a href="https://www.cisco.com/">

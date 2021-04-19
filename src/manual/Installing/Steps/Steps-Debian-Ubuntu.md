@@ -1,36 +1,33 @@
-# Installation on macOS (Mac OS X)
+# Installation on Debian and Ubuntu Linux Distributions
 
-Below are the steps for installing ClamAV from source on Apple macOS.
+Below are the steps for installing ClamAV from source on Debian and Ubuntu Linux.
 
 ## Install prerequisites
 
-The easiest way to install prerequisites on macOS is to use [Homebrew](https://brew.sh/)
-
-1. Install Homebrew
-    ```bash
-    /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-    ```
-
-2. Install ClamAV dependencies
-    1. Install XCode's Command Line Tools
+1. Install ClamAV dependencies
+    1. Install the developer tools
         ```bash
-        xcode-select --install
+        sudo apt-get install build-essential
         ```
     2. Install library dependencies
         ```bash
-        brew install openssl zlib pcre2 json-c
+        sudo apt-get install openssl libssl-dev libcurl4-openssl-dev zlib1g-dev libpng-dev libxml2-dev libjson-c-dev libbz2-dev libpcre2-dev ncurses-dev
+        ```
+    3. (very optional) Those wishing to use clamav-milter may wish to install the following
+        ```bash
+        sudo apt-get install libmilter1.0.1 libmilter-dev
         ```
 
-3. Install the unit testing dependencies
+2. Install the unit testing dependencies
     ```bash
-    brew install check check-devel
+    sudo apt-get install valgrind check check-devel
     ```
 
 > _Note_: LLVM is also an optional dependency. LLVM will not provide any additional features, but is an alternative method for executing bytecode signatures versus using the built-in bytecode interpreter. Limited performance testing between LLVM and the bytecode interpreter did not yield conclusive evidence that one is "better" than the other. For the sake of simplicity, it is not recommended to install LLVM.
 
 ## Download the latest stable release
 
-1. Open a browser and navigate to [the ClamAV downloads page](http://www.clamav.net/downloads)
+1. Open a browser and navigate to [the ClamAV downloads page](https://www.clamav.net/downloads)
 2. Click `clamav-<version>.tar.gz` link to download the latest stable release.
 
 ## Extract the source archive
@@ -43,16 +40,12 @@ cd clamav-<version>
 
 ## Configure the build
 
-Homebrew installs libraries and applications under `/usr/local/Cellar/<package>/<version>/`.
-
-To configure the ClamAV build using our homebrew-installed dependencies, you may need to reference some of them explicitly. Others may be detected automatically.
+ClamAV's configure script should detect each of the above dependencies automatically.
 
 ### Typical `./configure` usage
 
-> _Note_: Your Homebrew-installed package version directories may differ slightly.
-
 ```bash
-./configure --with-openssl=/usr/local/Cellar/openssl/1.0.2l --with-zlib=/usr/local/Cellar/zlib/1.2.11/ --with-libjson=yes --enable-check
+./configure --enable-check
 ```
 
 Once `./configure` completes, it will print a summary. Verify that the packages you installed are in fact being detected.
@@ -61,17 +54,17 @@ Example configure summary output:
 
 ```bash
 configure: Summary of detected features follows
-            OS          : darwin17.2.0
-            pthreads    : yes ()
+            OS          : linux-gnu
+            pthreads    : yes (-lpthread)
 configure: Summary of miscellaneous features
-            check       : -L/usr/local/lib -lcheck -R/usr/local/lib  (auto)
-            fanotify    : no (disabled)
+            check       : -lcheck_pic -pthread -lrt -lm -lsubunit
+            fanotify    : yes
             fdpassing   : 1
             IPv6        : yes
 configure: Summary of optional tools
             clamdtop    : -lncurses (auto)
             milter      : yes (disabled)
-            clamsubmit  : yes (libjson-c-dev found at /usr/local), libcurl-devel found at /usr)
+            clamsubmit  : yes (libjson-c-dev found at /usr), libcurl-devel found at /usr)
 configure: Summary of engine performance features
             release mode: yes
             llvm        : no (disabled)
@@ -80,18 +73,20 @@ configure: Summary of engine detection features
             bzip2       : ok
             zlib        : /usr
             unrar       : yes
-            preclass    : yes (libjson-c-dev found at /usr/local)
-            pcre        : /usr/local/Cellar/pcre2/10.32
+            preclass    : yes (libjson-c-dev found at /usr)
+            pcre        : /usr
             libmspack   : yes (Internal)
             libxml2     : yes, from /usr
             yara        : yes
             fts         : yes (libc)
 ```
 
-If you experience an error wherein `configure` output claims that `gcc` is unable to build an executable -- please see the [Troubleshooting section at the bottom](#configure----gcc-failed-to-build-executable).
-
 ### Additional popular `./configure` options
 
+* `--with-systemdsystemunitdir` - Do not install `systemd` socket files. This option disables systemd support, but will allow you to `make install` to a user-owned directory without requiring `sudo`/root privileges:
+    ```bash
+    ./configure --with-systemdsystemunitdir=no
+    ```
 * `--sysconfdir` - Install the configuration files to `/etc` instead of `/usr/local/etc`:
     ```bash
     ./configure --sysconfdir=/etc
@@ -103,7 +98,7 @@ If you experience an error wherein `configure` output claims that `gcc` is unabl
         ```
     * Example 2: Install ClamAV locally on an unprivileged shell account.
         ```bash
-        ./configure --prefix=$HOME/clamav --disable-clamav
+        ./configure --prefix=$HOME/clamav --disable-clamav --with-systemdsystemunitdir=no
         ```
 * `--disable-clamav` - _Don't_ drop super-user priveleges to run `freshclam` or `clamd` as the `clamav`* user.
     ```bash
@@ -121,8 +116,6 @@ Compile ClamAV with:
 ```bash
 make -j2
 ```
-
-If you experience error messages wherein the compiler is unable to find the correct openssl header or library files, you may need to reconfigure and provide explicit header and library paths. See the [Troubleshooting section below for details](#make----failed-to-find-correct-openssl-header-or-library-files).
 
 ## Run ClamAV Unit Tests (Optional)
 
@@ -165,10 +158,11 @@ Testsuite summary for ClamAV 0.100.2
 
 > _Notes_:
 >
+> * The `*.vg.sh` tests will be skipped unless you run `make check VG=1`.
 > * The `check7_clamd.hg.sh` (helgrind) is presently disabled and will be skipped.
->   * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav-devel/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
+>   * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
 
-If you have a failure or an error in the unit tests, it could be that you are missing one or more of the prerequisites or that there is miss-match in the header files after upgrading to a newer version of macOS. If the latter, please see the [Troubleshooting section at the bottom](#make-check----unit-tests-failed-for-seemingly-no-reason).
+If you have a failure or an error in the unit tests, it could be that you are missing one or more of the prerequisites.
 
 If you are investigating a failure, please do the following:
 
@@ -180,7 +174,7 @@ Use `less` to read the log for the failed test.
 Example:
 
 ```bash
-less check4_clamd.sh.log`
+less check4_clamd.sh.log
 ```
 
 To submit a bug report regarding unit text failures, please follow these [bug reporting steps](../Installing-from-source-Unix.md#Reporting-a-unit-test-failure-bug).
@@ -204,7 +198,7 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
 
 1. Copy the sample config. You may need to use `sudo`:
     ```bash
-    cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
+        cp /usr/local/etc/freshclam.conf.sample /usr/local/etc/freshclam.conf
     ```
 2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
@@ -228,9 +222,13 @@ Before you can use `freshclam` to download updates, you need to create a `freshc
 
 You can run `clamscan` without setting the config options for `clamd`. However, the `clamd` scanning daemon allows you to use `clamdscan` to perform faster a-la-carte scans, allows you to run multi-threaded scans, and allows you to use `clamav-milter` if you want to use ClamAV as a mail filter if you host an email server.
 
+Additionally, if you are a running modern versions of Linux where the `FANOTIFY` kernel feature is enabled, `clamd` has a feature run with On-Access Scanning*. *When properly configured*, On-Access Scanning can scan files as they are accessed and optionally block access to the file in the event that a signature alerted.
+
+> _Note_: At this time, for On-Access Scanning to work, `clamd` must run with `sudo`/root privileges. For more details, please see our documentation on On-Access Scanning.
+
 1. Copy the sample config. You may need to use `sudo`:
     ```bash
-    cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
+        cp /usr/local/etc/clamd.conf.sample /usr/local/etc/clamd.conf
     ```
 2. Modify the config file using your favorite text editor. Again, you may need to use `sudo`.
     * At a minimum, remove the `Example` line so `freshclam` can use the config.
@@ -246,6 +244,25 @@ You can run `clamscan` without setting the config options for `clamd`. However, 
     * `LogClean`
     * `LogRotate`
     * `User`
+    * `ScanOnAccess`
+        * `OnAccessIncludePath`
+        * `OnAccessExcludePath`
+        * `OnAccessPrevention`
+
+### Configure SELinux for ClamAV
+
+Certain distributions (notably RedHat variants) when operating with SELinux enabled use the non-standard `antivirus_can_scan_system` SELinux option instead of `clamd_can_scan_system`.
+
+At this time, libclamav only sets the `clamd_can_scan_system` option, so you may need to manually enable `antivirus_can_scan_system`. If you don't perform this step, freshclam will log something like this when it tests the newly downloaded signature databases:
+
+```bash
+During database load : LibClamAV Warning: RWX mapping denied: Can't allocate RWX Memory: Permission denied
+```
+
+To allow ClamAV to operate under SELinux, run the following:
+```bash
+setsebool -P antivirus_can_scan_system 1
+```
 
 ### Download / Update the signature database
 
@@ -261,42 +278,34 @@ If you installed to another location:
 /<path>/<to>/<clamav>/bin/freshclam
 ```
 
+> _Important_: It is common on Ubuntu after a fresh install to see the following error the first time you use ClamAV:
+> ```bash
+> freshclam
+>
+> freshclam: error while loading shared libraries: libclamav.so.7: cannot open shared object   file: No such file or directory
+> ```
+>
+> You can fix this error by using ldconfig to rebuild the library search path.
+> ```bash
+> sudo ldconfig
+> ```
+
 ### Users and on user privileges
 
-If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitely configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature updates.
+If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitly configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature updates.
 
 The user that `clamd`, `clamdscan`, and `clamscan` run as may be the same user, but if it isn't -- it merely needs _read_ access to the database directory.
 
 If you choose to use the default `clamav` user to run `freshclam` and `clamd`, you'll need to create the clamav group and the clamav user account the first time you install ClamAV.
 
-Prep by identifying an unused group id (gid), and an unused user UniqueID.
-
-This command will display all current group PrimaryGroupIDs:
 ```bash
-dscl . list /Groups PrimaryGroupID | tr -s ' ' | sort -n -t ' ' -k2,2
+    groupadd clamav
+    useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
 ```
 
-This command will display all current user UniqueIDs:
+Finally, you will want to set user ownership of the database directory. For example:
 ```bash
-dscl . list /Users UniqueID | tr -s ' ' | sort -n -t ' ' -k2,2
-```
-
-Then, these commands can be used to create the `clamav` group and `clamav` user.
-```bash
-sudo dscl . create /Groups/clamav
-sudo dscl . create /Groups/clamav RealName "Clam Antivirus Group"
-sudo dscl . create /Groups/clamav gid 799           # Ensure this is unique!
-sudo dscl . create /Users/clamav
-sudo dscl . create /Users/clamav RealName "Clam Antivirus User"
-sudo dscl . create /Users/clamav UserShell /bin/false
-sudo dscl . create /Users/clamav UniqueID 599       # Ensure this is unique!
-sudo dscl . create /Users/clamav PrimaryGroupID 799 # Must match the above gid!
-```
-
-Finally, you will want to set user ownership of the database directory.
-For example:
-```bash
-sudo chown -R clamav:clamav /usr/local/share/clamav
+    sudo chown -R clamav:clamav /usr/local/share/clamav
 ```
 
 ## Usage
@@ -304,59 +313,3 @@ sudo chown -R clamav:clamav /usr/local/share/clamav
 You should be all set up to run scans.
 
 Take a look at our [usage documentation](../../Usage.md) to learn about how to use ClamAV each of the utilities.
-
-## Troubleshooting
-
-### Configure -- `gcc` failed to build executable
-
-It is possible that `gcc`/`clang` is misconfigured. This is particularly likely after an upgrade to a newer versions of macOS (e.g after an upgrade from macOS High Sierra to macOS Mojave).
-
-Open Terminal, and run the following:
-
-```bash
-xcode-select --install
-```
-
-This will download and install xcode developer tools and fix the problem. _You will be prompted (in the macOS GUI) to accept the license agreement before it will continue._
-As a follow on step, you _may_ need to reset the path to Xcode if you have several versions or want the command line tools to run without Xcode.
-
-```bash
-xcode-select --switch /Applications/Xcode.app
-xcode-select --switch /Library/Developer/CommandLineTools
-```
-
-> _Credit_: Solution shamelessly lifted from [apple stackexchange](https://apple.stackexchange.com/questions/254380/macos-mojave-invalid-active-developer-path)
-
-### Make -- failed to find correct openssl header or library files
-
-Homebrew provides symlinks in `/usr/local/opt` to aid in the linking process:
-
-```bash
-ls -l /usr/local/opt/openssl*
-
-lrwxr-xr-x  1 gary  admin    24B Aug 21 12:39 /usr/local/opt/openssl@ -> ../Cellar/openssl/1.0.2p
-lrwxr-xr-x  1 gary  admin    24B Aug 21 12:39 /usr/local/opt/openssl@1.0@ -> ../Cellar/openssl/1.0.2p
-lrwxr-xr-x  1 gary  admin    28B Nov 20  2017 /usr/local/opt/openssl@1.1@ -> ../Cellar/openssl@1.1/1.1.0g
-```
-
-If they aren't automatically detected you may experience issues linking openssl. You can work around this by explicitly listing the include `-I` and library `-L` paths.
-
-For example:
-
-```bash
-./configure --with-openssl=/usr/local/Cellar/openssl/1.0.2l --with-libjson=yes --enable-check CPPFLAGS="-I/usr/local/opt/openssl@1.0/include" LDFLAGS="-L/usr/local/opt/openssl@1.0/lib/"
-```
-
-### Make check -- unit tests failed for seemingly no reason
-
-Similar to the above issue, it is possible for a mismatch in your development header files resulting in a working build that may fail the `check` test suite.
-
-If you're seeing one or more failed tests on a stable release of ClamAV on macOS, the following may resolve the issue:
-
-Open Terminal, and run the following:
-
-```bash
-sudo installer -pkg /Library/Developer/CommandLineTools/Packages/macOS_SDK_headers_for_macOS_10.14.pkg -target /
-```
-
-> _Credit_: Solution shamelessly lifted from [the pyenv github issue tracker](https://github.com/pyenv/pyenv/issues/1219)

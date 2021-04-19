@@ -168,7 +168,7 @@ Testsuite summary for ClamAV 0.100.2
 >
 > * The `*.vg.sh` tests will be skipped unless you run `make check VG=1`.
 > * The `check7_clamd.hg.sh` (helgrind) is presently disabled and will be skipped.
->   * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav-devel/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
+>   * For details, see: [the Git commit](https://github.com/Cisco-Talos/clamav/commit/2a5d51809a56be9a777ded02969a7427a3c26713)
 
 If you have a failure or an error in the unit tests, it could be that you are missing one or more of the prerequisites.
 

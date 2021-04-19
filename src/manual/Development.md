@@ -223,7 +223,7 @@ If you receive an error message like `gcc: error: /opt/csw/lib/libstdc++.so: No 
 ### Download the Source
 
 ```bash
-    git clone https://github.com/Cisco-Talos/clamav-devel.git
+    git clone https://github.com/Cisco-Talos/clamav.git
     cd clamav-devel
 ```
 

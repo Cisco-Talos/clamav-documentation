@@ -101,7 +101,7 @@ clamdtop --help
 
 ### On-Access Scanning
 
-On-Access Scanning is available for Linux systems. On-Access Scanning is a form of real-time protection that uses ClamD to scan files when they're accessed.
+The ClamOnAcc application provides On-Access Scanning for Linux systems. On-Access Scanning is a form of real-time protection that uses ClamD to scan files when they're accessed.
 
 #### ClamOnAcc (v0.102+)
 
