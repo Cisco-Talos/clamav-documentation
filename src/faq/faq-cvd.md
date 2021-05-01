@@ -2,7 +2,7 @@
 
 ## How do I keep my virus database up to date?
 
-ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date.
+ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date. It is encouraged that you update to at least version 0.103.2, which respects our bandwidth limitations.
 
 ## How often is the virus database updated?
 
@@ -14,7 +14,7 @@ Before publishing a CVD update, we verify that it can be correctly loaded by the
 
 ## The last CVD update detects a lot of false positives on my system. Why?
 
-Before publishing a CVD update, we test it for false positives using the latest stable release of ClamAV. If you want to avoid problems with false positives, you must run the latest stable version of ClamAV.
+Before publishing a CVD update, we test it for false positives using the latest stable release of ClamAV. If you want to avoid problems with false positives, you must run the latest stable version of ClamAV.  Please stay tuned to our [EOL policy](faq-eol.md) for what versions are actively supported.
 
 ## I tried to submit a sample through the web interface, but it said the sample is already recognized by ClamAV. My ClamScan tells me it's not. I have already updated my database and ClamAV engine, what's wrong with my setup?
 
@@ -54,7 +54,11 @@ No problem, save your own signatures in a text file with the appropriate extensi
 
 ## Can I download the virusdb manually?
 
-Yes, the virusdb can be downloaded from the _Latest releases_ section on our home page.
+This practice is discouraged, please use either FreshClam or CvdUpdate to update your definitions.  Please check out our [FreshClam FAQ](faq-freshclam.md) and our [Private Mirror Documentation](../appendix/CvdPrivateMirror.md) for further information and links to CvdUpdate.
+
+## I am getting error codes such as 403, 429, etc when FreshClam (or other update system) attempts to download updates
+
+Are you attempting to download `safebrowsing.cvd` and getting a 403?  If so, [take a look at this blog post](https://blog.clamav.net/2021/04/are-you-still-attempting-to-download.html), otherwise check out our [Freshclam FAQ](faq-freshclam.md) under the section on "Error Codes".
 
 ----
 

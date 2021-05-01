@@ -58,7 +58,11 @@ If FreshClam is failing and you're not sure why, you may run `freshclam -v` for 
 
 After checking that you are using a current version of ClamAV, please discontinue whatever method of download you are using and immediately move to using either FreshClam or [cvdupdate](https://github.com/Cisco-Talos/cvdupdate). These are the two supported methods for downloading AV updates from ClamAV. All other methods may be rate limited, or blocked at our discretion. Use of Wget, Curl, or other command line tools that are scripted are explicitly denied.
 
-If you are receiving a 429, that means you are rate limited. You're download too fast or too much. Please use FreshClam or [cvdupdate](https://github.com/Cisco-Talos/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limited, however cvdupdate should handle this gracefully.
+If you are receiving a 429, that means you are rate limited.  You're downloading too fast or too much.  Please use Freshclam or [cvdupdate](https://github.com/micahsnyder/cvdupdate). If you are using a shared hosting provider, like Amazon AWS, Google Cloud Computing, Oracle, Azure, etc, you will most likely be rate limited, however cvdupdate should handle this gracefully.  If you continue to receive these, we recommend you try from a different external IP address.
+
+If you are receiving a 403 specifically on the safebrowsing.cvd file, please read [this blog post](https://blog.clamav.net/2021/04/are-you-still-attempting-to-download.html) immediately!
+
+Are you running a version of FreshClam/ClamAV lower than `0.103.2`? If so, you should immediately upgrade to at least 0.103.2.
 
 If you have checked all of the above and you are still seeing errors, please open a ticket using the below link.
 
