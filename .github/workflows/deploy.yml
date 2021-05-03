@@ -5,7 +5,7 @@ on:
       - main
 
 env:
-  CNAME: docs.micahsnyder.dev
+  CNAME: docs.clamav.net
 
 jobs:
   pages:
