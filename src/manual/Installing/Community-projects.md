@@ -136,6 +136,12 @@ Scan new objects added to any s3 bucket using AWS Lambda.
 
 [Get bucket-antivirus-function](https://github.com/upsidetravel/bucket-antivirus-function)
 
+#### cdk-serverless-clamscan
+
+An aws-cdk construct that uses ClamAV® to scan objects in Amazon S3 for viruses. The construct provides a flexible interface for a system to act based on the results of a ClamAV virus scan.
+
+[Get cdk-serverless-clamscan](https://github.com/awslabs/cdk-serverless-clamscann)
+
 #### HAVP | libclamav
 
 [HAVP](http://havp.org/) is a proxy with an antivirus filter. It does not cache or filter content. At the moment the complete traffic is scanned. A reason for that is the chance of malicious code in nearly every filetypes e.g. HTML (JavaScript) or Jpeg.
