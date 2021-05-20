@@ -8,7 +8,7 @@
 
 This is the ClamAV Documentation repository. Contributions via GitHub pull-request are welcome and appreciated.
 
-The documentation here uses mdBook to generate [the official ClamAV Documentation](https://clam-antivirus.github.io/).
+The documentation here uses mdBook to generate [the official ClamAV Documentation](https://docs.clamav.net/).
 
 ----
 
