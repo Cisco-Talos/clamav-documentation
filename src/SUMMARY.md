@@ -1,6 +1,6 @@
 # Summary
 
-- [Introduction](manual/Introduction.md)
+- [Introduction](Introduction.md)
 - [Installing](manual/Installing.md)
     - [Packages](manual/Installing/Packages.md)
     - [Unix from source](manual/Installing/Installing-from-source-Unix.md)

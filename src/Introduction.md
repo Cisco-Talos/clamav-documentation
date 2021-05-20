@@ -15,7 +15,7 @@ ClamAV is brought to you by Cisco Systems, Inc.
 
 ## Community Projects
 
-ClamAV has a diverse ecosystem of [community projects, products, and other tools](Installing/Community-projects.md) that either depend on ClamAV to provide malware detection capabilities or supplement ClamAV with new features such as improved support for 3rd party signature databases, graphical user interfaces (GUI), and more.
+ClamAV has a diverse ecosystem of [community projects, products, and other tools](manual/Installing/Community-projects.md) that either depend on ClamAV to provide malware detection capabilities or supplement ClamAV with new features such as improved support for 3rd party signature databases, graphical user interfaces (GUI), and more.
 
 ## Features
 
