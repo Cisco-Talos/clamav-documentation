@@ -170,19 +170,22 @@ To do the same, but for `amazon.co.uk`:
 H:amazon.co.uk
 ```
 
-To limit the signatures to certain engine versions:
+You can limit the signatures to certain [engine versions](../../appendix/FunctionalityLevels.md). For example...
 
-```
-H:amazon.co.uk:20-30
-H:amazon.co.uk:20-
-H:amazon.co.uk:0-20
-```
+1. Restrict so that engine versions 20 through 30 can load it, but not 31+:
+    ```
+    H:amazon.co.uk:20-30
+    ```
 
-First line: engine versions 20, 21, ..., 29 can load it
+2. Restrict so that engine versions `>= 20` can load it:
+    ```
+    H:amazon.co.uk:20-
+    ```
 
-Second line: engine versions `>= 20` can load it
-
-Third line: engine versions `< 20` can load it
+3. Restrict so that engine versions `<= 20` can load it:
+    ```
+    H:amazon.co.uk:0-20
+    ```
 
 In a real situation, you’d probably use the second form. A situation like that would be if you are using a feature of the signatures not available in earlier versions, or if earlier versions have bugs with your signature. Its neither case here, the above examples are for illustrative purposes only.
 
