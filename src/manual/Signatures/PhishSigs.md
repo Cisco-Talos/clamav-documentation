@@ -105,7 +105,7 @@ S:W:Sha256hash[:FuncLevelSpec]
 
 - `S1:`
 
-  Hashes for blocking phishing sites. Virus name: Phishing.URL.Blacklisted
+  Hashes for blocking phishing sites. Virus name: Phishing.URL.Blocked
 
 - `S:W:`
 

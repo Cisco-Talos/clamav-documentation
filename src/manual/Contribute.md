@@ -258,7 +258,7 @@ This project should be completed after the project to dynamically add new file t
 
 One example use case of this feature would be to alert on the malicious use of crypto miner wallet IDs.
 
-Cryptomining malware has become increasingly prevalent with the rise in cryptocurrency prices, and we have thousands of wallet identifiers known to be associated with malicious cryptomining campaigns. We don't have a robust way of using these IDs for detection, though, because we only want to raise an alert if the ID appears to be used in a malicious way (Ex: hardcoded into a mining application or as part of a coin miner configuration file) and not in legitimate ways (Ex: blog posts about campaigns or wallet blacklists used by the mining pools).
+Cryptomining malware has become increasingly prevalent with the rise in cryptocurrency prices, and we have thousands of wallet identifiers known to be associated with malicious cryptomining campaigns. We don't have a robust way of using these IDs for detection, though, because we only want to raise an alert if the ID appears to be used in a malicious way (Ex: hardcoded into a mining application or as part of a coin miner configuration file) and not in legitimate ways (Ex: blog posts about campaigns or wallet block lists used by the mining pools).
 
 The two use-cases that we want to alert on are miner config files and executables with the embedded wallet identifier. We could have two `.ftm` rules (one for each case) that indicate a `CL_TYPE_MINER` or something like that, and then scanning execution for `CL_TYPE_MINER` can go to the bytecode sig to perform any other checks that may be necessary.
 
