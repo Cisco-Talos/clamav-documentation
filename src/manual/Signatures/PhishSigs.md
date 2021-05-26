@@ -1,7 +1,7 @@
-# PhishSigs
+# Phishing Signatures
 
 Table of Contents
-- [PhishSigs](#phishsigs)
+- [Phishing Signatures](#phishing-signatures)
   - [Database file format](#database-file-format)
     - [PDB format](#pdb-format)
     - [GDB format](#gdb-format)
