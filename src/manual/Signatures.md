@@ -39,11 +39,11 @@ The CVD and CLD database archives may be supplemented with custom database files
 
 ClamAV provides a handful of configuration related databases along side the signature definitions.
 
-`*.cfg`: [Dynamic config settings](manual/Signatures/DynamicConfig.md)
+`*.cfg`: [Dynamic config settings](Signatures/DynamicConfig.md)
 
-`*.cat` `*.crb`: [Trusted and revoked PE certs](manual/Signatures/AuthenticodeRules.md)
+`*.cat` `*.crb`: [Trusted and revoked PE certs](Signatures/AuthenticodeRules.md)
 
-`*.ftm`: [File Type Magic (FTM)](manual/Signatures/FileTypeMagic.md)
+`*.ftm`: [File Type Magic (FTM)](Signatures/FileTypeMagic.md)
 
 ### Signature databases
 
@@ -53,17 +53,17 @@ ClamAV provides a handful of configuration related databases along side the sign
 
 Body-based signature content is a definition that matches not based on a hash but based on the specific sequences of bytes exhibited by the target file.
 
-ClamAV body-based signature content has a [special format](manual/Signatures/BodySignatureFormat.md) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
+ClamAV body-based signature content has a [special format](Signatures/BodySignatureFormat.md) to allow regex-like matching of data that is not entirely known. This format is used extensively in both Extended Signatures and Logical Signatures.
 
-`*.ndb` `*.ndu`: [Extended signatures](manual/Signatures/ExtendedSignatures.md)
+`*.ndb` `*.ndu`: [Extended signatures](Signatures/ExtendedSignatures.md)
 
-`*.ldb` `*.ldu`; `*.idb`: [Logical Signatures](manual/Signatures/LogicalSignatures.md)
+`*.ldb` `*.ldu`; `*.idb`: [Logical Signatures](Signatures/LogicalSignatures.md)
 
-`*.cdb`: [Container Metadata Signatures](manual/Signatures/ContainerMetadata.md)
+`*.cdb`: [Container Metadata Signatures](Signatures/ContainerMetadata.md)
 
-`*.cbc`: [Bytecode Signatures](manual/Signatures/BytecodeSignatures.md)
+`*.cbc`: [Bytecode Signatures](Signatures/BytecodeSignatures.md)
 
-`*.pdb` `*.gdb` `*.wdb`: [Phishing URL Signatures](manual/Signatures/PhishSigs.md)
+`*.pdb` `*.gdb` `*.wdb`: [Phishing URL Signatures](Signatures/PhishSigs.md))
 
 #### Hash-based Signatures
 
@@ -71,19 +71,19 @@ ClamAV body-based signature content has a [special format](manual/Signatures/Bod
 
 `*.mdb` `*.msb` `*.mdu` `*.msu`: PE section hash signatures
 
-[Hash-based Signature format](manual/Signatures/HashSignatures.md)
+[Hash-based Signature format](Signatures/HashSignatures.md)
 
 #### Alternative signature support
 
-`*.yar` `*.yara`: [YARA rules](manual/Signatures/YaraRules.md)
+`*.yar` `*.yara`: [YARA rules](Signatures/YaraRules.md)
 
 ### Other database files
 
-`*.fp` `*.sfp` `*.ign` `*.ign2`: [allowed files, ignored signatures](manual/Signatures/AllowLists.md)
+`*.fp` `*.sfp` `*.ign` `*.ign2`: [allowed files, ignored signatures](Signatures/AllowLists.md)
 
-`*.pwdb`: [Encrypted archive passwords](manual/Signatures/EncryptedArchives.md)
+`*.pwdb`: [Encrypted archive passwords](Signatures/EncryptedArchives.md)
 
-`*.info`: [Database information](manual/Signatures/DatabaseInfo.md)`
+`*.info`: [Database information](Signatures/DatabaseInfo.md)`
 
 ### Signature names
 
