@@ -158,6 +158,24 @@ The following set of functions provides an interface for loading the virus datab
     ret = cl_load(cl_retdbdir(), engine, &sigs, CL_DB_STDOPT);
 ```
 
+### Database verification
+
+The `cl_load()` API will verify that the database is signed and is correct, although it will also return `CL_SUCCESS` for non-database files that of course cannot be loaded.
+
+You can, however, use the `cl_cvdverify()` API to verify a database directly:
+
+```c
+/**
+ * @brief Verify a CVD file by loading and unloading it.
+ *
+ * @param file          Filepath of CVD file.
+ * @return cl_error_t   CL_SUCCESS if success, else a CL_E* error code.
+ */
+extern cl_error_t cl_cvdverify(const char *file);
+```
+
+As the comment block explains, this will load-test the database. Be advised that for some larger databases, this may use a fair bit system RAM.
+
 ### Error handling
 
 Use `cl_strerror()` to convert error codes into human readable messages. The function returns a statically allocated string:
