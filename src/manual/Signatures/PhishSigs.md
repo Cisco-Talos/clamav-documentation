@@ -45,7 +45,7 @@ H[Filter]:DisplayedHostname[:FuncLevelSpec]
 
 - `R`
 
-  Regular expression, for the concatenated URL.
+  Regular expression, for the concatenated URL. The last 3 characters of the regular expression cannot regex special characters and much be an exact match.
 
 - `H`
 
@@ -105,7 +105,7 @@ S:W:Sha256hash[:FuncLevelSpec]
 
 - `S1:`
 
-  Hashes for blocking phishing sites. Virus name: Phishing.URL.Blocked
+  Hashes for blocking phishing sites. Virus name: `Phishing.URL.Blocked`.
 
 - `S:W:`
 
@@ -132,17 +132,19 @@ M:RealHostname:DisplayedHostname[:FuncLevelSpec]
 
 - `X`
 
-  regular expression, for the *entire URL*, not just the hostname
+  Regular expression, for the *entire URL*, not just the hostname.
 
   - The regular expression is by default anchored to start-of-line and end-of-line, as if you have used `^RegularExpression$`
 
-  - A trailing `/` is automatically added both to the regex, and the input string to avoid false matches
+  - A trailing `/` is automatically added both to the regex, and the input string to avoid false matches.
 
   - The regular expression matches the *concatenation* of the `RealURL`, a colon(`:`), and the `DisplayedURL` as a single string. It doesn’t separately match `RealURL` and `DisplayedURL`!
 
+  - The last 3 characters of the regular expression cannot regex special characters and much be an exact match.
+
 - `M`
 
-  matches hostname, or subdomain of it, see notes for H above
+  Matches hostname, or subdomain of it, see notes for H above.
 
 ### Hints
 
