@@ -59,24 +59,24 @@ To satisify all build dependencies:
 
 *Install build tools:*
 ```bash
-    sudo apt-get install -y \
-        autoconf automake libtool m4 \
-        bison flex gcc g++ make man-db ninja-build pkg-config \
-        git valgrind
+sudo apt-get install -y \
+    autoconf automake libtool m4 \
+    bison flex gcc g++ make man-db ninja-build pkg-config \
+    git valgrind
 ```
 
 To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using `apt`/`apt-get`.
 
 ```bash
-    sudo apt-get install -y python3-pip
-    python3 -m pip install --user cmake
-    ~ or ~
-    sudo apt-get install -y cmake
+sudo apt-get install -y python3-pip
+python3 -m pip install --user cmake
+~ or ~
+sudo apt-get install -y cmake
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
+sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
 
 #### Ubuntu
@@ -89,93 +89,93 @@ To build with CMake you will also need to install `cmake`. CMake 3.13+ is requir
 
 *Install build tools:*
 ```bash
-    sudo apt-get install -y \
-        autoconf automake libtool m4 \
-        bison flex gcc g++ make man-db ninja-build pkg-config \
-        git valgrind
+sudo apt-get install -y \
+    autoconf automake libtool m4 \
+    bison flex gcc g++ make man-db ninja-build pkg-config \
+    git valgrind
 ```
 
 To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `apt`/`apt-get`.
 
 ```bash
-    sudo apt-get install -y python3-pip
-    python3 -m pip install --user cmake
-    ~ or ~
-    sudo apt-get install -y cmake
+sudo apt-get install -y python3-pip
+python3 -m pip install --user cmake
+~ or ~
+sudo apt-get install -y cmake
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
+sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
 
 #### Fedora
 
 *Install build tools:*
 ```bash
-    sudo dnf install -y \
-        autoconf automake libtool m4 \
-        bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
-        git valgrind
+sudo dnf install -y \
+    autoconf automake libtool m4 \
+    bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
+    git valgrind
 ```
 
 To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
 
 ```bash
-    sudo dnf install -y python3-pip
-    python3 -m pip install --user cmake
-    ~ or ~
-    sudo dnf install -y cmake
+sudo dnf install -y python3-pip
+python3 -m pip install --user cmake
+~ or ~
+sudo dnf install -y cmake
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo dnf install -y bzip2-devel check-devel json-c-devel libcurl-devel libtool-ltdl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
+sudo dnf install -y bzip2-devel check-devel json-c-devel libcurl-devel libtool-ltdl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 ```
 
 #### CentOS/RHEL
 
 *Install build tools:*
 ```bash
-    sudo dnf --enablerepo=PowerTools install -y \
-        autoconf automake libtool m4 \
-        bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
-        git valgrind
+sudo dnf --enablerepo=PowerTools install -y \
+    autoconf automake libtool m4 \
+    bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
+    git valgrind
 ```
 
 To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
 
 ```bash
-    sudo dnf install -y python3-pip
-    python3 -m pip install --user cmake
-    ~ or ~
-    sudo dnf --enablerepo=PowerTools install -y cmake
+sudo dnf install -y python3-pip
+python3 -m pip install --user cmake
+~ or ~
+sudo dnf --enablerepo=PowerTools install -y cmake
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo dnf --enablerepo=PowerTools install -y bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
+sudo dnf --enablerepo=PowerTools install -y bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 ```
 
 #### Solaris (using OpenCSW)
 
 *Install build tools:*
 ```bash
-    sudo /opt/csw/bin/pkgutil -y -i \
-        common coreutils \
-        automake autoconf libtool \
-        gmake cmake libgcc_s1 libstdc++6 ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
+sudo /opt/csw/bin/pkgutil -y -i \
+    common coreutils \
+    automake autoconf libtool \
+    gmake cmake libgcc_s1 libstdc++6 ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
 
-    sudo pkg install system/header
+sudo pkg install system/header
 
-    sudo ln -sf /opt/csw/bin/gnm /usr/bin/nm
-    sudo ln -sf /opt/csw/bin/gsed /usr/bin/sed
-    sudo ln -sf /opt/csw/bin/gmake /usr/bin/make
+sudo ln -sf /opt/csw/bin/gnm /usr/bin/nm
+sudo ln -sf /opt/csw/bin/gsed /usr/bin/sed
+sudo ln -sf /opt/csw/bin/gmake /usr/bin/make
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo /opt/csw/bin/pkgutil -y -i libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev libssl1_0_0 libssl_dev openssl_utils libiconv2 zlib1 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter
+sudo /opt/csw/bin/pkgutil -y -i libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev libssl1_0_0 libssl_dev openssl_utils libiconv2 zlib1 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter
 ```
 
 If you receive an error message like `gcc: error: /opt/csw/lib/libstdc++.so: No such file or directory`, change versions with `/opt/csw/sbin/alternatives --config automake`
@@ -184,47 +184,47 @@ If you receive an error message like `gcc: error: /opt/csw/lib/libstdc++.so: No 
 
 *Install build tools:*
 ```bash
-    sudo pkg install -y \
-        autoconf automake libtool m4 \
-        bison flex gmake cmake pkgconf \
-        git
+sudo pkg install -y \
+    autoconf automake libtool m4 \
+    bison flex gmake cmake pkgconf \
+    git
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    sudo pkg install -y bzip2 check curl json-c libmilter libxml2 ncurses pcre2
+sudo pkg install -y bzip2 check curl json-c libmilter libxml2 ncurses pcre2
 ```
 
 #### macOS
 
 *Install Homebrew:*
 ```bash
-    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 *Install Xcode command line tools (without Xcode):*
 ```bash
-    xcode-select --install
+xcode-select --install
 ```
 
 *Install build tools:*
 ```bash
-    brew install \
-        autoconf automake libtool m4 \
-        bison flex cmake pkg-config \
-        git
+brew install \
+    autoconf automake libtool m4 \
+    bison flex cmake pkg-config \
+    git
 ```
 
 *Install ClamAV dependencies:*
 ```bash
-    brew install bzip2 check curl-openssl json-c libxml2 ncurses openssl@1.1 pcre2 zlib
+brew install bzip2 check curl-openssl json-c libxml2 ncurses openssl@1.1 pcre2 zlib
 ```
 
 ### Download the Source
 
 ```bash
-    git clone https://github.com/Cisco-Talos/clamav.git
-    cd clamav-devel
+git clone https://github.com/Cisco-Talos/clamav.git
+cd clamav-devel
 ```
 
 If you intend to make changes and submit a pull request, fork the clamav-devel repo first and then clone your fork of the repository.
@@ -241,7 +241,7 @@ The following instructions assume you have installed CMake, Ninja, and either GC
 
 #### Linux/Unix
 
-```sh
+```bash
 cmake .. -G Ninja                   \
     -D CMAKE_BUILD_TYPE="Debug"     \
     -D OPTIMIZE=OFF                 \
@@ -323,7 +323,7 @@ ClamAV primarily has feature tests for ClamD and ClamScan, though basic version 
 ClamAV versions 0.103+ will require you to run `autogen.sh` before running `configure` when building from a git clone. The files generated by Autotools, such as `configure`, are no longer stored in the Git repo. When you run `autogen.sh` it will generate those files for you.
 
 ```bash
-    ./autogen.sh
+./autogen.sh
 ```
 
 #### Running configure
@@ -331,8 +331,8 @@ ClamAV versions 0.103+ will require you to run `autogen.sh` before running `conf
 To ensure that build artifacts don't clutter the source code directory, create a subdirectory named `build`.
 
 ```bash
-    mkdir build
-    cd build
+mkdir build
+cd build
 ```
 
 For a basic build, just run `../configure`. If you've installed the dependencies with your platforms respective package manager, it should detect the dependencies automatically. macOS users will need to use this option to properly detect openssl `--with-openssl=/usr/local/opt/openssl@1.1`.
@@ -348,7 +348,7 @@ Run `../configure --help` to see a full list of options. The following suggestio
   Example:
 
   ```bash
-      CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure
+  CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure
   ```
 
   NOTE: Setting `OBJCFLAGS` is needed because currently, clamsubmit gets built with the Objective-C compiler. See [this Stack Overflow post](https://stackoverflow.com/questions/61167084/automake-conditional-compilation-from-c-or-objective-c-sources) for a discussion of why this occurs.
@@ -374,7 +374,7 @@ Run `../configure --help` to see a full list of options. The following suggestio
 Altogether, the following configure command can be used:
 
 ```bash
-    CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
+CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
 ```
 
 NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `../configure` with `--enable-static --disable-shared`). This is useful for using tools like `gprof` that do not support profiling code in shared objects. However, there are two drawbacks to doing this:
@@ -388,8 +388,8 @@ NOTE: It is possible to build libclamav as a static library and have it statical
 Run the following to finishing building. `-j2` in the code below is used to indicate that the build process should use 2 cores. Increase this if your machine is more powerful.
 
 ```bash
-    make -j2
-    make install
+make -j2
+make install
 ```
 
 Also, you can run `make check` to run the unit tests.
@@ -397,8 +397,8 @@ Also, you can run `make check` to run the unit tests.
 The ClamAV executables will get installed in `../installed/bin/`, so to invoke clamscan do:
 
 ```bash
-    cd ..
-    ./installed/bin/clamscan
+cd ..
+./installed/bin/clamscan
 ```
 
 ### Downloading the Official Ruleset
@@ -452,7 +452,7 @@ writing:
 Given that you might want to pass a lot of arguments to `gdb`, consider taking advantage of the `--args` parameter. For example:
 
 ```bash
-    gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/block_list.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515
+gdb --args ./installed/bin/clamscan -d /tmp/test.ldb -d /tmp/block_list.crb -d --dumpcerts --debug --verbose --max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-iconspe=2000000 f8f101166fec5785b4e240e4b9e748fb6c14fdc3cd7815d74205fc59ce121515
 ```
 
 When using ClamAV without libclamav statically linked, if you set breakpoints on libclamav functions by name, you'll need to make sure to indicate that the breakpoints should be resolved after libraries have been loaded.
@@ -469,13 +469,13 @@ You can easily hunt for memory leaks with valgrind. Check out this guide to get 
 If checking for leaks, be sure to run `clamscan` with samples that will hit as many of the unique code paths in the code you are testing. An example invocation is as follows:
 
 ```bash
-    valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1
+valgrind --leak-check=full ./installed/bin/clamscan -d /tmp/test.ldb --leave-temps --tempdir /tmp/test --debug --verbose /tmp/upx-samples/ > /tmp/upx-results-2.txt 2>&1
 ```
 
 Alternatively, on Linux, you can use glibc's built-in leak checking functionality:
 
 ```bash
-    MALLOC_CHECK_=7 ./installed/bin/clamscan
+MALLOC_CHECK_=7 ./installed/bin/clamscan
 ```
 
 See the [mallopt man page](http://manpages.ubuntu.com/manpages/trusty/man3/mallopt.3.html) for more details
@@ -487,19 +487,19 @@ gcov/lcov can be used to produce a code coverage report indicating which lines o
 First, run the following to zero out all of the performance metrics:
 
 ```bash
-    lcov -z --directory . --output-file coverage.lcov.data
+lcov -z --directory . --output-file coverage.lcov.data
 ```
 
 Next, run ClamAV through whatever test cases you have. Then, run lcov again to collect the coverage data as follows:
 
 ```bash
-    lcov -c --directory . --output-file coverage.lcov.data
+lcov -c --directory . --output-file coverage.lcov.data
 ```
 
 Finally, run the genhtml tool that ships with lcov to produce the code coverage report:
 
 ```bash
-    genhtml coverage.lcov.data --output-directory report
+genhtml coverage.lcov.data --output-directory report
 ```
 
 The report directory will have an `index.html` page which can be loaded into any web browser.
@@ -513,23 +513,23 @@ For more information, visit the [lcov webpage](http://ltp.sourceforge.net/covera
 First, install `perf`, which on Linux can be done via:
 
 ```bash
-    apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
+apt-get install linux-tools-common linux-tools-generic linux-tools-`uname -r`
 ```
 
 Modify the system settings to allow `perf` record to be run by a standard user:
 
 ```bash
-    sudo su     # Run the following as root
-    cat /proc/sys/kernel/perf_event_paranoid
-    echo "1" > /proc/sys/kernel/perf_event_paranoid
-    exit
+sudo su     # Run the following as root
+cat /proc/sys/kernel/perf_event_paranoid
+echo "1" > /proc/sys/kernel/perf_event_paranoid
+exit
 ```
 
 Invoke `clamscan` via `perf record` as follows, and run `perf script` to collect the profiling data:
 
 ```bash
-    perf record -F 100 -g -- ./installed/bin/clamscan -d /tmp/test.ldb /tmp/2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
-    perf script > out.perf
+perf record -F 100 -g -- ./installed/bin/clamscan -d /tmp/test.ldb /tmp/2aa6b18d509090c60c3e4ecdd8aeb16e5f149807e3404c86892112710eab576d
+perf script > out.perf
 ```
 
 The `-F` parameter indicates how many samples should be collected during program execution. If your scan will take a long time to run, a lower value should be sufficient. Otherwise, consider choosing a higher value (on Ubuntu 18.04, 7250 is the max frequency, but it can be increased via `/proc/sys/kernel/perf_event_max_sample_rate`.
@@ -537,8 +537,8 @@ The `-F` parameter indicates how many samples should be collected during program
 Check out the FlameGraph project and run the following commands to generate the flame graph:
 
 ```bash
-    perl stackcollapse-perf.pl ../clamav-devel/out.perf > /tmp/out.folded
-    perl flamegraph.pl /tmp/out.folded > /tmp/test.svg
+perl stackcollapse-perf.pl ../clamav-devel/out.perf > /tmp/out.folded
+perl flamegraph.pl /tmp/out.folded > /tmp/test.svg
 ```
 
 The SVG that is generated is interactive, but some viewers don't support this.
@@ -636,15 +636,15 @@ strace can be used to track the system calls that are performed and provide the 
 Compiled the rule, and make a test file to match against it. Then run it under `strace` to determine what underlying read system call is being used for the bytecode `read` function:
 
 ```bash
-    clambc-compiler read_test.bc
-    dd if=/dev/zero of=/tmp/zeroes bs=65535 count=256
-    strace clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
+clambc-compiler read_test.bc
+dd if=/dev/zero of=/tmp/zeroes bs=65535 count=256
+strace clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
 ```
 
 It uses `pread64` under the hood, so the following command could be used for fault injection:
 
 ```bash
-    strace -e fault=pread64:error=EINTR:when=20+10 clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
+strace -e fault=pread64:error=EINTR:when=20+10 clamscan -d read_test.cbc --bytecode-unsigned /tmp/zeroes
 ```
 
 This command tells `strace` to skip the first 20 `pread64` calls (these appear to be used by the loader, which didn't seem to handle `EINTR` correctly) but to inject `EINTR` for every 10th call afterward. We can see the injection in action and that the system call is retried successfully:
@@ -670,5 +670,5 @@ More documentation on using `strace` to perform system call fault injection, see
 Building ClamAV with ASAN support can be extremely useful in detecting memory corruption and memory leaks. To build with ASAN, use a `..\configure` line like the following:
 
 ```bash
-    CFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" LDFLAGS="-fsanitize=address" CXXFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" OBJCFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" ../configure --prefix=`pwd`/../installed --enable-debug --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
+CFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" LDFLAGS="-fsanitize=address" CXXFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" OBJCFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" ../configure --prefix=`pwd`/../installed --enable-debug --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
 ```
