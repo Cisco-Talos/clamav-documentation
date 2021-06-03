@@ -3,6 +3,7 @@
 - [Introduction](Introduction.md)
 - [Installing](manual/Installing.md)
     - [Packages](manual/Installing/Packages.md)
+    - [Docker](manual/Installing/Docker.md)
     - [Unix from source](manual/Installing/Installing-from-source-Unix.md)
       - [Steps - Debian/Ubuntu](manual/Installing/Steps/Steps-Debian-Ubuntu.md)
       - [Steps - Redhat/CentOS](manual/Installing/Steps/Steps-Redhat-CentOS.md)

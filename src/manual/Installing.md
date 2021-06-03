@@ -16,6 +16,14 @@ To use the executable installer, double-click the installer and follow the instr
 
 To install from a ZIP package, unzip the portable install package to any directory.
 
+## Official ClamAV Docker Images
+
+There are now official ClamAV images on Docker Hub. You can find the images on [Docker Hub under `clamav`](https://hub.docker.com/r/clamav/clamav).
+
+At present we offer images with builds of the latest development version. We call this "unstable". ClamAV 0.104 will be the first stable release that we'll publish on Docker Hub.. Once published 0.104.0+ will be available using a Docker image tag with the specific version number, or using "stable" to get the latest stable release.
+
+Check out the [Docker page](Installing/Docker.md) to learn how to install and use ClamAV with Docker.
+
 ## Installing from Source
 
 If you need, you can also compile and install ClamAV from source:
