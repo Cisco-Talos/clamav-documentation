@@ -275,13 +275,14 @@ $env:VCPKG_DEFAULT_TRIPLET="x64-windows"
 Now run the following to build ClamAV's library dependencies:
 
 ```ps1
-& "$VCPKG_PATH\vcpkg" install 'curl[openssl]' 'json-c' 'libxml2' 'pcre2' 'pthreads' 'zlib' 'pdcurses' 'bzip2'
+& "$VCPKG_PATH\vcpkg" install 'curl[openssl]' 'json-c' 'libxml2' 'pcre2' 'pthreads' 'zlib' 'pdcurses' 'bzip2' 'check'
 ```
 
-Finally, you can use the following to build ClamAV using Ninja for super fast builds.
+Finally, you can use the following to build ClamAV using Ninja for super fast builds. Replace "2019" and "Community" with different versions or editions as needed to match your Visual Studio installation.
 
+Configure (generate the build system):
 ```ps1
-pushd "C:\Program Files (x86)\Microsoft Visual Studio\2017\Community\Common7\Tools"
+pushd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools"
 cmd /c "VsDevCmd.bat -arch=amd64 & set" |
 foreach {
   if ($_ -match "=") {
@@ -289,17 +290,25 @@ foreach {
   }
 }
 popd
-Write-Host "`nVisual Studio 2017 Command Prompt variables set." -ForegroundColor Yellow
+Write-Host "`nVisual Studio 2019 Command Prompt variables set." -ForegroundColor Yellow
 
 cmake .. -G Ninja                                                          `
     -D CMAKE_BUILD_TYPE="Debug"                                             `
     -D CMAKE_TOOLCHAIN_FILE="$VCPKG_PATH\scripts\buildsystems\vcpkg.cmake"  `
     -D CMAKE_INSTALL_PREFIX="install"
+```
 
+Build:
+```ps1
 ninja
+```
 
+Install (to the `CMAKE_INSTALL_PREFIX` directory):
+```ps1
 ninja install
 ```
+
+> _Tip_: I like to place the "Configure" script in a `configure.ps1` script file in my home directory. This way I can simply run `~\configure.ps1` followed by `ninja` to do a build.
 
 ### Testing with CTest
 
