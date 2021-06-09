@@ -1,6 +1,7 @@
 # Installing ClamAV on Unix / Linux / macOS from Source
 
-Updated instructions for how to build ClamAV with CMake are coming soon. For now, please see the `INSTALL.cmake.md` file located in the source repository.
+Updated instructions for how to build ClamAV with CMake are coming soon. For now, please see [the `INSTALL.md` file](https://github.com/Cisco-Talos/clamav/blob/dev/0.104/INSTALL.md) located in the source repository. Some basic CMake build instructions also exist [in our Development chapter](../Development/development-builds.md).
+
 
 ## Step-by-Step Instructions
 
