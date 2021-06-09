@@ -3,7 +3,7 @@
 
 <p align="center">
   <a href="https://www.clamav.net/">
-    <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/images/logo.png" alt='Maeve, the ClamAV mascot'>
+    <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/logo.png" alt='Maeve, the ClamAV mascot'>
   </a>
 </p>
 
@@ -169,6 +169,6 @@ Likewise, if you have a benign file that is flagging as a virus and you wish to 
 
 <p align="center">
   <a href="https://www.cisco.com/">
-    <img align="center" img width="80" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/images/cisco.png" alt='Cisco Systems, Inc'>
+    <img align="center" img width="80" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/cisco.png" alt='Cisco Systems, Inc'>
   </a>
 </p>

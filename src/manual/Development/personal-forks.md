@@ -1,4 +1,4 @@
-# Make Your Own Fork on GitHub
+# Working with a Your Own Fork of the ClamAV repository
 
 A "fork" on GitHub is a personal playground. Though the word "fork" in the concept of open source traditionally referred to creating (and maintaining) a new variant of a project, forks on GitHub/GitLab/BitBucket/etc these days typically refer to a personal copy of the project where a user can test modifications to fix a bug or add a feature before contributing it back to the project in the form of a "pull request".
 
@@ -6,11 +6,11 @@ A "fork" on GitHub is a personal playground. Though the word "fork" in the conce
 
 You may only have one for any project, but it is very easy to create:
 
-![Create a Fork](../../../images/create-a-fork.png)
+![Create a Fork](../../images/create-a-fork.png)
 
 You can rename it as needed so you won't confused a clone of your fork with that of the upstream `clamav` repository. Go to the "Settings" page and change the name to add your name in a suffix:
 
-![Change Fork Name](../../../images/change-fork-name.png)
+![Change Fork Name](../../images/change-fork-name.png)
 
 You're free to add or delete branches in your fork as you see fit, but I would advise against adding your own commits to the existing branches. The existing branches, particularly the default branch`*` are a reference from which you can create your own branches for your work. Adding your own commits to the existing branches will break your ability to synchronize with the upstream `Cisco-Talos/clamav` repository, and without more advanced Git experience you won't be able to correct it.
 
@@ -18,7 +18,7 @@ You're free to add or delete branches in your fork as you see fit, but I would a
 
 Your fork is a snapshot of the upstream `clamav` repository at the moment at which you created it. Left unmaintained, your fork's default branch will get left behind. Unlike BitBucket, GitHub will not sync branches for you automatically. If your branch is behind, it is simple to sync the branch on your fork using GitHub's GUI by pressing the "Fetch Upstream" button:
 
-![Sync and Merge](../../../images/fork-is-behind.png)
+![Sync and Merge](../../images/fork-is-behind.png)
 
 You can sync other branches too. Simply switch branches to the desired branch and press "Fetch Upstream" again.
 
@@ -32,7 +32,7 @@ If you don't already have an SSH key for your GitHub account, I recommend creati
 
 Next, clone your ClamAV *fork*. Use the "Code" button on the default page for your fork to copy the "SSH" URL. If you don't want to use an SSH key for GitHub authentication, use the HTTPS URL instead:
 
-![Clone your Fork](../../../images/clone-your-fork.png)
+![Clone your Fork](../../images/clone-your-fork.png)
 
 Now open up a terminal and type:
 

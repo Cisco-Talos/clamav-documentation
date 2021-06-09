@@ -1,7 +1,7 @@
 # ClamAV Documentation
 
 <p align="center">
-  <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/images/logo.png" alt='Maeve, the ClamAV mascot'>
+  <img align="center" width="250" height="250" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/logo.png" alt='Maeve, the ClamAV mascot'>
 </p>
 
 ----
@@ -22,6 +22,6 @@ ClamAV and Clam AntiVirus are trademarks of Cisco Systems, Inc.
 
 <p align="center">
   <a href="https://www.cisco.com/">
-    <img align="center" img width="80" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/images/cisco.png" alt='Cisco Systems, Inc'>
+    <img align="center" img width="80" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/cisco.png" alt='Cisco Systems, Inc'>
   </a>
 </p>

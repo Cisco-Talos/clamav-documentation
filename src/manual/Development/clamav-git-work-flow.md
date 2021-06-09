@@ -2,7 +2,7 @@
 
 ClamAV's Git work flow isn't very complicated, but it is more structured than most. It looks like this. Note that in the diagrams below, merged branches are regular merges and will add all of the commits from the source branch to the destination branch. The diagram doesn't show all the merged commits, for simplicity:
 
-![Old Git Work Flow](../../../images/old-git-workflow.png)
+![Old Git Work Flow](../../images/old-git-workflow.png)
 
 `dev/0.102`, `dev/0.103`, and `dev/0.104`:
 
@@ -38,7 +38,7 @@ Pull requests are ALWAYS rebased before being merged, to maintain a linear histo
 >
 > The new Git work flow will then look like this:
 >
-> ![New Git Work Flow](../../../images/new-git-workflow.png)
+> ![New Git Work Flow](../../images/new-git-workflow.png)
 >
 > `main`:
 >
