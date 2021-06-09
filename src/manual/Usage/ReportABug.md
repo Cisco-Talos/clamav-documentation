@@ -1,16 +1,24 @@
 # How to Report A Bug
 
+> ## Warning Against Accidental Vulnerability Disclosure
+>
+> You may not realize it, but your bug could be a security issue. Please [review our Security Policy](https://github.com/Cisco-Talos/clamav/security) to determine if your bug is a security issue ***before*** you create a public ticket on GitHub issues.
+>
+> GitHub Issues are *public* reports and security issues **must** be reported in private.
+
 ## Steps Before You Report
 
 If you find a bug in ClamAV, please do the following before you submit a bug report:
 
 1. Verify if the bug exists in the most recent stable release or ideally check if the bug exists in the latest unreleased code in Git before reporting the issue.
 
-2. Review [the open issues](https://bugzilla.clamav.net/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&classification=ClamAV&limit=0&list_id=162358&order=changeddate%20DESC%2Cbug_status%2Cpriority%2Cassigned_to%2Cbug_id&product=ClamAV&query_format=advanced&resolution=---) to make sure someone else hasn't already reported the same issue.
+2. Review [the open issues](https://github.com/Cisco-Talos/clamav/issues?q=is%3Aopen+is%3Aissue) to make sure someone else hasn't already reported the same issue.
+
+   > _Tip_: Before switching to GitHub Issues, ClamAV used Bugzilla. You can also review [older open tickets from the Bugzilla archive](https://bugzilla.clamav.net/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&classification=ClamAV&limit=0&list_id=162358&order=changeddate%20DESC%2Cbug_status%2Cpriority%2Cassigned_to%2Cbug_id&product=ClamAV&query_format=advanced&resolution=---).
 
 3. Collect the required information, described below, to include with your report.
 
-4. Create a [new ticket on GitHub](https://bugzilla.clamav.net/enter_bug.cgi?product=ClamAV).
+4. Create a [new ticket on GitHub](https://github.com/Cisco-Talos/clamav/issues/new).
 
 Please do not submit bugs for third party software.
 
