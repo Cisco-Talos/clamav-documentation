@@ -131,7 +131,7 @@ For the ClamAV application we recommend having 5 GB of free space available. Thi
 
 > _Note_: The tests to determine these minimum requirements were performed on systems that were not running other applications. If other applications are being run on the system, additional resources will be required in addition to our recommended minimums.
 
-## Mailing lists and IRC channel
+## Mailing Lists and Chat
 
 If you have a trouble installing or using ClamAV try asking on our mailing lists. There are four lists available:
 
