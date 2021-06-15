@@ -149,7 +149,7 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-You can also join the community on our [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw). If you prefer IRC, the Discord `#general`, and `#irc-verbose` channels are bridged with the `#clamav` IRC channel on `irc.freenode.net` using a pair of bots to relay messages.
+You can also join the community on our [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw).
 
 ## Submitting New or Otherwise Undetected Malware
 
