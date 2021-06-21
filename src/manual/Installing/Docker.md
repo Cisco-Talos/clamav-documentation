@@ -4,7 +4,7 @@ ClamAV can be run within a Docker container. This provides isolation from other 
 
 ## The official images on Docker Hub
 
-ClamAV image tags [on Docker Hub](https://hub.docker.com/u/clamav/clamav) follow this naming convention:
+ClamAV image tags [on Docker Hub](https://hub.docker.com/r/clamav/clamav) follow this naming convention:
 
   - `clamav/clamav:<version>`: A release preloaded with signature databases.
 
@@ -21,7 +21,7 @@ You can use the `unstable` version (i.e. `clamav/clamav:unstable` or
 
 ## Building the ClamAV image
 
-While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/u/clamav/clamav), some may want to build the image locally instead. All that is needed is:
+While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/r/clamav/clamav), some may want to build the image locally instead. All that is needed is:
 ```bash
 docker build --tag "clamav:TICKET-123" .
 ```
