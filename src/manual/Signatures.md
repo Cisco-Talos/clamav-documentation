@@ -113,9 +113,9 @@ ClamAV uses the following prefixes for signature names:
 
 Important rules of the naming convention:
 
-- always use a `-zippwd` suffix in the malware name for signatures of type zmd,
-- always use a `-rarpwd` suffix in the malware name for signatures of type rmd,
-- only use alphanumeric characters, dash (`-`), dot (`.`), underscores (`_`) in malware names, never use space, apostrophe or quote mark.
+- Always use a `-zippwd` suffix in the malware name for ZIP container metadata (`.cdb`) signatures,
+- Always use a `-rarpwd` suffix in the malware name for  RAR container metadata (`.cdb`) signatures,
+- Only use alphanumeric characters, dash (`-`), dot (`.`), underscores (`_`) in malware names, never use space, apostrophe or quote mark.
 
 ## Signature Writing Tips and Tricks
 
