@@ -33,5 +33,5 @@
 | `clamscan` | ClamScan is a command line program to scan files and directories that does not require the clamd daemon. |
 | `freshclam` | FreshClam is the signature database (cvd) update tool. |
 | `libclamav` | The ClamAV library enables you to build the ClamAV engine into your programs. The C programming API can be found in `clamav.h`. |
-| `libfreshclam` | The FreshClam library enables you to build the signature update update features into your programs. The C programming API can be foudn in `libfreshclam.h`. |
+| `libfreshclam` | The FreshClam library enables you to build the signature update update features into your programs. The C programming API can be found in `libfreshclam.h`. |
 | `sigtool` | SigTool is a signature database (cvd) manipulation tool for malware analysts and signature writers. |
