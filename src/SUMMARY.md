@@ -15,6 +15,7 @@
     - [Updating Signature Databases](manual/Usage/SignatureManagement.md)
     - [Scanning](manual/Usage/Scanning.md)
       - [On-Access Scanning](manual/OnAccess.md)
+    - [Running ClamAV Services](manual/Usage/Services.md)
     - [Report a Bug](manual/Usage/ReportABug.md)
 - [Signatures](manual/Signatures.md)
     - [CVD Info File](manual/Signatures/DatabaseInfo.md)
