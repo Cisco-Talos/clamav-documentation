@@ -43,6 +43,18 @@ man freshclam
 
 > _Tip_: Newer versions of FreshClam will create your database directory if it doesn't already exist. Older versions won't, and may fail unless you create it first.
 
+> _Important_: It is common on Ubuntu after a fresh install to see the following error the first time you use ClamAV:
+> ```bash
+> freshclam
+>
+> freshclam: error while loading shared libraries: libclamav.so.7: cannot open shared object   file: No such file or directory
+> ```
+>
+> You can fix this error by using `ldconfig` to rebuild the library search path.
+> ```bash
+> sudo ldconfig
+> ```
+
 ## SigTool
 
 ClamAV provides `sigtool` as a command-line testing tool for assisting users in their efforts creating and working with virus signatures. While sigtool has many uses--including crafting signatures--of particular note, is sigtool's ability to help users and analysts in determining if a file detected by *libclamav*'s virus signatures is a false positive.

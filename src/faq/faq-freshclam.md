@@ -26,7 +26,7 @@ For some reason, incremental update failed. FreshClam can recover from this situ
 
 ## Database update process failed: Downloaded database had lower version than advertised
 
-For some reason, the content delivery network is not serving the latest updates yet. If you experience this problem, please report the issue on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
+For some reason, the content delivery network is not serving the latest updates yet. If you experience this problem, please report the issue on [GitHub Issues](https://github.com/Cisco-Talos/clamav-devel/issues).
 
 ## Update failed. Your network may be down or the ClamAV database content delivery network is experiencing an outage
 
@@ -68,4 +68,4 @@ If you have checked all of the above and you are still seeing errors, please ope
 
 ## For all other database update related failures
 
-Please report freshclam update failures or issues on [Bugzilla](https://bugzilla.clamav.net/buglist.cgi?component=Mirror&product=Mirror%20Issues).
+Please report freshclam update failures or issues on [GitHub Issues](https://github.com/Cisco-Talos/clamav-devel/issues).

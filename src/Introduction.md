@@ -25,8 +25,8 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
 - ClamAV's bytecode signature runtime, powered by either LLVM or our custom bytecode interpreter, allows the ClamAV signature writers to create and distribute very complex detection routines and remotely enhance the scanner’s functionality.
 - Signed signature databases ensure that ClamAV will only execute trusted signature definitions.
 - ClamAV scans within archives and compressed files but also protects against archive bombs. Built-in archive extraction capabilities include:
-  - Zip (including SFX)
-  - RAR (including SFX)
+  - Zip (including SFX, excluding some newer or more complex extensions)
+  - RAR (including SFX, most versions)
   - 7Zip
   - ARJ (including SFX)
   - Tar
@@ -44,10 +44,12 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
   - MBR disk image
   - XAR
   - XZ
-  - MS OLE2
-  - MS Cabinet Files (including SFX)
-  - MS CHM (Compiled HTML)
-  - MS SZDD compression format
+  - Microsoft OLE2 (Office documments)
+  - Microsoft OOXML (Office documments)
+  - Microsoft Cabinet Files (including SFX)
+  - Microsoft CHM (Compiled HTML)
+  - Microsoft SZDD compression format
+  - HWP (Hangul Word Processor documents)
   - BinHex
   - SIS (SymbianOS packages)
   - AutoIt
@@ -64,7 +66,7 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
   - MEW
   - Upack
   - Y0da Cryptor
-- Supports ELF and Mach-O files (both 32- and 64-bit)
+- Supports ELF and Mach-O files (both 32 and 64-bit)
 - Supports almost all mail file formats
 - Support for other special files/formats includes:
   - HTML
@@ -74,6 +76,8 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
   - uuencode
   - TNEF (winmail.dat)
 - Advanced database updater with support for scripted updates, digital signatures and DNS based database version queries
+
+> _Disclaimer_: Many of the above file formats continue to evolve. Executable packing and obfuscation tools in particular are constantly changing. We cannot guarantee that we can unpack or extract every version or variant of the listed formats.
 
 ## License
 

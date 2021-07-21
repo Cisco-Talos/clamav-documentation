@@ -8,9 +8,13 @@ Table Of Contents
     - [Windows](#windows)
       - [Additional notes about the config files and database directories](#additional-notes-about-the-config-files-and-database-directories)
   - [freshclam.conf](#freshclamconf)
+    - [Other freshclam.conf settings](#other-freshclamconf-settings)
   - [clamd.conf](#clamdconf)
+    - [Other clamd.conf settings](#other-clamdconf-settings)
     - [On-Access Scanning](#on-access-scanning)
   - [clamav-milter.conf](#clamav-milterconf)
+    - [Users and on user privileges](#users-and-on-user-privileges)
+  - [Configure SELinux for ClamAV](#configure-selinux-for-clamav)
   - [ClamConf](#clamconf)
   - [Next Steps](#next-steps)
 
@@ -132,6 +136,19 @@ HTTPProxyUsername myusername
 HTTPProxyPassword mypass
 ```
 
+### Other freshclam.conf settings
+
+If your `freshclam.conf` was derived from the `freshclam.conf.sample`, you should find many other options that are simply commented out. If not, seek out the `freshclam.conf.sample` file, or on Linux/Unix systems run `man freshclam.conf`.
+
+Take the time to look through the options. You can enable the sample options by deleting the `#` comment characters.
+
+Some popular options to enable include:
+
+* `LogTime`
+* `LogRotate`
+* `NotifyClamd`
+* `DatabaseOwner`
+
 ## clamd.conf
 
 Currently, ClamAV requires users to edit their `clamd.conf.example` file before they can run the daemon. At a bare minimum, users will need to comment out the line that reads "Example", else `clamd` will consider the configuration invalid, ala:
@@ -169,9 +186,26 @@ If needed, you can find out even more about the formatting and options available
 man clamd.conf
 ```
 
+### Other clamd.conf settings
+
+If your `clamd.conf` was derived from the `clamd.conf.sample`, you should find many other options that are simply commented out. If not, seek out the `clamd.conf.sample` file, or on Linux/Unix systems run `man clamd.conf`.
+
+Take the time to look through the options. You can enable the sample options by deleting the `#` comment characters.
+
+Some popular options to enable include:
+
+* `LogTime`
+* `LogClean`
+* `LogRotate`
+* `User`
+* `ScanOnAccess`
+  * `OnAccessIncludePath`
+  * `OnAccessExcludePath`
+  * `OnAccessPrevention`
+
 ### On-Access Scanning
 
-You can configure On-Access Scanning through `clamd.conf`. Configuration for On-Access Scanning starts at *line 613* in `clamd.conf.sample". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
+You can configure On-Access Scanning through `clamd.conf`. Configuration for On-Access Scanning starts in the second half of `clamd.conf.sample` starting with "On-access Scan Settings". All options are grouped acording to use and roughly ordered by importance in those groupings. Please carefully read the explanation of each option to see if it might be of use to you.
 
 Also read the [on-access](../OnAccess.md) section of the Usage manual for further details on using On-Access Scanning.
 
@@ -193,6 +227,39 @@ configure: error: Cannot find libmilter
 ```
 
 While not necessarily *complicated*, setting up the `clamav-milter` is an involved process. Thus, we recommend consulting your MTA’s manual on how to best connect ClamAV with the `clamav-milter`.
+
+### Users and on user privileges
+
+If you are running `freshclam` and `clamd` as root or with `sudo`, and you did not explicitly configure with `--disable-clamav`, you will want to ensure that the `DatabaseOwner` user specified in `freshclam.conf` owns the database directory so it can download signature updates.
+
+The user that `clamd`, `clamdscan`, and `clamscan` run as may be the same user, but if it isn't -- it merely needs _read_ access to the database directory.
+
+If you choose to use the default `clamav` user to run `freshclam` and `clamd`, you'll need to create the clamav group and the clamav user account the first time you install ClamAV.
+
+```bash
+groupadd clamav
+useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
+```
+
+Finally, you will want to set user ownership of the database directory. For example:
+```bash
+sudo chown -R clamav:clamav /usr/local/share/clamav
+```
+
+## Configure SELinux for ClamAV
+
+Certain distributions (notably RedHat variants) when operating with SELinux enabled use the non-standard `antivirus_can_scan_system` SELinux option instead of `clamd_can_scan_system`.
+
+At this time, libclamav only sets the `clamd_can_scan_system` option, so you may need to manually enable `antivirus_can_scan_system`. If you don't perform this step, `freshclam` will log something like this when it tests the newly downloaded signature databases:
+
+```bash
+During database load : LibClamAV Warning: RWX mapping denied: Can't allocate RWX Memory: Permission denied
+```
+
+To allow ClamAV to operate under SELinux, run the following:
+```bash
+setsebool -P antivirus_can_scan_system 1
+```
 
 ## ClamConf
 

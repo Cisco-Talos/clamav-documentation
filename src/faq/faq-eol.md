@@ -1,8 +1,8 @@
 # End of Life Policy (EOL)
 
-The naming convention for ClamAV releases uses three numbers (X.Y.Z) where the first two (X.Y) identify a feature release and the last one (Z) a patch release.
+The naming convention for ClamAV releases uses three numbers (X.Y.Z) where the first two (X.Y) identify a feature release and the last one (Z) a patch version.
 
-As of April, 2021, the latest feature release is 0.103.0 and the latest patch release is 0.103.2.
+As of July, 2021, the latest feature release is 0.103 and the latest patch version is 0.103.3.
 
 ## ClamAV Versions Supported by the Official Signature Databases
 
@@ -28,7 +28,7 @@ As an example, let's say ClamAV 0.102.0 was just released and development begins
 
 ### Situation 2: Security Patches After a Breaking Change
 
-On rare occasion we have made breaking changes the way that users or other software interact with ClamAV or libclamav. The 0.101.0 release was one such example where we made a breaking change to the libclamav programming API. When this happens, we will provide extra time for users to upgrade to a newer feature release before we discontinue support for the older feature release.
+On rare occasion we have made breaking changes to the way that users or other software interact with ClamAV or libclamav. The 0.101.0 release was one such example where we made a breaking change to the libclamav programming API. When this happens, we will provide extra time for users to upgrade to a newer feature release before we discontinue support for the older feature release.
 
 The amount of extra time before we discontinue support will vary depending on the severity of the breaking change and the level of difficulty to upgrade.
 

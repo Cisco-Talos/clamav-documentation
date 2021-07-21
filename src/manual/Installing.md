@@ -27,11 +27,11 @@ Check out the [Docker page](Installing/Docker.md) to learn how to install and us
 ## Installing from Source
 
 If you need, you can also compile and install ClamAV from source:
-- [Unix/Linux/Mac Instructions](Installing-from-source/Installing-from-source-Unix.md)
-- [Windows Instructions](Installing-from-source/Installing-from-source-Windows.md)
+- [Unix/Linux/Mac Instructions](Installing/Installing-from-source-Unix.md)
+- [Windows Instructions](Installing/Installing-from-source-Windows.md)
 
 ## What now?
 
 Now that ClamAV is installed, you will want to customize your configuration and perhaps set up some scanning automation and alerting mechanisms.
 
-[Continue on to "Configuration"...](Configuration.md)
+[Continue on to "Configuration"...](Usage/Configuration.md))

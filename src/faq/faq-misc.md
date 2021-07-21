@@ -1,5 +1,9 @@
 # Miscellaneous FAQ
 
+## I see you have Bugzilla AND GitHub Issues. Which one should I use?
+
+Please use GitHub Issues. We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
+
 ## I reported a bug on Bugzilla, but no one can see it. What do I do?
 
 Bugs reported to ClamAV's [Bugzilla ticket tracker](https://bugzilla.clamav.net/) are private by default. Our policy is to make tickets public if they are not security-related. If you believe your bug report isn't security-related, please ping the ticket requesting that the ticket be made public. Chances are high that we simply forgot to remove the tag when the report came in.

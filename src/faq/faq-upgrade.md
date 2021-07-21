@@ -95,22 +95,13 @@ Visit the [source download page].
 
 ### Is my compiler/hardware/operating system supported by ClamAV?
 
-ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is gcc with Linux on 32 and 64 bit Intel platforms, though we also test using other compilers, including Sun's C compiler, Microsoft's Visual Studio, Intel's C compiler, LLVM/Clang, and others. To date we have only found one compiler that we do not support, GCC version 4.0.0 to 4.0.1 inclusive. We have found that version of the compiler produces incorrect code on all of the platforms and operating systems on which we have tested it. ClamAV will not work using that compiler and you MUST switch to an alternative, such as GCC3.4 or GCC4.1.
+ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is GCC with Linux on 32 and 64 bit Intel platforms, LLVM/Clang on macOS, and MSVC on Windows.
 
-Please contact your vendor for further information. Please refer to [gcc's bugzilla] for further information. More information about this bug is also available in [our bugzilla].
-
-Our configure scripts will detect if your compiler is affected by this bug and refuse to generate a non working binary with the following error message:
-
-```bash
-    your compiler has gcc PR26763-2 bug, use a different compiler
-```
 
 [eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]: http://www.gnupg.org/
 [sources]: https://github.com/Cisco-Talos/clamav
-[precompiled packages]: http://www.clamav.net/download.html#otherversions
+[pre-compiled packages]: http://www.clamav.net/download.html#otherversions
 [Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads
-[gcc's bugzilla]: https://gcc.gnu.org/bugzilla/show_bug.cgi?id=26763
-[our bugzilla]: https://bugzilla.clamav.net/
 [Installing ClamAV]: http://www.clamav.net/documents/installing-clamav

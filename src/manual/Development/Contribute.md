@@ -24,7 +24,7 @@ For ClamAV documentation projects, submit pull-requests to: <https://github.com/
 
 ## Bugs
 
-There's only so much our core dev team can schedule into each release. Many bugs probably won't be fixed without your help! Feel free to troll our [open Bugzilla tickets](https://bugzilla.clamav.net/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&classification=ClamAV&limit=0&list_id=162199&order=changeddate%20DESC%2Cbug_status%2Cpriority%2Cassigned_to%2Cbug_id&product=ClamAV&query_format=advanced&resolution=---) if you're looking for project ideas!
+There's only so much our core dev team can schedule into each release. Many bugs probably won't be fixed without your help! Feel free to troll our [open Bugzilla tickets](https://bugzilla.clamav.net/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&classification=ClamAV&limit=0&list_id=162199&order=changeddate%20DESC%2Cbug_status%2Cpriority%2Cassigned_to%2Cbug_id&product=ClamAV&query_format=advanced&resolution=---) and our [open GitHub Issues](https://github.com/Cisco-Talos/clamav-devel/issues) if you're looking for project ideas!
 
 ## Larger Projects
 
