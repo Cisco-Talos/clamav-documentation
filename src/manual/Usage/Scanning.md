@@ -219,7 +219,7 @@ clamscan.exe --recursive C:\
 
 > **Disclaimer**: ClamAV doesn't have a "quick scan" mode. ClamAV is malware detection toolkit, not an endpoint security suite. It's up to you to decide what to scan. A full system scan is going to take a long time with ClamAV or with any anti-virus software.
 
-> **Disclaimer 2**: ClamScan, ClamOnAcc, and ClamDScan each include `--remove` options for deleting any file which alerts during a scan. This is generally a terrible idea, unless your monitoring an upload/downloads directory. False positives happen! You do not want to have the wrong file accidentally deleted. Instead, consider using `--move` or perhaps just `--copy` and set up script with the ClamD `VirusEvent` feature to notify you when something has been detected.
+> **Disclaimer 2**: ClamScan, ClamOnAcc, and ClamDScan each include `--remove` options for deleting any file which alerts during a scan. This is generally a terrible idea, unless you're monitoring an upload/downloads directory. False positives happen! You do not want to have the wrong file accidentally deleted. Instead, consider using `--move` or perhaps just `--copy` and set up script with the ClamD `VirusEvent` feature to notify you when something has been detected.
 
 ## Windows-specific Issues
 

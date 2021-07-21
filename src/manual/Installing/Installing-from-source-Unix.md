@@ -1,11 +1,9 @@
-# Installing ClamAV on Unix / Linux / macOS from Source
+# Building ClamAV with CMake (v0.104 and newer)
 
 The following are instructions to build ClamAV *version 0.104 and newer* using CMake.
 
 > _Tip_: If you wish to build ClamAV *version 0.103 or older* from source, follow [these instructions to build ClamAV using Autotools](Installing-from-source-Unix-old.md).
-# Building ClamAV with CMake (v0.104 and newer)
 
-- [Installing ClamAV on Unix / Linux / macOS from Source](#installing-clamav-on-unix--linux--macos-from-source)
 - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
   - [Install prerequisites](#install-prerequisites)
     - [Alpine:](#alpine)
