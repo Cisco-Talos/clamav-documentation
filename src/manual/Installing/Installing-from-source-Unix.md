@@ -36,7 +36,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 ### Alpine:
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 apk update && apk add \
   `# install tools` \
@@ -58,7 +58,7 @@ dnf config-manager --set-enabled PowerTools | \
   dnf config-manager --set-enabled powertools | true
 ```
 
-Then, as root, run:
+As root or with `sudo`, run:
 ```sh
 dnf install -y \
   `# install tools` \
@@ -66,13 +66,21 @@ dnf install -y \
   `# install clamav dependencies` \
   bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel \
   ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
-
-pip3 install --user pytest cmake
 ```
+
+As a regular user, run:
+```sh
+python3 -m pip install --user cmake pytest
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install cmake pytest
+> ```
 
 ### Ubuntu / Debian:
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 apt-get update && apt-get install -y \
   `# install tools` \
@@ -80,9 +88,17 @@ apt-get update && apt-get install -y \
   `# install clamav dependencies` \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
   libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
-
-pip3 install --user cmake
 ```
+
+As a regular user, run:
+```sh
+python3 -m pip install --user cmake
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install cmake
+> ```
 
 ### macOS
 
@@ -106,16 +122,24 @@ python3 -m pip install --user cmake pytest
 
 ### FreeBSD
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 pkg install -y \
   `# install tools` \
   git gmake cmake pkgconf py38-pip python38 \
   `# install clamav dependencies` \
   bzip2 check curl json-c libmilter libxml2 ncurses pcre2
+```
 
+Now as a regular user, run:
+```sh
 python3 -m pip install --user pytest
 ```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install pytest
+> ```
 
 ## Adding new system user and group
 
