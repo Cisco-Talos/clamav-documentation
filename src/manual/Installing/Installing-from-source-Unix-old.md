@@ -29,7 +29,7 @@ The following are instructions to build ClamAV *version 0.103 and older* using A
 
 ### Alpine:
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 apk update && apk add \
   `# install tools` \
@@ -42,7 +42,7 @@ apk update && apk add \
 ### Redhat / Centos / Fedora:
 
 *For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
-As root, run:
+As root or with `sudo`, run:
 ```sh
 dnf install -y epel-release
 dnf install -y dnf-plugins-core
@@ -51,7 +51,7 @@ dnf config-manager --set-enabled PowerTools | \
   dnf config-manager --set-enabled powertools | true
 ```
 
-Then as root, run:
+As root or with `sudo`, run:
 ```sh
 dnf install -y \
   `# install tools` \
@@ -63,7 +63,7 @@ dnf install -y \
 
 ### Ubuntu / Debian:
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 apt-get update && apt-get install -y \
   `# install tools` \
@@ -96,7 +96,7 @@ done
 
 ### FreeBSD
 
-As root, run:
+As root or with `sudo`, run:
 ```sh
 pkg install -y \
   `# install tools` \

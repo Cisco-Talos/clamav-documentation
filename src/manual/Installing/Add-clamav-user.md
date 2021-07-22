@@ -8,9 +8,10 @@ If you're planning to run `freshclam` or `clamd` as a service on a Linux or Unix
 
 ### Linux / Unix
 
+As root or with `sudo`, run:
 ```sh
-sudo groupadd clamav && \
-sudo useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
+groupadd clamav
+useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
 ```
 
 If your operating system does not have the `groupadd` and `useradd` utilities, consult a system manual. **Don’t forget to lock access to the account!**
@@ -63,7 +64,12 @@ If you choose to use the default `clamav` user to run `freshclam` and `clamd`, y
 
 After you've installed ClamAV, you will want to make it so that the database directory is owned by the same service account as you're using for `freshclam`.
 
-For example:
+As root or with `sudo`, run:
 ```bash
 sudo chown -R clamav:clamav /usr/local/share/clamav
+```
+
+Or (if you customized the database path):
+```bash
+chown -R clamav:clamav /var/lib/clamav/
 ```

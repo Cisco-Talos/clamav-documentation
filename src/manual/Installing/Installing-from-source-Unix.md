@@ -49,7 +49,7 @@ apk update && apk add \
 ### Redhat / Centos / Fedora:
 
 *For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
-As root, run:
+As root or with `sudo`, run:
 ```sh
 dnf install -y epel-release
 dnf install -y dnf-plugins-core
