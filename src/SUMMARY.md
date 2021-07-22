@@ -8,6 +8,7 @@
     - [Unix from source (v0.103-)](manual/Installing/Installing-from-source-Unix-old.md)
     - [Windows from source](manual/Installing/Installing-from-source-Windows.md)
     - [Community Projects](manual/Installing/Community-projects.md)
+    - [Add a service user account](manual/Installing/Add-clamav-user.md)
 - [Usage](manual/Usage.md)
     - [Configuration](manual/Usage/Configuration.md)
     - [Updating Signature Databases](manual/Usage/SignatureManagement.md)

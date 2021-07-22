@@ -1,6 +1,8 @@
-# Setting up a `clamav` service user account
+# Add a service user account
 
 If you're planning to run `freshclam` or `clamd` as a service on a Linux or Unix system, you should create a service account. The following instructions assume that you will use the an account named "clamav" for both services, although you may create a different account name for each if you wish.
+
+> _Note_: *These instructions are mostly just for folks building & installing from source.* If you installed a package from your Linux/Unix distribution, it probably created the account(s) for you.
 
 ## Create a service user account (and group)
 
