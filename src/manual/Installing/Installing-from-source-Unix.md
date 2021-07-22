@@ -68,6 +68,8 @@ dnf install -y \
   ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 ```
 
+> _Note_: If you get `dnf: command not found`, use `yum` instead.
+
 As a regular user, run:
 ```sh
 python3 -m pip install --user cmake pytest

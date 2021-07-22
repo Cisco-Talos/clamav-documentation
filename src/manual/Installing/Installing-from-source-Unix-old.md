@@ -61,6 +61,8 @@ dnf install -y \
   ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 ```
 
+> _Note_: If you get `dnf: command not found`, use `yum` instead.
+
 ### Ubuntu / Debian:
 
 As root or with `sudo`, run:
