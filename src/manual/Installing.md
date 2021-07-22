@@ -34,4 +34,4 @@ If you need, you can also compile and install ClamAV from source:
 
 Now that ClamAV is installed, you will want to customize your configuration and perhaps set up some scanning automation and alerting mechanisms.
 
-[Continue on to "Configuration"...](Usage/Configuration.md))
+[Continue on to "Configuration"...](Usage/Configuration.md)
