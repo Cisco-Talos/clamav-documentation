@@ -1,4 +1,4 @@
-# Community Tools
+# Community Projects
 
 > _Disclaimer_: The software listed in this section is authored by third parties and not by the ClamAV Team. Compatibility may vary.
 
@@ -168,6 +168,12 @@ A ClamAV plug in fpr SpamAssassin 3.X
 
 ### Filesystem & On-Access Scanning
 
+#### Clam Sentinel
+
+Clam sentinel is a program that detects file system changes and automatically scans the files added or modified using ClamWin. Require the installation of ClamWin. For Microsoft Windows 98/98SE/Me/2000/XP/Vista, Windows 7 and Windows 8.1.
+
+[Get Clam Sentinel](https://sourceforge.net/projects/clamsentinel/)
+
 #### ClamFS | clamd
 
 ClamFS is a FUSE-based user-space file system for Linux and BSD with on-access anti-virus file scanning through clamd daemon (a file scanning service developed by ClamAV Project).
@@ -318,3 +324,9 @@ Endian Firewall Community (EFW) is a turn-key Linux security distribution that c
 ClamTk is a GUI front-end for ClamAV using gtk2-perl. It is designed to be an easy-to-use, on-demand scanner for Linux systems. ClamTk has been ported to Fedora, Debian, RedHat, openSUSE, ALT Linux, Ubuntu, CentOS, Gentoo, Archlinux, Mandriva, PCLinuxOS, FreeBSD, and others.
 
 [Get ClamTK](https://github.com/dave-theunsub/clamtk)
+
+### ClamWin | ClamAV
+
+ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / XP / Me / 2000 / 98 and Windows Server 2012, 2008 and 2003.
+
+[Get ClamWin](https://clamwin.com/)
