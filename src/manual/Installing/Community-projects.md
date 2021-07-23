@@ -166,6 +166,12 @@ A ClamAV plug in fpr SpamAssassin 3.X
 
 [Get ClamAVPlugin](https://cwiki.apache.org/confluence/display/SPAMASSASSIN/ClamAVPlugin)
 
+#### clamav-rest
+
+Simple ClamAV REST proxy. Builds on top of [clamav-java](#clamav-java) which is a minimal Java client for ClamAV.
+
+[Get clamav-rest](https://github.com/solita/clamav-rest)
+
 ### Filesystem & On-Access Scanning
 
 #### Clam Sentinel
@@ -304,6 +310,14 @@ Python wrapper for libclamav using `ctypes`. Python ClamAV is a part of the Clam
 Add virus detection capabilities to your python software in an efficient and easy way.
 
 [Get pyClamd](http://www.decalage.info/en/python/pyclamd)
+
+### Java
+
+#### clamav-java
+
+Simple ClamAV Java client. See also [ClamAV REST service](#clamav-rest) which builds on top of this.
+
+[Get clamav-java](https://github.com/solita/clamav-java)
 
 ## Miscellaneous Tools
 
