@@ -50,11 +50,11 @@ Sure, you can find more details on our [Private Local Mirror page](../appendix/C
 
 ## I can't wait for you to update the database! I need to use the new signature NOW!
 
-No problem, save your own signatures in a text file with the appropriate extension (see [our signature writing documentation](../manual/Signatures.md) for more information). Put the signature file in the same directory where the `.cvd` files are located. ClamAV will load it after the official `.cvd` files. You do not need to sign the `.db` file.
+No problem, save your own signatures in a text file with the appropriate extension (see [our signature writing documentation](../manual/Signatures.md) for more information). Put the signature files in the same directory where the `.cvd` files are located. This is typically `/usr/local/share/clamav` or `/var/lib/clamav`. ClamAV will load it after the official `.cvd` files. You do not need to sign your custom database files.
 
-## Can I download the virusdb manually?
+## Can I download the virus database manually?
 
-This practice is discouraged, please use either FreshClam or CvdUpdate to update your definitions.  Please check out our [FreshClam FAQ](faq-freshclam.md) and our [Private Mirror Documentation](../appendix/CvdPrivateMirror.md) for further information and links to CvdUpdate.
+This practice is discouraged, please use either FreshClam or CVDUpdate to update your definitions.  Please check out our [FreshClam FAQ](faq-freshclam.md) and our [Private Mirror Documentation](../appendix/CvdPrivateMirror.md) for further information and links to CVDUpdate.
 
 ## I am getting error codes such as 403, 429, etc when FreshClam (or other update system) attempts to download updates
 

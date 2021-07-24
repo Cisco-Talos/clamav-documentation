@@ -2,7 +2,7 @@
 
 ## I see you have Bugzilla AND GitHub Issues. Which one should I use?
 
-Please use GitHub Issues. We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
+Please use [GitHub Issues](https://github.com/Cisco-Talos/clamav/issues). We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
 
 ## I reported a bug on Bugzilla, but no one can see it. What do I do?
 

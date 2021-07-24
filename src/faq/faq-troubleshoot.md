@@ -66,4 +66,4 @@ Please note that some not RFC compliant DNS servers (namely the one shipped with
 
 ----
 
-For other questions regarding issues with the signature databases, see our [Virus Database FAQ](https://www.clamav.net/documents/clamav-virus-database-faq).
+For other questions regarding issues with the signature databases, see our [Virus Database FAQ](faq-cvd.md).

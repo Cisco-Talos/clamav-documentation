@@ -52,7 +52,7 @@ If you are experiencing this problem, please do the following:  Stop the `freshc
 
 ## HTTP Error Codes
 
-If you are receiving a 403, 503, or 1020 error codes when downloading from Cloudflare, then you are either explicitly blocked, using an [EOL'ed version of ClamAV](https://www.clamav.net/documents/end-of-life-policy-eol) or you are downloading incorrectly.
+If you are receiving a 403, 503, or 1020 error codes when downloading from Cloudflare, then you are either explicitly blocked, using an [EOL'ed version of ClamAV](faq-eol.md) or you are downloading incorrectly.
 
 If FreshClam is failing and you're not sure why, you may run `freshclam -v` for "Verbose Mode" to see the HTTP request & response details (ClamAV 0.102+).
 
