@@ -228,8 +228,13 @@ If a test fails, please [report the issue on GitHub](https://github.com/Cisco-Ta
 
 ## Un-install
 
-Unlike with Autotools, CMake doesn't provide a simple command to uninstall. However, CMake builds an `install_manifest.txt` files when you do the install. You can use the manifest to remove the installed files:
+CMake doesn't provide a simple command to uninstall. However, CMake does build an `install_manifest.txt` file when you do the install. You can use the manifest to remove the installed files.
 
+You will find the manifest in the directory where you compiled ClamAV. If you followed the recommendations (above), then you will find it at `<clamav source directory>/build/install_manifest.txt`.
+
+Feel free to inspect the file so you're comfortable knowing what you're about to delete.
+
+Open a terminal and `cd` to that `<clamav source directory>/build` directory. Then run:
 ```bash
 xargs rm < install_manifest.txt
 ```

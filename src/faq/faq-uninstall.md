@@ -19,8 +19,13 @@ sudo make uninstall
 
 ### If you installed using CMake (0.104.0 and newer)
 
-CMake doesn't provide a simple command to uninstall. However, CMake builds an `install_manifest.txt` files when you do the install. You can use the manifest to remove the installed files.
-Then run:
+CMake doesn't provide a simple command to uninstall. However, CMake does build an `install_manifest.txt` file when you do the install. You can use the manifest to remove the installed files.
+
+You will find the manifest in the directory where you compiled ClamAV. If you followed the recommendations in our [Installing from Source](../manual/Installing/Installing-from-source-Unix.md) section, then you will find it at `<clamav source directory>/build/install_manifest.txt`.
+
+Feel free to inspect the file so you're comfortable knowing what you're about to delete.
+
+Open a terminal and `cd` to that `<clamav source directory>/build` directory. Then run:
 ```bash
 xargs rm < install_manifest.txt
 ```
