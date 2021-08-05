@@ -14,7 +14,7 @@ These packages are usually well maintained but if you find an issue with one, pl
 >     - daemons in `/usr/local/sbin`
 >     - libraries in `/usr/local/lib`
 >     - headers in `/usr/local/include`
->     - configs in `/usr/local/etc/` (or `/usr/local/etc/clamav/` for v0.104+)
+>     - configs in `/usr/local/etc/`
 >     - databases in `/usr/local/share/clamav/`
 >
 >   - A Linux package install will probably go in `/usr`, with:
