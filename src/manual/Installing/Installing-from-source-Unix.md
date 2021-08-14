@@ -128,14 +128,14 @@ As root or with `sudo`, run:
 ```sh
 pkg install -y \
   `# install tools` \
-  git gmake cmake pkgconf py38-pip python38 \
+  gmake cmake pkgconf py38-pip python38 \
   `# install clamav dependencies` \
   bzip2 check curl json-c libmilter libxml2 ncurses pcre2
 ```
 
 Now as a regular user, run:
 ```sh
-python3 -m pip install --user pytest
+python3.8 -m pip install --user pytest
 ```
 
 > _Tip_: If you don't have a user account, e.g. in a Docker container, run:
@@ -173,7 +173,7 @@ To help you get started, here are some popular build configurations.
 
 ### The Default Build
 
-The default build type is "RelWithDebInfo", that is "Release mode with Debugging symbols". It will install to `/usr/local`.
+The default build type is `RelWithDebInfo`, that is "Release mode with Debugging symbols". It will install to `/usr/local`.
 
 ```bash
 cmake ..
@@ -182,13 +182,25 @@ ctest
 sudo cmake --build . --target install
 ```
 
+> _Tip_: If building for macOS, you may need to override the system provided LibreSSL with the OpenSSL you installed using Homebrew.
+> For example:
+> ```sh
+> cmake .. \
+>   -D CMAKE_INSTALL_PREFIX=/usr/local/clamav                                    \
+>   -D OPTIMIZE=OFF                                                              \
+>   -D OPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1/                              \
+>   -D OPENSSL_CRYPTO_LIBRARY=/usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib \
+>   -D OPENSSL_SSL_LIBRARY=/usr/local/opt/openssl@1.1/lib/libssl.1.1.dylib
+> make
+> sudo make install
+> ```
+
 ### A Linux Distribution-style Build
 
-This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions. This will be a "Release" mode build and will install to `/usr`. The config directory will be `/etc/clamav` and the database directory will be `/var/lib/clamav`.
+This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions. This will install to `/usr`. The config directory will be `/etc/clamav` and the database directory will be `/var/lib/clamav`.
 
 ```bash
 cmake .. \
-    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
     -D CMAKE_INSTALL_LIBDIR=/usr/lib \
     -D APP_CONFIG_DIRECTORY=/etc/clamav \
@@ -203,7 +215,7 @@ sudo cmake --build . --target install
 
 ### A Build for Development
 
-This suggested development configuration generates a Ninja-based build system instead of the default Makefile-based build system. Ninja is faster than Make, but you will have to install "ninja" (or "ninja-build"). With the following commands, ClamAV will be compiled in "Debug" mode with optimizations disabled. It will install to an "install" subdirectory and SystemD integration is disabled so that `sudo` is not required for the install and SystemD unit files are not installed to the system. This build also enables building a static `libclamav.a` library as well as building the example applications.
+This suggested development configuration generates a Ninja-based build system instead of the default Makefile-based build system. Ninja is faster than Make, but you will have to install "ninja" (or "ninja-build"). With the following commands, ClamAV will be compiled in `Debug` mode with optimizations disabled. It will install to an "install" subdirectory and SystemD integration is disabled so that `sudo` is not required for the install and SystemD unit files are not installed to the system. This build also enables building a static `libclamav.a` library as well as building the example applications.
 
 ```bash
 cmake .. -G Ninja \

@@ -91,6 +91,8 @@ To build the library dependencies with Mussels, use Python's `pip` package manag
 python3 -m pip install mussels
 ```
 
+> _Important_: Always run `mussels` or `msl` in a small sub-directory. Mussels will recursively search your current directory for YAML recipe files. In a large directory, such as your home directory, this may take a long time.
+
 Update the Mussels cookbooks to get the latest build recipes and set the
 `clamav` cookbook to be trusted:
 
@@ -101,7 +103,7 @@ msl cookbook trust clamav
 
 Use `msl list` if you wish to see the recipes provided by the `clamav` cookbook.
 
-To build with Mussels, you may need to install a few extra tools required to build some of the libraries. These include NASM, Perl
+To build with Mussels, you may need to install a few extra tools required to build some of the libraries. These include NASM and ActivePerl. See [install prerequisites](#install-prerequisites), above.
 
 Build the `clamav_deps` recipe to compile ClamAV's library dependencies. By default, Mussels will install them to `~\.mussels\install\<target>`
 
@@ -111,71 +113,68 @@ msl build clamav_deps
 
 If this worked, you should be ready to build ClamAV.
 
+> _Tip_: You can also build for 32-bit systems, using `msl build clamav_deps -t x86`.
+
 #### Building ClamAV
 
-Next, set `$env:CLAMAV_DEPENDENCIES` to the location where Mussels built your library dependencies:
+To configure the project, run the following, substiting "Visual Studio 16 2019" with your Visual Studio version:
 
 ```ps1
-$env:CLAMAV_DEPENDENCIES="$env:userprofile\.mussels\install\x64"
-```
-
-To configure the project, run:
-
-```ps1
-cmake ..  -G "Visual Studio 15 2017" -A x64 `
-  -D JSONC_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include\json-c"         `
-  -D JSONC_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\json-c.lib"             `
+cmake ..  -G "Visual Studio 16 2019" -A x64 `
+  -D JSONC_INCLUDE_DIR="$home\.mussels\install\x64\include\json-c"         `
+  -D JSONC_LIBRARY="$home\.mussels\install\x64\lib\json-c.lib"             `
   -D ENABLE_JSON_SHARED=OFF                                              `
-  -D BZIP2_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"                `
-  -D BZIP2_LIBRARY_RELEASE="$env:CLAMAV_DEPENDENCIES\lib\libbz2.lib"     `
-  -D CURL_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"                 `
-  -D CURL_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\libcurl_imp.lib"         `
-  -D OPENSSL_ROOT_DIR="$env:CLAMAV_DEPENDENCIES"                         `
-  -D OPENSSL_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"              `
-  -D OPENSSL_CRYPTO_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\libcrypto.lib" `
-  -D OPENSSL_SSL_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\libssl.lib"       `
-  -D ZLIB_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\libssl.lib"              `
-  -D LIBXML2_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"              `
-  -D LIBXML2_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\libxml2.lib"          `
-  -D PCRE2_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"                `
-  -D PCRE2_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\pcre2-8.lib"            `
-  -D CURSES_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"               `
-  -D CURSES_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\pdcurses.lib"          `
-  -D PThreadW32_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"           `
-  -D PThreadW32_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\pthreadVC2.lib"    `
-  -D ZLIB_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"                 `
-  -D ZLIB_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\zlibstatic.lib"          `
-  -D LIBCHECK_INCLUDE_DIR="$env:CLAMAV_DEPENDENCIES\include"             `
-  -D LIBCHECK_LIBRARY="$env:CLAMAV_DEPENDENCIES\lib\checkDynamic.lib"    `
+  -D BZIP2_INCLUDE_DIR="$home\.mussels\install\x64\include"                `
+  -D BZIP2_LIBRARY_RELEASE="$home\.mussels\install\x64\lib\libbz2.lib"     `
+  -D CURL_INCLUDE_DIR="$home\.mussels\install\x64\include"                 `
+  -D CURL_LIBRARY="$home\.mussels\install\x64\lib\libcurl_imp.lib"         `
+  -D OPENSSL_ROOT_DIR="$home\.mussels\install\x64"                         `
+  -D OPENSSL_INCLUDE_DIR="$home\.mussels\install\x64\include"              `
+  -D OPENSSL_CRYPTO_LIBRARY="$home\.mussels\install\x64\lib\libcrypto.lib" `
+  -D OPENSSL_SSL_LIBRARY="$home\.mussels\install\x64\lib\libssl.lib"       `
+  -D ZLIB_LIBRARY="$home\.mussels\install\x64\lib\libssl.lib"              `
+  -D LIBXML2_INCLUDE_DIR="$home\.mussels\install\x64\include"              `
+  -D LIBXML2_LIBRARY="$home\.mussels\install\x64\lib\libxml2.lib"          `
+  -D PCRE2_INCLUDE_DIR="$home\.mussels\install\x64\include"                `
+  -D PCRE2_LIBRARY="$home\.mussels\install\x64\lib\pcre2-8.lib"            `
+  -D CURSES_INCLUDE_DIR="$home\.mussels\install\x64\include"               `
+  -D CURSES_LIBRARY="$home\.mussels\install\x64\lib\pdcurses.lib"          `
+  -D PThreadW32_INCLUDE_DIR="$home\.mussels\install\x64\include"           `
+  -D PThreadW32_LIBRARY="$home\.mussels\install\x64\lib\pthreadVC2.lib"    `
+  -D ZLIB_INCLUDE_DIR="$home\.mussels\install\x64\include"                 `
+  -D ZLIB_LIBRARY="$home\.mussels\install\x64\lib\zlibstatic.lib"          `
+  -D LIBCHECK_INCLUDE_DIR="$home\.mussels\install\x64\include"             `
+  -D LIBCHECK_LIBRARY="$home\.mussels\install\x64\lib\checkDynamic.lib"    `
   -D CMAKE_INSTALL_PREFIX="install"
 ```
+> _Tip_: You have to drop the `-A x64` arguments if you're building for 32-bits (or specify `-A win32`) and substitute `x64` with `x86` in the library paths.
 
 Now, go ahead and build the project:
 
 ```ps1
-cmake --build . --config Release
+cmake --build . --config RelWithDebInfo
 ```
 
 > _Tip_: If you're having include-path issues when building, try building with
 detailed verbosity so you can verify that the paths are correct:
 
 ```ps1
-cmake --build . --config Release -- /verbosity:detailed
+cmake --build . --config RelWithDebInfo -- /verbosity:detailed
 ```
 
-You can run the test suite with CTest:
+You can run the test suite with `ctest`:
 
 ```ps1
-ctest -C Release
+ctest -C RelWithDebInfo
 ```
 
 And you can install to the `install` (set above) like this:
 
 ```ps1
-cmake --build . --config Release --target install
+cmake --build . --config RelWithDebInfo --target install
 ```
 
-> _Tip_: For a full list of configuration options, see the "Custom CMake options" section in the `INSTALL.md` file included with the source code.
+> _Tip_: For a full list of configuration options, see the "Custom CMake Config Options" section of the `INSTALL.md` file included with the source code.
 
 ### Building with vcpkg
 
@@ -183,12 +182,12 @@ cmake --build . --config Release --target install
 
 `vcpkg` integrates really well with CMake, enabling CMake to find your compiled libraries automatically, so you don't have to specify the include & library paths manually as you do when using Mussels.
 
-> _DISCLAIMER_: There is a known issue with the unit tests when building with vcpkg in Debug mode. When you run the > libclamav unit tests (check_clamav), the program will crash and a popup will claim there was heap corruption. If > you use Task Manager to kill the `check_clamav.exe` process, the rest of the tests pass just fine. This issue does > not occur when using Mussels to supply the library dependencies. Commenting out the following lines in `readdb.c` > resolves the heap corruption crash when running `check_clamav`, but of course introduces a memory leak:
+> _DISCLAIMER_: There is a known issue with the unit tests when building with vcpkg in `Debug` mode. When you run the libclamav unit tests (`check_clamav`), the program will crash and a popup will claim there was heap corruption. If > you use Task Manager to kill the `check_clamav.exe` process, the rest of the tests pass just fine. This issue does not occur when using Mussels to supply the library dependencies. Commenting out the following lines in `readdb.c` resolves the heap corruption crash when running `check_clamav`, but of course introduces a memory leak:
 > ```c
 >     if (engine->stats_data)
 >         free(engine->stats_data);
 > ```
-> If anyone has time to figure out the real cause of the vcpkg Debug-build crash in check_clamav, it would be greatly appreciated.
+> If anyone has time to figure out the real cause of the vcpkg `Debug`-build crash in `check_clamav`, it would be greatly appreciated.
 
 You'll need to install [vcpkg](https://github.com/microsoft/vcpkg). See the `vcpkg` README for installation instructions.
 
@@ -218,24 +217,22 @@ cmake .. -A x64 `
   -D CMAKE_INSTALL_PREFIX="install"
 ```
 
-> _Tip_: You have to drop the `-A x64` arguments if you're building for 32-bits, and correct the package paths accordingly.
-
 Now, go ahead and build the project:
 
 ```ps1
-cmake --build . --config Release
+cmake --build . --config RelWithDebInfo
 ```
 
-You can run the test suite with CTest:
+You can run the test suite with `ctest`:
 
 ```ps1
-ctest -C Release
+ctest -C RelWithDebInfo
 ```
 
 And you can install to the `install` directory (set above) like this:
 
 ```ps1
-cmake --build . --config Release --target install
+cmake --build . --config RelWithDebInfo --target install
 ```
 
 ### Build the Installer
@@ -243,7 +240,7 @@ cmake --build . --config Release --target install
 To build the installer, you must have WIX Toolset installed. If you're using Chocolatey, you can install it simply with `choco install wixtoolset` and then open a new terminal so that WIX will be in your PATH.
 
 ```ps1
-cpack -C Release
+cpack -C RelWithDebInfo
 ```
 
 ## What now?

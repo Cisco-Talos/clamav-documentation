@@ -1,6 +1,6 @@
 # ClamAV Packages
 
-Many Linux and Unix distributions as well as packaging systems for macOS and Windows offer one or more ClamAV packages to make it easy for you to install ClamAV.
+Many Linux and Unix distributions offer one or more ClamAV packages to make it easy for you to install ClamAV.
 
 These packages are usually well maintained but if you find an issue with one, please consider helping the volunteers that maintain the packages.
 

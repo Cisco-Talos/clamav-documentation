@@ -102,7 +102,7 @@ As root or with `sudo`, run:
 ```sh
 pkg install -y \
   `# install tools` \
-  git gmake pkgconf \
+  gmake pkgconf \
   `# install clamav dependencies` \
   bzip2 check curl json-c libmilter libxml2 ncurses pcre2
 ```

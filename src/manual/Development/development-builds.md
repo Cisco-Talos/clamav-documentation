@@ -3,19 +3,15 @@
 The following are instructions for building ClamAV using CMake or Autotools with recommendations specific to ClamAV software development.
 
 - [Building for Development](#building-for-development)
-  - [Satisfying Build Dependencies](#satisfying-build-dependencies)
-    - [Debian](#debian)
-    - [Ubuntu](#ubuntu)
-    - [Fedora](#fedora)
-    - [CentOS/RHEL](#centosrhel)
-    - [Solaris (using OpenCSW)](#solaris-using-opencsw)
-    - [FreeBSD](#freebsd)
-    - [macOS](#macos)
-    - [Windows](#windows)
+  - [Build dependencies](#build-dependencies)
+    - [For Linux/UNIX](#for-linuxunix)
+    - [For Windows](#for-windows)
   - [Download the Source](#download-the-source)
   - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
     - [Linux/Unix](#linuxunix)
-    - [Windows](#windows-1)
+    - [Windows](#windows)
+      - [vcpkg](#vcpkg)
+      - [Mussels](#mussels)
     - [Testing with CTest](#testing-with-ctest)
       - [Unit Tests](#unit-tests)
       - [Integration Tests](#integration-tests)
@@ -26,224 +22,129 @@ The following are instructions for building ClamAV using CMake or Autotools with
     - [Running make](#running-make)
     - [Testing with `make check`](#testing-with-make-check)
 
-## Satisfying Build Dependencies
+## Build dependencies
 
-To satisify all build dependencies:
+Instructions to install the build dependencies for each major operating system and distribution can be found in our install from source instructions. See:
+- [Unix/Linux/Mac Instructions](Installing-from-source/Installing-from-source-Unix.md)
+- [Windows Instructions](Installing-from-source/Installing-from-source-Windows.md)
 
-### Debian
+For development, you may also need to install the following...
 
-*Install build tools:*
-```bash
-sudo apt-get install -y \
-    autoconf automake libtool m4 \
-    bison flex gcc g++ make man-db ninja-build pkg-config \
-    git valgrind
-```
+### For Linux/UNIX
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern verson via Python's `pip` package manager rather than using `apt`/`apt-get`.
+- `git`
 
-```bash
-sudo apt-get install -y python3-pip
-python3 -m pip install --user cmake
-~ or ~
-sudo apt-get install -y cmake
-```
+- `autoconf`, `automake`, `libtool`, `m4` (For 0.103 and older, only):
 
-*Install ClamAV dependencies:*
-```bash
-sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
-```
+  These four packages make up "Autotools" and are required to run the `./autogen.sh` script that generates the `./configure` tool for configuring an Autotools build. You will need these packakges if building from a git clone, but the 0.103 release tarballs have this stuff pre-generated for normal users.
 
-### Ubuntu
+- `valgrind`:
 
-> _Tip_: You may wish to set `DEBIAN_FRONTEND=noninteractive` if scripting the following so that the install will not hang while prompting you to select your geographic area.
->
-> ```bash
-> sudo export DEBIAN_FRONTEND=noninteractive
-> ```
+  Valgrind is used to enhance our unit tests and feature tests. It will be automatically when running `ctest` for CMake builds, or when running `make check VG=1` for Autotools builds.
 
-*Install build tools:*
-```bash
-sudo apt-get install -y \
-    autoconf automake libtool m4 \
-    bison flex gcc g++ make man-db ninja-build pkg-config \
-    git valgrind
-```
+- `pytest` (For 0.104 and newer):
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `apt`/`apt-get`.
+  Pytest is used in our test suite for CMake builds to get better test output when analyzing test failures. Having pytest
 
-```bash
-sudo apt-get install -y python3-pip
-python3 -m pip install --user cmake
-~ or ~
-sudo apt-get install -y cmake
-```
+- `bison` and `flex`:
 
-*Install ClamAV dependencies:*
-```bash
-sudo apt-get install -y check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
-```
+  Bison and Flex re-generating the Yara rule parser, used by our "maintainer mode" in the CMake build system (v0.104+), and used by default in the Autotools build system (v0.103-).
 
-### Fedora
+- `gperf`:
 
-*Install build tools:*
-```bash
-sudo dnf install -y \
-    autoconf automake libtool m4 \
-    bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
-    git valgrind
-```
+  GPerf is another tool used by our "maintainer mode". It is used to generate code for our javascript normalizer. `*`Enabling GPerf in the "maintainer mode" for the CMake build system (v0.104+) is still a to-do.
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
+- `ninja` or `ninja-build` (For 0.104 and newer):
 
-```bash
-sudo dnf install -y python3-pip
-python3 -m pip install --user cmake
-~ or ~
-sudo dnf install -y cmake
-```
+  Ninja is a build system that CMake can use in place of Makefiles (UNIX) or Visual Studio (Windows). It's faster than both, particularly as compared with Visual Studio. If you're compiling ClamAV frequently, you may find it very helpful. The only real downside is that it's highly multithreaded so errors and warnings tend to get mixed up and it can be hard to inspect when you're having build failures.
 
-*Install ClamAV dependencies:*
-```bash
-sudo dnf install -y bzip2-devel check-devel json-c-devel libcurl-devel libtool-ltdl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
-```
+### For Windows
 
-### CentOS/RHEL
+- [Git for Windows](https://git-scm.com/download/win).
 
-*Install build tools:*
-```bash
-sudo dnf --enablerepo=PowerTools install -y \
-    autoconf automake libtool m4 \
-    bison flex gcc gcc-c++ make man-db ninja-build pkg-config \
-    git valgrind
-```
+- [Windows Terminal](https://www.microsoft.com/en-us/p/windows-terminal/9n0dx20hk701):
 
-To build with CMake you will also need to install `cmake`. CMake 3.13+ is required, so older systems may have better luck installing a modern version via Python's `pip` package manager rather than using `dnf`.
+  Windows Terminal is Microsoft's new open source terminal program. It's quite nice, and miles better than using a traditional CMD prompt or Powershell.
 
-```bash
-sudo dnf install -y python3-pip
-python3 -m pip install --user cmake
-~ or ~
-sudo dnf --enablerepo=PowerTools install -y cmake
-```
+- [Visual Studio](https://visualstudio.microsoft.com/Downloads/?q=Visual%20Studio):
 
-*Install ClamAV dependencies:*
-```bash
-sudo dnf --enablerepo=PowerTools install -y bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
-```
+  2019 Community Edition is fine. It may also possible to build using Clang + Ninja. Investigate at your peril.
 
-### Solaris (using OpenCSW)
+- [Visual Studio Code](https://code.visualstudio.com/):
 
-*Install build tools:*
-```bash
-sudo /opt/csw/bin/pkgutil -y -i \
-    common coreutils \
-    automake autoconf libtool \
-    gmake cmake libgcc_s1 libstdc++6 ggrep gsed pkgconfig ggettext gcc4core gcc4g++ libgcc_s1 libgccpp1
+  I recommend a modern text editor like VSCode instead of working with Visual Studio directly. Visual Studio is powerful, but can be slow and unwieldy. Those coming from a Unix/Linux background may find that the Vim plugin is particularly nice.
 
-sudo pkg install system/header
+- [Chocolatey](https://chocolatey.org/install):
 
-sudo ln -sf /opt/csw/bin/gnm /usr/bin/nm
-sudo ln -sf /opt/csw/bin/gsed /usr/bin/sed
-sudo ln -sf /opt/csw/bin/gmake /usr/bin/make
-```
+  Chocolatey is an application package manager for Windows that makes it easy to install stuff on Windows. After you install Chocolatey, you can use it to install CMake, WiX, Flex, Bison, Perl, and Nasm very simply, like this:
+  ```ps1
+  choco install cmake
+  ```
 
-*Install ClamAV dependencies:*
-```bash
-sudo /opt/csw/bin/pkgutil -y -i libxml2_2 libxml2_dev bzip2 libbz2_dev libcheck0 libcheck_dev libssl1_0_0 libssl_dev openssl_utils libiconv2 zlib1 libpcre1 libltdl7 lzlib_stub zlib_stub libmilter
-```
+- Wix Toolset:
 
-If you receive an error message like `gcc: error: /opt/csw/lib/libstdc++.so: No such file or directory`, change versions with `/opt/csw/sbin/alternatives --config automake`
+  If you want to build the installer, you'll also need WiX Toolset. If not, you can skip it. You can install it with Chocolatey:
+  ```ps1
+  choco install wixtoolset
+  ```
 
-### FreeBSD
+- `bison` and `flex`:
 
-*Install build tools:*
-```bash
-sudo pkg install -y \
-    autoconf automake libtool m4 \
-    bison flex gmake cmake pkgconf \
-    git
-```
+  As mentioned in the Linux/Unix section, Bison and Flex may be needed if working with the yara parser module. You can install it with Chocolatey:
+  ```ps1
+  choco install winflexbison
+  ```
 
-*Install ClamAV dependencies:*
-```bash
-sudo pkg install -y bzip2 check curl json-c libmilter libxml2 ncurses pcre2
-```
+- ActivePerl and Netwide Assembler (NASM):
 
-### macOS
-
-*Install Homebrew:*
-```bash
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
-```
-
-*Install Xcode command line tools (without Xcode):*
-```bash
-xcode-select --install
-```
-
-*Install build tools:*
-```bash
-brew install \
-    autoconf automake libtool m4 \
-    bison flex cmake pkg-config \
-    git
-```
-
-*Install ClamAV dependencies:*
-```bash
-brew install bzip2 check curl-openssl json-c libxml2 ncurses openssl@1.1 pcre2 zlib
-```
-
-### Windows
-
-Install [Windows Terminal](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=&cad=rja&uact=8&ved=2ahUKEwjmk-qv64jxAhXBKFkFHZnUBuEQFnoECAcQAA&url=https%3A%2F%2Fwww.microsoft.com%2Fen-us%2Fp%2Fwindows-terminal%2F9n0dx20hk701&usg=AOvVaw0T3sd9IQM_S3Udg4fr3Xkz).
-
-Install [Git for Windows](https://git-scm.com/download/win).
-
-Install [Visual Studio (2019 Community Edition is fine)](https://visualstudio.microsoft.com/Downloads/?q=Visual%20Studio).
-
-You may also wish to [install Visual Studio Code](https://code.visualstudio.com/) for a modern code editor (recommended for dev on any operating system).
-
-[Chocolatey](https://chocolatey.org/install) is a great application package manager for Windows that makes it easy to install stuff on Windows. After you install Chocolatey, you can use it to install CMake and WiX simply like this:
-
-```ps1
-choco install cmake wixtoolset
-```
-
-If you want to build the installer, you'll also need WiX Toolset. If not, you can skip it.
+  Perl and NASM are required to compile openssl from source if using Mussels to build your dependencies. If using vcpkg, you can skip them. You can install these tools using Chocolatey:
+  ```ps1
+  choco install activeperl nasm
+  ```
 
 We support two options for sourcing and building ClamAV library dependencies:
 1. [vcpkg](https://github.com/microsoft/vcpkg)
 2. [Mussels](https://github.com/Cisco-Talos/Mussels)
 
-For basic builds, vcpkg should do just fine, and is easier to get started.
+For basic builds, vcpkg should do just fine`*`, and is easier to get started.
 
 If you want to customize how the dependencies are built, use Mussels. The ClamAV project uses Mussels to build the installers available on our website. The recipes to build the ClamAV dependencies, the definitions for finding and using the required development tools are hosted in [the ClamAV Mussels Cookbook](https://github.com/Cisco-Talos/clamav-mussels-cookbook).
 
+> `*` There is a known issue with the unit tests when building with vcpkg in Debug mode. When you run the libclamav unit tests (check_clamav), the program will crash and a popup will claim there was heap corruption. If you use Task Manager to kill the `check_clamav.exe` process, the rest of the tests pass just fine. This issue does not occur when using Mussels to supply the library dependencies. Commenting out the following lines in `readdb.c` resolves the heap corruption crash when running `check_clamav`, but of course introduces a memory leak:
+> ```c
+>     if (engine->stats_data)
+>         free(engine->stats_data);
+> ```
+> If anyone has time to figure out the real cause of the vcpkg Debug-build crash
+> in check_clamav, it would be greatly appreciated.
+
 ## Download the Source
 
-If you don't already have the source, use Git to clone it.
-
-If you intend to make changes and submit a pull request, fork the `Cisco-Talos/clamav` repo first and then clone your fork of the repository instead.
-
+If you don't already have the source, use Git to clone it:
 ```bash
 git clone https://github.com/Cisco-Talos/clamav.git
 cd clamav
 ```
 
+If you intend to make changes and submit a pull request, fork the `Cisco-Talos/clamav` repo first and then clone your fork of the repository instead:
+```bash
+git clone https://github.com/<yourusername>/clamav.git clamav-fork
+cd clamav-fork
+```
+
 ## Building ClamAV with CMake (v0.104 and newer)
 
-CLamAV versions 0.103+ provide CMake build tooling. In 0.103, this is for experimental and development purposes only. Autotools should be used for production builds. In 0.104+, CMake is the only build system. Autotools and Visual Studio build systems have been removed.
+ClamAV versions 0.103+ provide CMake build tooling. In 0.103, this is for experimental and development purposes only. Autotools should be used for production builds. In 0.104+, CMake is the only build system. Autotools and Visual Studio build systems have been removed.
 
-The following will help you get started, but for FULL details on how to use CMake to build ClamAV, see the `INSTALL.md` file located in the `clamav` repository.
-
-Ninja Build is recommended when doing development work. Builds using Ninja are significantly faster, both on Unix and Windows systems.
+To get started, first review the [official build isntructions](../Installing/Installing-from-source-Windows.md). Then return hrefer for some tips on building for development. For a complete reference of ClamAV build configuration options, see [the `INSTALL.md` file located in the `clamav` repository](https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md).
 
 The following instructions assume you have installed CMake, Ninja, and either GCC, Clang, or Visual Studio 2015 or newer.
 
 ### Linux/Unix
 
+Linux/Unix builds are often much simpler because the system's package manager can provide all of the dependencies for your. But if you want, you _can_ build them yourself, using a tool like Mussels. The instructions listed in the Windows section are nearly identical. With Mussels on Linux, Unix, and macOS you can even use the `host-static` target to build all of the dependencies as static libraries to make ClamAV more portable and easier to package. Feel free to reach out on Discord if you want to learn more.
+
+Configure (generate the build system):
 ```bash
 cmake .. -G Ninja                   \
     -D CMAKE_BUILD_TYPE="Debug"     \
@@ -252,11 +153,22 @@ cmake .. -G Ninja                   \
     -D ENABLE_MILTER=ON             \
     -D ENABLE_EXAMPLES=ON           \
     -D ENABLE_STATIC_LIB=ON         \
-    -D ENABLE_SYSTEMD=OFF           \
-    && ninja && ninja install
+    -D ENABLE_SYSTEMD=OFF
+```
+
+Build:
+```ps1
+ninja
+```
+
+Install (to the `CMAKE_INSTALL_PREFIX` directory):
+```ps1
+ninja install
 ```
 
 ### Windows
+
+#### vcpkg
 
 [vcpkg](https://github.com/microsoft/vcpkg) can be used to build the ClamAV library dependencies automatically. See the `vcpkg` README for installation instructions.
 
@@ -308,7 +220,96 @@ Install (to the `CMAKE_INSTALL_PREFIX` directory):
 ninja install
 ```
 
-> _Tip_: I like to place the "Configure" script in a `configure.ps1` script file in my home directory. This way I can simply run `~\configure.ps1` followed by `ninja` to do a build.
+> _Tip_: I like to place the "Configure" script in a `configure-vcpkg.ps1` script file in my home directory. This way I can simply run `~\configure-vcpkg.ps1` followed by `ninja` to do a build.
+
+#### Mussels
+
+Here are some tips for using Mussels to build the clamav dependencies and then for building ClamAV with those dependencies.
+
+Install Mussels
+```ps1
+python3 -m pip install --user mussels
+```
+
+After the install, pip may suggest you add a "Scripts" directory to your PATH environment variable. *I strongly suggest that you do this*, so you can run `msl` for mussels commands instead of having to type `python3 -m mussels` for every command.
+
+Now to use Mussels, run:
+```ps1
+# This requires Git, and will clone the the "clamav" and "scrapbook" cookbooks.
+msl up
+
+# This is to enable running the scripts in the clamav cookbook to build the clamav dependencies.
+msl cookbook trust -y clamav
+
+# This is just to get you in a small directory so Mussels don't spend forever searching your harddrive for build recipes.
+mkdir tmp && cd tmp
+
+# First try a dry-run. If you're missing any tools, it will tell you.
+# If you have everything, it will give you a list of the order it plans to build everything.
+msl build clamav_deps --dry-run
+
+# Then do the build.
+msl build clamav_deps
+
+# You could also have it build clamav for you too, but that's not so useful for development work.
+msl build clamav
+```
+
+Mussels isn't great for doing repeated builds, because it tends to retry every build in the dependency chain, and that will take some time. Mussels also builds from a downloaded source tarball, and not from a local Git repository. If you're interested in working on improvement Mussels for development purposes and smoothing over some of these sharp edges, [we'd love the help](https://github.com/Cisco-Talos/Mussels#contribute).
+
+So assuming you've now build the clamav dependencies, you should be ready to build ClamAV. Replace "2019" and "Community" with different versions or editions as needed to match your Visual Studio installation
+
+Configure (generate the build system):
+```ps1
+pushd "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\Common7\Tools"
+cmd /c "VsDevCmd.bat -arch=amd64 & set" |
+foreach {
+  if ($_ -match "=") {
+    $v = $_.split("="); set-item -force -path "ENV:\$($v[0])"  -value "$($v[1])"
+  }
+}
+popd
+Write-Host "`nVisual Studio 2019 Command Prompt variables set." -ForegroundColor Yellow
+
+cmake ..  -G Ninja -D CMAKE_BUILD_TYPE="Debug" `
+     -D ENABLE_EXAMPLES=OFF                                                 `
+     -D JSONC_INCLUDE_DIR="$home\.mussels\install\x64\include\json-c"         `
+     -D JSONC_LIBRARY="$home\.mussels\install\x64\lib\json-c.lib"             `
+     -D ENABLE_JSON_SHARED=OFF                                              `
+     -D BZIP2_INCLUDE_DIR="$home\.mussels\install\x64\include"                `
+     -D BZIP2_LIBRARY_RELEASE="$home\.mussels\install\x64\lib\libbz2.lib"     `
+     -D CURL_INCLUDE_DIR="$home\.mussels\install\x64\include"                 `
+     -D CURL_LIBRARY="$home\.mussels\install\x64\lib\libcurl_imp.lib"         `
+     -D OPENSSL_ROOT_DIR="$home\.mussels\install\x64"                         `
+     -D OPENSSL_INCLUDE_DIR="$home\.mussels\install\x64\include"              `
+     -D OPENSSL_CRYPTO_LIBRARY="$home\.mussels\install\x64\lib\libcrypto.lib" `
+     -D ZLIB_LIBRARY="$home\.mussels\install\x64\lib\libssl.lib"              `
+     -D LIBXML2_INCLUDE_DIR="$home\.mussels\install\x64\include\libxml2"      `
+     -D LIBXML2_LIBRARY="$home\.mussels\install\x64\lib\libxml2.lib"          `
+     -D PCRE2_INCLUDE_DIR="$home\.mussels\install\x64\include"                `
+     -D PCRE2_LIBRARY="$home\.mussels\install\x64\lib\pcre2-8.lib"            `
+     -D CURSES_INCLUDE_DIR="$home\.mussels\install\x64\include"               `
+     -D CURSES_LIBRARY="$home\.mussels\install\x64\lib\pdcurses.lib"          `
+     -D PThreadW32_INCLUDE_DIR="$home\.mussels\install\x64\include"           `
+     -D PThreadW32_LIBRARY="$home\.mussels\install\x64\lib\pthreadVC2.lib"    `
+     -D ZLIB_INCLUDE_DIR="$home\.mussels\install\x64\include"                 `
+     -D ZLIB_LIBRARY="$home\.mussels\install\x64\lib\zlibstatic.lib"          `
+     -D LIBCHECK_INCLUDE_DIR="$home\.mussels\install\x64\include"             `
+     -D LIBCHECK_LIBRARY="$home\.mussels\install\x64\lib\checkDynamic.lib"    `
+     -D CMAKE_INSTALL_PREFIX="install"
+```
+
+Build:
+```ps1
+ninja
+```
+
+Install (to the `CMAKE_INSTALL_PREFIX` directory):
+```ps1
+ninja install
+```
+
+> _Tip_: I like to place the "Configure" script in a `configure-mussels.ps1` script file in my home directory. This way I can simply run `~\configure-mussels.ps1` followed by `ninja` to do a build.
 
 ### Testing with CTest
 
