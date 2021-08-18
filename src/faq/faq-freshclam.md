@@ -2,6 +2,10 @@
 
 The following FAQ should help you understand why `freshclam` may have failed to fetch the latest updates.
 
+If you're unable to find an answer to your question in the FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net
 
 There is a problem with your DNS server. Please check the entries in `/etc/resolv.conf` and verify that you can resolve the `TXT` record manually:

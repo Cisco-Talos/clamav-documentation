@@ -1,5 +1,11 @@
 # Troubleshooting FAQ
 
+The following questions and answers may help you troubleshoot issues you may encounter when using ClamAV.
+
+If you're unable to find an answer to your question in our FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## After ClamAV is installed, then what? How do I update / refresh the virus database?
 
 You will need to edit the `freshclam.conf.example` file located in `/usr/local/etc`. Once that is done, you will need to run a `sudo freshclam` to download the signatures. You will need to run the command to update signatures often so that ClamAV has the most up to date signatures.

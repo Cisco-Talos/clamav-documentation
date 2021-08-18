@@ -1,5 +1,11 @@
 # ClamAV Virus Database FAQ
 
+The following FAQ should help you understand how ClamAV CVD signature databases work and any issues you may experience working with them.
+
+If you're unable to find an answer to your question in the FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## How do I keep my virus database up to date?
 
 ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date. It is encouraged that you update to at least version 0.103.2, which respects our bandwidth limitations.
