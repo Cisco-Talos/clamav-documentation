@@ -37,6 +37,7 @@
     - [Working with Your Fork](manual/Development/personal-forks.md)
     - [Reviewing Pull Requests](manual/Development/testing-pull-requests.md)
     - [Building for Development](manual/Development/development-builds.md)
+    - [Building the Installer Packages](manual/Development/build-installer-packages.md)
     - [Dev Tips & Tricks](manual/Development/tips-and-tricks.md)
     - [Performance Profiling](manual/Development/performance-profiling.md)
     - [Computing Code Coverage](manual/Development/code-coverage.md)
