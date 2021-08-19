@@ -32,7 +32,7 @@ If you're interested in learning how these packages were built, you can check ou
 
 Beginning with ClamAV 0.104, we offer Debian and RPM packages for x86_64 (64bit) and i686 (32bit) architectures. This will make it easier to get the latest version in the event that a package for your distribution is not readily available and you would prefer not to build ClamAV from source.
 
-> _Note_: These packages do not presently include `clamav-milter`. You can help help us add `clamav-milter` to the packages by developing a Mussels recipe for building the libmilter.a static library and contributing it to our ClamAV Mussels Cookbook.
+> _Note_: These packages do not presently include `clamav-milter`. You can help help us add `clamav-milter` to the packages by developing a Mussels recipe for building the libmilter.a static library and contributing it to our [Mussels cookbook](https://github.com/Cisco-Talos/clamav-mussels-cookbook/).
 
 #### RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)
 
