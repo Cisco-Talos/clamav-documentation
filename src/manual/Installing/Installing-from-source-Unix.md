@@ -197,12 +197,11 @@ sudo cmake --build . --target install
 
 ### A Linux Distribution-style Build
 
-This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions. This will install to `/usr`. The config directory will be `/etc/clamav` and the database directory will be `/var/lib/clamav`.
-
+This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions:
 ```bash
 cmake .. \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_INSTALL_LIBDIR=/usr/lib \
+    -D CMAKE_INSTALL_LIBDIR=lib \
     -D APP_CONFIG_DIRECTORY=/etc/clamav \
     -D DATABASE_DIRECTORY=/var/lib/clamav \
     -D ENABLE_JSON_SHARED=OFF
@@ -211,7 +210,35 @@ ctest
 sudo cmake --build . --target install
 ```
 
-> _Note_: Setting `ENABLE_JSON_SHARED=OFF` is preferred, but it will require json-c version 0.15 or newer. If json-c 0.15+ is not available to you, you may omit the option and just use the json-c shared library. But be warned that downstream applications which use `libclamav.so` may crash if they also use a different JSON library.
+Using the above example:
+
+- `CMAKE_INSTALL_PREFIX` - The install "prefix" will be `/usr`.
+
+- `CMAKE_INSTALL_LIBDIR` - The library directory will be `lib` (i.e. `/usr/lib`).
+
+  This may be the default anyways, but you may want to specify if CMake tries to install to `lib64` and if `lib64` is not desired.
+
+- `APP_CONFIG_DIRECTORY` - The config directory will be `/etc/clamav`.
+
+  *Note*: This absolute path is non-portable.
+
+- `DATABASE_DIRECTORY` - The database directory will be `/var/lib/clamav`.
+
+  *Note*: This absolute path is non-portable.
+
+> _Tip_: Setting `ENABLE_JSON_SHARED=OFF` is preferred, but it will require json-c version 0.15 or newer unless you build json-c yourself with custom options. If json-c 0.15+ is not available to you, you may omit the option and just use the json-c shared library. But be warned that downstream applications which use `libclamav.so` may crash if they also use a different JSON library.
+
+Some other popular configuration options include:
+
+- `CMAKE_INSTALL_DOCDIR` - Specify exact documentation subdirectory, relative to the install prefix. The default may vary depending on your system and how you install CMake.
+
+  E.g., `-D CMAKE_INSTALL_DOCDIR=share/doc/packages/clamav`
+
+- `CMAKE_SKIP_RPATH` - If enabled, no RPATH is built into anything. This may be required when building packages for some Linux distributions. See the [CMake wiki](https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling) for more detail about CMake's RPATH handling.
+
+  E.g., `-D CMAKE_SKIP_RPATH=ON`
+
+Please see the [CMake documentation](https://cmake.org/cmake/help/latest/command/install.html#installing-files) for more instructions on how to customize the install paths.
 
 ### A Build for Development
 
