@@ -218,7 +218,7 @@ clamscan.exe --recursive C:\
 
 ## Process Memory Scanning
 
-> _Note_: This feature requires Windows and ClamAV version 0.104 or newer.
+> _Note_: This feature requires Windows and ClamAV version 0.105 or newer. You must also be running ClamAV as Administrator.
 
 `clamscan` and `clamdscan` are able to scan the virtual memory of currently executing processes. To do so, use the `--memory` option:
 
