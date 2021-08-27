@@ -338,4 +338,4 @@ Below are some PE files with interesting Authenticode signatures. These are prob
 
 - [What are x509 certificates?](https://www.cryptologie.net/article/262/what-are-x509-certificates-rfc-asn1-der/) (Provides an overview of the ASN1 structure of x509 certificates)
 
-- [Signed Malware](http://signedmalware.org/) (Research papers on signed malware with interactive tables of malicious code signing certs)
+- [Signed Malware](http://users.umiacs.umd.edu/~tdumitra/signedmalware/index.html) (Research papers on signed malware with interactive tables of malicious code signing certs)

@@ -1,4 +1,4 @@
-# Community Tools
+# Community Projects
 
 > _Disclaimer_: The software listed in this section is authored by third parties and not by the ClamAV Team. Compatibility may vary.
 
@@ -166,7 +166,19 @@ A ClamAV plug in fpr SpamAssassin 3.X
 
 [Get ClamAVPlugin](https://cwiki.apache.org/confluence/display/SPAMASSASSIN/ClamAVPlugin)
 
+#### clamav-rest
+
+Simple ClamAV REST proxy. Builds on top of [clamav-java](#clamav-java) which is a minimal Java client for ClamAV.
+
+[Get clamav-rest](https://github.com/solita/clamav-rest)
+
 ### Filesystem & On-Access Scanning
+
+#### Clam Sentinel
+
+Clam sentinel is a program that detects file system changes and automatically scans the files added or modified using ClamWin. Require the installation of ClamWin. For Microsoft Windows 98/98SE/Me/2000/XP/Vista, Windows 7 and Windows 8.1.
+
+[Get Clam Sentinel](https://sourceforge.net/projects/clamsentinel/)
 
 #### ClamFS | clamd
 
@@ -299,6 +311,14 @@ Add virus detection capabilities to your python software in an efficient and eas
 
 [Get pyClamd](http://www.decalage.info/en/python/pyclamd)
 
+### Java
+
+#### clamav-java
+
+Simple ClamAV Java client. See also [ClamAV REST service](#clamav-rest) which builds on top of this.
+
+[Get clamav-java](https://github.com/solita/clamav-java)
+
 ## Miscellaneous Tools
 
 ### IPCop | ClamAV
@@ -318,3 +338,9 @@ Endian Firewall Community (EFW) is a turn-key Linux security distribution that c
 ClamTk is a GUI front-end for ClamAV using gtk2-perl. It is designed to be an easy-to-use, on-demand scanner for Linux systems. ClamTk has been ported to Fedora, Debian, RedHat, openSUSE, ALT Linux, Ubuntu, CentOS, Gentoo, Archlinux, Mandriva, PCLinuxOS, FreeBSD, and others.
 
 [Get ClamTK](https://github.com/dave-theunsub/clamtk)
+
+### ClamWin | ClamAV
+
+ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / XP / Me / 2000 / 98 and Windows Server 2012, 2008 and 2003.
+
+[Get ClamWin](https://clamwin.com/)

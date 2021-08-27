@@ -11,15 +11,9 @@ If there are no new packages, you have three options:
 
 ## Install ClamAV From Source
 
-If you installed from sources, first uninstall the old version:
+If you installed from sources, first [uninstall the old version](faq-uninstall.md).
 
-```bash
-./configure
-
-sudo make uninstall
-```
-
-Compile and install the new one: see [Installing ClamAV]
+Then, [compile and install the new one](../manual/Installing/Installing-from-source-Unix.md).
 
 Depending on your installation method, you might want to backup configuration (located in `/usr/local/etc` by default) and signature database (located in `/usr/local/share/clamav` by default). Don't forget to restore backups before starting up updated ClamAV.
 
@@ -63,7 +57,7 @@ ldd $(which freshclam)
 
 ### What does "*Malformed hexstring: This ClamAV version has reached End of Life*" mean?
 
-Please refer to: [eol-clamav]
+Please refer to our [End-of-Life (EOL) policy](faq-eol.md).
 
 ### How do I verify the integrity of ClamAV sources?
 
@@ -98,10 +92,8 @@ Visit the [source download page].
 ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is GCC with Linux on 32 and 64 bit Intel platforms, LLVM/Clang on macOS, and MSVC on Windows.
 
 
-[eol-clamav]: http://www.clamav.net/documents/end-of-life-policy-eol
 [GnuPG]: http://www.gnupg.org/
 [sources]: https://github.com/Cisco-Talos/clamav
 [pre-compiled packages]: http://www.clamav.net/download.html#otherversions
 [Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads
-[Installing ClamAV]: http://www.clamav.net/documents/installing-clamav

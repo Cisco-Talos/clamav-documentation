@@ -2,6 +2,10 @@
 
 The following FAQ should help you understand why `freshclam` may have failed to fetch the latest updates.
 
+If you're unable to find an answer to your question in the FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net
 
 There is a problem with your DNS server. Please check the entries in `/etc/resolv.conf` and verify that you can resolve the `TXT` record manually:
@@ -52,7 +56,7 @@ If you are experiencing this problem, please do the following:  Stop the `freshc
 
 ## HTTP Error Codes
 
-If you are receiving a 403, 503, or 1020 error codes when downloading from Cloudflare, then you are either explicitly blocked, using an [EOL'ed version of ClamAV](https://www.clamav.net/documents/end-of-life-policy-eol) or you are downloading incorrectly.
+If you are receiving a 403, 503, or 1020 error codes when downloading from Cloudflare, then you are either explicitly blocked, using an [EOL'ed version of ClamAV](faq-eol.md) or you are downloading incorrectly.
 
 If FreshClam is failing and you're not sure why, you may run `freshclam -v` for "Verbose Mode" to see the HTTP request & response details (ClamAV 0.102+).
 

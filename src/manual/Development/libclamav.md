@@ -410,10 +410,14 @@ Use `clamav-config` to check compilation information for libclamav.
 
 ### Example
 
-You will find an example scanner application in the clamav source under `/example`. Provided you have ClamAV already installed, execute the following to compile it:
+You will find an example scanner application in the clamav source under `./examples`.
+
+In ClamaV 0.104+, you can build the example programs alongside ClamAV by configuring with `-D ENABLE_EXAMPLES=ON`.
+
+Or, if you have ClamAV already installed, execute the following to compile it:
 
 ```bash
-    gcc -Wall ex1.c -o ex1 -lclamav
+gcc -Wall ex1.c -o ex1 -lclamav
 ```
 
 ## CVD format

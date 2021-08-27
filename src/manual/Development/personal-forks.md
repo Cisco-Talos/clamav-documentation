@@ -69,3 +69,18 @@ git push -u origin <the_name_of_your_branch>
 ```
 
 The `-u origin` argument will enable tracking between your local branch and your remote branch. In the future you will only need to do `git push` and it will know where to push it.
+
+### Rebase your development branch with the upstream `main` branch and resolving merge conflicts
+
+If you don't already have it:
+```
+git remote add upstream git@github.com:Cisco-Talos/clamav.git
+```
+
+Then run:
+```
+git fetch upstream
+git rebase upstream/main
+```
+
+If you have any merge conflicts, you'll now have the opportunity to fix them. After every conflict is resolved and you've saved the files in question, run `git add <the resolved files>` and then run `git rebase --continue`.

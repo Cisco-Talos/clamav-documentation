@@ -55,6 +55,8 @@ man freshclam
 > sudo ldconfig
 > ```
 
+If you are having issues updating the signature databases with `freshclam`, please review [the `freshclam` FAQ](../../faq/faq-freshclam.md).
+
 ## SigTool
 
 ClamAV provides `sigtool` as a command-line testing tool for assisting users in their efforts creating and working with virus signatures. While sigtool has many uses--including crafting signatures--of particular note, is sigtool's ability to help users and analysts in determining if a file detected by *libclamav*'s virus signatures is a false positive.

@@ -36,50 +36,71 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 ### Alpine:
 
+As root or with `sudo`, run:
 ```sh
-sudo apk update && sudo apk add \
-  # install tools
+apk update && apk add \
+  `# install tools` \
   g++ gcc gdb make cmake py3-pytest python3 valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   bzip2-dev check-dev curl-dev json-c-dev libmilter-dev libxml2-dev \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
 ### Redhat / Centos / Fedora:
 
-For Centos 8, you will probably need to run this to enable EPEL & PowerTools:
+*For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
+As root or with `sudo`, run:
 ```sh
-sudo dnf install -y epel-release
-sudo dnf install -y dnf-plugins-core
-sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-sudo dnf config-manager --set-enabled PowerTools | \
+dnf install -y epel-release
+dnf install -y dnf-plugins-core
+dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf config-manager --set-enabled PowerTools | \
   dnf config-manager --set-enabled powertools | true
 ```
 
-Then:
+As root or with `sudo`, run:
 ```sh
-sudo dnf install -y \
-  # install tools
+dnf install -y \
+  `# install tools` \
   gcc gcc-c++ make python3 python3-pip valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel \
   ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
-
-pip3 install --user pytest cmake
 ```
+
+> _Note_: If you get `dnf: command not found`, use `yum` instead.
+
+As a regular user, run:
+```sh
+python3 -m pip install --user cmake pytest
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install cmake pytest
+> ```
 
 ### Ubuntu / Debian:
 
+As root or with `sudo`, run:
 ```sh
-sudo apt-get update && sudo apt-get install -y \
-  # install tools
+apt-get update && apt-get install -y \
+  `# install tools` \
   gcc make pkg-config python3 python3-pip python3-pytest valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
   libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
-
-pip3 install --user cmake
 ```
+
+As a regular user, run:
+```sh
+python3 -m pip install --user cmake
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install cmake
+> ```
 
 ### macOS
 
@@ -103,15 +124,24 @@ python3 -m pip install --user cmake pytest
 
 ### FreeBSD
 
+As root or with `sudo`, run:
 ```sh
 pkg install -y \
-  # install tools
-  git gmake cmake pkgconf py38-pip python38 \
-  # install clamav dependencies
+  `# install tools` \
+  gmake cmake pkgconf py38-pip python38 \
+  `# install clamav dependencies` \
   bzip2 check curl json-c libmilter libxml2 ncurses pcre2
-
-python3 -m pip install --user pytest
 ```
+
+Now as a regular user, run:
+```sh
+python3.8 -m pip install --user pytest
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install pytest
+> ```
 
 ## Adding new system user and group
 
@@ -143,7 +173,7 @@ To help you get started, here are some popular build configurations.
 
 ### The Default Build
 
-The default build type is "RelWithDebInfo", that is "Release mode with Debugging symbols". It will install to `/usr/local`.
+The default build type is `RelWithDebInfo`, that is "Release mode with Debugging symbols". It will install to `/usr/local`.
 
 ```bash
 cmake ..
@@ -152,15 +182,26 @@ ctest
 sudo cmake --build . --target install
 ```
 
+> _Tip_: If building for macOS, you may need to override the system provided LibreSSL with the OpenSSL you installed using Homebrew.
+> For example:
+> ```sh
+> cmake .. \
+>   -D CMAKE_INSTALL_PREFIX=/usr/local/clamav                                    \
+>   -D OPTIMIZE=OFF                                                              \
+>   -D OPENSSL_ROOT_DIR=/usr/local/opt/openssl@1.1/                              \
+>   -D OPENSSL_CRYPTO_LIBRARY=/usr/local/opt/openssl@1.1/lib/libcrypto.1.1.dylib \
+>   -D OPENSSL_SSL_LIBRARY=/usr/local/opt/openssl@1.1/lib/libssl.1.1.dylib
+> make
+> sudo make install
+> ```
+
 ### A Linux Distribution-style Build
 
-This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions. This will be a "Release" mode build and will install to `/usr`. The config directory will be `/etc/clamav` and the database directory will be `/var/lib/clamav`.
-
+This build type mimics the layout you may be familiar with if installing a ClamAV package on Debian, Ubuntu, Alpine, and some other distributions:
 ```bash
 cmake .. \
-    -D CMAKE_BUILD_TYPE=Release \
     -D CMAKE_INSTALL_PREFIX=/usr \
-    -D CMAKE_INSTALL_LIBDIR=/usr/lib \
+    -D CMAKE_INSTALL_LIBDIR=lib \
     -D APP_CONFIG_DIRECTORY=/etc/clamav \
     -D DATABASE_DIRECTORY=/var/lib/clamav \
     -D ENABLE_JSON_SHARED=OFF
@@ -169,11 +210,39 @@ ctest
 sudo cmake --build . --target install
 ```
 
-> _Note_: Setting `ENABLE_JSON_SHARED=OFF` is preferred, but it will require json-c version 0.15 or newer. If json-c 0.15+ is not available to you, you may omit the option and just use the json-c shared library. But be warned that downstream applications which use `libclamav.so` may crash if they also use a different JSON library.
+Using the above example:
+
+- `CMAKE_INSTALL_PREFIX` - The install "prefix" will be `/usr`.
+
+- `CMAKE_INSTALL_LIBDIR` - The library directory will be `lib` (i.e. `/usr/lib`).
+
+  This may be the default anyways, but you may want to specify if CMake tries to install to `lib64` and if `lib64` is not desired.
+
+- `APP_CONFIG_DIRECTORY` - The config directory will be `/etc/clamav`.
+
+  *Note*: This absolute path is non-portable.
+
+- `DATABASE_DIRECTORY` - The database directory will be `/var/lib/clamav`.
+
+  *Note*: This absolute path is non-portable.
+
+> _Tip_: Setting `ENABLE_JSON_SHARED=OFF` is preferred, but it will require json-c version 0.15 or newer unless you build json-c yourself with custom options. If json-c 0.15+ is not available to you, you may omit the option and just use the json-c shared library. But be warned that downstream applications which use `libclamav.so` may crash if they also use a different JSON library.
+
+Some other popular configuration options include:
+
+- `CMAKE_INSTALL_DOCDIR` - Specify exact documentation subdirectory, relative to the install prefix. The default may vary depending on your system and how you install CMake.
+
+  E.g., `-D CMAKE_INSTALL_DOCDIR=share/doc/packages/clamav`
+
+- `CMAKE_SKIP_RPATH` - If enabled, no RPATH is built into anything. This may be required when building packages for some Linux distributions. See the [CMake wiki](https://gitlab.kitware.com/cmake/community/-/wikis/doc/cmake/RPATH-handling) for more detail about CMake's RPATH handling.
+
+  E.g., `-D CMAKE_SKIP_RPATH=ON`
+
+Please see the [CMake documentation](https://cmake.org/cmake/help/latest/command/install.html#installing-files) for more instructions on how to customize the install paths.
 
 ### A Build for Development
 
-This suggested development configuration generates a Ninja-based build system instead of the default Makefile-based build system. Ninja is faster than Make, but you will have to install "ninja" (or "ninja-build"). With the following commands, ClamAV will be compiled in "Debug" mode with optimizations disabled. It will install to an "install" subdirectory and SystemD integration is disabled so that `sudo` is not required for the install and SystemD unit files are not installed to the system. This build also enables building a static `libclamav.a` library as well as building the example applications.
+This suggested development configuration generates a Ninja-based build system instead of the default Makefile-based build system. Ninja is faster than Make, but you will have to install "ninja" (or "ninja-build"). With the following commands, ClamAV will be compiled in `Debug` mode with optimizations disabled. It will install to an "install" subdirectory and SystemD integration is disabled so that `sudo` is not required for the install and SystemD unit files are not installed to the system. This build also enables building a static `libclamav.a` library as well as building the example applications.
 
 ```bash
 cmake .. -G Ninja \
@@ -198,8 +267,13 @@ If a test fails, please [report the issue on GitHub](https://github.com/Cisco-Ta
 
 ## Un-install
 
-Unlike with Autotools, CMake doesn't provide a simple command to uninstall. However, CMake builds an `install_manifest.txt` files when you do the install. You can use the manifest to remove the installed files:
+CMake doesn't provide a simple command to uninstall. However, CMake does build an `install_manifest.txt` file when you do the install. You can use the manifest to remove the installed files.
 
+You will find the manifest in the directory where you compiled ClamAV. If you followed the recommendations (above), then you will find it at `<clamav source directory>/build/install_manifest.txt`.
+
+Feel free to inspect the file so you're comfortable knowing what you're about to delete.
+
+Open a terminal and `cd` to that `<clamav source directory>/build` directory. Then run:
 ```bash
 xargs rm < install_manifest.txt
 ```

@@ -1,5 +1,9 @@
 # Clam AntiVirus *Frequently Asked Questions*
 
+If you're unable to find an answer to your question in the FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 Table Of Contents
 
 1. [Selecting the Right Version of ClamAV for You](faq-whichversion.md)

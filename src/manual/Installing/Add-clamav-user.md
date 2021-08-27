@@ -1,14 +1,17 @@
-# Setting up a `clamav` service user account
+# Add a service user account
 
 If you're planning to run `freshclam` or `clamd` as a service on a Linux or Unix system, you should create a service account. The following instructions assume that you will use the an account named "clamav" for both services, although you may create a different account name for each if you wish.
+
+> _Note_: *These instructions are mostly just for folks building & installing from source.* If you installed a package from your Linux/Unix distribution, it probably created the account(s) for you.
 
 ## Create a service user account (and group)
 
 ### Linux / Unix
 
+As root or with `sudo`, run:
 ```sh
-sudo groupadd clamav && \
-sudo useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
+groupadd clamav
+useradd -g clamav -s /bin/false -c "Clam Antivirus" clamav
 ```
 
 If your operating system does not have the `groupadd` and `useradd` utilities, consult a system manual. **Don’t forget to lock access to the account!**
@@ -61,7 +64,12 @@ If you choose to use the default `clamav` user to run `freshclam` and `clamd`, y
 
 After you've installed ClamAV, you will want to make it so that the database directory is owned by the same service account as you're using for `freshclam`.
 
-For example:
+As root or with `sudo`, run:
 ```bash
 sudo chown -R clamav:clamav /usr/local/share/clamav
+```
+
+Or (if you customized the database path):
+```bash
+chown -R clamav:clamav /var/lib/clamav/
 ```

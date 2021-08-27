@@ -13,6 +13,7 @@ Table Of Contents
 	- [One-Time Scanning](#one-time-scanning)
 		- [ClamScan](#clamscan)
 			- [Some basic scans](#some-basic-scans)
+	- [Process Memory Scanning](#process-memory-scanning)
 	- [Disclaimers](#disclaimers)
 	- [Windows-specific Issues](#windows-specific-issues)
 		- [Globbing](#globbing)
@@ -214,6 +215,18 @@ Windows:
 ```bash
 clamscan.exe --recursive C:\
 ```
+
+## Process Memory Scanning
+
+> _Note_: This feature requires Windows and ClamAV version 0.104 or newer.
+
+`clamscan` and `clamdscan` are able to scan the virtual memory of currently executing processes. To do so, use the `--memory` option:
+
+```bash
+clamscan --memory
+```
+
+The `--kill` and `--unload` options allow for killing/unloading infected loaded modules.
 
 ## Disclaimers
 

@@ -1,5 +1,11 @@
 # ClamAV Virus Database FAQ
 
+The following FAQ should help you understand how ClamAV CVD signature databases work and any issues you may experience working with them.
+
+If you're unable to find an answer to your question in the FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## How do I keep my virus database up to date?
 
 ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date. It is encouraged that you update to at least version 0.103.2, which respects our bandwidth limitations.
@@ -50,11 +56,11 @@ Sure, you can find more details on our [Private Local Mirror page](../appendix/C
 
 ## I can't wait for you to update the database! I need to use the new signature NOW!
 
-No problem, save your own signatures in a text file with the appropriate extension (see [our signature writing documentation](../manual/Signatures.md) for more information). Put the signature file in the same directory where the `.cvd` files are located. ClamAV will load it after the official `.cvd` files. You do not need to sign the `.db` file.
+No problem, save your own signatures in a text file with the appropriate extension (see [our signature writing documentation](../manual/Signatures.md) for more information). Put the signature files in the same directory where the `.cvd` files are located. This is typically `/usr/local/share/clamav` or `/var/lib/clamav`. ClamAV will load it after the official `.cvd` files. You do not need to sign your custom database files.
 
-## Can I download the virusdb manually?
+## Can I download the virus database manually?
 
-This practice is discouraged, please use either FreshClam or CvdUpdate to update your definitions.  Please check out our [FreshClam FAQ](faq-freshclam.md) and our [Private Mirror Documentation](../appendix/CvdPrivateMirror.md) for further information and links to CvdUpdate.
+This practice is discouraged, please use either FreshClam or CVDUpdate to update your definitions.  Please check out our [FreshClam FAQ](faq-freshclam.md) and our [Private Mirror Documentation](../appendix/CvdPrivateMirror.md) for further information and links to CVDUpdate.
 
 ## I am getting error codes such as 403, 429, etc when FreshClam (or other update system) attempts to download updates
 

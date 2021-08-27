@@ -1,6 +1,6 @@
 # ClamAV Packages
 
-Many Linux and Unix distributions as well as packaging systems for macOS and Windows offer one or more ClamAV packages to make it easy for you to install ClamAV.
+Many Linux and Unix distributions offer one or more ClamAV packages to make it easy for you to install ClamAV.
 
 These packages are usually well maintained but if you find an issue with one, please consider helping the volunteers that maintain the packages.
 
@@ -14,7 +14,7 @@ These packages are usually well maintained but if you find an issue with one, pl
 >     - daemons in `/usr/local/sbin`
 >     - libraries in `/usr/local/lib`
 >     - headers in `/usr/local/include`
->     - configs in `/usr/local/etc/` (or `/usr/local/etc/clamav/`, v0.104+)
+>     - configs in `/usr/local/etc/`
 >     - databases in `/usr/local/share/clamav/`
 >
 >   - A Linux package install will probably go in `/usr`, with:

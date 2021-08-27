@@ -1,8 +1,12 @@
 # Miscellaneous FAQ
 
+If you're unable to find an answer to your question in our FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## I see you have Bugzilla AND GitHub Issues. Which one should I use?
 
-Please use GitHub Issues. We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
+Please use [GitHub Issues](https://github.com/Cisco-Talos/clamav/issues). We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
 
 ## I reported a bug on Bugzilla, but no one can see it. What do I do?
 

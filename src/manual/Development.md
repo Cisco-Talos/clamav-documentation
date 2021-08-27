@@ -22,6 +22,10 @@ If you need to review a pull request, it's best to not only eyeball the changes 
 
 Basic instructions for building ClamAV can be in the [Installing](Installing.md) chapter and a comprehensive reference for compiling ClamAV with CMake is available in the [INSTALL.md](https://github.com/Cisco-Talos/clamav/blob/dev/0.104/INSTALL.md) file accompanying the source code, but if you want a few extra tips on building ClamAV for development purposes, [check this out](Development/development-builds.md).
 
+## Building the Installer Packages
+
+If you'd like to learn how we build the installer packages and even replicate this on your own, you can [read about it here](Development/build-installer-packages.md).
+
 ## Dev Tips & Tricks
 
 [This section](Development/tips-and-tricks.md) contains a varied assortment of techniques you can use when coding on ClamAV to up your development game.

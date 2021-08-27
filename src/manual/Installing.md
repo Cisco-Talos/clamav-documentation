@@ -1,5 +1,17 @@
 # Installing ClamAV
 
+- [Installing ClamAV](#installing-clamav)
+  - [Installing with a Package Manager](#installing-with-a-package-manager)
+  - [Installing with an Installer](#installing-with-an-installer)
+    - [Linux (.deb, .rpm)](#linux-deb-rpm)
+      - [RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)](#rpm-packages-for-centos-redhat-fedora-suse-etc)
+      - [DEB packages (for Debian, Ubuntu, Mint, etc.)](#deb-packages-for-debian-ubuntu-mint-etc)
+    - [macOS](#macos)
+    - [Windows](#windows)
+  - [Official ClamAV Docker Images](#official-clamav-docker-images)
+  - [Installing from Source](#installing-from-source)
+  - [What now?](#what-now)
+
 ## Installing with a Package Manager
 
 ClamAV is widely available from third party package managers for most operating systems. This is often the quickest way to install ClamAV. It will make also upgrades easier.
@@ -7,6 +19,86 @@ ClamAV is widely available from third party package managers for most operating 
 Check out the [Packages page](Installing/Packages.md) to find installation instructions for your system.
 
 ## Installing with an Installer
+
+Pre-compiled packages provided on [the clamav.net downloads page](https://www.clamav.net/downloads) have all external library dependencies statically compiled in.
+
+These installers likely differ from packages provided by other packaging tools in that you will need to create and configure the `freshclam.conf` and `clamd.conf` files. You may also need to add a `clamav` service user account and adjust the permissions on the database directory. We hope to round out these sharp corners in the future and to make setup more convenient, but for now be advised that setup from one of these packages is a little bit more work than you may be used to.
+
+If you're interested in learning how these packages were built, you can check out [these development instructions](Development/build-installer-packages.md).
+
+> _Note_: In the event that a vulnerability is found in one of the dependencies that may impact ClamAV, we will publish new packages with updated dependencies as soon as we're able.
+
+### Linux (.deb, .rpm)
+
+Beginning with ClamAV 0.104, we offer Debian and RPM packages for x86_64 (64bit) and i686 (32bit) architectures. This will make it easier to get the latest version in the event that a package for your distribution is not readily available and you would prefer not to build ClamAV from source.
+
+> _Note_: These packages do not presently include `clamav-milter`. You can help help us add `clamav-milter` to the packages by developing a Mussels recipe for building the libmilter.a static library and contributing it to our [Mussels cookbook](https://github.com/Cisco-Talos/clamav-mussels-cookbook/).
+
+#### RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)
+
+These are compiled on CentOS 7. They should be compatible with all RPM-based linux distributions running `glibc` version `2.17` or newer.
+
+To install, download the package for your system use `yum` or `dnf` to install the package. For example:
+```bash
+sudo dnf install ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
+```
+
+You can verify that the package was installed using:
+```bash
+dnf info clamav
+```
+
+This package installs to `/usr/local`.
+
+Unlike packages provided by Debian or other distributions, this package does not presently include a preconfigured `freshclam.conf`, `clamd.conf`, database directory, or `clamav` user accounts for FreshClam and ClamD. You can follow [these instructions](Usage/Configuration.md) to configure FreshClam and ClamD. You can follow [these instructions](Installing/Add-clamav-user.md) to create the `clamav` user account for running FreshClam and ClamD services.
+
+And uninstall the package with:
+```bash
+sudo dnf remove ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
+```
+
+#### DEB packages (for Debian, Ubuntu, Mint, etc.)
+
+These are compiled on Ubuntu 16.04, and have all external library dependencies statically compiled in. They should be compatible with all Debian-based linux distributions running `glibc` version `2.23` or newer.
+
+```bash
+sudo apt install ~/Downloads/clamav-0.104.0-rc2.libnux.x86_64.deb
+```
+
+You can verify that the package was installed using:
+```bash
+apt info clamav
+```
+
+This package installs to `/usr/local`.
+
+Unlike packages provided by Debian or other distributions, this package does not presently include a preconfigured `freshclam.conf`, `clamd.conf`, database directory, or `clamav` user accounts for FreshClam and ClamD. You can follow [these instructions](Usage/Configuration.md) to configure FreshClam and ClamD. You can follow [these instructions](Installing/Add-clamav-user.md) to create the `clamav` user account for running FreshClam and ClamD services.
+
+And uninstall the package with:
+```bash
+sudo apt remove clamav
+```
+
+### macOS
+
+Beginning with ClamAV 0.104, we offer a PKG installer for macOS. These are universal binaries built for Intel x86_64 and Apple M1 arm64 processors.
+
+> _Disclaimer_: The release materials for 0.104.0-rc2 are not signed or notarized. We are working on adding signing and notarization to our CI processes, but for now you may be unable to use this PKG installer on macOS Big Sur or newer.
+
+To install, download the macOS `.pkg` installer. Double-click the installer and follow the directions.
+
+This package installs to `/usr/local/clamav`. This is **not** in the default system `PATH` environment variable. You may wish to add `/usr/local/clamav/bin` and `/usr/local/clamav/sbin` to your `PATH` so you can run the ClamAV programs without entering the full path. To do this add this line to `~/.zshrc`:
+```bash
+export PATH=/usr/local/clamav/bin:/usr/local/clamav/sbin:$PATH
+```
+Then run `source ~/.zshrc` or open a new terminal.
+
+Unlike packages provided by Homebrew, this package does not presently include a preconfigured `freshclam.conf`, `clamd.conf`, or database directory. You can follow [these instructions](Usage/Configuration.md) to configure FreshClam and ClamD.
+
+macOS package installers do not provide a mechanism for automatically uninstalling the package. In the future, we hope to add a script to aid with uninstallation. But for now, to make it easier to remove, our macOS installer installs to `/usr/local/clamav`. To uninstall, all you need to do is run:
+```bash
+sudo rm -rf /usr/local/clamav
+```
 
 ### Windows
 

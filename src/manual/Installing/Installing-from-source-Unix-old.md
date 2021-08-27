@@ -29,43 +29,48 @@ The following are instructions to build ClamAV *version 0.103 and older* using A
 
 ### Alpine:
 
+As root or with `sudo`, run:
 ```sh
-sudo apk update && sudo apk add \
-  # install tools
+apk update && apk add \
+  `# install tools` \
   g++ gcc gdb make valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   bzip2-dev check-dev curl-dev json-c-dev libmilter-dev libxml2-dev \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
 ### Redhat / Centos / Fedora:
 
-For Centos 8, you will probably need to run this to enable EPEL & PowerTools:
+*For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
+As root or with `sudo`, run:
 ```sh
-sudo dnf install -y epel-release
-sudo dnf install -y dnf-plugins-core
-sudo dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
-sudo dnf config-manager --set-enabled PowerTools | \
+dnf install -y epel-release
+dnf install -y dnf-plugins-core
+dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-8.noarch.rpm
+dnf config-manager --set-enabled PowerTools | \
   dnf config-manager --set-enabled powertools | true
 ```
 
-Then:
+As root or with `sudo`, run:
 ```sh
-sudo dnf install -y \
-  # install tools
+dnf install -y \
+  `# install tools` \
   gcc gcc-c++ make valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   bzip2-devel check-devel json-c-devel libcurl-devel libxml2-devel \
   ncurses-devel openssl-devel pcre2-devel sendmail-devel zlib-devel
 ```
 
+> _Note_: If you get `dnf: command not found`, use `yum` instead.
+
 ### Ubuntu / Debian:
 
+As root or with `sudo`, run:
 ```sh
-sudo apt-get update && sudo apt-get install -y \
-  # install tools
+apt-get update && apt-get install -y \
+  `# install tools` \
   gcc make pkg-config valgrind \
-  # install clamav dependencies
+  `# install clamav dependencies` \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
   libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
@@ -93,11 +98,12 @@ done
 
 ### FreeBSD
 
+As root or with `sudo`, run:
 ```sh
 pkg install -y \
-  # install tools
-  git gmake pkgconf \
-  # install clamav dependencies
+  `# install tools` \
+  gmake pkgconf \
+  `# install clamav dependencies` \
   bzip2 check curl json-c libmilter libxml2 ncurses pcre2
 ```
 

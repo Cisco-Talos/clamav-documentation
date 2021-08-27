@@ -1,5 +1,9 @@
 # Interpreting Scan Alerts FAQ
 
+If you're unable to find an answer to your question in our FAQ, you can seek help in [our clamav-users mailing list](https://www.clamav.net/contact.html#ml), on our [Discord server](https://discord.gg/6vNAqWnVgw), or by submitting an [issue on GitHub](https://github.com/Cisco-Talos/clamav/issues). The mailing list archives and existing Github issues (open or closed) may also have an answer to your question.
+
+Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
+
 ## ClamAV alerted on a file during a scan. What do I do?
 
 ClamAV may have found a malicious or suspicious file. However, you're probably asking yourself if the alert is a False Positive (FP). It may well be, so don't just delete the file out-of-hand.
