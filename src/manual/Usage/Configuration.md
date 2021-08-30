@@ -107,6 +107,8 @@ Database files path search order:
 freshclam
 ```
 
+> _Tip_: Depending on how you installed Freshclam and depending on which version of ClamAV you're running, you may encounter errors the first time you run Freshclam. See [the Freshclam section of our FAQ](../../faq/faq-freshclam.md) for help!
+
 If everything is OK you may create the log file in /var/log (ensure the directory is owned either by *clamav* or whichever user `freshclam` will be running as):
 
 ```bash
