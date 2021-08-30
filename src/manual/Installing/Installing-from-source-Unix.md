@@ -8,6 +8,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
   - [Install prerequisites](#install-prerequisites)
     - [Alpine:](#alpine)
     - [Redhat / Centos / Fedora:](#redhat--centos--fedora)
+    - [SUSE / openSUSE:](#suse--opensuse)
     - [Ubuntu / Debian:](#ubuntu--debian)
     - [macOS](#macos)
     - [FreeBSD](#freebsd)
@@ -69,6 +70,28 @@ dnf install -y \
 ```
 
 > _Note_: If you get `dnf: command not found`, use `yum` instead.
+
+As a regular user, run:
+```sh
+python3 -m pip install --user cmake pytest
+```
+
+> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> ```sh
+> python3 -m pip install cmake pytest
+> ```
+
+### SUSE / openSUSE:
+
+As root or with `sudo`, run:
+```sh
+zypper install -y \
+  `# install tools` \
+  gcc gcc-c++ make python3 python3-pip valgrind \
+  `# install clamav dependencies` \
+  libbz2-devel check-devel libjson-c-devel libcurl-devel libxml2-devel \
+  ncurses-devel libopenssl-devel pcre2-devel sendmail-devel zlib-devel
+```
 
 As a regular user, run:
 ```sh

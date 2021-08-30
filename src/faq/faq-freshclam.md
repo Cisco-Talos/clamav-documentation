@@ -6,6 +6,67 @@ If you're unable to find an answer to your question in the FAQ, you can seek hel
 
 Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
 
+## Failed to get information about user "clamav"
+
+If you've installed ClamAV and are running Freshclam as root or with `sudo` but don't have a `clamav` user account for Freshclam to run as, you may encounter this error:
+
+```
+ERROR: Failed to get information about user "clamav".
+Create the "clamav" user account for freshclam to use, or set the DatabaseOwner config option in freshclam.conf to a different user.
+For more information, see https://docs.clamav.net/manual/Installing/Installing-from-source-Unix.html
+ERROR: Initialization error!
+```
+
+You can resolve this issue by following these steps to [create a `clamav` service account](https://docs.clamav.net/manual/Installing/Add-clamav-user.html).
+
+## Can't create freshclam.dat in /usr/local/share/clamav
+
+If the database directory exists but is not owned by the user account that Freshclam is being run as, you may encounter this error:
+
+```
+ERROR: Can't create freshclam.dat in /usr/local/share/clamav
+Hint: The database directory must be writable for UID 1000 or GID 1000
+ERROR: Failed to save freshclam.dat!
+WARNING: Failed to create a new freshclam.dat!
+ERROR: initialize: libfreshclam init failed.
+ERROR: Initialization error!
+```
+
+To resolve this issue, change ownership of the directory to the appropriate user account.
+
+For example if you're running Freshclam under your user account "bob", something like this may resolve the issue:
+
+```bash
+sudo chown -R bob /usr/local/share/clamav
+```
+
+If running Freshclam as root (or with `sudo`), then Freshclam will try to automatically switch to run as the `clamav` user, or whichever user is specified as the `DatabaseOwner` in `freshclam.conf`. Run this to resolve the issue:
+
+```bash
+sudo chown -R clamav /usr/local/share/clamav
+```
+
+## Problem with the SSL CA cert
+
+On Linux/Unix systems, Freshclam uses openssl to validate certificates for TLS connections. It relies on finding the openssl CA bundle in the default path. You may encounter the following error if you're missing the `ca-certificates` package, or on some distributions where the path to the CA bundle has been customized:
+
+```
+WARNING: Download failed (77) WARNING:  Message: Problem with the SSL CA cert (path? access rights?
+WARNING: Can't download daily.cvd from https://database.clamav.net/daily.cvd
+```
+
+First you may try installing the `ca-certificates` package. If that is already installed, or the issue persists, then you may need to set the `CURL_CA_BUNDLE` environment variable to direct Freshclam to the path of the CA bundle on your system.
+
+For example, on openSUSE you may need to set `CURL_CA_BUNDLE=/var/lib/ca-certificates/ca-bundle.pem`. You can test this by running:
+
+```bash
+CURL_CA_BUNDLE=/var/lib/ca-certificates/ca-bundle.pem freshclam
+```
+
+If this resolves the issue, you may wish to export the `CURL_CA_BUNDLE` variable in your `.bashrc` file or the equivalent for your shell.
+
+> _Tip_: The `CURL_CA_BUNDLE` variable is also used by ClamSubmit.
+
 ## Invalid DNS reply. Falling back to HTTP mode or ERROR: Can't query current.cvd.clamav.net
 
 There is a problem with your DNS server. Please check the entries in `/etc/resolv.conf` and verify that you can resolve the `TXT` record manually:
