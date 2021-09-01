@@ -32,7 +32,7 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 - *"patch version"* -- A specific MAJOR.MINOR.PATCH version.
 
-  For example: 0.103.4 would be the next "patch version" in the 0.103 "feature release".
+  For example: 0.103.3 is a "patch version" in the 0.103 "feature release".
 
 - *"end of life" (EOL)* -- The date after which the ClamAV Team will no longer support a feature version in any way.
 
@@ -40,11 +40,11 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 - *"long term support (LTS) release"* -- A feature release that will get critical patch versions for an extended period.
 
-  The latest patch version will continue to get access to download signature databases for the duration of the support period.
+  The latest patch version will continue to get access to download signature databases for the duration of the support period. See [above](#long-term-support-lts-feature-releases) for policy details.
 
 - *"regular (non-LTS) release"* -- A feature release that will only be supported until a little after the next feature release.
 
-  The latest patch version will continue to get access to download signature databases a little longer than that, but users are encouraged to upgrade and may be vulnerable if a security patch is only published for the next feature release and they fail to upgrade.
+  The latest patch version will continue to get access to download signature databases a little longer than that, but users are encouraged to upgrade and may be vulnerable if a security patch is only published for the next feature release and they fail to upgrade. See [above](#regular-non-lts-feature-releases) for policy details.
 
 - *"support"* -- The ClamAV project defines "support" in several ways:
 
@@ -85,7 +85,7 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 | 0.102           | Oct 2019             | 0.102.4              | Dec 2021 (0.104 + 4 mo.)   | Dec 2021                     |                            | Dec 2021                   |                               |
 | 0.101           | Dec 2018             | 0.101.5              | Dec 2021                   | Dec 2021                     |                            | Dec 2021                   |                               |
 | 0.100           | Mar 2018             | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
-| 0.99(.2)        | May 2016             | 0.99.4               | Mar-1 2021                 |                              |                            |                            |                               |
+| 0.99            | Dec 2015             | 0.99.4               | Mar-1 2021                 |                              |                            |                            |                               |
 
 Currently, every version from ClamAV 0.99 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
 
