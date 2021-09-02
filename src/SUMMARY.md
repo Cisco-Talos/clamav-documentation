@@ -55,10 +55,10 @@
     - [Interpreting Scan Alerts](faq/faq-scan-alerts.md)
     - [Upgrading](faq/faq-upgrade.md)
     - [Win32](faq/faq-win32.md)
-    - [ClamAV EOL Policy](faq/faq-eol.md)
     - [PUA (Potentially Unwanted Application)](faq/faq-pua.md)
     - [Ignore](faq/faq-ignore.md)
     - [Uninstall](faq/faq-uninstall.md)
+    - [ClamAV EOL Policy](faq/faq-eol.md)
 
 -----------
 
