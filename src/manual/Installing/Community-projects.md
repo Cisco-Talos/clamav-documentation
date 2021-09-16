@@ -142,6 +142,12 @@ An aws-cdk construct that uses ClamAV® to scan objects in Amazon S3 for viruses
 
 [Get cdk-serverless-clamscan](https://github.com/awslabs/cdk-serverless-clamscann)
 
+#### Antivirus for Amazon S3
+
+A CloudFormation template to create an EC2 scanner cluster for S3 buckets.
+
+[Get Antivirus for Amazon S3](https://github.com/widdix/aws-s3-virusscan)
+
 #### HAVP | libclamav
 
 [HAVP](http://havp.org/) is a proxy with an antivirus filter. It does not cache or filter content. At the moment the complete traffic is scanned. A reason for that is the chance of malicious code in nearly every filetypes e.g. HTML (JavaScript) or Jpeg.
