@@ -78,14 +78,14 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 > _Note_: This markdown table is generated from a spreadsheet using [this tool](https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/).
 
-| Feature release | First Published      | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
-| --------------- | -------------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 0.104           | expected Aug-31 2021 | 0.104.0              | 0.106 + 4 months           | 0.106 + 4 months             |                            | 0.106 + 4 months           | 0.105 + 4 months, or 0.106    |
-| **0.103 LTS**   | **Sep 2020**         | **0.103.3**          | **Sep 2023**               | **Sep 2023**                 | 0.104 published            | **Sep 2023**               | **Sep 2023**                  |
-| 0.102           | Oct 2019             | 0.102.4              | Dec 2021 (0.104 + 4 mo.)   | Dec 2021                     |                            | Dec 2021                   |                               |
-| 0.101           | Dec 2018             | 0.101.5              | Dec 2021                   | Dec 2021                     |                            | Dec 2021                   |                               |
-| 0.100           | Mar 2018             | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
-| 0.99            | Dec 2015             | 0.99.4               | Mar-1 2021                 |                              |                            |                            |                               |
+| Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
+| --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
+| 0.104           | Sep-3 2021      | 0.104.0              | 0.106 + 4 months           | 0.106 + 4 months             |                            | 0.106 + 4 months           | 0.105 + 4 months, or 0.106    |
+| **0.103 LTS**   | **Sep-14 2020** | **0.103.3**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
+| 0.102           | Oct-2 2019      | 0.102.4              | Jan-3 2021 (0.104 + 4 mo.) | Jan-3 2021                   |                            | Jan-3 2021                 |                               |
+| 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2021                 | Jan-3 2021                   |                            | Jan-3 2021                 |                               |
+| 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
+| 0.99            | Dec-1 2015      | 0.99.4               | Mar-1 2021                 |                              |                            |                            |                               |
 
 Currently, every version from ClamAV 0.99 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
 
