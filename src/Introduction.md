@@ -102,13 +102,16 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
   - Fedora
     - 30 (64bit)
     - 31 (64bit)
+  - openSUSE
+    - Leap (64bit)
 - UNIX
   - FreeBSD
     - 11 (64bit)
     - 12 (64bit)
   - macOS
-    - 10.13 (High Sierra)
-    - 10.15 (Catalina)
+    - 10.13 High Sierra (x86_64)
+    - 10.15 Catalina (x86_64)
+    - 11.5 Big Sur (x86_64, arm64)
 - Windows
   - 7 (64bit, 32bit)
   - 10 (64bit, 32bit)
