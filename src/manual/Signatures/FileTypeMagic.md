@@ -9,7 +9,7 @@ The signature format is not too disimilar from NDB body-based signatures.
 The format is:
 
 ```
-magictype:offset:magicbytes:name:type:type[:min_flevel[:max_flevel]]
+magictype:offset:magicbytes:name:rtype:type[:min_flevel[:max_flevel]]
 ```
 
 Where:
@@ -24,7 +24,7 @@ Where:
 
 `name`: A descriptive name for the file type.
 
-`rtype`: Usually CL_TYPE_ANY.
+`rtype`: Previously detected file type. Usually CL_TYPE_ANY as a wild-card.
 
 `type`: The CL_TYPE corresponding with the file type signature. See the [CL_TYPE reference](../../appendix/FileTypes.md) for details.
 
