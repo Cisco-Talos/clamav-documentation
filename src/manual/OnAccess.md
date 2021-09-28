@@ -45,7 +45,7 @@ sudo clamonacc
 
 If all went well, the On-Access scanner will fork to the background, and will now be actively protecting the path(s) specified with `OnAccessIncludePath`. You can test this by dropping an eicar file into the specified path, and attempting to read/access it (e.g. `cat eicar.txt`). This will result in an "Operation not permitted" message, triggered by fanotify blocking the access attempt at the kernel level.
 
-Finally, while you will have to restart both `clamd` and `clamonacc`. If default `clamonacc` performance is not to your liking, and your system has the resources available, we reccomend increasing the values for the following `clamd.conf` configuration options to increase performance:
+Finally, you will have to restart both `clamd` and `clamonacc`. If default `clamonacc` performance is not to your liking, and your system has the resources available, we reccomend increasing the values for the following `clamd.conf` configuration options to increase performance:
 
 - `MaxQueue`
 - `MaxThreads`
