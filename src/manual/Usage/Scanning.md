@@ -134,7 +134,7 @@ In older versions, ClamAV's On-Access Scanner is a thread that runs within a `cl
 
 On-Access Scanning is primarily set up [through `clamd.conf`](Configuration.md#on-access-scanning). However, you can learn more about all the configuration and command line options available to you by reading the [On-Access Scanning User Guide](../OnAccess.md).
 
-Once you have set up the On-Access Scanner to your liking, you will need to run `clamd` will elevated permissions to start it.
+Once you have set up the On-Access Scanner to your liking, you will need to run `clamd` with elevated permissions to start it.
 
 ```bash
 sudo clamd
