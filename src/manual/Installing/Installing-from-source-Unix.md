@@ -6,10 +6,10 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
   - [Install prerequisites](#install-prerequisites)
-    - [Alpine:](#alpine)
-    - [Redhat / Centos / Fedora:](#redhat--centos--fedora)
-    - [SUSE / openSUSE:](#suse--opensuse)
-    - [Ubuntu / Debian:](#ubuntu--debian)
+    - [Alpine](#alpine)
+    - [Redhat / Centos / Fedora](#redhat--centos--fedora)
+    - [SUSE / openSUSE](#suse--opensuse)
+    - [Ubuntu / Debian](#ubuntu--debian)
     - [macOS](#macos)
     - [FreeBSD](#freebsd)
   - [Adding new system user and group](#adding-new-system-user-and-group)
@@ -35,7 +35,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 > _Tip_: The Python 3 `pytest` package is recommended in the instructions below in case the unit tests fail so that the test output is easy to read. *You're welcome to skip it.* However, if you have Python 2's `pytest` installed but not Python 3's `pytest`, the tests may fail to run.
 
-### Alpine:
+### Alpine
 
 As root or with `sudo`, run:
 ```sh
@@ -47,7 +47,7 @@ apk update && apk add \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
-### Redhat / Centos / Fedora:
+### Redhat / Centos / Fedora
 
 *For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
 As root or with `sudo`, run:
@@ -81,7 +81,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-### SUSE / openSUSE:
+### SUSE / openSUSE
 
 As root or with `sudo`, run:
 ```sh
@@ -103,7 +103,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-### Ubuntu / Debian:
+### Ubuntu / Debian
 
 As root or with `sudo`, run:
 ```sh

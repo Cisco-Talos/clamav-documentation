@@ -4,9 +4,9 @@ The following are instructions to build ClamAV *version 0.103 and older* using A
 
 - [Building ClamAV with Autotools (v0.103 and older)](#building-clamav-with-autotools-v0103-and-older)
   - [Install prerequisites](#install-prerequisites)
-    - [Alpine:](#alpine)
-    - [Redhat / Centos / Fedora:](#redhat--centos--fedora)
-    - [Ubuntu / Debian:](#ubuntu--debian)
+    - [Alpine](#alpine)
+    - [Redhat / Centos / Fedora](#redhat--centos--fedora)
+    - [Ubuntu / Debian](#ubuntu--debian)
     - [macOS](#macos)
     - [FreeBSD](#freebsd)
   - [Adding new system user and group](#adding-new-system-user-and-group)
@@ -27,7 +27,7 @@ The following are instructions to build ClamAV *version 0.103 and older* using A
 
 ## Install prerequisites
 
-### Alpine:
+### Alpine
 
 As root or with `sudo`, run:
 ```sh
@@ -39,7 +39,7 @@ apk update && apk add \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
-### Redhat / Centos / Fedora:
+### Redhat / Centos / Fedora
 
 *For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
 As root or with `sudo`, run:
@@ -63,7 +63,7 @@ dnf install -y \
 
 > _Note_: If you get `dnf: command not found`, use `yum` instead.
 
-### Ubuntu / Debian:
+### Ubuntu / Debian
 
 As root or with `sudo`, run:
 ```sh
