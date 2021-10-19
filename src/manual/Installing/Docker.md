@@ -237,10 +237,18 @@ ClamAV in the official Docker images is configured to listen for TCP connections
 
 While `clamd` and `clamav-milter` will listen on the above TCP ports, Docker does not expose these by default to the host. Only within containers can these ports be accessed. To expose, or "publish", these ports to the host, and thus potentially over the (inter)network, the `--publish` (or `--publish-all`) flag to `docker run` can be used. While more advanced/secure mappings can be done as per documentation, the basic way is to `--publish [<host_port>:]<container_port>` to make the port available to the host.
 ```bash
-    --publish 73310:3310 \
+    --publish 13310:3310 \
     --publish 7357
 ```
-The above would thus publish the milter port 3310 as 73310 on the host and the clamd port 7357 as a random to the host. The random port can be inspected via `docker ps`.
+The above would thus publish:
+- `clamd` port `3310` as `13310` on the host
+- `milter` port `7357` as a *random* to the host. The *random* port can be inspected via `docker ps`.
+
+But if you're just running one ClamAV container, you probably will just want to use the default port numbers, which are the same port numbers suggested in the `clamd.conf.sample` file provided with ClamAV:
+```bash
+    --publish 3310:3310 \
+    --publish 7357:7357
+```
 
 > **Warning**: Extreme caution is to be taken when using `clamd` over TCP as there are no protections on that level. All traffic is un-encrypted. Extra care is to be taken when using TCP communications.
 
