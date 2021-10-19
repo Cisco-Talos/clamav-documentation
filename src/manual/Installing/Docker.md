@@ -192,7 +192,7 @@ The ClamAV container actually runs both `freshclam` and `clamd` daemons by defau
 
 So to additionally also enable `clamav-milter`, the following flag can be added:
 ```bash
-    --env 'CLAMAV_NO_MILTERED=false'
+    --env 'CLAMAV_NO_MILTERD=false'
 ```
 
 Further more, all of the configuration files that live in `/etc/clamav` can be overridden by doing a volume-mount to the specific file. The following argument can be added for this purpose. The example uses the entire configuration directory, but this can be supplied multiple times if individual files deem to be replaced.
