@@ -63,6 +63,8 @@ dnf install -y \
 
 > _Note_: If you get `dnf: command not found`, use `yum` instead.
 
+> _Tip_: You need to run `autogen.sh` if you're not building from a release tarball from clamav.net. If so, visit the [developer section](../Development/development-builds.md#redhat--centos--fedora) to find out what packages are required to run `autogen.sh`
+
 ### Ubuntu / Debian
 
 As root or with `sudo`, run:
@@ -74,6 +76,8 @@ apt-get update && apt-get install -y \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
   libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
+
+> _Tip_: You need to run `autogen.sh` if you're not building from a release tarball from clamav.net. If so, visit the [developer section](../Development/development-builds.md#debian--ubuntu) to find out what packages are required to run `autogen.sh`
 
 ### macOS
 

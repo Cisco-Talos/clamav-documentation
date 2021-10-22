@@ -18,6 +18,8 @@ The following are instructions for building ClamAV using CMake or Autotools with
       - [Feature Tests](#feature-tests)
   - [Building ClamAV with Autotools (v0.103 and older)](#building-clamav-with-autotools-v0103-and-older)
     - [Running autogen.sh](#running-autogensh)
+      - [Redhat / Centos / Fedora](#redhat--centos--fedora)
+      - [Debian / Ubuntu](#debian--ubuntu)
     - [Running configure](#running-configure)
     - [Running make](#running-make)
     - [Testing with `make check`](#testing-with-make-check)
@@ -337,6 +339,29 @@ ClamAV versions 0.103+ will require you to run `autogen.sh` before running `conf
 
 ```bash
 ./autogen.sh
+```
+
+To run `autogen.sh`, you will need some extra tools:
+- autoconf
+- automake
+- libtool
+- m4
+- pkg-config
+
+The packages to install are...
+
+#### Redhat / Centos / Fedora
+
+```sh
+dnf/yum install -y \
+  autoconf autoreconf automake libtool libtool-ltdl-devel m4 pkg-config
+```
+
+#### Debian / Ubuntu
+
+```sh
+apt-get install -y \
+  autoconf autoconf-archive automake libtool libltdl-dev m4 pkg-config
 ```
 
 ### Running configure
