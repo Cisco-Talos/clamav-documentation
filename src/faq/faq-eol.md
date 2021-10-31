@@ -87,7 +87,7 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 | 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
 | 0.99            | Dec-1 2015      | 0.99.4               | Mar-1 2021                 |                              |                            |                            |                               |
 
-Currently, every version from ClamAV 0.99 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
+Currently, every version from ClamAV 0.100 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
 
 ## Additional Detail About Critical Patch Support
 
