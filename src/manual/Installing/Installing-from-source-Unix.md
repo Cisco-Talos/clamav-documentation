@@ -145,7 +145,7 @@ done
 python3 -m pip install --user cmake pytest
 ```
 
-> _Note_: YOu may also need to install `pkg-config` if not already present on your system. You can use Homebrew to do this with: `brew install pkg-config`
+> _Note_: You may also need to install `pkg-config` if not already present on your system. You can use Homebrew to do this with: `brew install pkg-config`
 
 ### FreeBSD
 
