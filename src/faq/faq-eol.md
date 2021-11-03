@@ -16,7 +16,7 @@ Each LTS feature release will be supported with critical patch versions *and* ac
 
 A new LTS feature release will be identified *approximately* every **two (2)** years.
 
-*Users must stay up-to-date with the latest patch versions for continued support. As of August 28, that means version 0.103.3.*
+*Users must stay up-to-date with the latest patch versions for continued support. As of November 3, that means version 0.103.4.*
 
 ## Regular (non-LTS) Feature Releases
 
@@ -28,11 +28,11 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 - *"feature release"* -- A version starting with MAJOR.MINOR.0 to include all PATCH versions.
 
-  For example: ClamAV 0.103.0, 0.103.1, 0.103.2, and 0.103.3 are all "patch versions" within the same "feature release".
+  For example: 0.103.0 and 0.103.1 are both "patch versions" within the same "feature release".
 
 - *"patch version"* -- A specific MAJOR.MINOR.PATCH version.
 
-  For example: 0.103.3 is a "patch version" in the 0.103 "feature release".
+  For example: 0.103.1 is a "patch version" in the 0.103 "feature release".
 
 - *"end of life" (EOL)* -- The date after which the ClamAV Team will no longer support a feature version in any way.
 
@@ -80,8 +80,8 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
 | --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 0.104           | Sep-3 2021      | 0.104.0              | 0.106 + 4 months           | 0.106 + 4 months             |                            | 0.106 + 4 months           | 0.105 + 4 months, or 0.106    |
-| **0.103 LTS**   | **Sep-14 2020** | **0.103.3**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
+| 0.104           | Sep-3 2021      | 0.104.1              | 0.106 + 4 months           | 0.106 + 4 months             |                            | 0.106 + 4 months           | 0.105 + 4 months, or 0.106    |
+| **0.103 LTS**   | **Sep-14 2020** | **0.103.4**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
 | 0.102           | Oct-2 2019      | 0.102.4              | Jan-3 2022 (0.104 + 4 mo.) | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2022                 | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
