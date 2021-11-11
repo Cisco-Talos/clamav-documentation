@@ -207,7 +207,7 @@ Run this to scan ALL the files on your system, it will take **quite** a while. K
 Linux/Unix:
 
 ```bash
-clamscan.exe --recursive /
+clamscan --recursive /
 ```
 
 Windows:
