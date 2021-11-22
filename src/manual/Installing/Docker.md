@@ -256,6 +256,10 @@ But if you're just running one ClamAV container, you probably will just want to 
 
 Docker has the ability to run simple `ping` checks on services running inside containers. If `clamd` is running inside the container, Docker will on occasion send a `ping` to `clamd` on the default port and wait for the pong from `clamd`. If `clamd` fails to respond, Docker will treat this as an error. The healthcheck results can be viewed with `docker inspect`.
 
+When the container starts up, the health-check also starts up. As loading the
+virus database can take some time, there is a delay configured in the
+`Dockerfile` to try and avoid this race condition.
+
 ## Performance
 
 The performance impact of running `clamd` in Docker is negligible. Docker is in essence just a wrapper around Linux's cgroups and cgroups can be thought of as `chroot` or FreeBSD's `jail`. All code is executed on the host without any translation. Docker does however do some isolation (through cgroups) to isolate the various systems somewhat.
