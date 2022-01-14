@@ -31,6 +31,7 @@
     - [Bytecode Signatures](manual/Signatures/BytecodeSignatures.md)
     - [Container Metadata Signatures](manual/Signatures/ContainerMetadata.md)
     - [Archive Passwords (experimental)](manual/Signatures/EncryptedArchives.md)
+    - [Signature Names](manual/Signatures/SignatureNames.md)
 - [For Developers](manual/Development.md)
     - [Pull Request Basics](manual/Development/github-pr-basics.md)
     - [ClamAV Git Work Flow](manual/Development/clamav-git-work-flow.md)

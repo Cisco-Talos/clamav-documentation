@@ -87,35 +87,16 @@ ClamAV body-based signature content has a [special format](Signatures/BodySignat
 
 ### Signature names
 
-ClamAV uses the following prefixes for signature names:
+ClamAV signatures *must* only use alphanumeric characters, dash (`-`), dot (`.`), underscores (`_`) to delimit words. *Never* use a space, apostrophe, colon, semi-colon, or quote mark.
 
-- *Worm* for Internet worms
-- *Trojan* for backdoor programs
-- *Adware* for adware
-- *Flooder* for flooders
-- *HTML* for HTML files
-- *Email* for email messages
-- *IRC* for IRC trojans
-- *JS* for Java Script malware
-- *PHP* for PHP malware
-- *ASP* for ASP malware
-- *VBS* for VBS malware
-- *BAT* for BAT malware
-- *W97M*, *W2000M* for Word macro viruses
-- *X97M*, *X2000M* for Excel macro viruses
-- *O97M*, *O2000M* for generic Office macro viruses
-- *DoS* for Denial of Service attack software
-- *DOS* for old DOS malware
-- *Exploit* for popular exploits
-- *VirTool* for virus construction kits
-- *Dialer* for dialers
-- *Joke* for hoaxes
+ClamAV signature names found in the official signature databases generally follow this format:
+  ```
+  {platform}.{category}.{name}-{signature id}-{revision}
+  ```
 
-Important rules of the naming convention:
+Older signatures and [Potentially Unwanted Applications (PUA) signatures](../../faq/faq-pua.md) may deviate from these guidelines.
 
-- Always use a `-zippwd` suffix in the malware name for ZIP container metadata (`.cdb`) signatures,
-- Always use a `-rarpwd` suffix in the malware name for  RAR container metadata (`.cdb`) signatures,
-- Only use alphanumeric characters, dash (`-`), dot (`.`), underscores (`_`) in malware names, never use space, apostrophe or quote mark.
+Naming conventions in 3rd party databases vary. You can find Cisco-Talos [guidelines for naming signatures for the official database here](Signatures/SignatureNames.md).
 
 ## Signature Writing Tips and Tricks
 
