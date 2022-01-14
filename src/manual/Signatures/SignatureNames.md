@@ -30,16 +30,16 @@ Some examples: *Zbot, CVE_2012_0003, Sality, FakeAV, Koobface*
 Rules for the name field:
 
 1. "Must"
-    a. Only use alphanumeric characters, dot (.), underscores (_) in signature names
+   - Only use alphanumeric characters, dot (.), underscores (_) in signature names
 2. "Must not"
-    a. Use space, apostrophe or quote marks.
-    b. Use company names, brand names, or names of living people, except where the virus is probably written by the person. Common first names are permissible, but be careful – avoid if possible. In particular, avoid names associated with the anti-virus world. If a virus claims to be written by a particular person or company do not believe it without further proof.
-    c. Use an existing Family_Name, unless the viruses belong to the same family
-    d. Invent a new name if there is an existing, acceptable name.
-    e. Use obscene or offensive names.
+   - Use space, apostrophe or quote marks.
+   - Use company names, brand names, or names of living people, except where the virus is probably written by the person. Common first names are permissible, but be careful – avoid if possible. In particular, avoid names associated with the anti-virus world. If a virus claims to be written by a particular person or company do not believe it without further proof.
+   - Use an existing Family_Name, unless the viruses belong to the same family
+   - Invent a new name if there is an existing, acceptable name.
+   - Use obscene or offensive names.
 3. "Should"
-    a. When possible reuse the most common family name used by other vendors
-    b. Avoid geographic names which are based on the discovery site – the same virus might appear simultaneously in several different places
+   - When possible reuse the most common family name used by other vendors
+   - Avoid geographic names which are based on the discovery site – the same virus might appear simultaneously in several different places
 
 ### `signature id` and `revision`
 
