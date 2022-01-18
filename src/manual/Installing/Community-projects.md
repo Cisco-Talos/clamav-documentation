@@ -345,6 +345,12 @@ ClamTk is a GUI front-end for ClamAV using gtk2-perl. It is designed to be an ea
 
 [Get ClamTK](https://github.com/dave-theunsub/clamtk)
 
+### ClamAV-GUI | ClamAV
+
+ClamAV-GUI is a GUI front-end for ClamAV using Qt. The ClamAV-GUI sports a dropzone in a corner where files and folders can be dragged and dropped into for scanning. This GUI is brought to you by Joerg Zopes.
+
+[Get ClamAV-GUI](https://store.kde.org/p/1127892/)
+
 ### ClamWin | ClamAV
 
 ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / XP / Me / 2000 / 98 and Windows Server 2012, 2008 and 2003.
