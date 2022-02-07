@@ -12,6 +12,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
     - [Ubuntu / Debian](#ubuntu--debian)
     - [macOS](#macos)
     - [FreeBSD](#freebsd)
+  - [Install Rust toolchain](#install-rust-toolchain)
   - [Adding new system user and group](#adding-new-system-user-and-group)
   - [Download the source code](#download-the-source-code)
   - [Build ClamAV](#build-clamav)
@@ -167,6 +168,14 @@ python3.8 -m pip install --user pytest
 > ```sh
 > python3 -m pip install pytest
 > ```
+
+## Install Rust toolchain
+
+Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment following the instructions on the [rustup](https://rustup.rs) site. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
+
+Building ClamAV requires, at a minimum, Rust compiler version 1.56, as it relies on features introduced in the [Rust 2021 Edition](https://doc.rust-lang.org/edition-guide/rust-2021/index.html).
+
+Depending on your target environment, compilers may be manually installed without downloading and executing the `rustup` script. Some platforms (e.g., Alpine Linux) provide packages that are recent-enough to build ClamAV. However, some Linux distributions such as CentOS, provide no package, or toolchains that are too old.  For these platforms, if you are unable or unwilling to utilize `rustup`, you may [download and install prebuilt toolchain binaries directly from rust-lang.org](https://forge.rust-lang.org/infra/other-installation-methods.html#standalone).
 
 ## Adding new system user and group
 
