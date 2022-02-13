@@ -180,11 +180,11 @@ docker run -it --rm \
 The ClamAV container actually runs both `freshclam` and `clamd` daemons by default. Optionally available to the container is ClamAV's milter daemon. To control the behavior of the services started within the container, the following flags can be passed to the `docker run` command with the `--env` (`-e`) parameter.
 
 * CLAMAV_NO_CLAMD [true|**false**] Do not start `clamd`.
-  (default: start `clamd`)
+  (default: `clamd` daemon is started)
 * CLAMAV_NO_FRESHCLAMD [true|**false**] Do not start the `freshclam` daemon.
-  (default: start the `freshclam` daemon)
+  (default: `freshclam` daemon is started)
 * CLAMAV_NO_MILTERD [**true**|false] Do not start the `clamav-milter` daemon.
-  (default: start the `clamav-milter` daemon )
+  (default: `clamav-milter` daemon is **not** started)
 * CLAMD_STARTUP_TIMEOUT [integer] Seconds to wait for `clamd` to start.
   (default: 1800)
 * FRESHCLAM_CHECKS [integer] `freshclam` daily update frequency.
