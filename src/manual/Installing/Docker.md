@@ -4,7 +4,9 @@ ClamAV can be run within a Docker container. This provides isolation from other 
 
 ## The official images on Docker Hub
 
-ClamAV image tags [on Docker Hub](https://hub.docker.com/r/clamav/clamav) follow this naming convention:
+ClamAV image tags [on Docker Hub](https://hub.docker.com/r/clamav/clamav) follow these naming conventions.
+
+All images come in two forms:
 
   - `clamav/clamav:<version>`: A release preloaded with signature databases.
 
@@ -16,8 +18,35 @@ ClamAV image tags [on Docker Hub](https://hub.docker.com/r/clamav/clamav) follow
 
     > _Caution_: Using this image without mounting an existing database directory will cause FreshClam to download the entire database set each time you start a new container.
 
-You can use the `unstable` version (i.e. `clamav/clamav:unstable` or
-`clamav/clamav:unstable_base`) to try the latest from our development branch.
+There are a selection of tags to help you get the versions you need:
+
+  - `clamav/clamav:<MAJOR.MINOR.PATCH>_base` and `clamav/clamav:<MAJOR.MINOR.PATCH>`: This is a tag for a specific image for a given patch version. The "base" version of this image will never change, and the non-base version will only ever be updated to have newer signature databases.
+
+    If we need to publish a new image to resolve CVE's in the underlying dependencies, then another image will be created with a build-number suffix.
+
+    For example: `0.104.2-2_base` is a new image to resolve security issues found in busybox in the `0.104.2_base` image.
+
+   - `clamav/clamav:<MAJOR.MINOR>_base` and `clamav/clamav:<MAJOR.MINOR>`: This is a tag for the latest patch version of ClamAV 0.104. When the image for a new patch version is created, this tag will be updated so that it always points to the latest image for ClamAV 0.104.
+
+   - `clamav/clamav:stable_base` and `clamav/clamav:stable`: These tags point to the latest stable patch version image. We use the word "stable" to make it clear that these do not track the latest commit in Github. As of 2022-02-15, that makes these equivalent to `0.104` and `0.104_base`. When 0.105 is released, these will be updated to track `0.105` and `0.105_base`.
+
+   - `clamav/clamav:latest_base` and `clamav/clamav:latest`: These are the same as `clamav/clamav:stable_base` and `clamav/clamav:stable`. They exist because many users expect all images to have a "latest".
+
+   - `clamav/clamav:unstable_base` and `clamav/clamav:unstable`: These tags point to the latest commit in the `main` branch on github.com/Cisco-Talos/clamav. Provided something doesn't go wrong, these are updated every evening that something changes in the ClamAV Git repository.
+
+### Image Selection Recommendations
+
+Instead of choosing the specific image for a patch release, choose the tag for a feature release, such as `clamav/clamav:0.104` or `clamav/clamav:0.104_base`.
+
+Only select a "latest" or "stable" tags if you're comfortable with the the risk involved with updating to a new feature release right away without evaluating it first.
+
+Choose the `_base` tag and set up a volume to persist your signature databases. This will save us and you bandwidth. You may choose to set up a container that has the Freshclam daemon enabled, and have multiple others that do not. The ClamD daemon in the all images will occasionally check to see if there are newer signatures in the mounted volume and will reload the databases as needed.
+
+ClamAV uses quite a bit of RAM to load the signature databases into memory. 2GB may be insufficient. Configure your containers to have 4GB of RAM.
+
+### End of Life
+
+The ClamAV Docker images are subject to ClamAV's [End-of-Life (EOL) policy](../../faq/faq-eol.md). After EOL for a given feature release, those images will no longer be updated and may be unable to download signature updates.
 
 ## Building the ClamAV image
 
@@ -295,7 +324,7 @@ Exactly how you orchestrate this will depend on your environment. You might do s
        --name "clam_container_01" \
        --mount source=clam_db,target=/var/lib/clamav \
        --env 'CLAMAV_NO_FRESHCLAMD=true' \
-       clamav/clamav:unstable_base
+       clamav/clamav:0.104_base
    ```
    Wait for the first one to download the databases (if it's a new database volume). Then start more:
    ```bash
@@ -303,7 +332,7 @@ Exactly how you orchestrate this will depend on your environment. You might do s
        --name "clam_container_02" \
        --mount source=clam_db,target=/var/lib/clamav \
        --env 'CLAMAV_NO_FRESHCLAMD=true' \
-       clamav/clamav:unstable_base
+       clamav/clamav:0.104_base
    ```
 3. Check for updates, as needed:
    ```bash
