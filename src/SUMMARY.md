@@ -63,6 +63,10 @@
 
 -----------
 
+- [Community Resources](community_resources/CommunityResources.md)
+
+-----------
+
 - [Appendix](appendix/Appendix.md)
     - [Terminology](appendix/Terminology.md)
     - [Hosting a Private Database Mirror](appendix/CvdPrivateMirror.md)
