@@ -170,7 +170,7 @@ python3 -m pip install --user cmake pytest
 
 > _Note_: You may also need to install `pkg-config` if not already present on your system. You can use Homebrew to do this with: `brew install pkg-config`
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) your Rust toolchain.
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain.
 
 ### FreeBSD
 
@@ -193,7 +193,7 @@ python3.8 -m pip install --user pytest
 > python3 -m pip install pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) . FreeBSD users may find an adequate version using the package manager to install the Rust toolchain, depending on their release. FreeBSD users may install the Rust toolchain with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) . FreeBSD users may find an adequate version using the package manager to install the Rust toolchain, depending on their release. FreeBSD users may install the Rust toolchain with:
 ```sh
 pkg install -y rust
 ```
