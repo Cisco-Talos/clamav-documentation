@@ -48,7 +48,7 @@ apk update && apk add \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Alpine users on the latest release may also find an adequate Rust toolchain with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Alpine users on the latest release may also find an adequate Rust toolchain with:
 ```sh
 apk add cargo rust
 ```
@@ -87,7 +87,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Centos and RHEL users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Fedora users that are unable or unwilling to use `rustup` may have luck with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Centos and RHEL users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Fedora users that are unable or unwilling to use `rustup` may have luck with:
 ```sh
 dnf install -y cargo rust
 ```
@@ -114,7 +114,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
 ```sh
 zypper install -y cargo rust
 ```
@@ -141,7 +141,7 @@ python3 -m pip install --user cmake
 > python3 -m pip install cmake
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rut toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
 ```sh
 apt-get install -y cargo rustc
 ```
