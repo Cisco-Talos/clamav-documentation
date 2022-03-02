@@ -10,7 +10,7 @@ Linus Torvalds once described programming in the C language to be "like juggling
 
 Starting with ClamAV v0.105, the Rust toolchain is required to compile ClamAV.
 
-We believe that by switching from C to Rust, it will be possible for us to focus less on preventing accidental memory safety issues or fixing critical vulnerabilities, and to focus more during development on actual feature correctness.
+We believe that by switching from C to Rust, it will enable us to focus more during development on actual feature correctness because of the reduced risk of accidental memory safety issues or critical vulnerabilities.
 
 We're also leveraging Rust's vibrant ecosystem to provide valuable tools for processing different file types, such as those used for our new image fuzzy hash matching feature.
 
