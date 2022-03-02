@@ -55,6 +55,7 @@
     - [Troubleshooting](faq/faq-troubleshoot.md)
     - [Interpreting Scan Alerts](faq/faq-scan-alerts.md)
     - [Upgrading](faq/faq-upgrade.md)
+    - [Rust](faq/faq-rust.md)
     - [Win32](faq/faq-win32.md)
     - [PUA (Potentially Unwanted Application)](faq/faq-pua.md)
     - [Ignore](faq/faq-ignore.md)

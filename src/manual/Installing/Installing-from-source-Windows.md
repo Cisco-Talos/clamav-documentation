@@ -7,6 +7,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 - [Installing ClamAV on Windows from Source](#installing-clamav-on-windows-from-source)
   - [Install prerequisites](#install-prerequisites)
     - [Building the library dependencies](#building-the-library-dependencies)
+    - [Install Rust toolchain](#install-rust-toolchain)
   - [Download the source code](#download-the-source-code)
   - [Build ClamAV](#build-clamav)
     - [Building with Mussels](#building-with-mussels)
@@ -27,7 +28,12 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 **The following commands for building on Windows are written for Powershell**.
 
-At a minimum you will need Visual Studio 2015 or newer, and CMake. If you want to build the installer, you'll also need WiX Toolset.
+At a minimum you will need:
+- Visual Studio 2015 or newer
+- CMake
+- [The Rust programming language toolchain](#install-rust-toolchain) (for ClamAV version 0.105+)
+
+If you want to build the installer, you'll also need WiX Toolset.
 
 If you're using Chocolatey, you can install CMake and WiX simply like this:
 
@@ -61,6 +67,12 @@ Mussels is the preferred tool to supply the library dependencies at least until 
 > ```ps1
 > python3 -m pip install --user pytest
 > ```
+
+### Install Rust toolchain
+
+Starting with ClamAV version 0.105, the Rust toolchain is required to compile ClamAV. You can install the appropriate toolchain for your development environment by following the instructions on the [rustup](https://rustup.rs) website. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
+
+Building ClamAV requires, at a minimum, Rust compiler version 1.56, as it relies on features introduced in the [Rust 2021 Edition](https://doc.rust-lang.org/edition-guide/rust-2021/index.html).
 
 ## Download the source code
 
