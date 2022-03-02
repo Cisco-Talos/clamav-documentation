@@ -4,7 +4,7 @@
 
 For those unfamiliar with [the Rust programming language](https://www.rust-lang.org/), Rust is a systems programming language that guarantees memory-safety and thread-safety without relying on garbage collection. Rust does not guarantee against memory leaks, but its modern type sytem and novel ownership model all but eliminate accidental memory leaks. You can write "unsafe" Rust code that disables some of Rust's safety checks and offers the same flexibility that C has when complex optimizations are needed or when interfacing with C code.
 
-Runtime performance for software written in Rust is also comparable to that of C and C++. Rust has a vibrant, and growing, ecosystem of libraries and tools. Rust's build system and package manager is called Cargo. Cargo makes it easy to leverage third party libraries.
+Runtime performance for software written in Rust is also comparable to that of C and C++. Rust has a vibrant and growing ecosystem of libraries and tools. Rust's build system and package manager is called Cargo. Cargo makes it easy to leverage third party libraries.
 
 Linus Torvalds once described programming in the C language to be "like juggling chainsaws." We agree. To mitigate the pitfalls of the C and C++ programming langauges, the ClamAV team decided to switch to write new components and rewrite select existing components in the Rust programming language.
 
