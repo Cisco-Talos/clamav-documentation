@@ -32,16 +32,16 @@ In addition to the above ClamAV versions that run on Windows, Cisco offers two m
 
 ## Is Immunet free for commercial use?
 
-Immunet is not free for commercial use. [AMP for Endpoints] is our product that replaced the commercial version. If you are interested in deploying this in a commercial environment, we highly suggest checking that out.
+Immunet is not free for commercial use. [Cisco Secure Endpoint] (formerly AMP for Endpoints) is our product that replaced the commercial version. If you are interested in deploying this in a commercial environment, we highly suggest checking that out.
 
 ## Will Immunet send any sensitive data from my computer to the cloud?
 
 Immunet sends information about the files its scanning back to the cloud. This information is in the form of SHA hashes and file heuristics. Currently, this information is only collected for Windows PE files, or in other terms what most people refer to as executable files. No information is collected for other types of files, like Word, Excel, or PDF. Additionally, in some situations the entire PE file will be uploaded to the Cloud to determine if it is malicious.
 For a complete overview please see the [privacy policy].
 
-## Are you going to make use of the Cloud in the \*nix version of ClamAV?
+## Are you going to make use of the Cloud in ClamAV?
 
-The simple answer is “yes”. The complex answer is “when”. We are currently working on that roadmap and will keep everyone informed as that information becomes available.
+No. Users that want a lighter memory footprint and additional advanced detection features of an endpoint security suite should look to Immunet or Cisco Secure Endpoint.
 
 ## Can I use Immunet with my current AV solution?
 
@@ -59,4 +59,4 @@ Yes. You can find both versions at [ClamAV/downloads].
 
 [privacy policy]: https://www.cisco.com/c/en/us/about/legal/privacy.html
 [ClamAV/downloads]: https://www.clamav.net/downloads#otherversions
-[AMP for Endpoints]: https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html
+[Cisco Secure Endpoint]: https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html

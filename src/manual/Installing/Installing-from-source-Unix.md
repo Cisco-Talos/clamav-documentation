@@ -48,9 +48,14 @@ apk update && apk add \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Alpine users on the latest release may also find an adequate Rust toolchain with:
+```sh
+apk add cargo rust
+```
+
 ### Redhat / Centos / Fedora
 
-*For Centos 8*, you will probably need to run this to enable EPEL & PowerTools.
+*For RHEL 8 or Centos Stream*, you will probably need to run this to enable EPEL & PowerTools.
 As root or with `sudo`, run:
 ```sh
 dnf install -y epel-release
@@ -82,6 +87,11 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Centos and RHEL users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Fedora users that are unable or unwilling to use `rustup` may have luck with:
+```sh
+dnf install -y cargo rust
+```
+
 ### SUSE / openSUSE
 
 As root or with `sudo`, run:
@@ -103,6 +113,11 @@ python3 -m pip install --user cmake pytest
 > ```sh
 > python3 -m pip install cmake pytest
 > ```
+
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
+```sh
+zypper install -y cargo rust
+```
 
 ### Ubuntu / Debian
 
@@ -126,6 +141,13 @@ python3 -m pip install --user cmake
 > python3 -m pip install cmake
 > ```
 
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
+```sh
+apt-get install -y cargo rustc
+```
+
+> _Note_: Debian and Ubuntu chose to call it `rustc` and not `rust`, like the others. Ubuntu users may instead install `rust-all` for a few additional Rust development tools that you would normally install through `rustup`. The `rust-all` package does not appear to exist for Debian 11 (bullseye).
+
 ### macOS
 
 The following instructions require you to install [HomeBrew](https://brew.sh/) to install tools and library dependencies.
@@ -148,6 +170,8 @@ python3 -m pip install --user cmake pytest
 
 > _Note_: You may also need to install `pkg-config` if not already present on your system. You can use Homebrew to do this with: `brew install pkg-config`
 
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain.
+
 ### FreeBSD
 
 As root or with `sudo`, run:
@@ -169,9 +193,14 @@ python3.8 -m pip install --user pytest
 > python3 -m pip install pytest
 > ```
 
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) . FreeBSD users may find an adequate version using the package manager to install the Rust toolchain, depending on their release. FreeBSD users may install the Rust toolchain with:
+```sh
+pkg install -y rust
+```
+
 ## Install Rust toolchain
 
-Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment following the instructions on the [rustup](https://rustup.rs) site. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
+Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment by following the instructions on the [rustup](https://rustup.rs) website. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
 
 Building ClamAV requires, at a minimum, Rust compiler version 1.56, as it relies on features introduced in the [Rust 2021 Edition](https://doc.rust-lang.org/edition-guide/rust-2021/index.html).
 
