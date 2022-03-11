@@ -87,6 +87,10 @@ The above creates an interactive container with the current TTY connected to it.
 
 > _Tip_: It's common to see `-it` instead of `--interactive --tty`.
 
+In some situations it may be desirable to set (any of) the containers to a
+specific timezone. The `--env` parameter can be used to set the `TZ` variable
+to change the default of `Etc/UTC`.
+
 ### Running ClamD using a Locally Built Image
 
 You can run a container using an image built locally ([see "Building the ClamAV Image"](#building-the-clamav-image)). Just run:
@@ -284,6 +288,10 @@ But if you're just running one ClamAV container, you probably will just want to 
 ## Container ClamD health-check
 
 Docker has the ability to run simple `ping` checks on services running inside containers. If `clamd` is running inside the container, Docker will on occasion send a `ping` to `clamd` on the default port and wait for the pong from `clamd`. If `clamd` fails to respond, Docker will treat this as an error. The healthcheck results can be viewed with `docker inspect`.
+
+When the container starts up, the health-check also starts up. As loading the
+virus database can take some time, there is a delay configured in the
+`Dockerfile` to try and avoid this race condition.
 
 ## Performance
 
