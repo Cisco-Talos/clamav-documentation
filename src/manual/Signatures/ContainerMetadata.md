@@ -19,8 +19,13 @@ where the corresponding fields are:
   - `CL_TYPE_MSCAB`,
   - `CL_TYPE_7Z`,
   - `CL_TYPE_MAIL`,
-  - `CL_TYPE_(POSIX|OLD)_TAR`,
-  - `CL_TYPE_CPIO_(OLD|ODC|NEWC|CRC)`
+  - `CL_TYPE_POSIX_TAR`,
+  - `CL_TYPE_OLD_TAR`,
+  - `CL_TYPE_CPIO_OLD`,
+  - `CL_TYPE_CPIO_ODC`,
+  - `CL_TYPE_CPIO_NEWC`,
+  - `CL_TYPE_CPIO_CRC`
+  - etc.
 
   Use `*` as a wild card to indicate that container type may be any file type.
   For a full list of ClamAV file types, see the [ClamAV File Types Reference](../../appendix/FileTypes.md).
