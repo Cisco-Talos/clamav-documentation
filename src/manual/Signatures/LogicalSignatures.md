@@ -17,9 +17,12 @@ where:
 
 Keywords used in `TargetDescriptionBlock`:
 
-- `Target:X`: A number specifying the type of the target file: [Target Types](../../appendix/FileTypes.md#Target-Types).
+- `Engine:X-Y`: Required engine functionality level (range; 0.96).
 
-- `Engine:X-Y`: Required engine functionality level (range; 0.96). Note that if the `Engine` keyword is used, it must be the first one in the `TargetDescriptionBlock` for backwards compatibility. See the [FLEVEL reference](../../appendix/FunctionalityLevels.md) for details.
+  > *Note*: If the `Engine` keyword is used, it *must be the first keyword* in the `TargetDescriptionBlock` for backwards compatibility.
+  > See the [FLEVEL reference](../../appendix/FunctionalityLevels.md) for details.
+
+- `Target:X`: A number specifying the type of the target file: [Target Types](../../appendix/FileTypes.md#Target-Types).
 
 - `FileSize:X-Y`: Required file size (range in bytes; 0.96)
 
