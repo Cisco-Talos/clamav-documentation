@@ -226,7 +226,7 @@ So to additionally also enable `clamav-milter`, the following flag can be added:
 
 Further more, all of the configuration files that live in `/etc/clamav` can be overridden by doing a volume-mount to the specific file. The following argument can be added for this purpose. The example uses the entire configuration directory, but this can be supplied multiple times if individual files deem to be replaced.
 ```bash
-    --mount type=bind,source=/full/path/to/clamav/,target/etc/clamav
+    --mount type=bind,source=/full/path/to/clamav/,target=/etc/clamav
 ```
 
 > _Note_: Even when disabling the `freshclam` daemon, `freshclam` will always run at least once during container startup if there is no virus database. While not recommended, the virus database location itself `/var/lib/clamav/` could be a persistent Docker volume. This however is slightly more advanced and out of scope of this document.
