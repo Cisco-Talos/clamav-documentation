@@ -222,7 +222,7 @@ PCRE subsignatures are used within a logical signature (`.ldb`) to specify regex
 
 - `Trigger` is a required field that is a valid `LogicalExpression` and may refer to any subsignatures that precede this subsignature. Triggers cannot be self-referential and cannot refer to subsequent subsignatures.
 
-- `PCRE` is the expression representing the regex to execute. `PCRE` must be delimited by ’/’ and usage of ’/’ within the expression need to be escaped. For backward compatibility, ’;’ within the expression must be expressed as ’`\x3B`’. `PCRE` cannot be empty and (?UTF\*) control sequence is not allowed. If debug is specified, named capture groups are displayed in a post-execution report.
+- `PCRE` is the expression representing the regex to execute. ClamAV identifies the regex string by searching from the beginning of the subsignature for the start-`/` and searching from the end for the end-`/`. You may `\`-escape any use of `/` within the regex string, but it is not required. For backward compatibility, `;` within the expression must be expressed as `\x3B`. The regex string cannot be empty and `(?UTF\*)` control sequences are not allowed. If debug messages are enabled (i.e. `clamscan --debug`), then named capture groups are displayed in a post-execution report.
 
 - `Flags` are a series of characters which affect the compilation and execution of `PCRE` within the PCRE compiler and the ClamAV engine. This field is optional.
 
