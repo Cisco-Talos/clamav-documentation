@@ -1,5 +1,20 @@
 # Phishing Signatures
 
+ClamAV can detect HTML links that look suspicious when the display text is a URL that is a different domain than than in the actual URL. Unfortunately, it is pretty common for a company to contract out web services and to use HTML link display text to make it look like it is a link to the company website. Because this practice is commonplace, ClamAV only does phishing checks for specific websites that are popularly targeted by phishing campaigns. Signatures to identify domains that should be monitored for phishing attempts are listed in ClamAV `PDB` database files, such as `daily.pdb`, a file found in the `daily.cvd` archive. 
+
+Unfortunately, many websites listed in the `PDB` phishing database also send emails with links that display a different domain than is in the actual link. To mitigate false positive detections in non-malicious links, ClamAV has allow list signatures in ClamAV `WDB` database files, such as `daily.wdb`, another file found in the `daily.cvd` archive. 
+
+To help you identify what triggered a heuristic phishing alert, `clamscan` or `clamd` will print a message indicating the "Display URL" and "Real URL" involved in a heuristic phishing alert. 
+
+For example, suppose that `amazon.com` were listed in ClamAV's loaded PDB database, you might observe this message before the alert when scanning an email with a link that claims to be for `https://www.amazon.com/` but is in fact linking to `https://someshadywebsite.example.com/`:
+
+```
+LibClamAV info: Suspicious link found!
+LibClamAV info:   Real URL:    https://someshadywebsite.example.com
+LibClamAV info:   Display URL: https://www.amazon.com
+/path/to/suspicious/email.eml: Heuristics.Phishing.Email.SpoofedDomain FOUND
+```
+
 Table of Contents
 - [Phishing Signatures](#phishing-signatures)
   - [Database file format](#database-file-format)
@@ -36,11 +51,12 @@ Table of Contents
 
 ### PDB format
 
-This file contains urls/hosts that are target of phishing attempts. It contains lines in the following format:
+This file contains urls/hosts that should be monitored for phishing attempts.
+It contains lines in the following format:
 
 ```
-R[Filter]:RealURL:DisplayedURL[:FuncLevelSpec]
-H[Filter]:DisplayedHostname[:FuncLevelSpec]
+R:DisplayedURL[:FuncLevelSpec]
+H:DisplayedHostname[:FuncLevelSpec]
 ```
 
 - `R`
@@ -56,10 +72,6 @@ H[Filter]:DisplayedHostname[:FuncLevelSpec]
   - Or a subdomain of the specified hostname.
 
   - To avoid false matches in case of subdomain matches, the engine checks that there is a dot(`.`) or a space(` `) before the matched portion.
-
-- `Filter`
-
-  Is ignored for R and H for compatibility reasons.
 
 - `RealURL`
 
@@ -170,6 +182,12 @@ To do the same, but for `amazon.co.uk`:
 
 ```
 H:amazon.co.uk
+```
+
+Alternatively, you could use a regex PDB signature to check both:
+
+```
+R:.+\.amazon\.(com|co\.uk)([/?].*)?
 ```
 
 You can limit the signatures to certain [engine versions](../../appendix/FunctionalityLevels.md). For example...
@@ -476,7 +494,7 @@ Example of url pairs that don’t match:
 Flags are a binary OR of the following numbers:
 
 | Flag                 | Value |
-|----------------------|-------|
+| -------------------- | ----- |
 | HOST_SUFFICIENT      | 1     |
 | DOMAIN_SUFFICIENT    | 2     |
 | DO_REVERSE_LOOKUP    | 4     |
