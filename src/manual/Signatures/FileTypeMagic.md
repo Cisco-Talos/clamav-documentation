@@ -30,4 +30,4 @@ Where:
 
 `min_flevel`: (optional) The minimum ClamAV engine that the file type signature works with. See the [FLEVEL reference](../../appendix/FunctionalityLevels.md) for details. To be used in the event that file type support has been recently added.
 
-`max_flevel`: (optional, requires `min_flevel`) The maximum ClamAV engine that the file type signature works with. To be used in the event that file type support has been recently removed.
+`max_flevel`: (optional, requires `min_flevel` field, though the `min_flevel` number itself can be left empty) The maximum ClamAV engine that the file type signature works with. To be used in the event that file type support has been recently removed.
