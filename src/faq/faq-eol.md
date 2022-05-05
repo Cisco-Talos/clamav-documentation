@@ -16,7 +16,7 @@ Each LTS feature release will be supported with critical patch versions *and* ac
 
 A new LTS feature release will be identified *approximately* every **two (2)** years.
 
-*Users must stay up-to-date with the latest patch versions for continued support. As of November 3, that means version 0.103.4.*
+*Users must stay up-to-date with the latest patch versions for continued support. As of 2022-05-04, that means version 0.103.6.*
 
 ## Regular (non-LTS) Feature Releases
 
@@ -80,8 +80,10 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
 | --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 0.104           | Sep-3 2021      | 0.104.1              | 0.106 + 4 months           | 0.106 + 4 months             |                            | 0.106 + 4 months           | 0.105 + 4 months, or 0.106    |
-| **0.103 LTS**   | **Sep-14 2020** | **0.103.4**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
+| 1.0             | n/a             |                      |                            |                              |                            |                            |                               |
+| 0.105           | May-4 2022      | 0.105.0              | 1.1 + 4 months             | 1.1 + 4 months               | 1.0 published              | 1.1 + 4 months             | 1.0 + 4 months, or 1.1        |
+| 0.104           | Sep-3 2021      | 0.104.3              | 1.0 + 4 months             | 1.0 + 4 months               | 0.105 published            | 1.0 + 4 months             | 0.105 + 4 months, or 1.0      |
+| **0.103 LTS**   | **Sep-14 2020** | **0.103.6**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
 | 0.102           | Oct-2 2019      | 0.102.4              | Jan-3 2022 (0.104 + 4 mo.) | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2022                 | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
