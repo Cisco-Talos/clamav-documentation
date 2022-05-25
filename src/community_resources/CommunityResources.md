@@ -6,7 +6,7 @@ Have a resource you'd like to share? You can add it here with a simple pull-requ
 
 ## Build Guides
 
-- Compile ClamAV on Amazon Linux 2: needed because on arm platform, EPEL repositories has been deprecated and it's not possible anymore to install ClamAV in that WAY
+- [Compile ClamAV on Amazon Linux 2](CompileClamAV_AmazonLinux2.txt): Needed because on ARM platform, EPEL repositories has been deprecated and it's not possible anymore to install ClamAV in that WAY.
 
 ## Configuration Guides
 
