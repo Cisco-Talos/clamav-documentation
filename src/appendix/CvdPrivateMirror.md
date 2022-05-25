@@ -109,7 +109,7 @@ For `freshclam.conf` on your downstream `freshclam` clients, set:
 # 2. Use an HTTP Range-request to check if there is an update, rather than DNS.
 PrivateMirror http://mirror.mylan:8000
 
-# ScriptedUpdates is needed because you won't be serving CDIFF files.
+# ScriptedUpdates is not needed because you won't be serving CDIFF files.
 ScriptedUpdates no
 ```
 
