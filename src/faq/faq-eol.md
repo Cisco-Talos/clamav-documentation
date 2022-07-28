@@ -16,7 +16,7 @@ Each LTS feature release will be supported with critical patch versions *and* ac
 
 A new LTS feature release will be identified *approximately* every **two (2)** years.
 
-*Users must stay up-to-date with the latest patch versions for continued support. As of 2022-05-04, that means version 0.103.6.*
+*Users must stay up-to-date with the latest patch versions for continued support.*
 
 ## Regular (non-LTS) Feature Releases
 
