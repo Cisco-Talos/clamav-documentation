@@ -18,4 +18,4 @@ Have a resource you'd like to share? You can add it here with a simple pull-requ
 
 ## Other
 
--
+- [Playlist: Writing Signatures for ClamAV](https://www.youtube.com/playlist?list=PL3wytv9o8buVGja-VcOSqGrjQZkqB7uhd): A YouTube playlist of videos on writing ClamAV signatures
