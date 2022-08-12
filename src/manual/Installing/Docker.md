@@ -87,6 +87,8 @@ The above creates an interactive container with the current TTY connected to it.
 
 > _Tip_: It's common to see `-it` instead of `--interactive --tty`.
 
+> _Tip_: It's common to also publish (forward) the ClamAV TCP port to the local host to use the [TCP socket](#tcp) using `--publish 3310:3310` in the `docker run` command
+
 ### Running ClamD using a Locally Built Image
 
 You can run a container using an image built locally ([see "Building the ClamAV Image"](#building-the-clamav-image)). Just run:
