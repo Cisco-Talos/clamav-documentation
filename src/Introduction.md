@@ -158,7 +158,7 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-**To unsubscribe**: Use the same form page that you used when you subcribed and search at the bottom for "unsubscribe". 
+**To unsubscribe**: Use the same form page that you used when you subscribed. Search at the bottom for "unsubscribe". 
 
 *IMPORTANT*: When you subscribe or unsubscribe, you will receive a confirmation email with a link that you must click on or else no action will occur. If you did not receive the confirmation email, check your spam folder.
 
