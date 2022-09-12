@@ -140,6 +140,8 @@ For the ClamAV application we recommend having 5 GB of free space available. Thi
 
 ## Mailing Lists and Chat
 
+### Mailing Lists
+
 If you have a trouble installing or using ClamAV try asking on our mailing lists. There are four lists available:
 
 - **clamav-announce (at) lists.clamav.net**
@@ -156,7 +158,13 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-You can also join the community on our [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw).
+**To unsubscribe**: Use the same form page that you used when you subcribed and search at the bottom for "unsubscribe". 
+
+*IMPORTANT*: When you subscribe or unsubscribe, you will receive a confirmation email with a link that you must click on or else no action will occur. If you did not receive the confirmation email, check your spam folder.
+
+### Chat
+
+You can join the community on our [ClamAV Discord chat server](https://discord.gg/6vNAqWnVgw).
 
 ## Submitting New or Otherwise Undetected Malware
 
