@@ -2,6 +2,38 @@
 
 ClamAV can be run within a Docker container. This provides isolation from other processes by running it in a containerized environment. If new or unfamiliar with Docker, containers or cgroups see [docker.com](https://www.docker.com).
 
+## Memory (RAM) Requirements
+
+Whether you're using the official ClamAV docker images or third party images that run ClamAV, you will need to ensure that you have enough RAM.
+
+Recommended RAM for ClamAV (As of 2020/09/20):
+- Minimum: 3 GiB
+- Preferred: 4 GiB
+
+### Why is this much RAM required?
+
+ClamAV uses upwards of 1.2 GiB of RAM simply to load the signature definitions into matching structures in the construct we call an "engine". This does not take into account any RAM required to process the files during the scanning process.
+
+ClamAV uses upwards of 2.4 GiB of RAM for a short period each day when loading new signature definitions. When the `clamd` processs reloads the databases after an update, the default behavior is for ClamAV to build a new engine based on the updated signatures first. Once loaded and once all scans that use the old engine have completed, the old engine is unloaded. This process is called "concurrent reloading" and enables scans to continue during the reload. As a consequence, `clamd` will use twice the amount of RAM for a brief period. During the reload.
+
+The `freshclam` process may also consume a sizeable chunk of memory when load-testing newly downloaded databases. It won't use quite as much as a `clamd` database reload, but it may still be enough to cause issues on some systems.
+
+If your container does not have enough RAM you can expect that the OS (or Docker) may kill your `clamd` process. Within Docker, this may cause your container to become unresponsive. If you're observing issues with ClamAV failing or becoming unresponsive once a day, it is likely that your system does not have enough RAM to run ClamAV.
+
+### What can I do to minimize RAM usage?
+
+#### `clamd` reload memory usage
+
+You can minimize `clamd` RAM usage by setting `ConcurrentDatabaseReload no` in `clamd.conf`.
+
+The downside is that `clamd` will block any new scans until reload is complete.
+
+#### `freshclam` memory usage
+
+You can disable `freshclam` database load testing to minimize RAM usage by setting `TestDatabases no` in `freshclam.conf`.
+
+The downside here is a risk that a download may fail in an unexpected way and that `freshclam` will unknowingly keep the broken database, causing `clamd` to fail to load/reload the broken file.
+
 ## The official images on Docker Hub
 
 ClamAV image tags [on Docker Hub](https://hub.docker.com/r/clamav/clamav) follow these naming conventions.

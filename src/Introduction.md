@@ -122,11 +122,13 @@ The following minimum recommended system requirements are for using ClamScan or 
 
 Minimum recommended RAM for ClamAV:
 
-- FreeBSD and Linux server edition: 2 GiB+
-- Linux non-server edition: 2 GiB+
-- Windows 7 & 10 32-bit: 2 GiB+
+- FreeBSD and Linux server edition: 3 GiB+
+- Linux non-server edition: 3 GiB+
+- Windows 7 & 10 32-bit: 3 GiB+
 - Windows 7 & 10 64-bit: 3 GiB+
 - macOS: 3 GiB+
+
+> _Tip_: Server environments, like Docker, as well as and embedded runtime environments are often resource constrained. We recommend at 3-4 GiB of RAM, but you may get by with less if you're willing to accept some limitations. You can find [more information here](manual/Installing/Docker.md#memory-ram-requirements).
 
 Minimum recommended CPU for ClamAV:
 
@@ -134,7 +136,7 @@ Minimum recommended CPU for ClamAV:
 
 Minimum available hard disk space required:
 
-For the ClamAV application we recommend having 5 GB of free space available. This recommendation is in addition to the recommended disk space for each OS.
+For the ClamAV application we recommend having 5 GiB of free space available. This recommendation is in addition to the recommended disk space for each OS.
 
 > _Note_: The tests to determine these minimum requirements were performed on systems that were not running other applications. If other applications are being run on the system, additional resources will be required in addition to our recommended minimums.
 
@@ -158,7 +160,7 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
-**To unsubscribe**: Use the same form page that you used when you subscribed. Search at the bottom for "unsubscribe". 
+**To unsubscribe**: Use the same form page that you used when you subscribed. Search at the bottom for "unsubscribe".
 
 *IMPORTANT*: When you subscribe or unsubscribe, you will receive a confirmation email with a link that you must click on or else no action will occur. If you did not receive the confirmation email, check your spam folder.
 
