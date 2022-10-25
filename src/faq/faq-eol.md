@@ -10,6 +10,8 @@ Skip to our [Version Support Matrix](#version-support-matrix) to quickly check i
 
 ClamAV ***0.103*** is the first Long Term Support (LTS) feature release.
 
+ClamAV ***1.0*** will be the next Long Term Support (LTS) feature release.
+
 LTS feature releases will be supported for *at least* **three (3)** years from the initial publication date of that LTS feature version. In other words, support for the LTS release "X.Y" starts when version "X.Y.0" is published and ends three years after.
 
 Each LTS feature release will be supported with critical patch versions *and* access to download signatures for the duration of the three year support period.
@@ -80,7 +82,7 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
 | --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 1.0             | n/a             |                      |                            |                              |                            |                            |                               |
+| **1.0 LTS**     | n/a             |                      |                            |                              |                            |                            |                               |
 | 0.105           | May-4 2022      | 0.105.0              | 1.1 + 4 months             | 1.1 + 4 months               | 1.0 published              | 1.1 + 4 months             | 1.0 + 4 months, or 1.1        |
 | 0.104           | Sep-3 2021      | 0.104.3              | 1.0 + 4 months             | 1.0 + 4 months               | 0.105 published            | 1.0 + 4 months             | 0.105 + 4 months, or 1.0      |
 | **0.103 LTS**   | **Sep-14 2020** | **0.103.6**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
