@@ -159,16 +159,21 @@ Although all these systems offer the possibility to use ports or pkgsrc, you can
 
 FreeBSD offers two ClamAV ports (packages):
 - `clamav`
-- `clamav-devel`
+- `clamav-lts`
 
 To install, run:
 ```bash
 pkg install clamav
 ```
+and
+```bash
+pkg install clamav-lts
+```
+respectively.
 
 > _Note_: For more details, see:
 > - https://www.freshports.org/security/clamav
-> - https://www.freshports.org/security/clamav-devel
+> - https://www.freshports.org/security/clamav-lts
 
 #### OpenBSD
 
