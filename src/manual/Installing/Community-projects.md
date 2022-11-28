@@ -261,12 +261,6 @@ A Perl module for interacting with ClamD. File::Scan::ClamAV will connect to a l
 
 [Get File::Scan::ClamAV](https://metacpan.org/pod/release/CFABER/File-Scan-ClamAV-1.8/lib/File/Scan/ClamAV.pm)
 
-#### Mail::ClamAV | libclamav
-
-Perl extension for the ClamAV virus scanner.
-
-Get Mail::ClamAV
-
 ### Ruby
 
 #### Clamby | clamscan + freshclam
