@@ -253,6 +253,12 @@ Like `clamav-rs`. rust-clamav is a safe library for interacting with libclamav f
 
 [Get rust-clamav](https://github.com/icebergdefender/rust-clamav)
 
+#### clamav-tcp | clamd
+
+A simple to use TCP client for scanning files with ClamAV. This is not exactly a binding. It is a Rust crate for interacting with ClamD. 
+
+Get [clamav-tcp](https://crates.io/crates/clamav-tcp)
+
 ### Perl
 
 #### File::Scan::ClamAV | clamd
