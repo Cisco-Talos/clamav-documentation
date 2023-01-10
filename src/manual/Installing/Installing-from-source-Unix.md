@@ -32,7 +32,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 
 ## Install prerequisites
 
-> _Note_: Many of the instructions below rely on Python 3's Pip package manager to install CMake. This is because many distributions do not provide a new enough version of CMake required to build ClamAV.
+> _Note_: Some of the instructions below rely on Python 3's Pip package manager to install CMake. This is because some distributions do not provide a new enough version of CMake required to build ClamAV.
 
 > _Tip_: The Python 3 `pytest` package is recommended in the instructions below in case the unit tests fail so that the test output is easy to read. *You're welcome to skip it.* However, if you have Python 2's `pytest` installed but not Python 3's `pytest`, the tests may fail to run.
 
@@ -98,20 +98,16 @@ As root or with `sudo`, run:
 ```sh
 zypper install -y \
   `# install tools` \
-  gcc gcc-c++ make python3 python3-pip valgrind \
+  gcc gcc-c++ make python3 valgrind \
   `# install clamav dependencies` \
   libbz2-devel check-devel libjson-c-devel libcurl-devel libxml2-devel \
-  ncurses-devel libopenssl-devel pcre2-devel sendmail-devel zlib-devel
+  ncurses-devel libopenssl-devel pcre2-devel sendmail-devel zlib-devel \
+  cmake python-pytest
 ```
 
-As a regular user, run:
-```sh
-python3 -m pip install --user cmake pytest
-```
-
-> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> _Tip_: If you you're on an older release and if the `cmake` provided by your release is too old, then you may need to remove `cmake`, install `python3-pip`, and then install `cmake` like this:
 > ```sh
-> python3 -m pip install cmake pytest
+> python3 -m pip install --user cmake
 > ```
 
 Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
@@ -128,17 +124,13 @@ apt-get update && apt-get install -y \
   gcc make pkg-config python3 python3-pip python3-pytest valgrind \
   `# install clamav dependencies` \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
-  libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
+  libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev \
+  cmake python-pytest
 ```
 
-As a regular user, run:
-```sh
-python3 -m pip install --user cmake
-```
-
-> _Tip_: If you don't have a user account, e.g. in a Docker container, run:
+> _Tip_: If you you're on an older release and if the `cmake` provided by your release is too old, then you may need to remove `cmake`, install `python3-pip`, and then install `cmake` like this:
 > ```sh
-> python3 -m pip install cmake
+> python3 -m pip install --user cmake
 > ```
 
 Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
