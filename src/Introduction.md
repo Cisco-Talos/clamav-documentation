@@ -155,8 +155,6 @@ If you have a trouble installing or using ClamAV try asking on our mailing lists
   - technical discussions
 - **clamav-virusdb (at) lists.clamav.net**
   - database update announcements, moderated
-- **clamav-binary (at) lists.clamav.net**
-  - discussion and announcements for package maintainers
 
 You can subscribe and search the mailing list archives [here](https://www.clamav.net/contact.html#ml).
 
