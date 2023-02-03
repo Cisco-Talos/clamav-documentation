@@ -300,10 +300,10 @@ The majority of the work won't actually change ClamAV's behavior, which may seem
 ClamAV signatures have a "Target Type" which is an integer type which can be used in signatures to limit signature matches to specific file types. ClamAV also categorizes signature patterns into two different Aho-Corasick pattern-matching trie's by Target Type. Target Type `1` (Windows executables (EXE/DLL/SYS/etc.) go in one trie, and _everything else_ goes in the other trie. Unfortunately, not every file type has an associated target type. In addition, while it's conceivable to be able to add new text-based file types dynamically (see the above project idea about file type magic signatures), it is less feasible to dynamically add new numerical target types.
 
 For some advanced reading, see:
- - <appendix/FileTypes.md>
- - <manual/Signatures/LogicalSignatures.md>
+ - [File Types](appendix/FileTypes.md)
+ - [Logical Signatures](manual/Signatures/LogicalSignatures.md)
 
-This project is to add a new "`Type:`" keyword to the `TargetDescriptionBlock` for [Logical Signature (`.ldb`)](../Signatures/LogicalSignatures.md) to limit logical signature alerts to specific file types, much like you currently can do with Target Types ("`Target:`"), Container File Types ("`Container:`"), and Container Intermediate Types ("`Intermediates:`"). While this isn't expected to improve scan times, it should reduce overall signature size as analysts will no longer need to duplicate the file-type-magic signature in order to limit alerting on a signature match by file type.
+This project is to add a new "`FileTypes:`" keyword to the `TargetDescriptionBlock` for [Logical Signature (`.ldb`)](../Signatures/LogicalSignatures.md) to limit logical signature alerts to specific file types, much like you currently can do with Target Types ("`Target:`"), Container File Types ("`Container:`"), and Container Intermediate Types ("`Intermediates:`"). While this isn't expected to improve scan times, it should reduce overall signature size as analysts will no longer need to duplicate the file-type-magic signature in order to limit alerting on a signature match by file type.
 
 To illustrate, this is the file type magic signature for a Microsoft Shortcut File, aka `CL_TYPE_LNK`:
 
@@ -322,8 +322,19 @@ SignatureName;Target:0;(0&1);0:4C0000000114020000000000C000000000000046;deadbeef
 After this change, the signature could instead read:
 
 ```
-SignatureName;Target:0,Type:CL_TYPE_LNK;(0);deadbeef
+SignatureName;Target:0,FileTypes:CL_TYPE_LNK;(0);deadbeef
 ```
+
+Extending this, we would really like to build this new option to replace "Container" and "Intermediates". We would like to also specify parent file types, and use a logical condition supporting alternative file types for each layer.
+
+Some examples:
+
+`Filetypes:(ZIP|RAR)>PDF`  to say "a PDF in a ZIP or a RAR"
+
+`Filetypes:(ZIP|RAR)>(PDF|HTML)`  to say "a PDF or HTML file in a ZIP or a RAR"
+
+`Filetypes:EML>ZIP>*`  to say "any file in a ZIP in an email"
+
 
 **Category**: Low-hanging Fruit, Core Development
 
@@ -335,7 +346,7 @@ SignatureName;Target:0,Type:CL_TYPE_LNK;(0);deadbeef
 
 - C development experience.
 
-**Project Size**: Small
+**Project Size**: Medium
 
 ### libclamav Callback Function to Request Additional File
 
