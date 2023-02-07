@@ -288,10 +288,12 @@ docker exec --interactive --tty "clamav_container_01" /bin/sh
 
 ### Unix sockets
 
-The default socket for `clamd` is located inside the container as `/run/clamav/clamd.sock` and can be connected to when exposed via a Docker volume mount. To ensure, that `clamd` within the container can freely create and remove the socket, the path for the socket is to be volume-mounted, to expose it for others on the same host to use. The following volume can be used for this purpose. Do ensure that the directory on the host actually exists and clamav inside the container has permission to access it. Caution is required when managing permissions, as incorrect permission could open clamd for anyone on the host system.
+The default socket for `clamd` is located inside the container as `/tmp/clamd.sock` and can be connected to when exposed via a Docker volume mount. To ensure, that `clamd` within the container can freely create and remove the socket, the path for the socket is to be volume-mounted, to expose it for others on the same host to use. The following volume can be used for this purpose. Do ensure that the directory on the host actually exists and clamav inside the container has permission to access it. Caution is required when managing permissions, as incorrect permission could open clamd for anyone on the host system.
 ```bash
-    --mount type=bind,source=/var/lib/docker/data/clamav/sockets/,target=/run/clamav/
+    --mount type=bind,source=/var/lib/docker/data/clamav/sockets/,target=/tmp/
 ```
+
+> _Note_: If you override the `LocalSocket` option with a custom `clamd.conf` config file, then you may find the `clamd.sock` file in a different location.
 
 With the socket exposed to the host, any other service can now talk to `clamd` as well. If for example `clamdtop` where installed on the local host, calling
 ```bash
