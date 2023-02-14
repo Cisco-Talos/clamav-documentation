@@ -28,7 +28,7 @@ We do not share test files for security bugs. Sharing these files puts users at 
 
 ## Can phishing be considered one kind of spam? ClamAV should not detect it as some kind of malware.
 
-Starting from release 0.90, ClamAV allows you to choose whether to detect phish as some kind of malware or not. This should put an end to the endless threads on our mailing lists. So long, and  thanks for all the phish.
+Starting from release 0.90, ClamAV allows you to choose whether to detect phish as some kind of malware or not. This should put an end to the endless threads on our mailing lists. So long, and thanks for all the phish.
 
 ## Why is my legitimate HTML newsletter/email detected by ClamAV as Phishing.Heuristics.Email.SpoofedDomain?
 
@@ -55,7 +55,7 @@ Remember to [submit](https://www.clamav.net/reports/malware) the sample to the v
 
 ## Why is ClamAV calling the XXX virus with another name?
 
-This usually happens when we add a signature _before_ other  AV vendors. No well-known name is available at that moment so we have to invent one. Renaming the virus after a few days would just confuse people more, so we usually keep on using  our name for that virus. The only exception is when a new name is established soon after the signature addition.
+This usually happens when we add a signature _before_ other AV vendors. No well-known name is available at that moment so we have to invent one. Renaming the virus after a few days would just confuse people more, so we usually keep on using our name for that virus. The only exception is when a new name is established soon after the signature addition.
 
 ## I get many false positives of Oversized.zip
 
@@ -75,12 +75,23 @@ No, it can't. We will add support for disinfecting OLE2 files in one of the next
 
 ## When using clamscan, is there a way to know which message within an mbox is infected?
 
-There are two solutions: Run `clamscan --debug`, look for _Deal with email number xxx_ Alternatively you can convert the mbox to Maildir  format, run clamscan on it and then convert it back to mbox format. There are many tools available which can convert to and from Maildir format: formail, mbox2maildir and maildir2mbox
+There are two solutions: Run `clamscan --debug`, look for _Deal with email number xxx_ Alternatively you can convert the mbox to Maildir format, run clamscan on it and then convert it back to mbox format. There are many tools available which can convert to and from Maildir format: formail, mbox2maildir and maildir2mbox
 
 ## What platforms does it support?
 
-Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, Mac OS X, Cygwin B20 on  multiple architectures such as Intel, Alpha, Sparc, Cobalt MIPS boxes, PowerPC, RISC 6000.
+Clam AntiVirus works with Linux&reg;, Solaris, FreeBSD, OpenBSD, NetBSD, Mac OS X, Cygwin B20 on multiple architectures such as Intel, Alpha, Sparc, Cobalt MIPS boxes, PowerPC, RISC 6000.
 
 ## Where can I find more information about ClamAV?
 
-Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation](https://www.clamav.net/manual/installing.md) section of this website. You can also try searching the [mailing list archives](https://www.clamav.net/contact#ml). If you can't find the answer, you can ask for support on the clamav-users mailing-list, but  _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
+Please read the complete documentation in pdf/ps format. You will find it inside the package or in the [documentation](https://www.clamav.net/manual/installing.md) section of this website. You can also try searching the [mailing list archives](https://www.clamav.net/contact#ml). If you can't find the answer, you can ask for support on the clamav-users mailing-list, but _please_ before doing it, search the archives! Also, make sure that you don't send HTML messages and that you don't top post: these violate the netiquette and lessen your chances of being answered.
+
+## What is the difference between scanning with `clamscan` versus scanning with `clamd`?
+
+`clamscan` is a program that you run to scan a specific file or directory. It will load in the signature set, run the scan and output the results, and then exit. There are some command line options to customize the behavior, but it does not use a config file. Note that `clamdscan` and `clamscan` have very similar names but are different.
+
+`clamd` is a service process that you start and leave up. There is a `clamd.conf` config file that you must set up to customize how `clamd` works. Once `clamd` is running, you can send scan requests to it over a socket -- either a TCP network socket, or a local unix socket (you select which socket it listens to by editing the config file *before* you start `clamd`). `clamd` will send the response back to whatever program issued the scan request. It will also log the scan results itself, but that may not be as useful as collecting the results from the program that sent the request.
+
+We provide 3 different programs to send scan requests to `clamd`:
+- `clamdscan`: `clamdscan` has an interface similar to `clamscan` and is for scanning a specific file or directory.
+- `clamav-milter`: `clamav-milter` is for use with Sendmail. You can set up Sendmail to send attachments to `clamav-milter` to be filtered. It will in turn send them to `clamd` for scanning, and then send the scan result back to `sendmail`.
+- `clamonacc`: `clamonacc` is another service program. You start `clamonacc` as root and it will register with the linux kernel to receive file-access events for specific directories. You can configure `clamonacc` in `clamd.conf`. When a file access event occurs, `clamonacc` will send the given file to `clamd` to be scanned. You can set it up so the kernel will block access to the file until the scan result comes back clean, but that may have a severe impact on user experience or even system performance depending on which directories you ask it to monitor.
