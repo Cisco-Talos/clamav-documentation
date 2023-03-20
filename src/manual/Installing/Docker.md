@@ -86,7 +86,7 @@ While it is recommended to pull the image from our [Docker Hub registry](https:/
 
 To do this, you will need to get the  `Dockerfile` and the supporting `scripts/` directory from the [clamav-docker Git repository](https://github.com/Cisco-Talos/clamav-docker/tree/main/clamav). Be sure to select the correct one for this ClamAV release.
 
-> _Tip_: For unreleased ClamAV versions, such as when building from the `main` git branch, you should select the files from the `clamav-dockere/clamav/unstable/<distro>` directory.
+> _Tip_: For unreleased ClamAV versions, such as when building from the `main` git branch, you should select the files from the `clamav-docker/clamav/unstable/<distro>` directory.
 
 Place the `Dockerfile` and `scripts/` directory in the ClamAV source directory.
 Then you can build the image. For example, run:
