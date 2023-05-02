@@ -14,7 +14,9 @@ ClamAV ***0.103*** is the previous Long Term Support (LTS) feature release.
 
 LTS feature releases will be supported for *at least* **three (3)** years from the initial publication date of that LTS feature version. In other words, support for the LTS release "X.Y" starts when version "X.Y.0" is published and ends three years after.
 
-Each LTS feature release will be supported with critical patch versions *and* access to download signatures for the duration of the three year support period.
+Each LTS feature release will be supported with critical patch versions for the duration of the three year support period.
+
+Each LTS feature release will be supported with access to download signatures for the duration of the three year support period plus one additional year. The additional year is to allow package distributions to extend support by backporting security fixes after official support for patch versions has ended.
 
 A new LTS feature release will be identified *approximately* every **two (2)** years.
 
@@ -82,11 +84,12 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
 | --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 1.1             | TBD             | TBD                  | 1.3 + 4 months             | 1.3 + 4 months               | 1.2 published              | 1.3 + 4 months             | 1.2 + 4 months, or 1.3        |
-| **1.0 LTS**     | **Nov-28 2022** | **1.0.0**            | **Nov-28 2025**            | **Nov-28 2025**              | 1.1 published              | **Nov-28 2025**            | **Nov-28 2025**               |
-| 0.105           | May-4 2022      | 0.105.0              | 1.1 + 4 months             | 1.1 + 4 months               | 1.0 published              | 1.1 + 4 months             | 1.0 + 4 months, or 1.1        |
-| 0.104           | Sep-3 2021      | 0.104.3              | 1.0 + 4 months             | 1.0 + 4 months               | 0.105 published            | 1.0 + 4 months             | 0.105 + 4 months, or 1.0      |
-| **0.103 LTS**   | **Sep-14 2020** | **0.103.6**          | **Sep-14 2023**            | **Sep-14 2023**              | 0.104 published            | **Sep-14 2023**            | **Sep-14 2023**               |
+| 1.2             | TBD             | n/a                  | 1.4 + 4 months             | 1.4 + 4 months               | 1.3 published              | 1.4 + 4 months             | 1.3 + 4 months, or 1.4        |
+| 1.1             | May-1 2023      | 1.1.0                | 1.3 + 4 months             | 1.3 + 4 months               | 1.2 published              | 1.3 + 4 months             | 1.2 + 4 months, or 1.3        |
+| **1.0 LTS**     | **Nov-28 2022** | **1.0.1**            | **Nov-28 2025**            | **Nov-28 2025**              | 1.1 published              | **Nov-28 2026**            | **Nov-28 2025**               |
+| 0.105           | May-4 2022      | 0.105.2              | 1.1 + 4 months             | 1.1 + 4 months               | 1.0 published              | 1.1 + 4 months             | 1.0 + 4 months, or 1.1        |
+| 0.104           | Sep-3 2021      | 0.104.4              | 1.0 + 4 months             | 1.0 + 4 months               | 0.105 published            | 1.0 + 4 months             | 0.105 + 4 months, or 1.0      |
+| **0.103 LTS**   | **Sep-14 2020** | **0.103.8**          | **Sep-14 2024**            | **Sep-14 2024**              | 0.104 published            | **Sep-14 2025**            | **Sep-14 2024**               |
 | 0.102           | Oct-2 2019      | 0.102.4              | Jan-3 2022 (0.104 + 4 mo.) | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2022                 | Jan-3 2022                   |                            | Jan-3 2022                 |                               |
 | 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                | Oct-29 2021                  |                            | Oct-29 2021                |                               |
