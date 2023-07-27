@@ -176,6 +176,32 @@ Likewise, if you have a benign file that is flagging as a virus and you wish to 
 
 <https://www.clamav.net/reports/fp>
 
+If you have questions about the submission process, please read the [Malware and False Positive Report FAQ](faq/faq-malware-fp-reports.md)
+
+How long does it take for a signature change after submitting new malware or submitting a false positive report?
+
+> In most cases, it takes at least 48 hours from initial submission before any change will be published in the official ClamAV signature databases.
+
+Who analyzes malware and false positive file uploads?
+
+> Given the volume of submissions, the vast majority of files are handled by automation.
+
+Who has access to the uploaded files?
+
+> All engineers and analysts within Cisco's Talos organization have access to the files.
+
+Are malware or false positive file uploads shared with other companies?
+
+> No. Files that are submitted for review through the ClamAV Malware and False Positive web forms (or the clamsubmit tool), are not shared outside of Cisco. However, sample sharing is fair game if we've already received the same file from a different source (VirusTotal, Cisco SMA, various feeds, etc.).
+
+Are the files deleted after the analysis?
+
+> No. Uploaded files are kept indefinitely.
+
+Is the file accessible using a public URL at any point in this process?
+
+> No. Uploaded files are not accessible using a public URL. They are processed internally and kept internal to Cisco Talos.
+
 ## Related Products
 
 [Cisco Secure Endpoint](https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html) (formerly AMP for Endpoints) is Cisco's cloud-based security suite for commercial and enterprise customers. Secure Endpoint is available for Windows, Linux, and macOS and provides superior malware detection capabilities, behavioral monitoring, dynamic file analysis, endpoint isolation, analytics, and threat hunting. Secure Endpoint sports a modern administrative web interface (dashboard).
