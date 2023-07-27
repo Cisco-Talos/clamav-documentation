@@ -49,6 +49,7 @@
     - [Selecting the Right Version of ClamAV for You](faq/faq-whichversion.md)
     - [FreshClam (Signature Updater)](faq/faq-freshclam.md)
     - [Signature Database (CVD)](faq/faq-cvd.md)
+    - [Malware and False Positive Report](faq/faq-malware-fp-reports.md)
     - [Misc](faq/faq-misc.md)
     - [Mailing Lists](faq/faq-ml.md)
     - [Safe Browsing](faq/faq-safebrowsing.md)
