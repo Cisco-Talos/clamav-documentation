@@ -84,7 +84,8 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL) | Signature load testing until | Signature FP testing until | DB downloads allowed until | Patch versions continue until |
 | --------------- | --------------- | -------------------- | -------------------------- | ---------------------------- | -------------------------- | -------------------------- | ----------------------------- |
-| 1.2             | TBD             | n/a                  | 1.4 + 4 months             | 1.4 + 4 months               | 1.3 published              | 1.4 + 4 months             | 1.3 + 4 months, or 1.4        |
+| 1.3             | TBD             | n/a                  | 1.5 + 4 months             | 1.5 + 4 months               | 1.4 published              | 1.5 + 4 months             | 1.4 + 4 months, or 1.5        |
+| 1.2             | Aug-28 2023     | n/a                  | 1.4 + 4 months             | 1.4 + 4 months               | 1.3 published              | 1.4 + 4 months             | 1.3 + 4 months, or 1.4        |
 | 1.1             | May-1 2023      | 1.1.0                | 1.3 + 4 months             | 1.3 + 4 months               | 1.2 published              | 1.3 + 4 months             | 1.2 + 4 months, or 1.3        |
 | **1.0 LTS**     | **Nov-28 2022** | **1.0.1**            | **Nov-28 2025**            | **Nov-28 2025**              | 1.1 published              | **Nov-28 2026**            | **Nov-28 2025**               |
 | 0.105           | May-4 2022      | 0.105.2              | 1.1 + 4 months             | 1.1 + 4 months               | 1.0 published              | 1.1 + 4 months             | 1.0 + 4 months, or 1.1        |
