@@ -74,7 +74,7 @@ To test the installation, you can try to scan the test files in the `clamav-test
 
 Ubuntu's ClamAV packages are derived from the Debian packages (above). See the Debian instructions for installation details.
 
-> _RAR Support_: As with Debian, RAR support is not included in the base package. Users that desire RAR support will have to install `libclamunar9` separately. Unlike with Debian, there is no need to enable "non-free" packages for this to work.
+> _RAR Support_: As with Debian, RAR support is not included in the base package. Users that desire RAR support will have to install `libclamunrar9` separately. Unlike with Debian, there is no need to enable "non-free" packages for this to work.
 
 > _Note_: Ubuntu packages are curated by [Ubuntu Developers](https://wiki.ubuntu.com/UbuntuDevelopers).
 > Package source: https://packages.ubuntu.com/source/clamav
