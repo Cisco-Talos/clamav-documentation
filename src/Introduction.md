@@ -89,32 +89,35 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
 
 - GNU/Linux
   - Alpine
-    - 3.11 (64bit)
+    - 3.17 (x86_64)
   - Ubuntu
-    - 18.04 (64bit, 32bit)
-    - 20.04 (64bit)
+    - 18.04 (x86_64, i386)
+    - 20.04 (x86_64)
   - Debian
-    - 9 (64bit, 32bit)
-    - 10 (64bit, 32bit)
+    - 10 (x86_64, i386)
+    - 11 (x86_64, i386)
   - CentOS
-    - 7 (64bit, 32bit)
-    - 8 (64bit)
+    - 7 (x86_64, i386)
   - Fedora
-    - 30 (64bit)
-    - 31 (64bit)
+    - 31 (x86_64)
+    - 33 (x86_64)
   - openSUSE
-    - Leap (64bit)
+    - 15 Leap (x86_64)
 - UNIX
   - FreeBSD
-    - 11 (64bit)
-    - 12 (64bit)
+    - 12 (x86_64)
+    - 13 (x86_64)
   - macOS
-    - 10.13 High Sierra (x86_64)
-    - 10.15 Catalina (x86_64)
-    - 11.5 Big Sur (x86_64, arm64)
+    - 10.13 High Sierra (Intel x86_64)
+    - 10.15 Catalina (Intel x86_64)
+    - 11.5 Big Sur (Intel x86_64, arm64 Apple M1)
 - Windows
-  - 7 (64bit, 32bit)
-  - 10 (64bit, 32bit)
+  - 7 (x86_64, i386)
+  - 10 (x86_64, i386)
+
+> _Disclaimer_: Platforms and operating systems other than the ones above are not as well tested by the ClamAV development team. In particular, uncommon operating systems such as HP-UX and Solaris, and uncommon processor architectures such as sparc64, armhf, pp64le, etc. are not supported.
+>
+> You are welcome to report bugs and contribute bug fixes for unsupported platforms. We may be unable to verify that a platform-specific bug-fix is resolves an issue. But provided that a contributed fix appears technically sound, and does not cause other issues, we will be happy to merge it.
 
 ## Recommended System Requirements
 
