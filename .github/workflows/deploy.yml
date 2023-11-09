@@ -16,7 +16,7 @@ jobs:
     - name: Install Rust (rustup)
       run: rustup update stable --no-self-update && rustup default stable
     - name: Install mdBook
-      run: cargo install --version 0.4.34 mdbook 
+      run: cargo install mdbook
     - name: Build book
       run: mdbook build .
     - name: Deploy to GitHub
