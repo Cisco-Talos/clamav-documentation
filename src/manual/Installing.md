@@ -83,8 +83,6 @@ sudo apt remove clamav
 
 Beginning with ClamAV 0.104, we offer a PKG installer for macOS. These are universal binaries built for Intel x86_64 and Apple M1 arm64 processors.
 
-> _Disclaimer_: The release materials for 0.104.0-rc2 are not signed or notarized. We are working on adding signing and notarization to our CI processes, but for now you may be unable to use this PKG installer on macOS Big Sur or newer.
-
 To install, download the macOS `.pkg` installer. Double-click the installer and follow the directions.
 
 This package installs to `/usr/local/clamav`. This is **not** in the default system `PATH` environment variable. You may wish to add `/usr/local/clamav/bin` and `/usr/local/clamav/sbin` to your `PATH` so you can run the ClamAV programs without entering the full path. To do this add this line to `~/.zshrc`:
