@@ -59,7 +59,7 @@ sudo dnf remove ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
 
 #### DEB packages (for Debian, Ubuntu, Mint, etc.)
 
-These are compiled on Ubuntu 16.04, and have all external library dependencies statically compiled in. They should be compatible with all Debian-based linux distributions running `glibc` version `2.23` or newer.
+These are compiled on Ubuntu 18.04, and have all external library dependencies statically compiled in. They should be compatible with all Debian-based linux distributions running `glibc` version `2.27` or newer.
 
 ```bash
 sudo apt install ~/Downloads/clamav-0.104.0-rc2.libnux.x86_64.deb
