@@ -24,6 +24,7 @@ jobs:
         GITHUB_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
       run: |
         touch book/.nojekyll
+        cp googled62299e9391332c4.html book/googled62299e9391332c4.html
         echo ${{ env.CNAME }} > book/CNAME
         rustc deploy.rs -o /tmp/deploy
         cd book
