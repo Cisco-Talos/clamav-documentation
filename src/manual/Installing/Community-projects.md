@@ -255,7 +255,7 @@ Like `clamav-rs`. rust-clamav is a safe library for interacting with libclamav f
 
 #### clamav-tcp | clamd
 
-A simple to use TCP client for scanning files with ClamAV. This is not exactly a binding. It is a Rust crate for interacting with ClamD. 
+A simple to use TCP client for scanning files with ClamAV. This is not exactly a binding. It is a Rust crate for interacting with ClamD.
 
 Get [clamav-tcp](https://crates.io/crates/clamav-tcp)
 
@@ -356,3 +356,9 @@ ClamAV-GUI is a GUI front-end for ClamAV using Qt. The ClamAV-GUI sports a dropz
 ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / XP / Me / 2000 / 98 and Windows Server 2012, 2008 and 2003.
 
 [Get ClamWin](https://clamwin.com/)
+
+### Hydra Dragon Antivirus
+
+Hydra Dragon Antivirus is a Python-based GUI program wrapping both ClamAV and Yara. Hydra Dragon Antivirus provides a very large (multi-gigabyte) collection of ClamAV signatures and Yara rules. See the project readme to find the URL to download the signature set.
+
+[Get Hydra Dragon Antivirus](https://github.com/HydraDragonAntivirus/Hydra-Dragon-Antivirus-Linux)
