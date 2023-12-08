@@ -98,11 +98,10 @@ As root or with `sudo`, run:
 ```sh
 zypper install -y \
   `# install tools` \
-  gcc gcc-c++ make python3 valgrind \
+  gcc gcc-c++ make python3 valgrind cmake python-pytest \
   `# install clamav dependencies` \
   libbz2-devel check-devel libjson-c-devel libcurl-devel libxml2-devel \
   ncurses-devel libopenssl-devel pcre2-devel sendmail-devel zlib-devel \
-  cmake python-pytest
 ```
 
 > _Tip_: If you you're on an older release and if the `cmake` provided by your release is too old, then you may need to remove `cmake`, install `python3-pip`, and then install `cmake` like this:
@@ -121,11 +120,10 @@ As root or with `sudo`, run:
 ```sh
 apt-get update && apt-get install -y \
   `# install tools` \
-  gcc make pkg-config python3 python3-pip python3-pytest valgrind \
+  gcc make pkg-config python3 python3-pip python3-pytest valgrind cmake \
   `# install clamav dependencies` \
   check libbz2-dev libcurl4-openssl-dev libjson-c-dev libmilter-dev \
-  libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev \
-  cmake python-pytest
+  libncurses5-dev libpcre2-dev libssl-dev libxml2-dev zlib1g-dev
 ```
 
 > _Tip_: If you you're on an older release and if the `cmake` provided by your release is too old, then you may need to remove `cmake`, install `python3-pip`, and then install `cmake` like this:
