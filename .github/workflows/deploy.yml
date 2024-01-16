@@ -16,7 +16,9 @@ jobs:
     - name: Install Rust (rustup)
       run: rustup update stable --no-self-update && rustup default stable
     - name: Install mdBook
-      run: cargo install mdbook mdbook-sitemap-generator
+      run: |
+        cargo install mdbook
+        cargo install --git https://github.com/micahsnyder/mdbook-sitemap-generator.git --branch rename-urls-url
     - name: Build book
       run: |
         mdbook build .
