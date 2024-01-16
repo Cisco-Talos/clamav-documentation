@@ -16,9 +16,11 @@ jobs:
     - name: Install Rust (rustup)
       run: rustup update stable --no-self-update && rustup default stable
     - name: Install mdBook
-      run: cargo install mdbook
+      run: cargo install mdbook mdbook-sitemap-generator
     - name: Build book
-      run: mdbook build .
+      run: |
+        mdbook build .
+        mdbook-sitemap-generator -d docs.clamav.net -o book/sitemap.xml
     - name: Deploy to GitHub
       env:
         GITHUB_DEPLOY_KEY: ${{ secrets.DEPLOY_KEY }}
