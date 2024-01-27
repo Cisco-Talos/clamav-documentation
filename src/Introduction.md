@@ -209,8 +209,6 @@ Is the file accessible using a public URL at any point in this process?
 
 [Cisco Secure Endpoint](https://www.cisco.com/c/en/us/products/security/amp-for-endpoints/index.html) (formerly AMP for Endpoints) is Cisco's cloud-based security suite for commercial and enterprise customers. Secure Endpoint is available for Windows, Linux, and macOS and provides superior malware detection capabilities, behavioral monitoring, dynamic file analysis, endpoint isolation, analytics, and threat hunting. Secure Endpoint sports a modern administrative web interface (dashboard).
 
-[Immunet](https://www.immunet.com/) is a cloud-based antivirus application for Windows that is free for non-commercial use. Immunet offers great malware detection efficacy but, as a completely free product, Immunet's does not have same features or the quality user experience that Secure Endpoint offers. There is an Immunet user forum but Cisco offers no official user support.
-
 <p align="center">
   <a href="https://www.cisco.com/">
     <img align="center" img width="80" src="https://raw.githubusercontent.com/micahsnyder/clamav-documentation/main/src/images/cisco.png" alt='Cisco Systems, Inc'>
