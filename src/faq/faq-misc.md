@@ -4,14 +4,6 @@ If you're unable to find an answer to your question in our FAQ, you can seek hel
 
 Please consider contributing answered questions back to this FAQ, and improving the quality of these answers, by submitting pull requests to [our documentation source repository](https://github.com/Cisco-Talos/clamav-documentation).
 
-## I see you have Bugzilla AND GitHub Issues. Which one should I use?
-
-Please use [GitHub Issues](https://github.com/Cisco-Talos/clamav/issues). We're slowly phasing out Bugzilla. But please read the Security Policy and do not disclose anything in a ticket that should be kept private or that may represent a vulnerability.
-
-## I reported a bug on Bugzilla, but no one can see it. What do I do?
-
-Bugs reported to ClamAV's [Bugzilla ticket tracker](https://bugzilla.clamav.net/) are private by default. Our policy is to make tickets public if they are not security-related. If you believe your bug report isn't security-related, please ping the ticket requesting that the ticket be made public. Chances are high that we simply forgot to remove the tag when the report came in.
-
 ## Where can I find the bug ticket for a security bug fix?
 
 Our policy is to make security-related bugs public either:
