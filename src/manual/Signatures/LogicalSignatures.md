@@ -178,7 +178,7 @@ TestMacro;Engine:51-255,Target:0;0;616161{3-4}(626262|636363)
 
   - In the example, `{min-max}` is `{6-7}` and it is relative to the start of a `616161` match.
 
-- For more information and examples please see <https://bugzilla.clamav.net/show_bug.cgi?id=164>.
+The intention with macro subsignatures is to ease the burden of writing signatures for scenarios like this... A small number of logical signatures may be created that target a given phishing email. Macro signatures are created for variations in the email, such as variations of URL domains. In this way, new macro signatures can be added to account for additional variations in the phishing URLs without updating the larger logical signature, and without adding all new logical signatures.
 
 ### Byte Compare Subsignatures
 

@@ -50,10 +50,30 @@ ClamAV supports the following wildcards for hex-signatures:
 
 - `HEXSIG[x-y]aa` or `aa[x-y]HEXSIG`
 
-  Match `aa` anchored to a hex-signature, see [Bugzilla ticket 776](https://bugzilla.clamav.net/show_bug.cgi?id=776) for discussion and
-  examples.
+  The `[x-y]` notation enables matching on a range of any bytes where one side is just a single-byte (two nibbles), represented by "`aa`". The other side, represented by "HEXSIG" must be at least 2 bytes (4 nibbles).
 
-The range signatures `*` and `{}` virtually separate a hex-signature into two parts, eg. `aabbcc*bbaacc` is treated as two sub-signatures `aabbcc` and `bbaacc` with any number of bytes between them. It’s a requirement that each sub-signature includes a block of two static characters somewhere in its body. Note that there is one exception to this restriction; that is when the range wildcard is of the form `{n}` with `n<128`. In this case, ClamAV uses an optimization and translates `{n}` to the string consisting of `n ??` character wildcards. Character wildcards do not divide hex signatures into two parts and so the two static character requirement does not apply.
+  The similar notation `{n-m}` requires that both sides have at least 2 bytes. The difference here is that [x-y] enables matching of just one byte.
+
+  A second, unfortunate, difference is that `y` cannot be greater than 32.
+
+  Example logical signature:
+  ```
+  testsig;Target:0;0;64[4-4]61616161{2}6262[3-6]65:27
+  ```
+
+  In the example signature "testsig", there are two examples of this wildcard variant:
+  1. `64[4-4]61616161`: This will search for the byte "64" followed by the hex sequence "61616161" with exactly 4 arbitrary bytes in between.
+
+  2. `6262[3-6]65`: This will search for the hex sequence "6262" followed by the byte "65" with 3 to 6 arbitrary bytes in between.
+
+  (Note that the "{2}" in between is the other wildcard variant meaning to match 2 arbitrary bytes.)
+
+  Thus the signature matches many variations such as these. Braces and brackets are added in this hex to illustrate the boundaries of the wildcard matches:
+  - `64[61616161]616161616{4646}6262[0102]65`
+  - `64[67676767]616161616{0102}6262[262626]65`
+  - `64[00000000]616161616{9696}6262[26262636]65`
+
+The range signatures `*` and `{}` virtually separate a hex-signature into two parts, eg. `aabbcc*bbaacc` is treated as two sub-signatures `aabbcc` and `bbaacc` with any number of bytes between them. It’s a requirement that each sub-signature includes a block of two static characters somewhere in its body. Note that there is one exception to this restriction; that is when the range wildcard is of the form `{n}` with `n<128`. In this case, ClamAV uses an optimization and translates `{n}` to the string consisting of `n` number of `??` character wildcards. Character wildcards do not divide hex signatures into two parts and so the two static character requirement does not apply.
 
 ## Character classes
 

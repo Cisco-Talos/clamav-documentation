@@ -26,4 +26,4 @@ A long-running branch for adding a major feature. It may be rebased several time
 
 `CLAM-####-description`, `issue-####-description`, `bb####-description`:
 
-A branch for working a JIRA task, GitHub issue, or Bugzilla Bug. These are typically only found in a personal > fork and appear as pull requests from the fork to the upstream `clamav` repository.
+A branch for working a JIRA task or GitHub issue. These are typically only found in a personal > fork and appear as pull requests from the fork to the upstream `clamav` repository.

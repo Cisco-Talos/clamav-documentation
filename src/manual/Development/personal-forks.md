@@ -41,9 +41,8 @@ git clone <paste that Git URL>
 cd clamav-YourNameHere
 ```
 
-Create a branch off of the default branch where you will work. If working on a GitHub Issue, Bugzilla Bug, or JIRA task`*`, the following branch name prefixes will help you and others identify the branch:
-- For GitHub Issues: `issue-####-short-description`
-- For Bugzilla Bugs: `bb-####-short-description`
+Create a branch off of the default branch where you will work. If working on a GitHub Issue, or JIRA task`*`, the following branch name prefixes will help you and others identify the branch:
+- For GitHub issues: `issue-####-short-description`
 - For JIRA task: `CLAM-####-short-description`
 
 > _Note_: `*`The ClamAV JIRA task tracker is not accessible outside of the Cisco network.

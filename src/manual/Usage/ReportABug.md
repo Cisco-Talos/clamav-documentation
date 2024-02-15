@@ -14,8 +14,6 @@ If you find a bug in ClamAV, please do the following before you submit a bug rep
 
 2. Review [the open issues](https://github.com/Cisco-Talos/clamav/issues?q=is%3Aopen+is%3Aissue) to make sure someone else hasn't already reported the same issue.
 
-   > _Tip_: Before switching to GitHub Issues, ClamAV used Bugzilla. You can also review [older open tickets from the Bugzilla archive](https://bugzilla.clamav.net/buglist.cgi?bug_status=UNCONFIRMED&bug_status=NEW&bug_status=ASSIGNED&bug_status=NEEDINFO&bug_status=REOPENED&classification=ClamAV&limit=0&list_id=162358&order=changeddate%20DESC%2Cbug_status%2Cpriority%2Cassigned_to%2Cbug_id&product=ClamAV&query_format=advanced&resolution=---).
-
 3. Collect the required information, described below, to include with your report.
 
 4. Create a [new ticket on GitHub](https://github.com/Cisco-Talos/clamav/issues/new).
