@@ -49,6 +49,7 @@ The full list of packages includes:
 - `clamav-docs` - documentation
 - `clamav-freshclam` - virus database update utility
 - `clamav-milter` - sendmail integration
+- `clamdscan` - A command-line client for `clamd` similar to `clamscan`
 - `clamav-testfiles` - test files
 - `libclamav-dev` - development files
 - `libclamav9` - library
