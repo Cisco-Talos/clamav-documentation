@@ -357,8 +357,8 @@ ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / X
 
 [Get ClamWin](https://clamwin.com/)
 
-### Hydra Dragon Antivirus
+### Xylent Antivirus
 
-Hydra Dragon Antivirus is a Python-based GUI program wrapping both ClamAV and Yara. Hydra Dragon Antivirus provides a very large (multi-gigabyte) collection of ClamAV signatures and Yara rules. See the project readme to find the URL to download the signature set.
+Xylent Antivirus is a Javascript-based GUI program wrapping both ClamAV and Yara. Xylent Antivirus provides a very large (multi-gigabyte) collection of ClamAV signatures and Yara rules.
 
-[Get Hydra Dragon Antivirus](https://github.com/HydraDragonAntivirus/Hydra-Dragon-Antivirus-Linux)
+[Get Xylent Antivirus](https://xylent.sourceforge.io)
