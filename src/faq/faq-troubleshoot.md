@@ -76,12 +76,12 @@ For other questions regarding issues with the signature databases, see our [Viru
 
 ## ClamAV becomes unresponsive
 
-ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](manual/Installing/Docker.md#memory-ram-requirements).
+ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](../manual/Installing/Docker.md#memory-ram-requirements).
 
 ## ClamAV stops responding after about 24 hours
 
-ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](manual/Installing/Docker.md#memory-ram-requirements).
+ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](../manual/Installing/Docker.md#memory-ram-requirements).
 
 ## ClamAV crashes once each day
 
-ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](manual/Installing/Docker.md#memory-ram-requirements).
+ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](../manual/Installing/Docker.md#memory-ram-requirements).
