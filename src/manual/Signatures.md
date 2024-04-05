@@ -25,9 +25,9 @@ Table Of Contents
 
 ## Introduction
 
-In order to detect malware and other file-based threats, ClamAV relies on signatures to differentiate clean and malicious/unwanted files. ClamAV signatures are primarily text-based and conform to one of the ClamAV-specific signature formats associated with a given method of detection. These formats are explained in the [Signature formats](#signature-formats) section below. In addition, ClamAV 0.99 and above support signatures written in the YARA format. More information on this can be found in the [Using YARA rules in ClamAV](#using-yara-rules-in-clamav) section.
+In order to detect malware and other file-based threats, ClamAV relies on signatures to differentiate clean and malicious/unwanted files. ClamAV signatures are primarily text-based and conform to one of the ClamAV-specific signature formats associated with a given method of detection. These formats are explained in the [Database formats](#database-formats) section below. In addition, ClamAV 0.99 and above support signatures written in the YARA format. More information on this can be found in the [Using YARA rules in ClamAV](Signatures/YaraRules.md) section.
 
-The ClamAV project distributes a collection of signatures in the form of CVD (ClamAV Virus Database) files. The CVD file format provides a digitally-signed container that encapsulates the signatures and ensures that they can't be modified by a malicious third-party. This signature set is actively maintained by [Cisco Talos](https://www.talosintelligence.com/) and can be downloaded using the `freshclam` application that ships with ClamAV. For more details on this, see the [CVD file](#inspecting-signatures-inside-a-CVD-file) section.
+The ClamAV project distributes a collection of signatures in the form of CVD (ClamAV Virus Database) files. The CVD file format provides a digitally-signed container that encapsulates the signatures and ensures that they can't be modified by a malicious third-party. This signature set is actively maintained by [Cisco Talos](https://www.talosintelligence.com/) and can be downloaded using the `freshclam` application that ships with ClamAV. For more details on this, see the [CVD file](#inspecting-signatures-inside-a-cvd-file) section.
 
 ## Database formats
 
@@ -94,7 +94,7 @@ ClamAV signature names found in the official signature databases generally follo
   {platform}.{category}.{name}-{signature id}-{revision}
   ```
 
-Older signatures and [Potentially Unwanted Applications (PUA) signatures](../../faq/faq-pua.md) may deviate from these guidelines.
+Older signatures and [Potentially Unwanted Applications (PUA) signatures](../faq/faq-pua.md) may deviate from these guidelines.
 
 Naming conventions in 3rd party databases vary. You can find Cisco-Talos [guidelines for naming signatures for the official database here](Signatures/SignatureNames.md).
 
@@ -128,7 +128,7 @@ Time: 0.400 sec (0 m 0 s)
 If the rule did not match as intended:
 
 - The file may have exceeded one or more of the default scanning limits built-in to ClamAV. Try running `clamscan` with the following options to see if raising the limits addresses the issue: `--max-filesize=2000M --max-scansize=2000M --max-files=2000000 --max-recursion=2000000 --max-embeddedpe=2000M --max-htmlnormalize=2000000 --max-htmlnotags=2000000 --max-scriptnormalize=2000000 --max-ziptypercg=2000000 --max-partitions=2000000 --max-iconspe=2000000 --max-rechwp3=2000000 --pcre-match-limit=2000000 --pcre-recmatch-limit=2000000 --pcre-max-filesize=2000M`.
-- If matching on HTML or text files, ClamAV might be performing normalization that causes the content of the scanned file to change. See the [HTML](#html) and [Text file](#text-file) sections for more details.
+- If matching on HTML or text files, ClamAV might be performing normalization that causes the content of the scanned file to change. See the [HTML](#html) and [Text file](#text-files) sections for more details.
 - libclamav may have been unable to unpack or otherwise process the file. See [Debug information from libclamav](#debug-information-from-libclamav) for more details.
 
 NOTE: If you run `clamscan` with a `-d` flag, ClamAV will not load in the signatures downloaded via `freshclam`. This means that:
@@ -303,11 +303,11 @@ ClamAV contains HTML normalization code which makes it easier to write signature
 
 - javascript - any script contents are normalized and the results appended to this file
 
-The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files. Signatures matching on normalized HTML should have a target type of 3. For reference, see [Target Types](appendix/FileTypes.md).
+The code automatically decodes JScript.encode parts and char ref’s (e.g. `&#102;`). To create a successful signature for the input file type, the rule must match on the contents of one of the created files. Signatures matching on normalized HTML should have a target type of 3. For reference, see [Target Types](../appendix/FileTypes.md).
 
 #### Text files
 
-Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named `normalised\_text`. Rules matching on normalized ASCII text should have a target type of 7. For reference, see [Target Types](appendix/FileTypes.md).
+Similarly to HTML all ASCII text files get normalized (converted to lower-case, all superfluous white space and control characters removed, etc.) before scanning. Running `sigtool --ascii-normalise` on a text file will result in a normalized version being written to the file named `normalised\_text`. Rules matching on normalized ASCII text should have a target type of 7. For reference, see [Target Types](../appendix/FileTypes.md).
 
 #### Compressed Portable Executable files
 
