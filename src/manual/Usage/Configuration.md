@@ -46,7 +46,7 @@ cp clamd.conf.example clamd.conf
 cp clamav-milter.conf.example clamav-milter.conf
 ```
 
-Next up, edit the configs you need. There are tips below for each of [freshclam.conf](#freshclamconf), [clamd.conf](#clamdconf), and [clamav-milter](#clamav-milter).
+Next up, edit the configs you need. There are tips below for each of [freshclam.conf](#freshclamconf), [clamd.conf](#clamdconf), and [clamav-milter](#clamav-milterconf).
 
 ### Windows
 
