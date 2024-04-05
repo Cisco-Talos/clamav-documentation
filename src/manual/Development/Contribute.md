@@ -300,8 +300,8 @@ The majority of the work won't actually change ClamAV's behavior, which may seem
 ClamAV signatures have a "Target Type" which is an integer type which can be used in signatures to limit signature matches to specific file types. ClamAV also categorizes signature patterns into two different Aho-Corasick pattern-matching trie's by Target Type. Target Type `1` (Windows executables (EXE/DLL/SYS/etc.) go in one trie, and _everything else_ goes in the other trie. Unfortunately, not every file type has an associated target type. In addition, while it's conceivable to be able to add new text-based file types dynamically (see the above project idea about file type magic signatures), it is less feasible to dynamically add new numerical target types.
 
 For some advanced reading, see:
- - [File Types](appendix/FileTypes.md)
- - [Logical Signatures](manual/Signatures/LogicalSignatures.md)
+ - [File Types](../../appendix/FileTypes.md)
+ - [Logical Signatures](../Signatures/LogicalSignatures.md)
 
 This project is to add a new "`FileTypes:`" keyword to the `TargetDescriptionBlock` for [Logical Signature (`.ldb`)](../Signatures/LogicalSignatures.md) to limit logical signature alerts to specific file types, much like you currently can do with Target Types ("`Target:`"), Container File Types ("`Container:`"), and Container Intermediate Types ("`Intermediates:`"). While this isn't expected to improve scan times, it should reduce overall signature size as analysts will no longer need to duplicate the file-type-magic signature in order to limit alerting on a signature match by file type.
 
