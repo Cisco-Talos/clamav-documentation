@@ -67,7 +67,7 @@ To test the installation, you can try to scan the test files in the `clamav-test
 
 > _Note_: Debian packages are maintained by [Debian's ClamAV Team](https://salsa.debian.org/clamav-team).
 >
-> The package maintainers can be reached at [clamav-devel at lists.alith.debian.org](pkg-clamav-devel@lists.alioth.debian.org). More info at [tracker.debian.org/pkg/clamav](https://tracker.debian.org/pkg/clamav).
+> The package maintainers can be reached at [clamav-devel at lists.alioth.debian.org](mailto:pkg-clamav-devel@lists.alioth.debian.org). More info at [tracker.debian.org/pkg/clamav](https://tracker.debian.org/pkg/clamav).
 >
 > Patches: https://salsa.debian.org/clamav-team/clamav/tree/unstable/debian/patches
 
