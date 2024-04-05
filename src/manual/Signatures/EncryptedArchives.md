@@ -12,7 +12,7 @@ where:
 - `SignatureName`: name to be displayed during debug when a password is successful
 
 - `TargetDescriptionBlock`: provides information about the engine and target file with comma separated Arg:Val pairs
-  - `Engine:X-Y`: Required engine functionality level. See the [FLEVEL reference](appendix/FunctionalityLevels.md) for details.
+  - `Engine:X-Y`: Required engine functionality level. See the [FLEVEL reference](../../appendix/FunctionalityLevels.md) for details.
   - `Container:CL_TYPE_*`: File type of applicable containers
 
 - `PWStorageType`: determines how the password field is parsed
