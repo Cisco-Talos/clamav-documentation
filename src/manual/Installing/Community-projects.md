@@ -8,7 +8,7 @@ The ClamAV Team provides FreshClam for ClamAV agents to update the official sign
 
 Both FreshClam and CVD-Update have some limited features to update signatures from third-party sources but community tools exist that are designed for this purpose and provide a more complete experience for users that want the extra coverage.
 
-> **WARNING**: While there are no known vulnerabilities in using traditional content-based and hash-based ClamAV signatures, bytecode signatures are a _different story_. Bytecode signatures are effectively cross-platform executable plugins [similar to Web Assembly (WASM)](../Contribute.md#webassembly-runtime) but with less sandboxing.
+> **WARNING**: While there are no known vulnerabilities in using traditional content-based and hash-based ClamAV signatures, bytecode signatures are a _different story_. Bytecode signatures are effectively cross-platform executable plugins [similar to Web Assembly (WASM)](../Development/Contribute.md#webassembly-runtime) but with less sandboxing.
 >
 > ClamScan and ClamD will not run unsigned bytecode signatures by default. Cisco-Talos' signing certificate is the **only** certificate trusted by ClamAV to run bytecode signatures.
 >
