@@ -57,7 +57,7 @@ Mussels is an open source project developed in-house by the ClamAV team. It offe
 
 Vcpkg is an open source project developed by Microsoft and is heavily oriented towards CMake projects. Vcpkg offers a very large collection of "ports" for almost any project you may need to build. It is very easy to get started with vcpkg.
 
-Mussels is the preferred tool to supply the library dependencies at least until such time as the vcpkg Debug-build libclamav unit test heap-corruption crash is resolved [(see below)](#windows-build-with-vcpkg).
+Mussels is the preferred tool to supply the library dependencies at least until such time as the vcpkg Debug-build libclamav unit test heap-corruption crash is resolved [(see below)](#building-with-vcpkg).
 
 ***Details for how to use Mussels and vcpkg will be provided with the build instructions (below), as the instructions differ _significantly_ depending on which you choose.***
 
