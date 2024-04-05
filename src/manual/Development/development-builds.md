@@ -27,8 +27,8 @@ The following are instructions for building ClamAV using CMake or Autotools with
 ## Build dependencies
 
 Instructions to install the build dependencies for each major operating system and distribution can be found in our install from source instructions. See:
-- [Unix/Linux/Mac Instructions](Installing-from-source/Installing-from-source-Unix.md)
-- [Windows Instructions](Installing-from-source/Installing-from-source-Windows.md)
+- [Unix/Linux/Mac Instructions](../Installing/Installing-from-source-Unix.md)
+- [Windows Instructions](../Installing/Installing-from-source-Windows.md)
 
 For development, you may also need to install the following...
 
