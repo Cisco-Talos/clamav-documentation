@@ -168,7 +168,7 @@ M:RealHostname:DisplayedHostname[:FuncLevelSpec]
 
 - If any of the lines don’t conform to this format, ClamAV will abort with a Malformed Database Error
 
-- See section [Extraction-of-RealURL](#Extraction-of-RealURL,-DisplayedURL-from-HTML-tags) for more details on `RealURL`/`DisplayedURL`
+- See section [Extraction of `RealURL`, `DisplayedURL` from HTML tags](#extraction-of-realurl-displayedurl-from-html-tags) for more details on `RealURL`/`DisplayedURL`
 
 ### Examples of PDB signatures
 
@@ -431,13 +431,13 @@ Simple patterns are matched literally, i.e. if you say:
 www.google.com
 ```
 
-it is going to match *www.google.com*, and only that. The *. (dot)* character has no special meaning (see the section on regexes [\[sec:Regular-expressions\]](#sec:Regular-expressions) for how the *.(dot)* character behaves there)
+it is going to match *www.google.com*, and only that. The *. (dot)* character has no special meaning (see the section on regexes [Regular-expressions](#regular-expressions) for how the *.(dot)* character behaves there)
 
 ### Regular expressions
 
-POSIX regular expressions are supported, and you can consider that internally it is wrapped by *^*, and *$.* In other words, this means that the regular expression has to match the entire concatenated (see section [RealURL,-DisplayedURL-concatenation](#RealURL,-DisplayedURL-concatenation) for details on concatenation) url.
+POSIX regular expressions are supported, and you can consider that internally it is wrapped by *^*, and *$.* In other words, this means that the regular expression has to match the entire concatenated (see section [RealURL, DisplayedURL concatenation](#realurl-displayedurl-concatenation) for details on concatenation) url.
 
-It is recomended that you read section [Introduction-to-regular](#Introduction-to-regular) to learn how to write regular expressions, and then come back and read this for hints.
+It is recomended that you read section [Introduction to regular expressions](#introduction-to-regular-expressions) to learn how to write regular expressions, and then come back and read this for hints.
 
 Be advised that clamav contains an internal, very basic regex matcher to reduce the load on the regex matching core. Thus it is recomended that you avoid using regex syntax not supported by it at the very beginning of regexes (at least the first few characters).
 
