@@ -40,6 +40,6 @@ The more complex tools ClamAV provides each require some degree of [configuratio
   - [`clamd.conf`](Usage/Configuration.md#clamdconf) - for configuring the behavior of the ClamAV Daemon `clamd` and associated tools
   - [`freschclam.conf`](Usage/Configuration.md#freshclamconf) - for configuring the behavior of the signature database update tool, `freshclam`
 
-ClamAV also provides a mail filtering tool called [`clamav-milter`](Usage/Configuration.md#clamav-milter) which can be attached to a `clamd` instance for mail scanning purposes.
+ClamAV also provides a mail filtering tool called [`clamav-milter`](Usage/Configuration.md#clamav-milterconf) which can be attached to a `clamd` instance for mail scanning purposes.
 
 Additionally, a tool called [`clamconf`](Usage/Configuration.md#clamconf) allows users to check the configurations used by each other tool, pulling information from the configuration files listed above, alongside other relevant information.
