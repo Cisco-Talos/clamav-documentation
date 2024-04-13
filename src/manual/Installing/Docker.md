@@ -223,7 +223,7 @@ docker run -it --rm \
     clamscan /scandir
 ```
 
-However, this will use whatever signatures are found in the image, which may be slightly out of date. If using `clamscan` in this way, it would be best to use a database volume that is up-to-date so that you scan with the latest signatures. E.g.:
+However, this will use whatever signatures are found in the image, which may be slightly out of date. If using `clamscan` in this way, it would be best to use a [database volume](#persisting-the-virus-database-volume) that is up-to-date so that you scan with the latest signatures. E.g.:
 ```bash
 docker run -it --rm \
     --mount type=bind,source=/path/to/scan,target=/scandir \
