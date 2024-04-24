@@ -82,7 +82,7 @@ The ClamAV Docker images are subject to ClamAV's [End-of-Life (EOL) policy](../.
 
 ## Building the ClamAV image
 
-While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/u/clamav/clamav), some may want to build the image locally instead.
+While it is recommended to pull the image from our [Docker Hub registry](https://hub.docker.com/r/clamav/clamav), some may want to build the image locally instead.
 
 To do this, you will need to get the  `Dockerfile` and the supporting `scripts/` directory from the [clamav-docker Git repository](https://github.com/Cisco-Talos/clamav-docker/tree/main/clamav). Be sure to select the correct one for this ClamAV release.
 
