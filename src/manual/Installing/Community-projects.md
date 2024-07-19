@@ -359,6 +359,6 @@ ClamWin is a Free Antivirus program for Microsoft Windows 10 / 8 / 7 / Vista / X
 
 ### Xylent Antivirus
 
-Xylent Antivirus is a Javascript-based GUI program wrapping both ClamAV and Yara. Xylent Antivirus provides a very large (multi-gigabyte) collection of ClamAV signatures and Yara rules.
+Xylent Antivirus is a Python-based GUI and cross platform interface for ClamAV. Xylent Antivirus provides a very large (multi-gigabyte) collection of ClamAV signatures and Yara rules.
 
 [Get Xylent Antivirus](https://xylent.sourceforge.io)
