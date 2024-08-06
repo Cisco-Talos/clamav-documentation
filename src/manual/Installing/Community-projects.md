@@ -178,14 +178,6 @@ Simple ClamAV REST proxy. Builds on top of [clamav-java](#clamav-java) which is 
 
 [Get clamav-rest](https://github.com/solita/clamav-rest)
 
-#### Go
-
-##### go-clamav
-
-go-clamav is a library and tool set written in Go, designed to integrate with ClamAV antivirus software. It provides an API to easily call ClamAV scanning, statistics, version information and other functions, and also includes a command line tool clamd-ctl for communicating with Clamd and performing various operations.
-
-[Get go-clamav](https://github.com/hq0101/go-clamav)
-
 
 ### Filesystem & On-Access Scanning
 
@@ -333,6 +325,15 @@ Add virus detection capabilities to your python software in an efficient and eas
 Simple ClamAV Java client. See also [ClamAV REST service](#clamav-rest) which builds on top of this.
 
 [Get clamav-java](https://github.com/solita/clamav-java)
+
+### Go
+
+#### go-clamav
+
+go-clamav is a library and tool set written in Go, designed to integrate with ClamAV antivirus software. It provides an API to easily call ClamAV scanning, statistics, version information and other functions, and also includes a command line tool clamd-ctl for communicating with Clamd and performing various operations.
+
+[Get go-clamav](https://github.com/hq0101/go-clamav)
+
 
 ## Miscellaneous Tools
 
