@@ -325,6 +325,15 @@ Simple ClamAV Java client. See also [ClamAV REST service](#clamav-rest) which bu
 
 [Get clamav-java](https://github.com/solita/clamav-java)
 
+### Go
+
+#### go-clamav | clamd
+
+go-clamav is a library and toolset written in Go, designed to integrate seamlessly with ClamAV antivirus software. It provides a concise and easy-to-use REST API for calling ClamAV scans, getting statistics, version information, and more. At the same time, go-clamav also includes a command line tool clamd-ctl for communicating with the Clamd daemon and performing various operations.
+
+[Get go-clamav](https://github.com/hq0101/go-clamav)
+
+
 ## Miscellaneous Tools
 
 ### IPCop | ClamAV
