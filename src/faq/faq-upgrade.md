@@ -61,27 +61,26 @@ Please refer to our [End-of-Life (EOL) policy](faq-eol.md).
 
 ### How do I verify the integrity of ClamAV sources?
 
-Using [GnuPG] you can easily verify the authenticity of your stable release downloads by using the following method: Download the [Talos PGP public key] from the VRT labs site. Import the key into your local public keyring:
+You can verify the authenticity of ClamAV release packages provided [on the ClamAV downloads page](https://www.clamav.net/downloads) using [GnuPG](http://www.gnupg.org/).
 
-```bash
-gpg --import vrt.gpg
-```
+1. Install GnuPG.
+2. Download the [Cisco Talos GPG public key](../manual/cisco-talos.gpg).
+3. Import the key into your local public keyring:
+   ```bash
+   gpg --import cisco-talos.gpg
+   ```
+4. Download the ClamAV package AND the corresponding `.sig` file to the same directory.
+5. Verify that the stable release download is signed with the [Cisco Talos GPG public key]:
+   ```bash
+   gpg --verify clamav-X.XX.tar.gz.sig
+   ```
 
-Download the stable release AND the corresponding `.sig` file to the same directory. Verify that the stable release download is signed with the [Talos PGP public key]:
-
-```bash
-gpg --verify clamav-X.XX.tar.gz.sig
-```
-
-Please note that the resulting output should look like the following:
-
+The resulting output should look something like this. The specific details will differ, as we rotate the GPG key every couple of years:
 ```bash
     gpg: Signature made Wed Jan 24 19:31:26 2018 EST
     gpg:                using RSA key F13F9E16BCA5BFAD
     gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) [email address]" [unknown]
 ```
-
-For other PGP implementation, please refer to their manual.
 
 ### Where can I get the latest release, beta, or release candidate of ClamAV?
 
@@ -92,8 +91,6 @@ Visit the [source download page].
 ClamAV supports a wide variety of compilers, hardware and operating systems. Our core compiler is GCC with Linux on 32 and 64 bit Intel platforms, LLVM/Clang on macOS, and MSVC on Windows.
 
 
-[GnuPG]: http://www.gnupg.org/
 [sources]: https://github.com/Cisco-Talos/clamav
 [pre-compiled packages]: http://www.clamav.net/download.html#otherversions
-[Talos PGP public key]: http://www.clamav.net/downloads#collapsePGP
 [source download page]: http://www.clamav.net/downloads

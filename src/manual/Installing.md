@@ -10,6 +10,7 @@
     - [Windows](#windows)
   - [Official ClamAV Docker Images](#official-clamav-docker-images)
   - [Installing from Source](#installing-from-source)
+  - [Verifying ClamAV.net Downloads with GPG](#verifying-clamavnet-downloads-with-gpg)
   - [What now?](#what-now)
 
 ## Installing with a Package Manager
@@ -119,6 +120,29 @@ Check out the [Docker page](Installing/Docker.md) to learn how to install and us
 If you need, you can also compile and install ClamAV from source:
 - [Unix/Linux/Mac Instructions](Installing/Installing-from-source-Unix.md)
 - [Windows Instructions](Installing/Installing-from-source-Windows.md)
+
+## Verifying ClamAV.net Downloads with GPG
+
+You can verify the authenticity of ClamAV release packages provided [on the ClamAV downloads page](https://www.clamav.net/downloads) using [GnuPG](http://www.gnupg.org/).
+
+1. Install GnuPG.
+2. Download the [Cisco Talos GPG public key](../manual/cisco-talos.gpg).
+3. Import the key into your local public keyring:
+   ```bash
+   gpg --import cisco-talos.gpg
+   ```
+4. Download the ClamAV package AND the corresponding `.sig` file to the same directory.
+5. Verify that the stable release download is signed with the [Cisco Talos GPG public key]:
+   ```bash
+   gpg --verify clamav-X.XX.tar.gz.sig
+   ```
+
+The resulting output should look something like this. The specific details will differ, as we rotate the GPG key every couple of years:
+```bash
+    gpg: Signature made Wed Jan 24 19:31:26 2018 EST
+    gpg:                using RSA key F13F9E16BCA5BFAD
+    gpg: Good signature from "Talos (Talos, Cisco Systems Inc.) [email address]" [unknown]
+```
 
 ## What now?
 
