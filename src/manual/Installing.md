@@ -128,7 +128,7 @@ If you need, you can also compile and install ClamAV from source:
 You can verify the authenticity of ClamAV release packages provided [on the ClamAV downloads page](https://www.clamav.net/downloads) using [GnuPG](http://www.gnupg.org/).
 
 1. Install GnuPG.
-2. Download the [Cisco Talos GPG public key](../manual/cisco-talos.gpg).
+2. Download the [Cisco Talos GPG public key](https://raw.githubusercontent.com/Cisco-Talos/clamav-documentation/main/src/manual/cisco-talos.gpg).
 3. Import the key into your local public keyring:
    ```bash
    gpg --import cisco-talos.gpg
