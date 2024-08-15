@@ -37,11 +37,11 @@ Beginning with ClamAV 0.104, we offer Debian and RPM packages for x86_64 (64bit)
 
 #### RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)
 
-These are compiled on CentOS 7. They should be compatible with all RPM-based linux distributions running `glibc` version `2.17` or newer.
+These are compiled on Alma Linux 8. They should be compatible with all RPM-based linux distributions running `glibc` version `2.28` or newer.
 
 To install, download the package for your system use `yum` or `dnf` to install the package. For example:
 ```bash
-sudo dnf install ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
+sudo dnf install ~/Downloads/clamav-1.4.0.linux.x86_64.rpm
 ```
 
 You can verify that the package was installed using:
@@ -55,7 +55,7 @@ Unlike packages provided by Debian or other distributions, this package does not
 
 And uninstall the package with:
 ```bash
-sudo dnf remove ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
+sudo dnf remove ~/Downloads/clamav-1.4.0.linux.x86_64.rpm
 ```
 
 #### DEB packages (for Debian, Ubuntu, Mint, etc.)
@@ -63,7 +63,7 @@ sudo dnf remove ~/Downloads/clamav-0.104.0-rc2.linux.x86_64.rpm
 These are compiled on Ubuntu 18.04, and have all external library dependencies statically compiled in. They should be compatible with all Debian-based linux distributions running `glibc` version `2.27` or newer.
 
 ```bash
-sudo apt install ~/Downloads/clamav-0.104.0-rc2.libnux.x86_64.deb
+sudo apt install ~/Downloads/clamav-1.4.0.libnux.x86_64.deb
 ```
 
 You can verify that the package was installed using:
@@ -111,7 +111,9 @@ To install from a ZIP package, unzip the portable install package to any directo
 
 There are now official ClamAV images on Docker Hub. You can find the images on [Docker Hub under `clamav`](https://hub.docker.com/r/clamav/clamav).
 
-At present we offer images with builds of the latest development version. We call this "unstable". ClamAV 0.104 will be the first stable release that we'll publish on Docker Hub.. Once published 0.104.0+ will be available using a Docker image tag with the specific version number, or using "stable" to get the latest stable release.
+ClamAV versions 0.104 and newer are available using a Docker image tag with the specific version number, or using "stable" to get the latest stable release.
+
+We also offer images with builds of the latest development version. We call this "unstable".
 
 Check out the [Docker page](Installing/Docker.md) to learn how to install and use ClamAV with Docker.
 
