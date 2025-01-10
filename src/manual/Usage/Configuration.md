@@ -117,6 +117,8 @@ chmod 600 /var/log/freshclam.log
 chown clamav /var/log/freshclam.log
 ```
 
+>  _Tip_: If SELinux is enabled you probably need to set the right SELinux context on this newly created file, otherwise freshclam service won't be able to access this file. On Redhat-like systems, you should do `restorecon /var/log/freshclam.log`.
+
 Now you *should* edit the configuration file `freshclam.conf` and point the *UpdateLogFile* directive to the log file. Finally, to run `freshclam` in the daemon mode, execute:
 
 ```bash
