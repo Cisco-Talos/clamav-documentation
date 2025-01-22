@@ -8,9 +8,9 @@ Skip to our [Version Support Matrix](#version-support-matrix) to quickly check i
 
 ## Long Term Support (LTS) Feature Releases
 
-ClamAV ***1.0*** is the latest Long Term Support (LTS) feature release.
+ClamAV ***1.4*** is the latest Long Term Support (LTS) feature release.
 
-ClamAV ***0.103*** is the previous Long Term Support (LTS) feature release.
+ClamAV ***1.0*** is the previous Long Term Support (LTS) feature release.
 
 LTS feature releases will be supported for *at least* **three (3)** years from the initial publication date of that LTS feature version. In other words, support for the LTS release "X.Y" starts when version "X.Y.0" is published and ends three years after.
 
@@ -85,11 +85,11 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL)   | Signature load testing until | Signature FP testing until   | DB downloads allowed until   | Patch versions continue until                  |
 | --------------- | --------------- | -------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------------------------- |
 | 1.5             | TBD             | n/a                  | 1.7 + 4 months               | 1.7 + 4 months               | 1.6 published                | 1.7 + 4 months               | 1.6 + 4 months, or 1.7                         |
-| **1.4  LTS**    | **Aug-15 2024** | **1.4.1**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (3 years)   | **Aug-15 2027** (3 years)    | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)                     |
+| **1.4  LTS**    | **Aug-15 2024** | **1.4.2**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (3 years)   | **Aug-15 2027** (3 years)    | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)                     |
 | 1.3             | Feb-7 2024      | 1.3.2                | 1.5 + 4 months               | 1.5 + 4 months               | Aug-15 2024 (1.4 published)  | 1.5 + 4 months               | 1.4 + 4 months, or 1.5                         |
 | 1.2             | Aug-28 2023     | 1.2.3                | 1.4 + 4 months               | 1.4 + 4 months               | Feb-7 2024 (1.3 published)   | 1.4 + 4 months               | Jun-7 2024 or earlier (1.3 + 4 months, or 1.4) |
 | 1.1             | May-1 2023      | 1.1.3                | Jun-7 2024 (1.3 + 4 months)  | Jun-7 2024 (1.3 + 4 months)  | Aug-28 2023 (1.2 published)  | Jun-7 2024 (1.3 + 4 months)  | Dec-28 2023 (1.2 + 4 months, or 1.3)           |
-| **1.0 LTS**     | **Nov-28 2022** | **1.0.7**            | **Nov-28 2025** (3 years)    | **Nov-28 2025** (3 years)    | May-1 2023 (1.1 published)   | **Nov-28 2026** (4 years)    | **Nov-28 2025** (3 years)                      |
+| **1.0 LTS**     | **Nov-28 2022** | **1.0.8**            | **Nov-28 2025** (3 years)    | **Nov-28 2025** (3 years)    | May-1 2023 (1.1 published)   | **Nov-28 2026** (4 years)    | **Nov-28 2025** (3 years)                      |
 | 0.105           | May-4 2022      | 0.105.2              | Sep-1 2023 (1.1 + 4 months)  | Sep-1 2023 (1.1 + 4 months)  | Nov-28 2022 (1.0 published)  | Sep-1 2023 (1.1 + 4 months)  | Mar-28 2023 (1.0 + 4 months, or 1.1)           |
 | 0.104           | Sep-3 2021      | 0.104.4              | Mar-28 2023 (1.0 + 4 months) | Mar-28 2023 (1.0 + 4 months) | May-4 2022 (0.105 published) | Mar-28 2023 (1.0 + 4 months) | Sep-4 2022 (0.105 + 4 months, or 1.0)          |
 | **0.103 LTS**   | **Sep-14 2020** | **0.103.8**          | **Sep-14 2024** (3 years +1) | **Sep-14 2024** (3 years +1) | Sep-3 2021 (0.104 published) | **Sep-14 2025** (4 years +1) | **Sep-14 2024** (3 years +1)                   |
