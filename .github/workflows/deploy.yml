@@ -18,7 +18,7 @@ jobs:
     - name: Install mdBook
       run: |
         cargo install mdbook
-        cargo install --git https://github.com/micahsnyder/mdbook-sitemap-generator.git --branch rename-urls-url
+        cargo install --git https://github.com/Cisco-Talos/mdbook-sitemap-generator.git --branch rename-urls-url
     - name: Build book
       run: |
         mdbook build .
