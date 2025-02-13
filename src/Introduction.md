@@ -89,31 +89,31 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
 
 - GNU/Linux
   - Alpine
-    - 3.17 (x86_64)
+    - 3.21 (x86_64, arm64)
   - Ubuntu
-    - 18.04 (x86_64, i386)
-    - 20.04 (x86_64)
+    - 24.04 (x86_64, arm64)
+    - 22.04 (x86_64, arm64)
   - Debian
-    - 10 (x86_64, i386)
-    - 11 (x86_64, i386)
-  - CentOS
-    - 7 (x86_64, i386)
+    - 12 (x86_64, arm64)
+    - 11 (x86_64, arm64)
+  - AlmaLinux
+    - 8.10 (x86_64, arm64)
   - Fedora
-    - 31 (x86_64)
-    - 33 (x86_64)
+    - 41 (x86_64, arm64)
+    - 40 (x86_64, arm64)
   - openSUSE
-    - 15 Leap (x86_64)
+    - 15 Leap (x86_64, arm64)
 - UNIX
   - FreeBSD
-    - 12 (x86_64)
+    - 14 (x86_64)
     - 13 (x86_64)
   - macOS
-    - 10.13 High Sierra (Intel x86_64)
-    - 10.15 Catalina (Intel x86_64)
-    - 11.5 Big Sur (Intel x86_64, arm64 Apple M1)
+    - 15.3 Sequoia (x86_64, arm64)
+    - 14.7 Sonoma (x86_64, arm64)
+    - 13.7 Ventura (x86_64, arm64)
 - Windows
-  - 7 (x86_64, i386)
-  - 10 (x86_64, i386)
+  - 11 (x86_64, arm64)
+  - 10 (x86_64, arm64)
 
 > _Disclaimer_: Platforms and operating systems other than the ones above are not as well tested by the ClamAV development team. In particular, uncommon operating systems such as HP-UX and Solaris, and uncommon processor architectures such as sparc64, armhf, pp64le, etc. are not supported.
 >
@@ -127,8 +127,7 @@ Minimum recommended RAM for ClamAV:
 
 - FreeBSD and Linux server edition: 3 GiB+
 - Linux non-server edition: 3 GiB+
-- Windows 7 & 10 32-bit: 3 GiB+
-- Windows 7 & 10 64-bit: 3 GiB+
+- Windows 10 & 11: 3 GiB+
 - macOS: 3 GiB+
 
 > _Tip_: Server environments, like Docker, as well as and embedded runtime environments are often resource constrained. We recommend at 3-4 GiB of RAM, but you may get by with less if you're willing to accept some limitations. You can find [more information here](manual/Installing/Docker.md#memory-ram-requirements).

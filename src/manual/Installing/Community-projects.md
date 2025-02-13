@@ -355,7 +355,7 @@ Endian Firewall Community (EFW) is a turn-key Linux security distribution that c
 
 ### ClamTK | ClamAV
 
-ClamTk is a GUI front-end for ClamAV using gtk2-perl. It is designed to be an easy-to-use, on-demand scanner for Linux systems. ClamTk has been ported to Fedora, Debian, RedHat, openSUSE, ALT Linux, Ubuntu, CentOS, Gentoo, Archlinux, Mandriva, PCLinuxOS, FreeBSD, and others.
+ClamTk is a GUI front-end for ClamAV using gtk2-perl. It is designed to be an easy-to-use, on-demand scanner for Linux systems. ClamTk has been ported to Fedora, Debian, AlmaLinux, openSUSE, ALT Linux, Ubuntu, Gentoo, Archlinux, Mandriva, PCLinuxOS, FreeBSD, and others.
 
 [Get ClamTK](https://github.com/dave-theunsub/clamtk)
 

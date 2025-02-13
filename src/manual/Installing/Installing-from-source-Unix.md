@@ -7,7 +7,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
   - [Install prerequisites](#install-prerequisites)
     - [Alpine](#alpine)
-    - [Redhat / Centos / Fedora](#redhat--centos--fedora)
+    - [AlmaLinux / Fedora](#almalinux--fedora)
     - [SUSE / openSUSE](#suse--opensuse)
     - [Ubuntu / Debian](#ubuntu--debian)
     - [macOS](#macos)
@@ -53,9 +53,9 @@ Version 0.105+: install the Rust toolchain. The best option is to [install the R
 apk add cargo rust
 ```
 
-### Redhat / Centos / Fedora
+### AlmaLinux / Fedora
 
-*For RHEL 8 or Centos Stream*, you will probably need to run this to enable EPEL & PowerTools.
+*For Fedora*, you will probably need to run this to enable EPEL & PowerTools.
 As root or with `sudo`, run:
 ```sh
 dnf install -y epel-release
@@ -87,7 +87,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Centos and RHEL users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Fedora users that are unable or unwilling to use `rustup` may have luck with:
+Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Fedora users that are unable or unwilling to use `rustup` may have luck with:
 ```sh
 dnf install -y cargo rust
 ```
@@ -194,7 +194,7 @@ Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of
 
 Building ClamAV requires, at a minimum, Rust compiler version 1.56, as it relies on features introduced in the [Rust 2021 Edition](https://doc.rust-lang.org/edition-guide/rust-2021/index.html).
 
-Depending on your target environment, compilers may be manually installed without downloading and executing the `rustup` script. Some platforms (e.g., Alpine Linux) provide packages that are recent-enough to build ClamAV. However, some Linux distributions such as CentOS, provide no package, or toolchains that are too old.  For these platforms, if you are unable or unwilling to utilize `rustup`, you may [download and install prebuilt toolchain binaries directly from rust-lang.org](https://forge.rust-lang.org/infra/other-installation-methods.html#standalone).
+Depending on your target environment, compilers may be manually installed without downloading and executing the `rustup` script. Some platforms (e.g., Alpine Linux) provide packages that are recent-enough to build ClamAV. For distributions that provide no package, or toolchains that are too old, if you are unable or unwilling to utilize `rustup`, you may [download and install prebuilt toolchain binaries directly from rust-lang.org](https://forge.rust-lang.org/infra/other-installation-methods.html#standalone).
 
 ## Adding new system user and group
 
