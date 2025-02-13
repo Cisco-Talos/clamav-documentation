@@ -113,7 +113,7 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
     - 13.7 Ventura (x86_64, arm64)
 - Windows
   - 11 (x86_64, arm64)
-  - 10 (x86_64, arm64)
+  - 10 (i386, x86_64)
 
 > _Disclaimer_: Platforms and operating systems other than the ones above are not as well tested by the ClamAV development team. In particular, uncommon operating systems such as HP-UX and Solaris, and uncommon processor architectures such as sparc64, armhf, pp64le, etc. are not supported.
 >
