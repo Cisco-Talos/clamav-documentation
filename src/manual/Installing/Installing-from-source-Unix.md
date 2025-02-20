@@ -7,7 +7,7 @@ The following are instructions to build ClamAV *version 0.104 and newer* using C
 - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
   - [Install prerequisites](#install-prerequisites)
     - [Alpine](#alpine)
-    - [AlmaLinux / Fedora](#almalinux--fedora)
+    - [AlmaLinux / Redhat / Centos / Fedora](#almalinux--redhat--centos--fedora)
     - [SUSE / openSUSE](#suse--opensuse)
     - [Ubuntu / Debian](#ubuntu--debian)
     - [macOS](#macos)
@@ -53,9 +53,9 @@ Version 0.105+: install the Rust toolchain. The best option is to [install the R
 apk add cargo rust
 ```
 
-### AlmaLinux / Fedora
+### AlmaLinux / Redhat / Centos / Fedora
 
-*For Fedora*, you will probably need to run this to enable EPEL & PowerTools.
+*For RHEL 8 or Centos Stream**, you will probably need to run this to enable EPEL & PowerTools.
 As root or with `sudo`, run:
 ```sh
 dnf install -y epel-release

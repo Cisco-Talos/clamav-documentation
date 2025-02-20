@@ -107,11 +107,11 @@ Install ClamAV with `zypper`:
 
 > _Note_: openSUSE packages are maintained by Reinhard Max.
 
-### EPEL: AlmaLinux and Fedora
+### EPEL: AlmaLinux, RHEL, and Fedora
 
 EPEL creates ClamAV packages for Fedora (as well as EPEL-enabled AlmaLinux). For more information on EPEL, [visit their wiki](https://fedoraproject.org/wiki/EPEL).
 
-To enable EPEL for Fedora/AlmaLinux:
+To enable EPEL for AlmaLinux and RHEL:
 ```bash
 dnf install -y epel-release
 ```
