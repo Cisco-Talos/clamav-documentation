@@ -4,8 +4,8 @@
   - [Installing with a Package Manager](#installing-with-a-package-manager)
   - [Installing with an Installer](#installing-with-an-installer)
     - [Linux (.deb, .rpm)](#linux-deb-rpm)
-      - [RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)](#rpm-packages-for-centos-redhat-fedora-suse-etc)
-      - [DEB packages (for Debian, Ubuntu, Mint, etc.)](#deb-packages-for-debian-ubuntu-mint-etc)
+      - [RPM packages (for AlmaLinux, Fedora, openSUSE, etc.)](#rpm-packages-for-almalinux-fedora-opensuse-etc)
+      - [DEB packages (for Debian, Ubuntu, etc.)](#deb-packages-for-debian-ubuntu-etc)
     - [macOS](#macos)
     - [Windows](#windows)
   - [Official ClamAV Docker Images](#official-clamav-docker-images)
@@ -35,9 +35,9 @@ Beginning with ClamAV 0.104, we offer Debian and RPM packages for x86_64 (64bit)
 
 > _Note_: These packages do not presently include `clamav-milter`. You can help help us add `clamav-milter` to the packages by developing a Mussels recipe for building the libmilter.a static library and contributing it to our [Mussels cookbook](https://github.com/Cisco-Talos/clamav-mussels-cookbook/).
 
-#### RPM packages (for CentOS, Redhat, Fedora, SUSE, etc.)
+#### RPM packages (for AlmaLinux, Fedora, openSUSE, etc.)
 
-These are compiled on Alma Linux 8. They should be compatible with all RPM-based linux distributions running `glibc` version `2.28` or newer.
+These are compiled on AlmaLinux 8. They should be compatible with all RPM-based linux distributions running `glibc` version `2.28` or newer.
 
 To install, download the package for your system use `yum` or `dnf` to install the package. For example:
 ```bash
@@ -58,7 +58,7 @@ And uninstall the package with:
 sudo dnf remove ~/Downloads/clamav-1.4.0.linux.x86_64.rpm
 ```
 
-#### DEB packages (for Debian, Ubuntu, Mint, etc.)
+#### DEB packages (for Debian, Ubuntu, etc.)
 
 These are compiled on Ubuntu 18.04, and have all external library dependencies statically compiled in. They should be compatible with all Debian-based linux distributions running `glibc` version `2.27` or newer.
 

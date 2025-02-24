@@ -18,7 +18,7 @@ The following are instructions for building ClamAV using CMake or Autotools with
       - [Feature Tests](#feature-tests)
   - [Building ClamAV with Autotools (v0.103 and older)](#building-clamav-with-autotools-v0103-and-older)
     - [Running autogen.sh](#running-autogensh)
-      - [Redhat / Centos / Fedora](#redhat--centos--fedora)
+      - [AlmaLinux / Fedora / Redhat](#almalinux--fedora--redhat)
       - [Debian / Ubuntu](#debian--ubuntu)
     - [Running configure](#running-configure)
     - [Running make](#running-make)
@@ -350,7 +350,7 @@ To run `autogen.sh`, you will need some extra tools:
 
 The packages to install are...
 
-#### Redhat / Centos / Fedora
+#### AlmaLinux / Fedora / Redhat
 
 ```sh
 dnf/yum install -y \
