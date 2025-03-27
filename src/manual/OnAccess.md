@@ -81,7 +81,7 @@ If all went well, the On-Access scanner will fork to the background, and will no
 Some OS distributors have disabled fanotify, despite kernel support. You can check for fanotify support on your kernel by running the command:
 
 ```bash
-cat /boot/config-<kernel_version> | grep FANOTIFY
+grep FANOTIFY /boot/config-$(uname -r)
 ```
 
 You should see the following:
