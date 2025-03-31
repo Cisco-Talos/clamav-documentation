@@ -32,6 +32,6 @@ Where:
 
 `max_flevel`: (optional, requires `min_flevel` field, though the `min_flevel` number itself can be left empty) The maximum ClamAV engine that the file type signature works with. To be used in the event that file type support has been recently removed or replaced.
 
-> _Note_: It is likely that `magictype` `0` is insufficient to identify a file and so type `1` is often prefered.
-> 
+> _Note_: It is likely that `magictype` `0` is insufficient to identify a file and so type `1` may be necessary.
+>
 > If type `1` is also insufficient, you may have luck using a [logical signature with the `HandlerType` option](./LogicalSignatures.md). Be warned that `HandlerType` signatures are very inefficient as the given file will be scanned twice.

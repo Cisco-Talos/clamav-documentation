@@ -47,13 +47,13 @@ Keywords used in `TargetDescriptionBlock`:
 - `IconGroup2`: Icon group name 2 from .idb signature Required engine functionality (range; 0.96)
 
 - `HandlerType:CL_TYPE_*`: If used, the logical signature will not cause an alert and will instead re-scan the file as a different file type, treating it as a child (contained) file.
-  
-  For example, this signature will look for a selection of components with any file (because of `Target:0`). If found, it will rescan the file as a PDF: 
+
+  For example, this signature will look for a selection of components with any file (because of `Target:0`). If found, it will rescan the file as a PDF:
   ```
   Filetype.PDF;Engine:54-255,Target:0,HandlerType:CL_TYPE_PDF;(0|1)&2&3;0:255044462d??2e;0:257064662d??2e;737461727478726566;2525454f46
   ```
 
-  > _Note_: This is a inefficient approach to file type identification, though it is more versatile than traditional [File Type Magic (`.ftm`) signatures](./FileTypeMagic.md). 
+  > _Note_: This is an inefficient approach to file type identification, though it is more versatile than traditional [File Type Magic (`.ftm`) signatures](./FileTypeMagic.md).
 
 Modifiers for subexpressions:
 
