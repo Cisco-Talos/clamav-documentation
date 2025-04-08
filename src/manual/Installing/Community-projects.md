@@ -335,9 +335,15 @@ go-clamav is a library and toolset written in Go, designed to integrate seamless
 
 #### clamd_exporter | clamd
 
-Export metrics from clamd service for use by Prometheus
+Export metrics from clamd service for use by Prometheus. This uses `go-clamav` (above).
 
 [Get clamd_exporter](https://github.com/hq0101/clamd_exporter)
+
+#### clamav_exporter | clamd
+
+Export metrics from clamd service for use by Prometheus. This provides a similar function but is not related to `clamd_exporter`.
+
+[Get clamav_exporter](https://github.com/sergeymakinen/clamav_exporter)
 
 ## Miscellaneous Tools
 
