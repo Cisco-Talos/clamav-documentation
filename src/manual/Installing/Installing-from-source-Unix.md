@@ -193,8 +193,8 @@ pkg install -y rust
 Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment by following the instructions on the [rustup](https://rustup.rs) website. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
 
 > _Note_: The minimum supported Rust version varies with each ClamAV release. We make a best effort to never raise the minimum Rust version with patch versions. For example:
-> - the minimum Rust version for ClamAV 1.0.0 is Rust 1.61.0. ClamAV 1.0.1+ should also build with Rust 1.61.0.
-> - the minimum Rust version for ClamAV 1.4.0 is Rust 1.70.0. ClamAV 1.4.1+ should also build with Rust 1.70.0.
+> - the minimum Rust version for ClamAV 1.0 LTS is Rust 1.61.0. All ClamAV 1.0.x versions should also build with Rust 1.61.0.
+> - the minimum Rust version for ClamAV 1.4 LTS is Rust 1.70.0. All ClamAV 1.4.x versions should also build with Rust 1.70.0.
 >
 > Your distribution may provide a `rust` or `cargo` package, but there is a very good chance it that it will be too old to compile ClamAV.
 
