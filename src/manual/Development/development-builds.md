@@ -97,11 +97,11 @@ For development, you may also need to install the following...
   choco install winflexbison
   ```
 
-- ActivePerl and Netwide Assembler (NASM):
+- StrawberryPerl and Netwide Assembler (NASM):
 
   Perl and NASM are required to compile openssl from source if using Mussels to build your dependencies. If using vcpkg, you can skip them. You can install these tools using Chocolatey:
   ```ps1
-  choco install activeperl nasm
+  choco install strawberryperl nasm
   ```
 
 We support two options for sourcing and building ClamAV library dependencies:

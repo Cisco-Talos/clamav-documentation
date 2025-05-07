@@ -41,10 +41,10 @@ If you're using Chocolatey, you can install CMake and WiX simply like this:
 choco install cmake wixtoolset
 ```
 
-If you're using Mussels to build the library dependencies (see below), then you may also need to install Netwide Assembler (NASM) and ActivePerl. These are also simple to install using Chocolatey:
+If you're using Mussels to build the library dependencies (see below), then you may also need to install Netwide Assembler (NASM) and StrawberryPerl. These are also simple to install using Chocolatey:
 
 ```ps1
-choco install nasm activeperl
+choco install nasm strawberryperl
 ```
 
 Then open a new terminal so that CMake and WiX will be in your `$PATH`.
@@ -53,7 +53,7 @@ Then open a new terminal so that CMake and WiX will be in your `$PATH`.
 
 There are two options for building and supplying the library dependencies. These are Mussels and vcpkg.
 
-Mussels is an open source project developed in-house by the ClamAV team. It offers great flexibility for defining your own collections (cookbooks) of build instructions (recipes) instead of solely relying on a centralized repository of ports. And unlike vcpkg, Mussels does not implement CMake build tooling for projects that don't support CMake, but instead leverages whatever build system is provided by the project. This means that Mussels builds may require installing additional tools, like NMake and ActivePerl rather than simply requiring CMake. The advantage is that you'll be building those projects the same way that those developers intended, and that Mussels recipes are generally very light weight. Mussels has some sharp edges because it's a newer and much smaller project than vcpkg.
+Mussels is an open source project developed in-house by the ClamAV team. It offers great flexibility for defining your own collections (cookbooks) of build instructions (recipes) instead of solely relying on a centralized repository of ports. And unlike vcpkg, Mussels does not implement CMake build tooling for projects that don't support CMake, but instead leverages whatever build system is provided by the project. This means that Mussels builds may require installing additional tools, like NMake and StrawberryPerl rather than simply requiring CMake. The advantage is that you'll be building those projects the same way that those developers intended, and that Mussels recipes are generally very light weight. Mussels has some sharp edges because it's a newer and much smaller project than vcpkg.
 
 Vcpkg is an open source project developed by Microsoft and is heavily oriented towards CMake projects. Vcpkg offers a very large collection of "ports" for almost any project you may need to build. It is very easy to get started with vcpkg.
 
@@ -115,7 +115,7 @@ msl cookbook trust clamav
 
 Use `msl list` if you wish to see the recipes provided by the `clamav` cookbook.
 
-To build with Mussels, you may need to install a few extra tools required to build some of the libraries. These include NASM and ActivePerl. See [install prerequisites](#install-prerequisites), above.
+To build with Mussels, you may need to install a few extra tools required to build some of the libraries. These include NASM and StrawberryPerl. See [install prerequisites](#install-prerequisites), above.
 
 Build the `clamav_deps` recipe to compile ClamAV's library dependencies. By default, Mussels will install them to `~\.mussels\install\<target>`
 
