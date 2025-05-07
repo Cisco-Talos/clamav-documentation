@@ -3,6 +3,7 @@ title = "ClamAV Documentation"
 description = "An open source malware detection toolkit and antivirus engine."
 authors = ["Cisco Systems, Inc."]
 language = "en"
+src = "src"
 
 [rust]
 edition = "2018"
