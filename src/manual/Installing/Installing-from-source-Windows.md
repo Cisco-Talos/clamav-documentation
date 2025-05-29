@@ -152,7 +152,7 @@ cmake ..  -G "Visual Studio 16 2019" -A x64 `
   -D CURSES_INCLUDE_DIR="$home\.mussels\install\x64\include"               `
   -D CURSES_LIBRARY="$home\.mussels\install\x64\lib\pdcurses.lib"          `
   -D PThreadW32_INCLUDE_DIR="$home\.mussels\install\x64\include"           `
-  -D PThreadW32_LIBRARY="$home\.mussels\install\x64\lib\pthreadVC2.lib"    `
+  -D PThreadW32_LIBRARY="$home\.mussels\install\x64\lib\pthreadVC3.lib"    `
   -D ZLIB_INCLUDE_DIR="$home\.mussels\install\x64\include"                 `
   -D ZLIB_LIBRARY="$home\.mussels\install\x64\lib\zlibstatic.lib"          `
   -D LIBCHECK_INCLUDE_DIR="$home\.mussels\install\x64\include"             `
