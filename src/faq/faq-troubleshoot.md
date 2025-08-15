@@ -85,3 +85,21 @@ ClamAV requires a lot of memory in order to function properly. It is particularl
 ## ClamAV crashes once each day
 
 ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](../manual/Installing/Docker.md#memory-ram-requirements).
+
+## ClamAV build fails on RedHat Enterprise Linux (RHEL) 8, or AlmaLinux 8
+
+ClamAV version 1.5.0 and newer may fail to compile on RHEL 8 or AlmaLinux 8 with this error:
+```
+../libclamav/libclamav.so.12.1.0: undefined reference to `json_object_new_uint64'
+collect2: error: ld returned 1 exit status
+make[2]: *** [clamconf/CMakeFiles/clamconf.dir/build.make:110: clamconf/clamconf] Error 1
+make[1]: *** [CMakeFiles/Makefile2:1891: clamconf/CMakeFiles/clamconf.dir/all] Error 2
+make: *** [Makefile:166: all] Error 2
+```
+
+This is a compatibility issue with ClamAV 1.5.0 and the older version of `libjson-c` provided by RedHat 8. It won't be fixed because the ClamAV development team only supports [the last two major versions](../Introduction.md#supported-platforms) for popular operating systems.
+
+You can work around this issue by:
+1. Compiling a newer version of libjson-c yourself.
+2. Using the ClamAV project provided RPM to install ClamAV.
+3. Upgrading to a newer version of RHEL or AlmaLinux.

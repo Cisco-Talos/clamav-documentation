@@ -55,6 +55,7 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
   - AutoIt
   - InstallShield
   - ESTsoft EGG
+  - ALZ / LHA
 - Supports Windows executable file parsing, also known as Portable Executables (PE) both 32/64-bit, including PE files that are compressed or obfuscated with:
   - AsPack
   - UPX
@@ -75,6 +76,7 @@ ClamAV has a diverse ecosystem of [community projects, products, and other tools
   - Files encrypted with CryptFF and ScrEnc
   - uuencode
   - TNEF (winmail.dat)
+  - OneNote
 - Advanced database updater with support for scripted updates, digital signatures and DNS based database version queries
 
 > _Disclaimer_: Many of the above file formats continue to evolve. Executable packing and obfuscation tools in particular are constantly changing. We cannot guarantee that we can unpack or extract every version or variant of the listed formats.
@@ -89,18 +91,19 @@ Clam AntiVirus is highly cross-platform. The development team cannot test every 
 
 - GNU/Linux
   - Alpine
-    - 3.21 (x86_64, arm64)
+    - 3.22 (x86_64, arm64)
   - Ubuntu
     - 24.04 (x86_64, arm64)
     - 22.04 (x86_64, arm64)
   - Debian
+    - 13 (x86_64, arm64)
     - 12 (x86_64, arm64)
-    - 11 (x86_64, arm64)
   - AlmaLinux
-    - 8.10 (x86_64, arm64)
+    - 10 (x86_64, arm64)
+    - 9 (x86_64, arm64)
   - Fedora
+    - 42 (x86_64, arm64)
     - 41 (x86_64, arm64)
-    - 40 (x86_64, arm64)
   - openSUSE
     - 15 Leap (x86_64, arm64)
 - UNIX
