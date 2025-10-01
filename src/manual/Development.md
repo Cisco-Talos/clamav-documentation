@@ -20,7 +20,7 @@ If you need to review a pull request, it's best to not only eyeball the changes 
 
 ## Building for Development
 
-Basic instructions for building ClamAV can be in the [Installing](Installing.md) chapter and a comprehensive reference for compiling ClamAV with CMake is available in the [INSTALL.md](https://github.com/Cisco-Talos/clamav/blob/dev/0.104/INSTALL.md) file accompanying the source code, but if you want a few extra tips on building ClamAV for development purposes, [check this out](Development/development-builds.md).
+Basic instructions for building ClamAV can be in the [Installing](Installing.md) chapter and a comprehensive reference for compiling ClamAV with CMake is available in the [INSTALL.md](https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md) file accompanying the source code, but if you want a few extra tips on building ClamAV for development purposes, [check this out](Development/development-builds.md).
 
 ## Building the Installer Packages
 
@@ -32,7 +32,7 @@ If you'd like to learn how we build the installer packages and even replicate th
 
 ## libclamav
 
-Are you interested in using libclamav to scan for malware in your own C/C++ application? [This section](Development/libclamav.md) introduces the most important functions of the libclamav API. For a more comprehensive reference, inline documention can be found in [the `clamav.h` header](https://github.com/Cisco-Talos/clamav/blob/dev/0.104/libclamav/clamav.h) distributed with libclamav.
+Are you interested in using libclamav to scan for malware in your own C/C++ application? [This section](Development/libclamav.md) introduces the most important functions of the libclamav API. For a more comprehensive reference, inline documention can be found in [the `clamav.h` header](https://github.com/Cisco-Talos/clamav/blob/main/libclamav/clamav.h) distributed with libclamav.
 
 ## Contribute
 

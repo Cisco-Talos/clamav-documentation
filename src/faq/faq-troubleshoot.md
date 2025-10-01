@@ -68,7 +68,7 @@ current.cvd.clamav.net has got only a TXT record, not a type A record! Try this 
 $ host -t txt current.cvd.clamav.net
 ```
 
-Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the flag `--enable-dns-fix` if using `./configure` or `-D ENABLE_FRESHCLAM_DNS_FIX=ON` if using CMake.
+Please note that some not RFC compliant DNS servers (namely the one shipped with the *Alcatel* (now *Thomson*) **SpeedTouch 510 modem**) can't resolve `TXT` record. If that's the case, please recompile ClamAV with the CMake option: `-D ENABLE_FRESHCLAM_DNS_FIX=ON`
 
 ----
 

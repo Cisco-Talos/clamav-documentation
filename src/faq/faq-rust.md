@@ -1,6 +1,6 @@
 # ClamAV-Rust FAQ
 
-## Why is Rust required to compile ClamAV in version 0.105?
+## Why is Rust required to compile ClamAV?
 
 For those unfamiliar with [the Rust programming language](https://www.rust-lang.org/), Rust is a systems programming language that guarantees memory-safety and thread-safety without relying on garbage collection. Rust does not guarantee against memory leaks, but its modern type sytem and novel ownership model all but eliminate accidental memory leaks. You can write "unsafe" Rust code that disables some of Rust's safety checks and offers the same flexibility that C has when complex optimizations are needed or when interfacing with C code.
 
@@ -8,7 +8,7 @@ Runtime performance for software written in Rust is also comparable to that of C
 
 Linus Torvalds once described programming in the C language to be "like juggling chainsaws." We agree. To mitigate the pitfalls of the C and C++ programming langauges, the ClamAV team decided to switch to write new components and rewrite select existing components in the Rust programming language.
 
-Starting with ClamAV v0.105, the Rust toolchain is required to compile ClamAV.
+Starting with ClamAV v0.105, the Rust toolchain became required to compile ClamAV.
 
 We believe that by switching from C to Rust, it will enable us to focus more during development on actual feature correctness because of the reduced risk of accidental memory safety issues or critical vulnerabilities.
 

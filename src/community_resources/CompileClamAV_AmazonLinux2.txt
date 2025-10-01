@@ -50,4 +50,3 @@ systemctl start clamav-freshclam
 sleep 30
 chown clamav:clamav /usr/local/share/clamav/
 systemctl start clamav-daemon
-

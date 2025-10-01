@@ -2,14 +2,13 @@
 
 Table Of Contents
 
-- [Windows Services](#windows-services)
+- [Running ClamAV Services](#running-clamav-services)
+  - [Windows Services](#windows-services)
 <!--- - [Unix Services](#unix) --->
 
 ## Windows Services
 
-> _Note_: This feature requires ClamAV version 0.104 or newer.
-
-On Windows, `clamd` and `freshclam` have options that enable them to run in the background. 
+On Windows, `clamd` and `freshclam` have options that enable them to run in the background.
 
 To install the services, first use the command:
 

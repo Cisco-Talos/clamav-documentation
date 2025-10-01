@@ -7,7 +7,7 @@ The following are instructions for building ClamAV using CMake or Autotools with
     - [For Linux/UNIX](#for-linuxunix)
     - [For Windows](#for-windows)
   - [Download the Source](#download-the-source)
-  - [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
+  - [Building ClamAV](#building-clamav)
     - [Linux/Unix](#linuxunix)
     - [Windows](#windows)
       - [vcpkg](#vcpkg)
@@ -16,13 +16,6 @@ The following are instructions for building ClamAV using CMake or Autotools with
       - [Unit Tests](#unit-tests)
       - [Integration Tests](#integration-tests)
       - [Feature Tests](#feature-tests)
-  - [Building ClamAV with Autotools (v0.103 and older)](#building-clamav-with-autotools-v0103-and-older)
-    - [Running autogen.sh](#running-autogensh)
-      - [AlmaLinux / Fedora / Redhat](#almalinux--fedora--redhat)
-      - [Debian / Ubuntu](#debian--ubuntu)
-    - [Running configure](#running-configure)
-    - [Running make](#running-make)
-    - [Testing with `make check`](#testing-with-make-check)
 
 ## Build dependencies
 
@@ -36,27 +29,23 @@ For development, you may also need to install the following...
 
 - `git`
 
-- `autoconf`, `automake`, `libtool`, `m4` (For 0.103 and older, only):
-
-  These four packages make up "Autotools" and are required to run the `./autogen.sh` script that generates the `./configure` tool for configuring an Autotools build. You will need these packakges if building from a git clone, but the 0.103 release tarballs have this stuff pre-generated for normal users.
-
 - `valgrind`:
 
   Valgrind is used to enhance our unit tests and feature tests. It will be automatically when running `ctest` for CMake builds, or when running `make check VG=1` for Autotools builds.
 
-- `pytest` (For 0.104 and newer):
+- `pytest`:
 
   Pytest is used in our test suite for CMake builds to get better test output when analyzing test failures. Having pytest
 
 - `bison` and `flex`:
 
-  Bison and Flex re-generating the Yara rule parser, used by our "maintainer mode" in the CMake build system (v0.104+), and used by default in the Autotools build system (v0.103-).
+  Bison and Flex may be used to re-generate the Yara rule parser if you enable the `MAINTAINER_MODE` CMake option.
 
 - `gperf`:
 
-  GPerf is another tool used by our "maintainer mode". It is used to generate code for our javascript normalizer. `*`Enabling GPerf in the "maintainer mode" for the CMake build system (v0.104+) is still a to-do.
+  GPerf is another maintainer tool. It was used to generate code for our javascript normalizer. `*`Enabling GPerf in `MAINTAINER_MODE` for the CMake build system is still a to-do item.
 
-- `ninja` or `ninja-build` (For 0.104 and newer):
+- `ninja` or `ninja-build` :
 
   Ninja is a build system that CMake can use in place of Makefiles (UNIX) or Visual Studio (Windows). It's faster than both, particularly as compared with Visual Studio. If you're compiling ClamAV frequently, you may find it very helpful. The only real downside is that it's highly multithreaded so errors and warnings tend to get mixed up and it can be hard to inspect when you're having build failures.
 
@@ -134,13 +123,11 @@ git clone https://github.com/<yourusername>/clamav.git clamav-fork
 cd clamav-fork
 ```
 
-## Building ClamAV with CMake (v0.104 and newer)
+## Building ClamAV
 
-ClamAV versions 0.103+ provide CMake build tooling. In 0.103, this is for experimental and development purposes only. Autotools should be used for production builds. In 0.104+, CMake is the only build system. Autotools and Visual Studio build systems have been removed.
+To get started, first review the official build instructions [for Unix/Linux](../Installing/Installing-from-source-Unix.md) or [for Windows](../Installing/Installing-from-source-Windows.md). Then return for some tips on building for development. For a complete reference of ClamAV build configuration options, see [the `INSTALL.md` file located in the `clamav` repository](https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md).
 
-To get started, first review the [official build isntructions](../Installing/Installing-from-source-Windows.md). Then return hrefer for some tips on building for development. For a complete reference of ClamAV build configuration options, see [the `INSTALL.md` file located in the `clamav` repository](https://github.com/Cisco-Talos/clamav/blob/main/INSTALL.md).
-
-The following instructions assume you have installed CMake, Ninja, and either GCC, Clang, or Visual Studio 2015 or newer.
+The following instructions assume you have installed CMake, Ninja, and either GCC, Clang, or Visual Studio 2019 or newer.
 
 ### Linux/Unix
 
@@ -315,13 +302,19 @@ ninja install
 
 ### Testing with CTest
 
-ClamAV version 0.104+ will include unit tests, integration tests, & feature tests performed via CMake's `ctest` toolset. All tests are executed within through `ctest` but within a Python test framework build around Python's `unittest` module. See `clamav/unit_tests/testcase.py`. Python 3.5+ is required.
+ClamAV unit tests, integration tests, & feature tests are performed via CMake's `ctest` toolset. All tests are executed within through `ctest` but within a Python test framework build around Python's `unittest` module. See `clamav/unit_tests/testcase.py`. Python 3.5+ is required.
 
 > _Note_: Valgrind tests are performed on Linux if Valgrind is installed.
 
+To run the unit tests, run `ctest` or `ctest -V` (for verbose output) after the build. On some systems, you may need to specify the build configuration, like `ctest -V -C Debug`.
+
+You can limit to run specific test sets with the `-R` regex filter. Like this: `ctest -V -R "clamscan \$"`
+
 #### Unit Tests
 
-The libclamav unit tests use the [libcheck](https://github.com/libcheck/check) framework. There are presently no unit tests for libfreshclam. See `clamav/unit_tests/check_clamav.c` for the libclamav unit tests.
+The libclamav C code unit tests use the [libcheck](https://github.com/libcheck/check) framework. The libclamav Rust code unit tests use Rust's built-in `cargo test` features.
+
+There are presently no unit tests for libfreshclam. See `clamav/unit_tests/check_clamav.c` for the libclamav unit tests.
 
 #### Integration Tests
 
@@ -330,115 +323,3 @@ ClamAV is presently light on integration tests for libclamav, though you may thi
 #### Feature Tests
 
 ClamAV primarily has feature tests for ClamD and ClamScan, though basic version tests do exist for FreshClam and SigTool as well. See `clamav/unit_tests/CMakeLists.txt` and `clamav/unit_tests/clamscan_test.py` for an example.
-
-## Building ClamAV with Autotools (v0.103 and older)
-
-### Running autogen.sh
-
-ClamAV versions 0.103+ will require you to run `autogen.sh` before running `configure` when building from a git clone. The files generated by Autotools, such as `configure`, are no longer stored in the Git repo. When you run `autogen.sh` it will generate those files for you.
-
-```bash
-./autogen.sh
-```
-
-To run `autogen.sh`, you will need some extra tools:
-- autoconf
-- automake
-- libtool
-- m4
-- pkg-config
-
-The packages to install are...
-
-#### AlmaLinux / Fedora / Redhat
-
-```sh
-dnf/yum install -y \
-  autoconf autoreconf automake libtool libtool-ltdl-devel m4 pkg-config
-```
-
-#### Debian / Ubuntu
-
-```sh
-apt-get install -y \
-  autoconf autoconf-archive automake libtool libltdl-dev m4 pkg-config
-```
-
-### Running configure
-
-To ensure that build artifacts don't clutter the source code directory, create a subdirectory named `build`.
-
-```bash
-mkdir build
-cd build
-```
-
-For a basic build, just run `../configure`. If you've installed the dependencies with your platforms respective package manager, it should detect the dependencies automatically. macOS users will need to use this option to properly detect openssl `--with-openssl=/usr/local/opt/openssl@1.1`.
-
-Run `../configure --help` to see a full list of options. The following suggestions will help you get started:
-
-- Modify the `CFLAGS`, `CXXFLAGS`, `OBJCFLAGS` variables as follows (assuming you're build with `gcc`):
-
-  - Include `gdb` debugging information (`-ggdb`). This will make it easier to debug with `gdb`.
-
-  - Disable optimizations (`-O0`). This will ensure the line numbers you see in `gdb` match up with what is actually being executed.
-
-  Example:
-
-  ```bash
-  CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure
-  ```
-
-  NOTE: Setting `OBJCFLAGS` is needed because currently, clamsubmit gets built with the Objective-C compiler. See [this Stack Overflow post](https://stackoverflow.com/questions/61167084/automake-conditional-compilation-from-c-or-objective-c-sources) for a discussion of why this occurs.
-
-- Run configure with the following options:
-
-  - ``--prefix=`pwd`/../installed``: This will cause `make install` to install into the specified directory (a directory named `installed` in the root of the ClamAV source code directory).
-
-  - `--enable-debug`: This will define *CL_DEBUG*, which mostly just enables additional print statements that are useful for debugging.
-
-  - `--enable-check`: Enables the unit tests, which can be run with `make check`.
-
-  - `--enable-coverage`: If using gcc, sets `-fprofile-arcs -ftest-coverage` so that code coverage metrics will get generated when the program is run. Note that the code inserted to store program flow data may show up in any generated flame graphs or profiling output, so if you don't care about code coverage, omit this.
-
-  - `--enable-libjson`: Enables `libjson`, which enables the `--gen-json` option. The json output contains additional metadata that might be helpful when debugging.
-
-  - `--with-systemdsystemunitdir=no`: Don't try to register `clamd` as a `systemd` service (on systems that use `systemd`). You likely don't want this development build of `clamd` to register as a service, and this eliminates the need to run `make install` with `sudo`.
-
-  - You might want to include the following flags also so that the optional functionality is enabled: `--enable-experimental --enable-clamdtop --enable-milter --enable-xml --enable-pcre`. Note that this may require you to install additional development libraries.
-
-  - `--enable-llvm --with-system-llvm=no`: When LLVM is enabled, LLVM provides the capability to just-in-time compile ClamAV bytecode signatures. Without LLVM, ClamAV uses a built-in bytecode interpreter to execute bytecode signatures. With LLVM, options, "system LLVM" and "internal LLVM". The bytecode interpreter is somewhat slower than using LLVM, though the results are the same. At present only LLVM versions up to LLVM 3.6.2 are supported by ClamAV, and LLVM 3.6.2 is old enough that newer distributions no longer provide it. Therefore, we recommend using the `--enable-llvm --with-system-llvm=no` configure option to use the "internal LLVM". It is worth noting that the internal LLVM can take a while to build, and that the JIT compilation process for loading bytecode signatures also takes a while when starting `clamd` or `clamdscan`. For compile speed and `clamscan` load speed, you may wish to instead ouse `--disable-llvm`.
-
-Altogether, the following configure command can be used:
-
-```bash
-CFLAGS="-ggdb -O0" CXXFLAGS="-ggdb -O0" OBJCFLAGS="-ggdb -O0" ../configure --prefix=`pwd`/../installed --enable-debug --enable-check --enable-coverage --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-xml --enable-pcre --enable-llvm --with-system-llvm=no
-```
-
-NOTE: It is possible to build libclamav as a static library and have it statically linked into clamscan/clamd (to do this, run `../configure` with `--enable-static --disable-shared`). This is useful for using tools like `gprof` that do not support profiling code in shared objects. However, there are two drawbacks to doing this:
-
-- `clamscan`/`clamd` will not be able to extract files from RAR archives. Based on the software license of the unrar library that ClamAV uses, the library can only be dynamically loaded. ClamAV will attempt to dlopen the unrar library shared object and will continue on without RAR extraction support if the library can't be found (or if it doesn't get built, which is what happens if you indicate that shared libraries should not be built).
-
-- If you make changes to libclamav, you'll need to `make clean`, `make`, and `make install` again to have `clamscan`/`clamd` rebuilt using the new `libclamav.a`. The makefiles don't seem to know to rebuild `clamscan`/`clamd` when `libclamav.a` changes (TODO, fix this).
-
-### Running make
-
-Run the following to finishing building. `-j2` in the code below is used to indicate that the build process should use 2 cores. Increase this if your machine is more powerful.
-
-```bash
-make -j2
-make install
-```
-
-The ClamAV executables will get installed in `../installed/bin/`, so to invoke clamscan do:
-
-```bash
-cd ..
-./installed/bin/clamscan
-```
-
-### Testing with `make check`
-
-You can run `make check` to run the unit tests and feature tests.
-
-Unlike with the CTest tool used for CMake builds, you must use `make check VG=1` if you wish to run extra tests using Valgrind (must be installed).
