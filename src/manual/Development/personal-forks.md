@@ -12,7 +12,7 @@ You can rename it as needed so you won't confused a clone of your fork with that
 
 ![Change Fork Name](../../images/change-fork-name.png)
 
-You're free to add or delete branches in your fork as you see fit, but I would advise against adding your own commits to the existing branches. The existing branches, particularly the default branch`*` are a reference from which you can create your own branches for your work. Adding your own commits to the existing branches will break your ability to synchronize with the upstream `Cisco-Talos/clamav` repository, and without more advanced Git experience you won't be able to correct it.
+You're free to add or delete branches in your fork as you see fit, but I would advise against adding your own commits to the existing branches. The existing branches, particularly the `main` branch, are a reference from which you can create your own branches for your work. Adding your own commits to the existing branches will break your ability to synchronize with the upstream `Cisco-Talos/clamav` repository, and without more advanced Git experience you won't be able to correct it.
 
 > _Tip_: If you've managed to screw up the commit history in your fork to the point where you don't know how to fix it, you can always delete your fork and create a new one.
 
@@ -21,10 +21,6 @@ Your fork is a snapshot of the upstream `clamav` repository at the moment at whi
 ![Sync and Merge](../../images/fork-is-behind.png)
 
 You can sync other branches too. Simply switch branches to the desired branch and press "Fetch Upstream" again.
-
-> _Disclaimer_: The ClamAV project has a history of changing default branches for development on each feature version. We've found that this causes more trouble than it is worth, and we intend to stop doing that after 0.104. Right now, the default branch is `dev/0.104`. After 0.104 is complete, it will be changed to `main` and we'll stop changing it. For more details, see the work flow changes in the section below.
->
-> _Tip_: After we change the default branch for `Cisco-Talos/clamav` to `main`, you'll need to change your default branch too (it won't switch in your fork just because we changed the default in the upstream repo).
 
 ### Working with a Clone of your Fork on the Command Line
 

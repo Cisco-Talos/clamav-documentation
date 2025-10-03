@@ -12,7 +12,7 @@ ClamAV may have found a malicious or suspicious file. However, you're probably a
 
 If you scan the build directory for ClamAV, you may see an alert on a ClamAV test file, like this:
 ```
-clamav-0.104.1/build/unit_tests/input/clamav_hdb_scanfiles/clam.chm: Clamav.Test.File-6 FOUND
+clamav/build/unit_tests/input/clamav_hdb_scanfiles/clam.chm: Clamav.Test.File-6 FOUND
 ```
 
 You can savely ignore this alert. The files found under the clamav unit_tests/input in the build directory are supposed to alert, to demonstrate correct file parser functionality.

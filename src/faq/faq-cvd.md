@@ -8,7 +8,7 @@ Please consider contributing answered questions back to this FAQ, and improving 
 
 ## How do I keep my virus database up to date?
 
-ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date. It is encouraged that you update to at least version 0.103.2, which respects our bandwidth limitations.
+ClamAV comes with _FreshClam_, a tool which periodically checks for new database releases and keeps your database up to date.
 
 ## How often is the virus database updated?
 

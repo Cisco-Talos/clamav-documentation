@@ -292,7 +292,7 @@ For example if you wanted to match on this image...
 logo.png;Engine:150-255,Target:0;0;fuzzy_img#af2ad01ed42993c7#0
 ```
 
-Image fuzzy hash signatures in 0.105 do not support matching with a hamming distance greater than zero. Support for matching with a hamming distance may be added in a future release. The signatures above explicitly set the hamming distance to `0`. But you could also omit it, like this:
+As of ClamAV 1.5, image fuzzy hash signatures do not support matching with a hamming distance greater than zero. Support for matching with a hamming distance may be added in a future release. The signatures above explicitly set the hamming distance to `0`. But you could also omit it, like this:
 ```
 logo.png;Engine:150-255,Target:0;0;fuzzy_img#af2ad01ed42993c7
 ```

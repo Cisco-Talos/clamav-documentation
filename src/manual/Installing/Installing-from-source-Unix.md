@@ -1,10 +1,8 @@
-# Building ClamAV with CMake (v0.104 and newer)
+# Building ClamAV
 
-The following are instructions to build ClamAV *version 0.104 and newer* using CMake.
+The following are instructions to build ClamAV using CMake.
 
-> _Tip_: If you wish to build ClamAV *version 0.103 or older* from source, follow [these instructions to build ClamAV using Autotools](Installing-from-source-Unix-old.md).
-
-- [Building ClamAV with CMake (v0.104 and newer)](#building-clamav-with-cmake-v0104-and-newer)
+- [Building ClamAV](#building-clamav)
   - [Install prerequisites](#install-prerequisites)
     - [Alpine](#alpine)
     - [AlmaLinux / Redhat / Centos / Fedora](#almalinux--redhat--centos--fedora)
@@ -48,7 +46,7 @@ apk update && apk add \
   linux-headers ncurses-dev openssl-dev pcre2-dev zlib-dev
 ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Alpine users on the latest release may also find an adequate Rust toolchain with:
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Alpine users on the latest release may also find an adequate Rust toolchain with:
 ```sh
 apk add cargo rust
 ```
@@ -87,7 +85,7 @@ python3 -m pip install --user cmake pytest
 > python3 -m pip install cmake pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Fedora users that are unable or unwilling to use `rustup` may have luck with:
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Fedora users that are unable or unwilling to use `rustup` may have luck with:
 ```sh
 dnf install -y cargo rust
 ```
@@ -109,7 +107,7 @@ zypper install -y \
 > python3 -m pip install --user cmake
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. openSUSE users that are unable or unwilling to use `rustup` may have luck with:
 ```sh
 zypper install -y cargo rust
 ```
@@ -131,7 +129,7 @@ apt-get update && apt-get install -y \
 > python3 -m pip install --user cmake
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain. Debian users are unlikely to find an adequate Rust toolchain through the distribution's package manager. Ubuntu users will have better luck. At the time of writing, even Ubuntu 18.04 appears to have relatively recent Rust tools available (1.57.0, where the latest security patch for `rustc` is version 1.58.1). Debian and Ubuntu users may install the Rust toolchain with:
 ```sh
 apt-get install -y cargo rustc
 ```
@@ -160,7 +158,7 @@ python3 -m pip install --user cmake pytest
 
 > _Note_: You may also need to install `pkg-config` if not already present on your system. You can use Homebrew to do this with: `brew install pkg-config`
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain.
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) your Rust toolchain.
 
 ### FreeBSD
 
@@ -183,14 +181,14 @@ python3.8 -m pip install --user pytest
 > python3 -m pip install pytest
 > ```
 
-Version 0.105+: install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) . FreeBSD users may find an adequate version using the package manager to install the Rust toolchain, depending on their release. FreeBSD users may install the Rust toolchain with:
+Install the Rust toolchain. The best option is to [install the Rust toolchain using rustup](#install-rust-toolchain) . FreeBSD users may find an adequate version using the package manager to install the Rust toolchain, depending on their release. FreeBSD users may install the Rust toolchain with:
 ```sh
 pkg install -y rust
 ```
 
 ## Install Rust toolchain
 
-Starting with ClamAV v0.105, a Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment by following the instructions on the [rustup](https://rustup.rs) website. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
+The Rust toolchain is required to compile portions of libclamav. You can install the appropriate toolchain for your development environment by following the instructions on the [rustup](https://rustup.rs) website. This ensures that you have the most up-to-date compiler available at the time of installation; keep your toolchain updated for new features and bug/security fixes by periodically executing: `rustup update`.
 
 > _Note_: The minimum supported Rust version varies with each ClamAV release. We make a best effort to never raise the minimum Rust version with patch versions. For example:
 > - the minimum Rust version for ClamAV 1.0 LTS is Rust 1.61.0. All ClamAV 1.0.x versions should also build with Rust 1.61.0.

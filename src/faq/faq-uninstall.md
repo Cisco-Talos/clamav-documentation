@@ -2,23 +2,6 @@
 
 ## If you installed from source
 
-### If you installed using Autotools (0.103.0 and older)
-
-If you installed from source, the easiest way to uninstall will require that same source and build configuration in order to uninstall.
-
-Then run:
-```bash
-sudo make uninstall
-```
-
-> _Tip_: If you don't have the old source / build directory from when you installed, you can get the source again and re-configure, as if for a build, so that you can use the build system to uninstall. Just be sure you use the same `./configure` options as when you first installed. For example:
-> ```bash
-> ./configure
-> sudo make uninstall
-> ```
-
-### If you installed using CMake (0.104.0 and newer)
-
 CMake doesn't provide a simple command to uninstall. However, CMake does build an `install_manifest.txt` file when you do the install. You can use the manifest to remove the installed files.
 
 You will find the manifest in the directory where you compiled ClamAV. If you followed the recommendations in our [Installing from Source](../manual/Installing/Installing-from-source-Unix.md) section, then you will find it at `<clamav source directory>/build/install_manifest.txt`.

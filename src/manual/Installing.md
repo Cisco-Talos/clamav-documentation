@@ -31,7 +31,7 @@ If you're interested in learning how these packages were built, you can check ou
 
 ### Linux (.deb, .rpm)
 
-Beginning with ClamAV 0.104, we offer Debian and RPM packages for x86_64 (64bit) and i686 (32bit) architectures. This will make it easier to get the latest version in the event that a package for your distribution is not readily available and you would prefer not to build ClamAV from source.
+We offer Debian and RPM packages for x86_64 (64bit) and i686 (32bit) architectures. This will make it easier to get the latest version in the event that a package for your distribution is not readily available and you would prefer not to build ClamAV from source.
 
 > _Note_: These packages do not presently include `clamav-milter`. You can help help us add `clamav-milter` to the packages by developing a Mussels recipe for building the libmilter.a static library and contributing it to our [Mussels cookbook](https://github.com/Cisco-Talos/clamav-mussels-cookbook/).
 
@@ -82,7 +82,7 @@ sudo apt remove clamav
 
 ### macOS
 
-Beginning with ClamAV 0.104, we offer a PKG installer for macOS. These are universal binaries built for Intel x86_64 and Apple M1 arm64 processors.
+We offer a PKG installer for macOS. These are universal binaries built for Intel x86_64 and Apple M1 arm64 processors.
 
 To install, download the macOS `.pkg` installer. Double-click the installer and follow the directions.
 
@@ -109,9 +109,11 @@ To install from a ZIP package, unzip the portable install package to any directo
 
 ## Official ClamAV Docker Images
 
-There are now official ClamAV images on Docker Hub. You can find the images on [Docker Hub under `clamav`](https://hub.docker.com/r/clamav/clamav).
+There are now official ClamAV images on Docker Hub. You can find the images on Docker Hub under:
+- [`clamav/clamav`](https://hub.docker.com/r/clamav/clamav) (Alpine Linux)
+- [`clamav/clamav-debian`](https://hub.docker.com/r/clamav/clamav-debian) (Debian Linux)
 
-ClamAV versions 0.104 and newer are available using a Docker image tag with the specific version number, or using "stable" to get the latest stable release.
+ClamAV is available using a Docker image tag with the specific version number, or using "stable" to get the latest stable release.
 
 We also offer images with builds of the latest development version. We call this "unstable".
 

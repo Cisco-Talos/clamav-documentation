@@ -8,32 +8,26 @@ This guide is for users interested in leveraging and understanding ClamAV's On-A
 
 On-Access is only available on Linux systems. On Linux, On-Access requires a `kernel version >= 3.8`. This is because it leverages a kernel api called [fanotify](http://man7.org/linux/man-pages/man7/fanotify.7.html) to block processes from attempting to access malicious files. This prevention occurs in kernel-space, and thus offers stronger protection than a purely user-space solution.
 
-#### For Versions >= 0.102.0
+It also requires Curl version greather than or equal to 7.45 to ensure support for all curl options used by clamonacc. Users on Linux operating systems that package older versions of libcurl have a number of options:
 
-It also requires `Curl version >= 7.45 ` to ensure support for all curl options used by clamonacc. Users on Linux operating systems that package older versions of libcurl have a number of options:
-
-  1. Wait for your package maintainer to provide a newer version of libcurl.
-  2. Install a newer version of libcurl [from source](https://curl.haxx.se/download.html).
-  3. Disable installation of `clamonacc` and On-Access Scanning capabilities with the `./configure` flag `--disable-clamonacc`.
+1. Wait for your package maintainer to provide a newer version of libcurl.
+2. Install a newer version of libcurl [from source](https://curl.haxx.se/download.html).
+3. Disable installation of `clamonacc` and On-Access Scanning capabilities with the CMake flag `-D ENABLE_CLAMONACC=OFF`.
 
 ## General Use
 
 To use ClamAV's On-Access Scanner, operation will vary depending on version.
 
-
-#### For Versions >= 0.102.0
-
 You will need to run the `clamd` and `clamonacc` applications side by side. First, you will need to configure and run `clamd`. For instructions on how to do that, see [the clamd configuration guide](Usage/Configuration.md#clamdconf). One important thing to note while configuring `clamd.conf` is that--like `clamdscan`--the `clamonacc` application will connect to `clamd` using the `clamd.conf` settings for either `LocalSocket` or `TCPAddr`/`TCPSocket`. Another important thing to note, is that when using a `clamd.conf` that specifies a `LocalSocket`, then `clamd` will need to be run under a user with the right permissions to scan the files you plan on including in your watch-path.
-
 
 Next, you will need to configure `clamonacc`. For a very simple configuration, follow these steps:
 
-    1. Open `clamd.conf` for editing
-    2. Specify the path(s) you would like to recursively watch by setting the `OnAccessIncludePath` option
-    3. Set `OnAccessPrevention` to `yes`
-    4. Check what username `clamd` is running under
-    5. Set `OnAccessExcludeUname` to `clamd`'s uname
-    6. Save your work and close `clamd.conf`
+1. Open `clamd.conf` for editing
+2. Specify the path(s) you would like to recursively watch by setting the `OnAccessIncludePath` option
+3. Set `OnAccessPrevention` to `yes`
+4. Check what username `clamd` is running under
+5. Set `OnAccessExcludeUname` to `clamd`'s uname
+6. Save your work and close `clamd.conf`
 
 For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](#configuration-and-recipes).
 
@@ -51,7 +45,6 @@ Finally, you will have to restart both `clamd` and `clamonacc`. If default `clam
 - `MaxThreads`
 - `OnAccessMaxThreads`
 
-
 #### For Versions <= 0.101.x
 
 You will only need to run the `clamd` application in older versions. First,
@@ -60,11 +53,11 @@ to do that, see [the clamd configuration guide](Usage/Configuration.md#clamdconf
 
 Next, you will need to configure On Access Scanning using the `clamd.conf` file. For a very simple configuration follow these steps:
 
-    1. Open `clamd.conf` for editing
-    2. Set the `ScanOnAccess` option to `yes`
-    3. Specify the path(s) you would like to recursively watch by setting the `OnAccessIncludePath` option
-    4. Set `OnAccessPrevention` to `yes`
-    6. Save your work and close `clamd.conf`
+1. Open `clamd.conf` for editing
+2. Set the `ScanOnAccess` option to `yes`
+3. Specify the path(s) you would like to recursively watch by setting the `OnAccessIncludePath` option
+4. Set `OnAccessPrevention` to `yes`
+5. Save your work and close `clamd.conf`
 
 For slightly more nuanced configurations, which may be adapted to your use case better, please check out the [recipe guide below](#configuration-and-recipes).
 
@@ -93,7 +86,7 @@ CONFIG_FANOTIFY_ACCESS_PERMISSIONS=y
 
 If you see this...
 
-```bash
+```
 CONFIG_FANOTIFY_ACCESS_PERMISSIONS is not set
 ```
 
@@ -123,43 +116,43 @@ Below are examples of common use cases, recipes for the correct minimal configur
 
 ### Use Case 0x0
 
-- User needs to watch the entire file system, but blocking malicious access attempts isn't a concern
+User needs to watch the entire file system, but blocking malicious access attempts isn't a concern.
+
 ```bash
-    ScanOnAccess yes ## versions <= 0.101.x
-    OnAccessMountPath /
-    OnAccessExcludeRootUID yes
-    OnAccessExcludeUname clamav ## versions >= 0.102
+OnAccessMountPath /
+OnAccessExcludeRootUID yes
+OnAccessExcludeUname clamav
 ```
 
 This configuration will put the On-Access Scanner into `notify-only` mode. It will also ensure only non-root, non-clam, user processes will trigger scans against the filesystem.
 
 ### Use Case 0x1
 
-- System Administrator needs to watch the home directory of multiple Users, but not all users. Blocking access attempts is un-needed.
+System Administrator needs to watch the home directory of multiple Users, but not all users. Blocking access attempts is un-needed.
+
 ```bash
-    ScanOnAccess yes ## versions <= 0.101.x
-    OnAccessIncludePath /home
-    OnAccessExcludePath /home/user2
-    OnAccessExcludePath /home/user4
-    OnAccessExcludeUname clamav ## versions >= 0.102
+OnAccessIncludePath /home
+OnAccessExcludePath /home/user2
+OnAccessExcludePath /home/user4
+OnAccessExcludeUname clamav
 ```
 
 With this configuration, the On-Access Scanner will watch the entirety of the `/home` directory recursively in `notify-only` mode. However, it will recursively exclude the `/home/user2` and `/home/user4` directories.
 
 ### Use Case 0x2
 
-- The user needs to protect a single directory non-recursively and ensure all access attempts on malicious files are blocked.
+The user needs to protect a single directory non-recursively and ensure all access attempts on malicious files are blocked.
+
 ```bash
-    ScanOnAccess yes ## versions <= 0.101.x
-    OnAccessIncludePath /home/user/Downloads
-    OnAccessExcludeUname clamav ## versions >= 0.102
-    OnAccessPrevention yes
-    OnAccessDisableDDD yes
+OnAccessIncludePath /home/user/Downloads
+OnAccessExcludeUname clamav
+OnAccessPrevention yes
+OnAccessDisableDDD yes
 ```
 
 The configuration above will result in non-recursive real-time protection of the `/home/user/Downloads` directory by ClamAV's On-Access Scanner. Any access attempts that ClamAV detects on malicious files within the top level of the directory hierarchy will be blocked by fanotify at the kernel level.
 
-## Command Line Options for Versions >= 0.102
+## Command Line Options
 
 Beyond `clamd.conf` configuration, you can change the behavior of the On-Access scanner by passing in a number of command line options. A list of all options can be retrieved with `--help`, but below is a list and explanation of some of options you might find most useful.
 

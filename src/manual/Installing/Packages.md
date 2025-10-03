@@ -1,4 +1,4 @@
-# ClamAV Packages
+# Third Party ClamAV Packages
 
 Many Linux and Unix distributions offer one or more ClamAV packages to make it easy for you to install ClamAV.
 
@@ -25,7 +25,7 @@ These packages are usually well maintained but if you find an issue with one, pl
 >     - configs in `/etc/clamav`
 >     - databases in `/var/lib/clamav`
 >
-> - As of 0.103.x, a from-source install requires the user create a config for FreshClam, ClamD, and ClamAV-Milter in order to use each application. A package install, however, is likely to come pre-configured. Users may wish to modify the configs as needed.
+> - From-source ClamAV installations and ClamAV project provided packages require that the user create a config for FreshClam, ClamD, and ClamAV-Milter in order to use each application. Third party package installations, however, are likely to come pre-configured. Users may wish to modify the configs as needed.
 >
 > - Package installs sometimes carry extra patches for issues affecting their distribution, for issues the ClamAV developers haven't had time to fix or are unaware of, and for security issues when distributing older versions that are no longer maintained by the ClamAV developers.
 >
@@ -89,9 +89,7 @@ openSUSE provides two packages:
 #### RPM download
 
 Find these packages at under http://download.opensuse.org/repositories/security
-Eg.:
- - http://download.opensuse.org/repositories/security/openSUSE_Leap_15.3/x86_64/clamav-0.103.1-lp153.234.4.x86_64.rpm.mirrorlist
- - http://download.opensuse.org/repositories/security/openSUSE_Leap_15.3/x86_64/clamav-devel-0.103.1-lp153.234.4.x86_64.rpm.mirrorlist
+Eg.: https://download.opensuse.org/repositories/security/16.0/x86_64/clamav-1.4.3-bp160.313.29.x86_64.rpm
 
 Use the update variant for openSUSE, add it to your installation as another repository using YaST or zypper and give it a higher priority (lower number) than the repository that delivers the official updates.
 

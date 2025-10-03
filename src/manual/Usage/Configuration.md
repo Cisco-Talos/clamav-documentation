@@ -220,15 +220,10 @@ ClamAV includes a mail filtering tool called `clamav-milter`. This tool interfac
 Ensuring ClamAV compiles with `clamav-milter` must be done at configure time with the command:
 
 ```bash
-./configure [options] --enable-milter
+cmake [options] -D ENABLE_MILTER=ON
 ```
 
-This requires having the milter library installed on your system. If *libmilter* is not installed, `./configure` will exit with this error message:
-
-```bash
-checking for mi_stop in -lmilter... no
-configure: error: Cannot find libmilter
-```
+This requires having the milter library installed on your system. If *libmilter* is not installed, the build will fail.
 
 While not necessarily *complicated*, setting up the `clamav-milter` is an involved process. Thus, we recommend consulting your MTA’s manual on how to best connect ClamAV with the `clamav-milter`.
 

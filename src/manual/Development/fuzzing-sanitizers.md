@@ -17,7 +17,7 @@ python3 infra/helper.py reproduce clamav clamav_scanmap_fuzzer /path/to/poc_file
 
 See <https://google.github.io/oss-fuzz/advanced-topics/reproducing/> for more details.
 
-## Build & Test Fuzz Targets Sanitizers in CMake (v0.104 and newer)
+## Build & Test Fuzz Targets Sanitizers in CMake
 
 Inside your `clamav` git clone, run:
 
@@ -40,12 +40,4 @@ This will build the fuzz target executables in the `build-fuzz/fuzz/` directory.
 E.g.:
 ```bash
 ./fuzz/clamav_scanfile_fuzzer /path/to/poc_file
-```
-
-## ClamAV with Address Sanitizer (ASAN) in Autotools (v0.103 and older)
-
-Building ClamAV with ASAN support can be extremely useful in detecting memory corruption and memory leaks. To build with ASAN, use a `..\configure` line like the following:
-
-```bash
-CFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" LDFLAGS="-fsanitize=address" CXXFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" OBJCFLAGS="-ggdb -O0 -fsanitize=address -fno-omit-frame-pointer" ../configure --prefix=`pwd`/../installed --enable-debug --enable-libjson --with-systemdsystemunitdir=no --enable-experimental --enable-clamdtop --enable-libjson --enable-xml --enable-pcre --disable-llvm
 ```

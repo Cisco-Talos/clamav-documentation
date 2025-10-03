@@ -32,11 +32,11 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 - *"feature release"* -- A version starting with MAJOR.MINOR.0 to include all PATCH versions.
 
-  For example: 0.103.0 and 0.103.1 are both "patch versions" within the same "feature release".
+  For example: 1.0.0 and 1.0.1 are both "patch versions" within the same "feature release".
 
 - *"patch version"* -- A specific MAJOR.MINOR.PATCH version.
 
-  For example: 0.103.1 is a "patch version" in the 0.103 "feature release".
+  For example: 1.0.1 is a "patch version" in the 1.0 "feature release".
 
 - *"end of life" (EOL)* -- The date after which the ClamAV Team will no longer support a feature version in any way.
 
@@ -80,25 +80,23 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 ## Version Support Matrix
 
-> _Note_: This markdown table is generated from a spreadsheet using [this tool](https://thisdavej.com/copy-table-in-excel-and-paste-as-a-markdown-table/).
+| Feature release | First Published | Latest patch version | Expected End of Life (EOL)   | Signature load testing until | Signature FP testing until   | DB downloads allowed until   | Patch versions continue until         |
+| --------------- | --------------- | -------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ------------------------------------- |
+| 1.5             | TBD             | n/a                  | 1.7 + 4 months               | 1.7 + 4 months               | 1.6 published                | 1.7 + 4 months               | 1.6 + 4 months, or 1.7                |
+| **1.4  LTS**    | **Aug-15 2024** | **1.4.3**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (3 years)   | **Aug-15 2027** (3 years)    | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)            |
+| 1.3             | Feb-7 2024      | 1.3.2                | 1.5 + 4 months               | 1.5 + 4 months               | Aug-15 2024 (1.4 published)  | 1.5 + 4 months               | Dec-15 2024 (1.4 + 4 months, or 1.5)  |
+| 1.2             | Aug-28 2023     | 1.2.3                | Dec-15 2024 (1.4 + 4 months) | Dec-15 2024 (1.4 + 4 months) | Feb-7 2024 (1.3 published)   | Dec-15 2024 (1.4 + 4 months) | Jun-7 2024 (1.3 + 4 months, or 1.4)   |
+| 1.1             | May-1 2023      | 1.1.3                | Jun-7 2024 (1.3 + 4 months)  | Jun-7 2024 (1.3 + 4 months)  | Aug-28 2023 (1.2 published)  | Jun-7 2024 (1.3 + 4 months)  | Dec-28 2023 (1.2 + 4 months, or 1.3)  |
+| **1.0 LTS**     | **Nov-28 2022** | **1.0.9**            | **Nov-28 2025** (3 years)    | **Nov-28 2025** (3 years)    | May-1 2023 (1.1 published)   | **Nov-28 2026** (4 years)    | **Nov-28 2025** (3 years)             |
+| 0.105           | May-4 2022      | 0.105.2              | Sep-1 2023 (1.1 + 4 months)  | Sep-1 2023 (1.1 + 4 months)  | Nov-28 2022 (1.0 published)  | Sep-1 2023 (1.1 + 4 months)  | Mar-28 2023 (1.0 + 4 months, or 1.1)  |
+| 0.104           | Sep-3 2021      | 0.104.4              | Mar-28 2023 (1.0 + 4 months) | Mar-28 2023 (1.0 + 4 months) | May-4 2022 (0.105 published) | Mar-28 2023 (1.0 + 4 months) | Sep-4 2022 (0.105 + 4 months, or 1.0) |
+| **0.103 LTS**   | **Sep-14 2020** | **0.103.12**         | **Sep-14 2024** (3 years +1) | **Sep-14 2024** (3 years +1) | Sep-3 2021 (0.104 published) | **Sep-14 2025** (4 years +1) | **Sep-14 2024** (3 years +1)          |
+| 0.102           | Oct-2 2019      | 0.102.5              | Jan-3 2022 (0.104 + 4 mo.)   | Jan-3 2022                   |                              | Jan-3 2022                   |                                       |
+| 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2022                   | Jan-3 2022                   |                              | Jan-3 2022                   |                                       |
+| 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                  | Oct-29 2021                  |                              | Oct-29 2021                  |                                       |
+| 0.99            | Dec-1 2015      | 0.99.4               | Mar-1 2021                   |                              |                              |                              |                                       |
 
-| Feature release | First Published | Latest patch version | Expected End of Life (EOL)   | Signature load testing until | Signature FP testing until   | DB downloads allowed until   | Patch versions continue until                  |
-| --------------- | --------------- | -------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------------------------- |
-| 1.5             | TBD             | n/a                  | 1.7 + 4 months               | 1.7 + 4 months               | 1.6 published                | 1.7 + 4 months               | 1.6 + 4 months, or 1.7                         |
-| **1.4  LTS**    | **Aug-15 2024** | **1.4.2**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (3 years)   | **Aug-15 2027** (3 years)    | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)                     |
-| 1.3             | Feb-7 2024      | 1.3.2                | 1.5 + 4 months               | 1.5 + 4 months               | Aug-15 2024 (1.4 published)  | 1.5 + 4 months               | 1.4 + 4 months, or 1.5                         |
-| 1.2             | Aug-28 2023     | 1.2.3                | 1.4 + 4 months               | 1.4 + 4 months               | Feb-7 2024 (1.3 published)   | 1.4 + 4 months               | Jun-7 2024 or earlier (1.3 + 4 months, or 1.4) |
-| 1.1             | May-1 2023      | 1.1.3                | Jun-7 2024 (1.3 + 4 months)  | Jun-7 2024 (1.3 + 4 months)  | Aug-28 2023 (1.2 published)  | Jun-7 2024 (1.3 + 4 months)  | Dec-28 2023 (1.2 + 4 months, or 1.3)           |
-| **1.0 LTS**     | **Nov-28 2022** | **1.0.8**            | **Nov-28 2025** (3 years)    | **Nov-28 2025** (3 years)    | May-1 2023 (1.1 published)   | **Nov-28 2026** (4 years)    | **Nov-28 2025** (3 years)                      |
-| 0.105           | May-4 2022      | 0.105.2              | Sep-1 2023 (1.1 + 4 months)  | Sep-1 2023 (1.1 + 4 months)  | Nov-28 2022 (1.0 published)  | Sep-1 2023 (1.1 + 4 months)  | Mar-28 2023 (1.0 + 4 months, or 1.1)           |
-| 0.104           | Sep-3 2021      | 0.104.4              | Mar-28 2023 (1.0 + 4 months) | Mar-28 2023 (1.0 + 4 months) | May-4 2022 (0.105 published) | Mar-28 2023 (1.0 + 4 months) | Sep-4 2022 (0.105 + 4 months, or 1.0)          |
-| **0.103 LTS**   | **Sep-14 2020** | **0.103.12**         | **Sep-14 2024** (3 years +1) | **Sep-14 2024** (3 years +1) | Sep-3 2021 (0.104 published) | **Sep-14 2025** (4 years +1) | **Sep-14 2024** (3 years +1)                   |
-| 0.102           | Oct-2 2019      | 0.102.5              | Jan-3 2022 (0.104 + 4 mo.)   | Jan-3 2022                   |                              | Jan-3 2022                   |                                                |
-| 0.101           | Dec-3 2018      | 0.101.5              | Jan-3 2022                   | Jan-3 2022                   |                              | Jan-3 2022                   |                                                |
-| 0.100           | Apr-9 2018      | 0.100.3              | Oct-29 2021                  | Oct-29 2021                  |                              | Oct-29 2021                  |                                                |
-| 0.99            | Dec-1 2015      | 0.99.4               | Mar-1 2021                   |                              |                              |                              |                                                |
-
-Currently, every version from ClamAV 0.102 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
+Currently, every version from ClamAV 0.105 and down, including all patch versions, are unsupported, and **are actively blocked from downloading new updates**.
 
 ## Additional Detail About Critical Patch Support
 
@@ -118,14 +116,15 @@ The amount of extra time before we discontinue support will vary depending on th
 
 If the non-disclosure / release date for a security patch falls within four (4) months since the previous feature release was published, we will craft a security patch version for the future feature release, the current feature release, the previous feature release, and any LTS feature releases.
 
-> *Example*: Let's say ClamAV 0.105.0 was just released and development begins on 0.106. But shortly after the release or as we're preparing for the release, it is discovered that 0.105.0 contains one or more security issues.
+> *Example*: Let's say ClamAV 1.6.0 was just released and development begins on 1.7. But shortly after the release or as we're preparing for the release, a security issue is discovered that affects 1.6 and all prior versions.
 >
 > We understand with such a recent release, not everyone has had time to verify that they can indeed upgrade without some other supporting changes to their system or product.
 >
 > In this situation, we would prepare a security patch version for:
-> - the 0.105 feature release (eg. 0.105.1),
-> - for the 0.104 feature release (eg. 0.104.3),
-> - and for the 0.103 LTS feature release.
+> - the 1.6 feature release (e.g., 1.6.1),
+> - the 1.5 feature release (e.g., 1.5.2),
+> - the 1.4 LTS feature release (e.g., 1.4.4),
+> - and the 1.0 LTS feature release (e.g., 1.0.10).
 >
 > Once the critical patch versions have been published, the same or equivalent fixes will be merged into the `main` branch for inclusion into the next feature release (0.106.0).
 
@@ -133,10 +132,11 @@ If the non-disclosure / release date for a security patch falls within four (4) 
 
 If the non-disclosure / release date for a security patch falls after four (4) months since the previous feature release was published, we will only craft a security patch version for the future feature release, the current feature release, and any LTS feature releases.
 
-> *Example*: If 0.105.0 was released in January and a security issue was found in March, but the non-disclosure agreement allowed for the bug to be patched after the standard 90 days, then a security patch release will likely be prepared for release in early June.
+> *Example*: If 1.5.0 was released in January and a security issue was found in March, but the non-disclosure agreement allowed for the bug to be patched after the standard 90 days, then a security patch release will likely be prepared for release in early June.
 >
 > This would exceed our 4-month policy, so we would publish the fix:
-> - in 0.105 (eg. 0.105.1),
-> - and in 0.103 LTS, ...
+> - in 1.6 (eg. 1.6.1),
+> - the 1.4 LTS feature release (e.g., 1.4.4),
+> - and the 1.0 LTS feature release (e.g., 1.0.10).
 >
-> ... but would not publish a patch version for the 0.104 feature release.
+> ... but would not publish a patch version for the 1.5 feature release.

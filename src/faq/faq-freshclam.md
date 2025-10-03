@@ -127,7 +127,7 @@ If you are receiving a 429, that means you are rate limited.  You're downloading
 
 If you are receiving a 403 specifically on the safebrowsing.cvd file, please read [this blog post](https://blog.clamav.net/2021/04/are-you-still-attempting-to-download.html) immediately!
 
-Are you running a version of FreshClam/ClamAV lower than `0.103.2`? If so, you should immediately upgrade to at least 0.103.2.
+Are you running a version of FreshClam/ClamAV lower than `1.0`? If so, you should immediately upgrade to at least `1.0.9`.
 
 If you have checked all of the above and you are still seeing errors, please open a ticket using the below link.
 
