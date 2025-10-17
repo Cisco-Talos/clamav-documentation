@@ -2,7 +2,7 @@
 
 The extended signature format is ClamAV's most basic type of body-based signature since the deprecation of the original `.db` database format.
 
-Extended sigantures allow for specification of additional information beyond just hexidecimal content such as a file "target type", virus offset, or engine functionality level (FLEVEL), making the detection more reliable.
+Extended signatures allow for specification of additional information beyond just hexidecimal content such as a file "target type", virus offset, or engine functionality level (FLEVEL), making the detection more reliable.
 
 The format is:
 
