@@ -345,6 +345,12 @@ Export metrics from clamd service for use by Prometheus. This provides a similar
 
 [Get clamav_exporter](https://github.com/sergeymakinen/clamav_exporter)
 
+#### clamav-prometheus-exporter | clamd
+
+Export metrics from clamd service for use by Prometheus. This provides a similar function but is not related to `clamd_exporter` and `clamav_exporter`.
+
+[Get clamav-prometheus-exporter](https://github.com/r3kzi/clamav-prometheus-exporter)
+
 ## Miscellaneous Tools
 
 ### IPCop | ClamAV
