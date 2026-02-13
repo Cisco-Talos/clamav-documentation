@@ -159,6 +159,8 @@ M:RealHostname:DisplayedHostname[:FuncLevelSpec]
 
   Regular expression for the *Real URL*. This option is for known safe-browsing URLs, where any *Displayed URL* linking to that *Real URL* should be accepted. This feature is similar to X above, but without the *DisplayedURL*.
 
+  Introduced in ClamAV 1.6.
+  
 - `M`
 
   Matches hostname, or subdomain of it, see notes for H above.
