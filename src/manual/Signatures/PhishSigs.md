@@ -1,10 +1,10 @@
 # Phishing Signatures
 
-ClamAV can detect HTML links that look suspicious when the display text is a URL that is a different domain than than in the actual URL. Unfortunately, it is pretty common for a company to contract out web services and to use HTML link display text to make it look like it is a link to the company website. Because this practice is commonplace, ClamAV only does phishing checks for specific websites that are popularly targeted by phishing campaigns. Signatures to identify domains that should be monitored for phishing attempts are listed in ClamAV `PDB` database files, such as `daily.pdb`, a file found in the `daily.cvd` archive. 
+ClamAV can detect HTML links that look suspicious when the display text is a URL that is a different domain than than in the actual URL. Unfortunately, it is pretty common for a company to contract out web services and to use HTML link display text to make it look like it is a link to the company website. Because this practice is commonplace, ClamAV only does phishing checks for specific websites that are popularly targeted by phishing campaigns. Signatures to identify domains that should be monitored for phishing attempts are listed in ClamAV `PDB` database files, such as `daily.pdb`, a file found in the `daily.cvd` archive.
 
-Unfortunately, many websites listed in the `PDB` phishing database also send emails with links that display a different domain than is in the actual link. To mitigate false positive detections in non-malicious links, ClamAV has allow list signatures in ClamAV `WDB` database files, such as `daily.wdb`, another file found in the `daily.cvd` archive. 
+Unfortunately, many websites listed in the `PDB` phishing database also send emails with links that display a different domain than is in the actual link. To mitigate false positive detections in non-malicious links, ClamAV has allow list signatures in ClamAV `WDB` database files, such as `daily.wdb`, another file found in the `daily.cvd` archive.
 
-To help you identify what triggered a heuristic phishing alert, `clamscan` or `clamd` will print a message indicating the "Display URL" and "Real URL" involved in a heuristic phishing alert. 
+To help you identify what triggered a heuristic phishing alert, `clamscan` or `clamd` will print a message indicating the "Display URL" and "Real URL" involved in a heuristic phishing alert.
 
 For example, suppose that `amazon.com` were listed in ClamAV's loaded PDB database, you might observe this message before the alert when scanning an email with a link that claims to be for `https://www.amazon.com/` but is in fact linking to `https://someshadywebsite.example.com/`:
 
@@ -139,6 +139,7 @@ This file contains url pairs for links that may look suspicious but are safe and
 
 ```
 X:RealURL:DisplayedURL[:FuncLevelSpec]
+Y:RealURL[:FuncLevelSpec]
 M:RealHostname:DisplayedHostname[:FuncLevelSpec]
 ```
 
@@ -152,8 +153,14 @@ M:RealHostname:DisplayedHostname[:FuncLevelSpec]
 
   - The regular expression matches the *concatenation* of the `RealURL`, a colon(`:`), and the `DisplayedURL` as a single string. It doesn’t separately match `RealURL` and `DisplayedURL`!
 
-  - The last 3 characters of the regular expression cannot regex special characters and much be an exact match.
+  - The last 3 characters of the regular expression cannot regex special characters and must be an exact match.
 
+- `Y`
+
+  Regular expression for the *Real URL*. This option is for known safe-browsing URLs, where any *Displayed URL* linking to that *Real URL* should be accepted. This feature is similar to X above, but without the *DisplayedURL*.
+
+  Introduced in ClamAV 1.6.
+  
 - `M`
 
   Matches hostname, or subdomain of it, see notes for H above.
