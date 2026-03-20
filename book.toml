@@ -14,6 +14,7 @@ site-url = "/"
 theme = "theme"
 default-theme = "clamav"
 preferred-dark-theme  = "clamav"
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
 
 [output.html.playground]
 editable = true
@@ -27,3 +28,8 @@ boost-hierarchy = 2
 boost-paragraph = 1
 expand = true
 heading-split-level = 2
+
+[preprocessor]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
