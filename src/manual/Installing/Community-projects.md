@@ -172,11 +172,23 @@ A ClamAV plug in fpr SpamAssassin 3.X
 
 [Get ClamAVPlugin](https://cwiki.apache.org/confluence/display/SPAMASSASSIN/ClamAVPlugin)
 
-#### clamav-rest
+#### clamav-rest (java based)
 
 Simple ClamAV REST proxy. Builds on top of [clamav-java](#clamav-java) which is a minimal Java client for ClamAV.
 
 [Get clamav-rest](https://github.com/solita/clamav-rest)
+
+#### clamav-rest (go based)
+
+ClamAV REST front-end.
+
+[Get clamav-rest](https://github.com/EclipseFdn/clamav-rest)
+
+#### clamav-rest-new (go based)
+
+ClamAV REST front-end.
+
+[Get clamav-rest-new](https://github.com/EclipseFdn/clamav-rest-new)
 
 ### Filesystem & On-Access Scanning
 
