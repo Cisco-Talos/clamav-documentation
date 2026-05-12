@@ -12,6 +12,7 @@
     - [Configuration](./manual/Usage/Configuration.md)
     - [Updating Signature Databases](./manual/Usage/SignatureManagement.md)
     - [Scanning](./manual/Usage/Scanning.md)
+      - [ClamD Protocol](./manual/Usage/ClamdProtocol.md)
       - [On-Access Scanning](./manual/OnAccess.md)
     - [Running ClamAV Services](./manual/Usage/Services.md)
     - [Report a Bug](./manual/Usage/ReportABug.md)

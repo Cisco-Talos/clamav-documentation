@@ -6,6 +6,7 @@ Table Of Contents
 	- [Daemon](#daemon)
 		- [ClamD](#clamd)
 		- [ClamDScan](#clamdscan)
+			- [ClamDScan mode and option interactions](#clamdscan-mode-and-option-interactions)
 		- [ClamDTop](#clamdtop)
 		- [On-Access Scanning](#on-access-scanning)
 			- [ClamOnAcc (v0.102+)](#clamonacc-v0102)
@@ -30,25 +31,11 @@ Table Of Contents
 
 As `clamd` requires a virus signature database to run, we recommend setting up ClamAV's official signatures before running `clamd` using `freshclam`.
 
-The daemon works by listening for commands on the sockets specified in `clamd.conf`. Listening is supported over both unix local sockets and TCP sockets.
+The daemon works by listening for commands on the sockets specified in `clamd.conf`. Listening is supported over both Unix local sockets and TCP sockets.
 
-**IMPORTANT:** `clamd` does not currently protect or authenticate traffic coming over the TCP socket, meaning it will accept any and all of the following commands listed from *any* source. Thus, we strongly recommend following best networking practices when setting up your `clamd` instance. I.e. don't expose your TCP socket to the Internet.
+**IMPORTANT:** `clamd` does not currently protect or authenticate traffic coming over the TCP socket, meaning it will accept commands from any source that can reach that socket. Thus, we strongly recommend following best networking practices when setting up your `clamd` instance. I.e. don't expose your TCP socket to the Internet.
 
-Here is a quick list of the commands accepted by `clamd` over the socket.
-
-- `PING`
-- `VERSION`
-- `RELOAD`
-- `SHUTDOWN`
-- `SCAN` *file/directory*
-- `RAWSCAN` *file/directory*
-- `CONTSCAN` *file/directory*
-- `MULTISCAN` *file/directory*
-- `ALLMATCHSCAN` *file/directory*
-- `INSTREAM`
-- `FILDES`
-- `STATS`
-- `IDSESSION, END`
+For details about socket types, command framing, scan commands, streaming file contents, passing file descriptors, and reading one or more scan results, see the [ClamD protocol guide](ClamdProtocol.md).
 
 As with most ClamAV tools, you can find out more about these by invoking the command:
 
@@ -83,6 +70,28 @@ Again, running `clamdscan`, once you have a working `clamd` instance, is simple:
 ```bash
 clamdscan [*options*] [*file/directory/-*]
 ```
+
+#### ClamDScan mode and option interactions
+
+`clamdscan` sends scan work to a running `clamd` daemon. What it sends depends first on the socket type, and then on command-line options:
+
+- Unix/local socket:
+  - By default, `clamdscan` asks the local daemon to open the paths you provide. The daemon must be able to see those paths and have permission to read them.
+  - With `--fdpass`, `clamdscan` opens each file itself and passes the open file to the daemon. This is useful when the daemon runs as a different user or sees a different filesystem view. This option only works with a Unix/local socket and fd-passing support.
+  - With `--stream`, `clamdscan` sends file contents to the daemon instead of asking the daemon to open paths.
+  - With `--multiscan`, directory scans can use multiple daemon worker threads. If `--stream` or `--fdpass` is also used, `clamdscan` walks the requested paths itself and submits individual file scans while still allowing the daemon to process multiple files in parallel.
+  - `--allmatch` is only effective when `clamdscan` is asking the daemon to open paths directly and is not using `--multiscan`, `--stream`, or `--fdpass`.
+- TCP socket:
+  - When the daemon is remote, `clamdscan` sends file contents instead of local paths because client paths may not exist on the daemon host.
+  - When the daemon is local and `clamdscan` can determine that it is local, `clamdscan` may ask the daemon to open local paths directly.
+  - `--stream` forces `clamdscan` to send file contents, even when the daemon is local.
+  - `--fdpass` is not available over TCP. Use either `--stream` or `--fdpass` for a scan, based on the socket type and how the daemon can access the files.
+  - With `--multiscan`, local directory scans may use multiple daemon worker threads. Remote scans and `--stream` scans are handled as individual file scans, while still allowing the daemon to process multiple files in parallel.
+  - `--allmatch` is only effective when `clamdscan` is asking a local daemon to open paths directly and is not using `--multiscan` or `--stream`.
+
+`--allmatch` is not useful with `--multiscan`; use it only for scans where `clamdscan` is asking a local daemon to open paths directly. For quarantine, choose one action for a scan: `--move`, `--copy`, or `--remove`.
+
+Quarantine actions such as `--move`, `--copy`, and `--remove` are performed by `clamdscan`, not by `clamd`. For directory scans with quarantine actions enabled, `clamdscan` resolves the action path for each file before requesting the scan. When `--multiscan` is also enabled, `clamdscan` submits individual file scans so it can preserve the scan result to action-path association while still allowing `clamd` to process multiple files in parallel.
 
 ### ClamDTop
 
@@ -251,7 +260,7 @@ The Windows version of ClamAV requires all the input to be UTF-8 encoded.
 This affects:
 
 - The API, notably the `cl_scanfile()` function
-- ClamD socket input, e.g. the commands `SCAN`, `CONTSCAN`, `MUTLISCAN`, etc.
+- ClamD socket input, e.g. the commands `SCAN`, `CONTSCAN`, `MULTISCAN`, etc.
 - ClamD socket output, i.e replies to the above queries
 
 For legacy reasons ANSI (i.e. `CP_ACP`) input will still be accepted and processed as before, but with two important remarks:
