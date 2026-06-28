@@ -60,17 +60,17 @@ copy .\conf_examples\clamd.conf.sample .\clamd.conf
 
 Run:
 ```ps1
-write.exe .\freshclam.conf
+notepad .\freshclam.conf
 ```
 
-WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as the receive-timeout. Save the file and close WordPad.
+Notepad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as the receive-timeout. Save the file and close Notepad.
 
 Run:
 ```ps1
-write.exe .\clamd.conf
+notepad .\clamd.conf
 ```
 
-WordPad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as enabling logging. Save the file and close WordPad.
+Notepad will pop up. Delete the line that says "Example". You may also wish to set additional options to enable features or alter default behavior, such as enabling logging. Save the file and close Notepad.
 
 #### Additional notes about the config files and database directories
 
