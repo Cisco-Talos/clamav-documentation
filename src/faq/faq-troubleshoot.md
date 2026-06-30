@@ -74,6 +74,14 @@ Please note that some not RFC compliant DNS servers (namely the one shipped with
 
 For other questions regarding issues with the signature databases, see our [Virus Database FAQ](faq-cvd.md).
 
+## Why does ClamAV require CMake 3.17 or newer?
+
+ClamAV requires CMake 3.17 or newer so that CMake uses the modern behavior for linking private dependencies of static libraries. CMake 3.17 introduced policy CMP0099, which preserves link directories from private static library dependencies.
+
+Without that behavior, some static dependency packages can export private dependencies as bare linker flags, such as `-lssh2`, `-lcrypto`, or `-lnghttp2`, while carrying the library search directory separately. Older CMake policy behavior may drop that search directory from the final link command, causing errors like `cannot find -lssh2` even when the static library is installed.
+
+If your operating system provides an older CMake package, install a newer CMake from your package manager, from Python's `pip` or `pipx`, or directly from the [CMake website](https://cmake.org/download/).
+
 ## ClamAV becomes unresponsive
 
 ClamAV requires a lot of memory in order to function properly. It is particularly common in environments like Docker / Kubernetes for a container to lack the required memory needed for the `clamd` process to reload the databases after the daily signature update. This may cause the process to crash or become unresponsive. You can find [more information here](../manual/Installing/Docker.md#memory-ram-requirements).
