@@ -14,19 +14,7 @@ Feature release branches. These always contain the latest stable patch versions 
 
 When development towards the next feature release is complete, a new `rel/X.Y` branch is created from `main` and a release tag is created.
 
-When a new patch version is needed, a `dev/X.Y.Z` branch is created from the `rel/X.Y` branch.  When development of that patch version is complete, the `dev/X.Y.Z` branch is merged back into the `rel/X.Y` branch, and a release tag is created.
-
-#### `dev/1.0.1`, `dev/1.0.2`, etc.:
-
-A development branch used to test hotfixes prior to a patch release.
-
-#### `sec/dev/1.0.1`, etc.:
-
-A private development branch used to test security-related hotfixes prior to a patch release. This branch will be rebased like any feature branch as needed up until the release.
-
-The ClamAV team maintains an internal mirror of the `clamav` repository in order to facilitate private branches, which are not a normal feature of the Git version control system.
-
-On release day, the private `sec/dev/1.0.1` branch would be pulled into the public `dev/1.0.1` branch and then into the `rel/1.0` branch where it would be tagged as "`clamav-1.0.1`".
+The ClamAV team develops security fixes in an internal mirror of the `clamav` repository. Work for the next patch release takes place on an internal `rel/X.Y` branch. When the release is ready, the team publishes those commits to the corresponding public branch and creates a release tag. For example, ClamAV 1.0.1 would be published from the internal `rel/1.0` branch to the public `rel/1.0` branch and tagged `clamav-1.0.1`.
 
 #### `feature/description`:
 
