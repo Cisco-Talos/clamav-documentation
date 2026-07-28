@@ -108,3 +108,53 @@ ClamAV supports the following character classes for hex-signatures:
   - Ranged wildcards (eg: `{n-m}`) are limited to a fixed range of less than 128 bytes (eg: `{1} -> {127}`).
 
 > _Note_: Using signature modifiers and wildcards classifies the alternate type to be a generic alternate. Thus single-byte alternates and multi-byte fixed length alternates can use signature modifiers and wildcards but will be classified as generic alternate. This means that negation cannot be applied in this situation and there is a slight performance impact.
+
+## Hex Negation
+
+ClamAV supports YARA-compatible hexadecimal byte and nibble negation using the `~` operator (ClamAV 1.6+, functionality level 240). This allows matching any byte *except* a specific value or nibble pattern:
+
+- `~HH`
+
+  Match any byte except `0xHH`. Example: `~00` matches any byte except `0x00`.
+
+- `~H?`
+
+  Match any byte whose high nibble (the four high bits) is not `H`. Example: `~0?` matches any byte where the high nibble is not `0x0`.
+
+- `~?H`
+
+  Match any byte whose low nibble (the four low bits) is not `H`. Example: `~?0` matches any byte where the low nibble is not `0x0`.
+
+### Examples
+
+- `41~0042` matches the sequence `41`, followed by any byte except `0x00`, followed by `42`.
+- `41~?042` matches the sequence `41`, followed by any byte whose low nibble is not `0x0`, followed by `42`.
+- `41~0?42` matches the sequence `41`, followed by any byte whose high nibble is not `0x0`, followed by `42`.
+
+### Invalid Forms
+
+The following forms are not supported and will be rejected:
+
+- `~~00` (double negation)
+- `~??` (negating all bytes)
+- `~` without hex digits
+- `~` applied to character classes or alternates
+- `~[1-2]` (negation combined with gap ranges)
+
+### Minimum Functionality Level Requirement
+
+Databases using hex negation syntax must declare a minimum functionality level of 240. For logical signatures (`.ldb` files), include an `Engine:240` constraint:
+
+```
+MySignature;Target:0;0;41~0042;Engine:240
+```
+
+For native body signatures (`.ndb` files), the parser will enforce the requirement at load time.
+
+### Difference from ClamAV Alternates
+
+Hex negation (`~HH`, `~H?`, and `~?H`) negates exactly one byte or nibble predicate. ClamAV's existing `!(...)` syntax negates a fixed set of alternate byte sequences, which may contain one or multiple bytes:
+
+- `~HH` matches one byte where `byte != 0xHH`
+- `!(aa|bb|cc)` matches one byte that is not in the set `{0xaa, 0xbb, 0xcc}`
+- `!(aaaa|bbbb)` matches a 4-byte sequence that is not in the set `{0xaaaabbbb, 0xbbbbbbbb}`
