@@ -143,13 +143,25 @@ The following forms are not supported and will be rejected:
 
 ### Minimum Functionality Level Requirement
 
-Databases using hex negation syntax must declare a minimum functionality level of 240. For logical signatures (`.ldb` files), include an `Engine:240` constraint:
+Databases using hex negation syntax must declare a minimum functionality level of 240.
+
+For logical signatures (`.ldb` files), place the `Engine` directive first in the target-description block with a functionality-level range:
 
 ```
-MySignature;Target:0;0;41~0042;Engine:240
+MySignature;Engine:240-255,Target:0;0;41~0042
 ```
 
-For native body signatures (`.ndb` files), the parser will enforce the requirement at load time.
+For extended `.ndb` signatures, use the optional min and max functionality-level fields:
+
+```
+MalwareName:TargetType:Offset:HexSignature[:min_flevel:[max_flevel]]
+```
+
+Example of an extended `.ndb` signature gated to ClamAV 1.6 (FLEVEL 240):
+
+```
+MySignature:0:*:41~0042:240
+```
 
 ### Difference from ClamAV Alternates
 
@@ -157,4 +169,4 @@ Hex negation (`~HH`, `~H?`, and `~?H`) negates exactly one byte or nibble predic
 
 - `~HH` matches one byte where `byte != 0xHH`
 - `!(aa|bb|cc)` matches one byte that is not in the set `{0xaa, 0xbb, 0xcc}`
-- `!(aaaa|bbbb)` matches a 4-byte sequence that is not in the set `{0xaaaabbbb, 0xbbbbbbbb}`
+- `!(aaaa|bbbb)` matches a two-byte sequence that is not `0xaaaa` or `0xbbbb`
