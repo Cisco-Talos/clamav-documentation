@@ -1,0 +1,583 @@
+<!DOCTYPE HTML>
+<html lang="en" class="clamav sidebar-visible" dir="ltr">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>ClamD Protocol - ClamAV Documentation</title>
+
+
+        <!-- Custom HTML head -->
+
+        <meta name="description" content="An open source malware detection toolkit and antivirus engine.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff">
+
+        <link rel="shortcut icon" href="../../favicon-ba1b3133.png">
+        <link rel="stylesheet" href="../../css/variables-6d03f665.css">
+        <link rel="stylesheet" href="../../css/general-8eed8816.css">
+        <link rel="stylesheet" href="../../css/chrome-ae938929.css">
+        <link rel="stylesheet" href="../../css/print-9e4910d8.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../../fonts/fonts-9644e21d.css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" id="mdbook-highlight-css" href="../../highlight-493f70e1.css">
+        <link rel="stylesheet" id="mdbook-tomorrow-night-css" href="../../tomorrow-night-4c0ae647.css">
+        <link rel="stylesheet" id="mdbook-ayu-highlight-css" href="../../ayu-highlight-3fdfc3ac.css">
+
+        <!-- Custom theme stylesheets -->
+
+        <!-- MathJax -->
+        <script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+        <!-- Provide site root and default themes to javascript -->
+        <script>
+            const path_to_root = "../../";
+            const default_light_theme = "clamav";
+            const default_dark_theme = "clamav";
+            window.path_to_searchindex_js = "../../searchindex-a14f0184.js";
+        </script>
+        <!-- Start loading toc.js asap -->
+        <script src="../../toc-0c194aa2.js"></script>
+    </head>
+    <body>
+    <div id="mdbook-help-container">
+        <div id="mdbook-help-popup">
+            <h2 class="mdbook-help-title">Keyboard shortcuts</h2>
+            <div>
+                <p>Press <kbd>←</kbd> or <kbd>→</kbd> to navigate between chapters</p>
+                <p>Press <kbd>S</kbd> or <kbd>/</kbd> to search in the book</p>
+                <p>Press <kbd>?</kbd> to show this help</p>
+                <p>Press <kbd>Esc</kbd> to hide this help</p>
+            </div>
+        </div>
+    </div>
+    <div id="mdbook-body-container">
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script>
+            try {
+                let theme = localStorage.getItem('mdbook-theme');
+                let sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script>
+            const default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? default_dark_theme : default_light_theme;
+            let theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            const html = document.documentElement;
+            html.classList.remove('clamav')
+            html.classList.add(theme);
+            html.classList.add("js");
+        </script>
+
+        <input type="checkbox" id="mdbook-sidebar-toggle-anchor" class="hidden">
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script>
+            let sidebar = null;
+            const sidebar_toggle = document.getElementById("mdbook-sidebar-toggle-anchor");
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            } else {
+                sidebar = 'hidden';
+                sidebar_toggle.checked = false;
+            }
+            if (sidebar === 'visible') {
+                sidebar_toggle.checked = true;
+            } else {
+                html.classList.remove('sidebar-visible');
+            }
+        </script>
+
+        <nav id="mdbook-sidebar" class="sidebar" aria-label="Table of contents">
+            <!-- populated by js -->
+            <mdbook-sidebar-scrollbox class="sidebar-scrollbox"></mdbook-sidebar-scrollbox>
+            <noscript>
+                <iframe class="sidebar-iframe-outer" src="../../toc.html"></iframe>
+            </noscript>
+            <div id="mdbook-sidebar-resize-handle" class="sidebar-resize-handle">
+                <div class="sidebar-resize-indicator"></div>
+            </div>
+        </nav>
+
+        <div id="mdbook-page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                <div id="mdbook-menu-bar-hover-placeholder"></div>
+                <div id="mdbook-menu-bar" class="menu-bar sticky">
+                    <div class="left-buttons">
+                        <label id="mdbook-sidebar-toggle" class="icon-button" for="mdbook-sidebar-toggle-anchor" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="mdbook-sidebar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"/></svg></span>
+                        </label>
+                        <button id="mdbook-theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="mdbook-theme-list">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M371.3 367.1c27.3-3.9 51.9-19.4 67.2-42.9L600.2 74.1c12.6-19.5 9.4-45.3-7.6-61.2S549.7-4.4 531.1 9.6L294.4 187.2c-24 18-38.2 46.1-38.4 76.1L371.3 367.1zm-19.6 25.4l-116-104.4C175.9 290.3 128 339.6 128 400c0 3.9 .2 7.8 .6 11.6c1.8 17.5-10.2 36.4-27.8 36.4H96c-17.7 0-32 14.3-32 32s14.3 32 32 32H240c61.9 0 112-50.1 112-112c0-2.5-.1-5-.2-7.5z"/></svg></span>
+                        </button>
+                        <ul id="mdbook-theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-clamav">Dark</button></li>
+                            <li role="none"><button role="menuitem" class="theme" id="mdbook-theme-clamav_light">Light</button></li>
+                        </ul>
+                        <button id="mdbook-search-toggle" class="icon-button" type="button" title="Search (`/`)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="/ s" aria-controls="mdbook-searchbar">
+                            <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352c79.5 0 144-64.5 144-144s-64.5-144-144-144S64 128.5 64 208s64.5 144 144 144z"/></svg></span>
+                        </button>
+                    </div>
+
+                    <h1 class="menu-title">ClamAV Documentation</h1>
+
+                    <div class="right-buttons">
+                        <a href="../../print.html" title="Print this book" aria-label="Print this book">
+                            <span class=fa-svg id="print-button"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M128 0C92.7 0 64 28.7 64 64v96h64V64H354.7L384 93.3V160h64V93.3c0-17-6.7-33.3-18.7-45.3L400 18.7C388 6.7 371.7 0 354.7 0H128zM384 352v32 64H128V384 368 352H384zm64 32h32c17.7 0 32-14.3 32-32V256c0-35.3-28.7-64-64-64H64c-35.3 0-64 28.7-64 64v96c0 17.7 14.3 32 32 32H64v64c0 35.3 28.7 64 64 64H384c35.3 0 64-28.7 64-64V384zm-16-88c-13.3 0-24-10.7-24-24s10.7-24 24-24s24 10.7 24 24s-10.7 24-24 24z"/></svg></span>
+                        </a>
+
+                    </div>
+                </div>
+
+                <div id="mdbook-search-wrapper" class="hidden">
+                    <form id="mdbook-searchbar-outer" class="searchbar-outer">
+                        <div class="search-wrapper">
+                            <input type="search" id="mdbook-searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="mdbook-searchresults-outer" aria-describedby="searchresults-header">
+                            <div class="spinner-wrapper">
+                                <span class=fa-svg id="fa-spin"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M304 48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zm0 416c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM48 304c26.5 0 48-21.5 48-48s-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48zm464-48c0-26.5-21.5-48-48-48s-48 21.5-48 48s21.5 48 48 48s48-21.5 48-48zM142.9 437c18.7-18.7 18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zm0-294.2c18.7-18.7 18.7-49.1 0-67.9S93.7 56.2 75 75s-18.7 49.1 0 67.9s49.1 18.7 67.9 0zM369.1 437c18.7 18.7 49.1 18.7 67.9 0s18.7-49.1 0-67.9s-49.1-18.7-67.9 0s-18.7 49.1 0 67.9z"/></svg></span>
+                            </div>
+                        </div>
+                    </form>
+                    <div id="mdbook-searchresults-outer" class="searchresults-outer hidden">
+                        <div id="mdbook-searchresults-header" class="searchresults-header"></div>
+                        <ul id="mdbook-searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script>
+                    document.getElementById('mdbook-sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('mdbook-sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#mdbook-sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="mdbook-content" class="content">
+                    <main>
+                        <h1 id="clamd-protocol"><a class="header" href="#clamd-protocol">ClamD Protocol</a></h1>
+<p>Table Of Contents</p>
+<ul>
+<li><a href="#clamd-protocol">ClamD Protocol</a>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#socket-types">Socket Types</a></li>
+<li><a href="#command-framing">Command Framing</a></li>
+<li><a href="#scan-commands">Scan Commands</a>
+<ul>
+<li><a href="#scan-path">SCAN path</a></li>
+<li><a href="#contscan-path">CONTSCAN path</a></li>
+<li><a href="#multiscan-path">MULTISCAN path</a></li>
+<li><a href="#allmatchscan-path">ALLMATCHSCAN path</a></li>
+<li><a href="#instream">INSTREAM</a></li>
+<li><a href="#fildes">FILDES</a></li>
+<li><a href="#legacy-stream">Legacy STREAM</a></li>
+</ul>
+</li>
+<li><a href="#other-commands">Other Commands</a>
+<ul>
+<li><a href="#ping">PING</a></li>
+<li><a href="#version">VERSION</a></li>
+<li><a href="#versioncommands">VERSIONCOMMANDS</a></li>
+<li><a href="#reload">RELOAD</a></li>
+<li><a href="#selfcheck">SELFCHECK</a></li>
+<li><a href="#shutdown">SHUTDOWN</a></li>
+<li><a href="#stats">STATS</a></li>
+</ul>
+</li>
+<li><a href="#reading-replies">Reading Replies</a></li>
+<li><a href="#idsession">IDSESSION</a>
+<ul>
+<li><a href="#using-idsession-for-parallel-scanning">Using IDSESSION for parallel scanning</a></li>
+<li><a href="#commands-accepted-inside-idsession">Commands accepted inside IDSESSION</a></li>
+<li><a href="#idsession-replies">IDSESSION replies</a></li>
+<li><a href="#avoiding-idsession-deadlocks">Avoiding IDSESSION deadlocks</a></li>
+</ul>
+</li>
+<li><a href="#protocol-limits">Protocol Limits</a></li>
+<li><a href="#examples">Examples</a>
+<ul>
+<li><a href="#basic-checks">Basic checks</a></li>
+<li><a href="#instream-example">INSTREAM example</a></li>
+<li><a href="#fildes-example">FILDES example</a></li>
+<li><a href="#idsession-example">IDSESSION example</a></li>
+</ul>
+</li>
+<li><a href="#clamdscan-behavior">ClamDScan Behavior</a>
+<ul>
+<li><a href="#mode-selection">Mode selection</a></li>
+<li><a href="#multiscan-behavior">Multiscan behavior</a></li>
+<li><a href="#option-interactions">Option interactions</a>
+<ul>
+<li><a href="#transport-override-options">Transport override options</a></li>
+<li><a href="#--fdpass-with-tcp-sockets"><code>--fdpass</code> with TCP sockets</a></li>
+<li><a href="#remote-tcp-scans">Remote TCP scans</a></li>
+<li><a href="#--multiscan-and---allmatch"><code>--multiscan</code> and <code>--allmatch</code></a></li>
+<li><a href="#--allmatch"><code>--allmatch</code></a></li>
+<li><a href="#--multiscan-and---stream"><code>--multiscan</code> and <code>--stream</code></a></li>
+<li><a href="#--multiscan-and---fdpass"><code>--multiscan</code> and <code>--fdpass</code></a></li>
+<li><a href="#quarantine-actions">Quarantine actions</a></li>
+<li><a href="#quarantine-actions-with-multiscan">Quarantine actions with multiscan</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<h2 id="overview"><a class="header" href="#overview">Overview</a></h2>
+<p><code>clamd</code> is a long-running scanning daemon. Clients such as <code>clamdscan</code>, <code>clamonacc</code>, mail filters, and custom integrations connect to a configured socket and send simple command records.</p>
+<p>Use <code>clamdscan</code> for normal command-line scanning. Use this protocol directly when a custom client needs to choose how to submit work: by daemon-visible path, by streamed file contents, or by passing an already-open file descriptor.</p>
+<p>Custom clients should use <code>VERSIONCOMMANDS</code> during startup or compatibility checks. It reports the command names recognized by the connected daemon. Some recognized commands may still be disabled by <code>clamd.conf</code> or unavailable because the required platform support was not compiled in.</p>
+<h2 id="socket-types"><a class="header" href="#socket-types">Socket Types</a></h2>
+<p><code>clamd</code> can listen on a Unix/local socket, a TCP socket, or both.</p>
+<p>Unix/local sockets:</p>
+<ul>
+<li>Support path-based commands such as <code>SCAN</code>, <code>CONTSCAN</code>, <code>MULTISCAN</code>, and <code>ALLMATCHSCAN</code>.</li>
+<li>Support <code>INSTREAM</code> for streaming file contents.</li>
+<li>Support <code>FILDES</code> when ClamAV is built with file descriptor passing support.</li>
+<li>Are the only socket type that can use <code>FILDES</code>.</li>
+</ul>
+<p>TCP sockets:</p>
+<ul>
+<li>Support path-based commands if the path is meaningful on the daemon host.</li>
+<li>Support <code>INSTREAM</code> for sending file contents over the socket.</li>
+<li>Do not support <code>FILDES</code>.</li>
+<li>Are not encrypted or authenticated by <code>clamd</code>. Do not expose a TCP socket to untrusted networks.</li>
+</ul>
+<p>Path-based scan commands are resolved by <code>clamd</code>, not by the client. A path sent over TCP must exist on the system where <code>clamd</code> runs and must be accessible to the daemon process. When <code>clamdscan</code> connects to a remote daemon over TCP, it streams local file contents with <code>INSTREAM</code> instead of sending local client paths for the daemon to open.</p>
+<h2 id="command-framing"><a class="header" href="#command-framing">Command Framing</a></h2>
+<p>New clients should use explicit command framing. The first byte selects the command terminator:</p>
+<ul>
+<li><code>zCOMMAND\0</code> uses a NUL byte as the command terminator. This is the recommended form because it does not conflict with newlines in command arguments.</li>
+<li><code>nCOMMAND\n</code> uses a newline as the command terminator.</li>
+</ul>
+<p>In the examples above, <code>\0</code> means a literal NUL byte, and <code>\n</code> means a literal newline byte.</p>
+<p><code>clamd</code> replies with the same record terminator style selected by the command. For example, <code>zPING\0</code> receives a NUL-terminated <code>PONG</code> reply, and <code>nPING\n</code> receives a newline-terminated <code>PONG</code> reply. Some multiline diagnostic replies, notably <code>STATS</code>, contain embedded newline bytes and end with a final <code>END</code> record.</p>
+<p>Legacy unprefixed commands are accepted for some commands outside of <code>IDSESSION</code>, but new clients should not use them. Unprefixed commands are not accepted inside <code>IDSESSION</code>.</p>
+<p>Framed command examples:</p>
+<pre><code class="language-text">zPING\0
+nVERSIONCOMMANDS\n
+zSCAN /srv/uploads/sample.bin\0
+</code></pre>
+<h2 id="scan-commands"><a class="header" href="#scan-commands">Scan Commands</a></h2>
+<h3 id="scan-path"><a class="header" href="#scan-path">SCAN path</a></h3>
+<p><code>SCAN path</code> scans one file or recursively scans one directory. A full path is required. For directory scans, <code>SCAN</code> stops after a virus is found.</p>
+<h3 id="contscan-path"><a class="header" href="#contscan-path">CONTSCAN path</a></h3>
+<p><code>CONTSCAN path</code> scans one file or recursively scans one directory and continues scanning after detections are found.</p>
+<h3 id="multiscan-path"><a class="header" href="#multiscan-path">MULTISCAN path</a></h3>
+<p><code>MULTISCAN path</code> scans a directory recursively and asks <code>clamd</code> to use multiple worker threads for that directory tree. If the target is not a directory, <code>clamd</code> falls back to non-multiscan scanning behavior.</p>
+<p><code>MULTISCAN</code> is server-side directory parallelism: the client sends one directory path, and the daemon walks and schedules work for that tree.</p>
+<h3 id="allmatchscan-path"><a class="header" href="#allmatchscan-path">ALLMATCHSCAN path</a></h3>
+<p><code>ALLMATCHSCAN path</code> is like <code>SCAN</code>, but enables all-match behavior so scanning can continue within a file after a match. This command must use <code>n</code> or <code>z</code> framing.</p>
+<p><code>ALLMATCHSCAN</code> can be disabled with <code>AllowAllMatchScan</code> in <code>clamd.conf</code>. If disabled, <code>clamd</code> returns an error for the command.</p>
+<h3 id="instream"><a class="header" href="#instream">INSTREAM</a></h3>
+<p><code>INSTREAM</code> sends file contents to <code>clamd</code> on the same socket. This command must use <code>n</code> or <code>z</code> framing.</p>
+<p>After the command record, send one or more chunks. Each chunk starts with a 4-byte unsigned length in network byte order, followed by that many bytes of data:</p>
+<pre><code class="language-text">4-byte big-endian length
+chunk bytes
+</code></pre>
+<p>End the stream with a zero-length chunk:</p>
+<pre><code class="language-text">00 00 00 00
+</code></pre>
+<p>The total streamed size must not exceed <code>StreamMaxLength</code> in <code>clamd.conf</code>. If the stream exceeds that limit, <code>clamd</code> replies with an <code>INSTREAM size limit exceeded</code> error.</p>
+<h3 id="fildes"><a class="header" href="#fildes">FILDES</a></h3>
+<p><code>FILDES</code> passes an already-open file descriptor to <code>clamd</code> using Unix socket ancillary data. It only works over Unix/local sockets and only when file descriptor passing support is available.</p>
+<p>After the <code>FILDES</code> command, send the descriptor using an RFC 2292 / BSD 4.4 style ancillary-data message. The descriptor message must include at least one dummy byte. The descriptor may be sent in the same packet as the command or in a subsequent packet.</p>
+<h3 id="legacy-stream"><a class="header" href="#legacy-stream">Legacy STREAM</a></h3>
+<p>The old <code>STREAM</code> command is no longer supported by current <code>clamd</code>. Use <code>INSTREAM</code> instead.</p>
+<h2 id="other-commands"><a class="header" href="#other-commands">Other Commands</a></h2>
+<h3 id="ping"><a class="header" href="#ping">PING</a></h3>
+<p><code>PING</code> checks whether <code>clamd</code> is responding. A healthy daemon replies with <code>PONG</code>.</p>
+<h3 id="version"><a class="header" href="#version">VERSION</a></h3>
+<p><code>VERSION</code> prints the ClamAV program and database version. It is enabled by default and can be disabled with <code>EnableVersionCommand</code> in <code>clamd.conf</code>. If disabled, <code>clamd</code> replies with <code>COMMAND UNAVAILABLE</code>.</p>
+<h3 id="versioncommands"><a class="header" href="#versioncommands">VERSIONCOMMANDS</a></h3>
+<p><code>VERSIONCOMMANDS</code> prints version information followed by a <code>COMMANDS:</code> list. Use this to discover protocol support for the connected daemon.</p>
+<p><code>VERSIONCOMMANDS</code> must use <code>n</code> or <code>z</code> framing.</p>
+<h3 id="reload"><a class="header" href="#reload">RELOAD</a></h3>
+<p><code>RELOAD</code> requests a database reload. It is available only when <code>EnableReloadCommand</code> is enabled in <code>clamd.conf</code>. If unavailable, <code>clamd</code> replies with <code>COMMAND UNAVAILABLE</code>.</p>
+<h3 id="selfcheck"><a class="header" href="#selfcheck">SELFCHECK</a></h3>
+<p><code>SELFCHECK</code> checks whether the loaded databases are current. It is available only when <code>EnableSelfCheckCommand</code> is enabled in <code>clamd.conf</code>. If unavailable, <code>clamd</code> replies with <code>COMMAND UNAVAILABLE</code>.</p>
+<h3 id="shutdown"><a class="header" href="#shutdown">SHUTDOWN</a></h3>
+<p><code>SHUTDOWN</code> requests a clean daemon exit. It is available only when <code>EnableShutdownCommand</code> is enabled in <code>clamd.conf</code>. If unavailable, <code>clamd</code> replies with <code>COMMAND UNAVAILABLE</code>.</p>
+<h3 id="stats"><a class="header" href="#stats">STATS</a></h3>
+<p><code>STATS</code> prints queue, task, and memory statistics. It is enabled by default and can be disabled with <code>EnableStatsCommand</code> in <code>clamd.conf</code>. If disabled, <code>clamd</code> replies with <code>COMMAND UNAVAILABLE</code>.</p>
+<p>The exact <code>STATS</code> output format is not stable. Parse it as diagnostic text, not as a fixed schema.</p>
+<h2 id="reading-replies"><a class="header" href="#reading-replies">Reading Replies</a></h2>
+<p>For non-session commands, read reply records until <code>clamd</code> closes the connection. A scan can produce multiple reply records, especially when scanning a directory.</p>
+<p>Common scan replies look like:</p>
+<pre><code class="language-text">/path/to/file: OK
+/path/to/file: Eicar-Signature FOUND
+/path/to/file: Access denied ERROR
+stream: OK
+stream: Eicar-Signature FOUND
+</code></pre>
+<p>The reply record terminator is selected by the command framing: newline for <code>n</code> commands and NUL for <code>z</code> commands.</p>
+<p>For <code>STATS</code>, read until the <code>END</code> line. <code>STATS</code> output contains newline-delimited diagnostic text even when the command uses <code>z</code> framing; the final <code>END</code> record uses the command terminator.</p>
+<h2 id="idsession"><a class="header" href="#idsession">IDSESSION</a></h2>
+<p><code>IDSESSION</code> lets a client send multiple requests over one socket. Start the session with <code>zIDSESSION\0</code> or <code>nIDSESSION\n</code>, then send prefixed commands, and finish with <code>zEND\0</code> or <code>nEND\n</code>.</p>
+<p>Every command inside <code>IDSESSION</code>, including <code>END</code>, must use <code>n</code> or <code>z</code> framing. Legacy unprefixed commands are rejected inside a session.</p>
+<h3 id="using-idsession-for-parallel-scanning"><a class="header" href="#using-idsession-for-parallel-scanning">Using IDSESSION for parallel scanning</a></h3>
+<p><code>IDSESSION</code> is the client-driven alternative to directory-based <code>MULTISCAN</code> for multithreaded scanning.</p>
+<p><code>MULTISCAN</code> asks the daemon to walk one directory tree and parallelize that server-side directory scan. <code>IDSESSION</code> lets the client send many per-file requests over one connection so <code>clamd</code> can dispatch those requests to worker threads while the client keeps control of path resolution, streaming, descriptor passing, filtering, and result-to-action mapping.</p>
+<h3 id="commands-accepted-inside-idsession"><a class="header" href="#commands-accepted-inside-idsession">Commands accepted inside IDSESSION</a></h3>
+<p>Accepted inside <code>IDSESSION</code>:</p>
+<ul>
+<li><code>SCAN</code></li>
+<li><code>INSTREAM</code></li>
+<li><code>FILDES</code></li>
+<li><code>VERSION</code></li>
+<li><code>VERSIONCOMMANDS</code></li>
+<li><code>PING</code></li>
+<li><code>STATS</code></li>
+<li><code>END</code></li>
+</ul>
+<p>Not accepted inside <code>IDSESSION</code>:</p>
+<ul>
+<li><code>CONTSCAN</code></li>
+<li><code>MULTISCAN</code></li>
+<li><code>ALLMATCHSCAN</code></li>
+<li><code>RELOAD</code></li>
+<li><code>SHUTDOWN</code></li>
+<li><code>SELFCHECK</code></li>
+</ul>
+<p><code>FILDES</code> inside <code>IDSESSION</code> still requires a Unix/local socket and descriptor passing support. <code>INSTREAM</code> inside <code>IDSESSION</code> uses the same chunk format as non-session <code>INSTREAM</code>.</p>
+<h3 id="idsession-replies"><a class="header" href="#idsession-replies">IDSESSION replies</a></h3>
+<p>Replies inside <code>IDSESSION</code> are prefixed with the numeric request ID. IDs start at 1 for the first command after <code>IDSESSION</code>; the <code>IDSESSION</code> command itself does not consume a visible reply ID.</p>
+<pre><code class="language-text">1: /path/a: OK
+2: /path/b: Eicar-Signature FOUND
+3: PONG
+</code></pre>
+<p>Requests are processed asynchronously, so replies can arrive out of order. Match replies to requests by numeric ID, not by arrival order.</p>
+<p>Avoid mixing <code>STATS</code> with other in-flight session work unless the client is prepared to handle multiline diagnostic output.</p>
+<h3 id="avoiding-idsession-deadlocks"><a class="header" href="#avoiding-idsession-deadlocks">Avoiding IDSESSION deadlocks</a></h3>
+<p>An <code>IDSESSION</code> client must keep reading replies while it sends more commands. The recommended implementation is a nonblocking socket with <code>select()</code> or <code>poll()</code>: when sending would block, wait until the socket is writable or there are replies to read.</p>
+<p>Alternating blocking <code>send()</code> and <code>recv()</code> calls can deadlock. If <code>clamd</code> detects that a client has deadlocked or is not following the session protocol, it may close the connection.</p>
+<h2 id="protocol-limits"><a class="header" href="#protocol-limits">Protocol Limits</a></h2>
+<p>Path command length is limited by the daemon command receive buffer. Current <code>clamd</code> allocates <code>PATH_MAX + 8</code> bytes for a command record, plus an internal NUL byte, so the complete framed command must fit in that buffer: the <code>n</code> or <code>z</code> prefix, command name, separating space when present, path argument, and command terminator.</p>
+<p>Because <code>PATH_MAX</code> is platform dependent, clients should treat path commands as limited to the daemon host’s normal path-length limit. Use <code>INSTREAM</code> or <code>FILDES</code> when a local client path is too long, ambiguous, or not meaningful on the daemon host.</p>
+<p><code>INSTREAM</code> file content is not part of the command-length limit. Each chunk length is a 32-bit unsigned value in network byte order, and the total stream is limited by <code>StreamMaxLength</code> in <code>clamd.conf</code>. If a chunk would exceed the remaining stream quota, <code>clamd</code> replies with an <code>INSTREAM size limit exceeded</code> error.</p>
+<p>There is no separate configured limit for the total number of requests in one <code>IDSESSION</code>. Request IDs are finite implementation integers, so clients should not treat one session as an infinite stream; start a new session for extremely large batches.</p>
+<p>In practice, concurrency and queueing are bounded much earlier by <code>MaxThreads</code>, <code>MaxQueue</code>, file descriptor limits, socket buffers, daemon memory, and timeouts such as <code>CommandReadTimeout</code> and <code>ReadTimeout</code>. A robust client should cap its own number of in-flight requests and continuously drain replies; it should not enqueue an unbounded tree into one session without backpressure.</p>
+<h2 id="examples"><a class="header" href="#examples">Examples</a></h2>
+<p>The following examples use NUL-terminated <code>z</code> commands. Replace <code>/run/clamav/clamd.sock</code> with the socket configured by <code>LocalSocket</code>, or replace the Unix-socket connection code with a TCP socket connection when connecting to <code>TCPSocket</code>.</p>
+<h3 id="basic-checks"><a class="header" href="#basic-checks">Basic checks</a></h3>
+<p>For quick shell checks against a Unix socket, <code>nc -U</code> is convenient:</p>
+<pre><code class="language-bash">printf 'zPING\0' | nc -U /run/clamav/clamd.sock | tr '\0' '\n'
+printf 'zVERSIONCOMMANDS\0' | nc -U /run/clamav/clamd.sock | tr '\0' '\n'
+printf 'zSCAN /srv/uploads/sample.bin\0' | nc -U /run/clamav/clamd.sock | tr '\0' '\n'
+</code></pre>
+<p>For a TCP socket on port 3310:</p>
+<pre><code class="language-bash">printf 'zPING\0' | nc 127.0.0.1 3310 | tr '\0' '\n'
+</code></pre>
+<h3 id="instream-example"><a class="header" href="#instream-example">INSTREAM example</a></h3>
+<p>This example sends file contents with <code>INSTREAM</code>:</p>
+<pre><code class="language-python">import socket
+import struct
+
+socket_path = "/run/clamav/clamd.sock"
+sample_path = "/srv/uploads/sample.bin"
+
+with open(sample_path, "rb") as sample, socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.connect(socket_path)
+    sock.sendall(b"zINSTREAM\0")
+    while True:
+        chunk = sample.read(1024 * 1024)
+        if not chunk:
+            break
+        sock.sendall(struct.pack("&gt;I", len(chunk)))
+        sock.sendall(chunk)
+    sock.sendall(struct.pack("&gt;I", 0))
+
+    reply = b""
+    while True:
+        data = sock.recv(4096)
+        if not data:
+            break
+        reply += data
+
+print(reply.replace(b"\0", b"\n").decode("utf-8", "replace"))
+</code></pre>
+<h3 id="fildes-example"><a class="header" href="#fildes-example">FILDES example</a></h3>
+<p>This example sends an open file descriptor with <code>FILDES</code>:</p>
+<pre><code class="language-python">import array
+import os
+import socket
+
+socket_path = "/run/clamav/clamd.sock"
+sample_path = "/srv/uploads/sample.bin"
+
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.connect(socket_path)
+    sock.sendall(b"zFILDES\0")
+    fd = os.open(sample_path, os.O_RDONLY)
+    try:
+        fds = array.array("i", [fd])
+        sock.sendmsg([b"x"], [(socket.SOL_SOCKET, socket.SCM_RIGHTS, fds)])
+    finally:
+        os.close(fd)
+
+    reply = b""
+    while True:
+        data = sock.recv(4096)
+        if not data:
+            break
+        reply += data
+
+print(reply.replace(b"\0", b"\n").decode("utf-8", "replace"))
+</code></pre>
+<h3 id="idsession-example"><a class="header" href="#idsession-example">IDSESSION example</a></h3>
+<p>This example sends a small bounded batch through <code>IDSESSION</code>. Clients that send many requests should use nonblocking I/O and read replies while writing new requests.</p>
+<pre><code class="language-python">import socket
+
+socket_path = "/run/clamav/clamd.sock"
+paths = ["/srv/uploads/a.bin", "/srv/uploads/b.bin", "/srv/uploads/c.bin"]
+
+with socket.socket(socket.AF_UNIX, socket.SOCK_STREAM) as sock:
+    sock.connect(socket_path)
+    sock.sendall(b"zIDSESSION\0")
+    for path in paths:
+        sock.sendall(("zSCAN " + path).encode("utf-8") + b"\0")
+    sock.sendall(b"zPING\0")
+    sock.sendall(b"zEND\0")
+
+    replies = b""
+    while True:
+        data = sock.recv(4096)
+        if not data:
+            break
+        replies += data
+
+for record in replies.split(b"\0"):
+    if record:
+        print(record.decode("utf-8", "replace"))
+</code></pre>
+<p>Example <code>IDSESSION</code> replies:</p>
+<pre><code class="language-text">4: PONG
+1: /srv/uploads/a.bin: OK
+2: /srv/uploads/b.bin: Eicar-Signature FOUND
+3: /srv/uploads/c.bin: OK
+</code></pre>
+<p>The reply order above is valid. Clients should match replies to requests with the numeric ID rather than assuming replies arrive in the same order as requests were sent.</p>
+<h2 id="clamdscan-behavior"><a class="header" href="#clamdscan-behavior">ClamDScan Behavior</a></h2>
+<p><code>clamdscan</code> is the standard command-line client for <code>clamd</code>. It chooses a scan transport based on the socket type and command-line options, then maps daemon replies back to the paths it reports to the user.</p>
+<h3 id="mode-selection"><a class="header" href="#mode-selection">Mode selection</a></h3>
+<p><code>clamdscan</code> chooses one scan transport before sending scan requests:</p>
+<ul>
+<li>Local daemon path mode, no <code>--stream</code>, no usable <code>--fdpass</code>: path-based scan commands. This can use a Unix/local socket or a TCP socket that <code>clamdscan</code> determines is local.</li>
+<li>Unix/local socket with <code>--fdpass</code>: <code>FILDES</code>.</li>
+<li>Remote TCP socket or <code>--stream</code>: <code>INSTREAM</code>.</li>
+<li>Standard input: <code>FILDES</code> on a local socket when possible, otherwise <code>INSTREAM</code>.</li>
+</ul>
+<h3 id="multiscan-behavior"><a class="header" href="#multiscan-behavior">Multiscan behavior</a></h3>
+<p><code>clamdscan --multiscan</code> has different meanings depending on the selected transport:</p>
+<ul>
+<li>In local path mode, directory scans use server-side <code>MULTISCAN</code>.</li>
+<li>With <code>--stream</code> or remote TCP sockets, files are sent through <code>IDSESSION</code> with <code>INSTREAM</code>.</li>
+<li>With <code>--fdpass</code> on a local socket, files are sent through <code>IDSESSION</code> with <code>FILDES</code>.</li>
+</ul>
+<p>The <code>IDSESSION</code> forms are client-driven per-file parallelism. They can keep multiple <code>clamd</code> worker threads busy, but they are not the same as sending a whole directory to the daemon with <code>MULTISCAN</code>.</p>
+<h3 id="option-interactions"><a class="header" href="#option-interactions">Option interactions</a></h3>
+<p>The following notes explain how <code>clamdscan</code> options change the effective scan mode.</p>
+<h4 id="transport-override-options"><a class="header" href="#transport-override-options">Transport override options</a></h4>
+<p><code>--stream</code> and <code>--fdpass</code> select different ways to submit local files to the daemon. Use one transport override for a scan. <code>--stream</code> sends file contents with <code>INSTREAM</code>; <code>--fdpass</code> passes open files with <code>FILDES</code>.</p>
+<h4 id="--fdpass-with-tcp-sockets"><a class="header" href="#--fdpass-with-tcp-sockets"><code>--fdpass</code> with TCP sockets</a></h4>
+<p><code>--fdpass</code> only works with a Unix/local socket and fd-passing support. It is not available over TCP.</p>
+<h4 id="remote-tcp-scans"><a class="header" href="#remote-tcp-scans">Remote TCP scans</a></h4>
+<p>When <code>clamdscan</code> connects to a remote <code>clamd</code> over TCP, it streams file contents with <code>INSTREAM</code>. It does not send local file paths for the remote daemon to open.</p>
+<h4 id="--multiscan-and---allmatch"><a class="header" href="#--multiscan-and---allmatch"><code>--multiscan</code> and <code>--allmatch</code></a></h4>
+<p><code>--allmatch</code> is not useful with <code>--multiscan</code>. If you need all-match behavior, run without <code>--multiscan</code>.</p>
+<h4 id="--allmatch"><a class="header" href="#--allmatch"><code>--allmatch</code></a></h4>
+<p><code>--allmatch</code> is only effective for local path-mode scans that are not using <code>--multiscan</code>, <code>--stream</code>, or <code>--fdpass</code>.</p>
+<h4 id="--multiscan-and---stream"><a class="header" href="#--multiscan-and---stream"><code>--multiscan</code> and <code>--stream</code></a></h4>
+<p>This combination is supported, but it means client-driven <code>IDSESSION</code> with <code>INSTREAM</code>, not server-side directory <code>MULTISCAN</code>.</p>
+<h4 id="--multiscan-and---fdpass"><a class="header" href="#--multiscan-and---fdpass"><code>--multiscan</code> and <code>--fdpass</code></a></h4>
+<p>This combination is supported on Unix/local sockets, but it means client-driven <code>IDSESSION</code> with <code>FILDES</code>, not server-side directory <code>MULTISCAN</code>.</p>
+<h4 id="quarantine-actions"><a class="header" href="#quarantine-actions">Quarantine actions</a></h4>
+<p>Choose one quarantine action for a scan: <code>--move</code>, <code>--copy</code>, or <code>--remove</code>.</p>
+<h4 id="quarantine-actions-with-multiscan"><a class="header" href="#quarantine-actions-with-multiscan">Quarantine actions with multiscan</a></h4>
+<p>Quarantine actions such as <code>--move</code>, <code>--copy</code>, and <code>--remove</code> are performed by <code>clamdscan</code>, not by <code>clamd</code>. For directory scans with quarantine actions enabled, <code>clamdscan</code> resolves the action path for each file before requesting the scan. When <code>--multiscan</code> is also enabled, <code>clamdscan</code> uses client-driven per-file scan requests so it can preserve the scan result to action-path association while still allowing <code>clamd</code> to process multiple requests in parallel.</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="../../manual/Usage/Scanning.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                            </a>
+
+                            <a rel="next prefetch" href="../../manual/OnAccess.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a rel="prev" href="../../manual/Usage/Scanning.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M41.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.3 256 246.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/></svg></span>
+                    </a>
+
+                    <a rel="next prefetch" href="../../manual/OnAccess.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M278.6 233.4c12.5 12.5 12.5 32.8 0 45.3l-160 160c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3L210.7 256 73.4 118.6c-12.5-12.5-12.5-32.8 0-45.3s32.8-12.5 45.3 0l160 160z"/></svg></span>
+                    </a>
+            </nav>
+
+        </div>
+
+        <template id=fa-eye><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg></span></template>
+        <template id=fa-eye-slash><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M38.8 5.1C28.4-3.1 13.3-1.2 5.1 9.2S-1.2 34.7 9.2 42.9l592 464c10.4 8.2 25.5 6.3 33.7-4.1s6.3-25.5-4.1-33.7L525.6 386.7c39.6-40.6 66.4-86.1 79.9-118.4c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C465.5 68.8 400.8 32 320 32c-68.2 0-125 26.3-169.3 60.8L38.8 5.1zM223.1 149.5C248.6 126.2 282.7 112 320 112c79.5 0 144 64.5 144 144c0 24.9-6.3 48.3-17.4 68.7L408 294.5c5.2-11.8 8-24.8 8-38.5c0-53-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6c0 10.2-2.4 19.8-6.6 28.3l-90.3-70.8zm223.1 298L373 389.9c-16.4 6.5-34.3 10.1-53 10.1c-79.5 0-144-64.5-144-144c0-6.9 .5-13.6 1.4-20.2L83.1 161.5C60.3 191.2 44 220.8 34.5 243.7c-3.3 7.9-3.3 16.7 0 24.6c14.9 35.7 46.2 87.7 93 131.1C174.5 443.2 239.2 480 320 480c47.8 0 89.9-12.9 126.2-32.5z"/></svg></span></template>
+        <template id=fa-copy><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M502.6 70.63l-61.25-61.25C435.4 3.371 427.2 0 418.7 0H255.1c-35.35 0-64 28.66-64 64l.0195 256C192 355.4 220.7 384 256 384h192c35.2 0 64-28.8 64-64V93.25C512 84.77 508.6 76.63 502.6 70.63zM464 320c0 8.836-7.164 16-16 16H255.1c-8.838 0-16-7.164-16-16L239.1 64.13c0-8.836 7.164-16 16-16h128L384 96c0 17.67 14.33 32 32 32h47.1V320zM272 448c0 8.836-7.164 16-16 16H63.1c-8.838 0-16-7.164-16-16L47.98 192.1c0-8.836 7.164-16 16-16H160V128H63.99c-35.35 0-64 28.65-64 64l.0098 256C.002 483.3 28.66 512 64 512h192c35.2 0 64-28.8 64-64v-32h-47.1L272 448z"/></svg></span></template>
+        <template id=fa-play><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/></svg></span></template>
+        <template id=fa-clock-rotate-left><span class=fa-svg><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.2.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. --><path d="M75 75L41 41C25.9 25.9 0 36.6 0 57.9V168c0 13.3 10.7 24 24 24H134.1c21.4 0 32.1-25.9 17-41l-30.8-30.8C155 85.5 203 64 256 64c106 0 192 86 192 192s-86 192-192 192c-40.8 0-78.6-12.7-109.7-34.4c-14.5-10.1-34.4-6.6-44.6 7.9s-6.6 34.4 7.9 44.6C151.2 495 201.7 512 256 512c141.4 0 256-114.6 256-256S397.4 0 256 0C185.3 0 121.3 28.7 75 75zm181 53c-13.3 0-24 10.7-24 24V256c0 6.4 2.5 12.5 7 17l72 72c9.4 9.4 24.6 9.4 33.9 0s9.4-24.6 0-33.9l-65-65V152c0-13.3-10.7-24-24-24z"/></svg></span></template>
+
+
+        <script>
+            window.playground_line_numbers = true;
+        </script>
+
+        <script>
+            window.playground_copyable = true;
+        </script>
+
+        <script src="../../ace-2a3cd908.js"></script>
+        <script src="../../mode-rust-2c9d5c9a.js"></script>
+        <script src="../../editor-16ca416c.js"></script>
+        <script src="../../theme-dawn-4493f9c8.js"></script>
+        <script src="../../theme-tomorrow_night-9dbe62a9.js"></script>
+
+        <script src="../../elasticlunr-ef4e11c1.min.js"></script>
+        <script src="../../mark-09e88c2c.min.js"></script>
+        <script src="../../searcher-09f2665d.js"></script>
+
+        <script src="../../clipboard-1626706a.min.js"></script>
+        <script src="../../highlight-abc7f01d.js"></script>
+        <script src="../../book-a0b12cfe.js"></script>
+
+        <!-- Custom JS scripts -->
+        <script src="../../mermaid-eefea253.min.js"></script>
+        <script src="../../mermaid-init-ccf746f1.js"></script>
+
+
+
+    </div>
+    </body>
+</html>
