@@ -82,8 +82,8 @@ Non-LTS feature releases will be allowed access to download signatures until at 
 
 | Feature release | First Published | Latest patch version | Expected End of Life (EOL)   | Signature load testing until | Signature FP testing until   | DB downloads allowed until   | Patch versions continue until         |
 | --------------- | --------------- | -------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ---------------------------- | ------------------------------------- |
-| 1.5             | Oct-7 2025      | 1.5.3                | 1.7 + 4 months               | 1.7 + 4 months               | 1.6 published                | 1.7 + 4 months               | 1.6 + 4 months, or 1.7                |
-| **1.4  LTS**    | **Aug-15 2024** | **1.4.5**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (4 years)   | Oct-7 2025 (1.5 published)   | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)            |
+| 1.5             | Oct-7 2025      | 1.5.4                | 1.7 + 4 months               | 1.7 + 4 months               | 1.6 published                | 1.7 + 4 months               | 1.6 + 4 months, or 1.7                |
+| **1.4  LTS**    | **Aug-15 2024** | **1.4.6**            | **Aug-15 2027** (3 years)    | **Aug-15 2027**  (4 years)   | Oct-7 2025 (1.5 published)   | **Aug-15 2028**  (4 years)   | **Aug-15 2027**  (3 years)            |
 | 1.3             | Feb-7 2024      | 1.3.2                | Feb-7 2026 (1.5 + 4 months)  | Feb-7 2026 (1.5 + 4 months)  | Aug-15 2024 (1.4 published)  | Feb-7 2026 (1.5 + 4 months)  | Dec-15 2024 (1.4 + 4 months, or 1.5)  |
 | 1.2             | Aug-28 2023     | 1.2.3                | Dec-15 2024 (1.4 + 4 months) | Dec-15 2024 (1.4 + 4 months) | Feb-7 2024 (1.3 published)   | Dec-15 2024 (1.4 + 4 months) | Jun-7 2024 (1.3 + 4 months, or 1.4)   |
 | 1.1             | May-1 2023      | 1.1.3                | Jun-7 2024 (1.3 + 4 months)  | Jun-7 2024 (1.3 + 4 months)  | Aug-28 2023 (1.2 published)  | Jun-7 2024 (1.3 + 4 months)  | Dec-28 2023 (1.2 + 4 months, or 1.3)  |
@@ -122,8 +122,8 @@ If the non-disclosure / release date for a security patch falls within four (4) 
 >
 > In this situation, we would prepare a security patch version for:
 > - the 1.6 feature release (e.g., 1.6.1),
-> - the 1.5 feature release (e.g., 1.5.3),
-> - and the 1.4 LTS feature release (e.g., 1.4.5).
+> - the 1.5 feature release (e.g., 1.5.4),
+> - and the 1.4 LTS feature release (e.g., 1.4.6).
 >
 > Once the critical patch versions have been published, the same or equivalent fixes will be merged into the `main` branch for inclusion into the next feature release (1.7.0).
 
@@ -135,6 +135,6 @@ If the non-disclosure / release date for a security patch falls after four (4) m
 >
 > This would exceed our 4-month policy, so we would publish the fix:
 > - in 1.6 (eg. 1.6.1),
-> - and the 1.4 LTS feature release (e.g., 1.4.5).
+> - and the 1.4 LTS feature release (e.g., 1.4.6).
 >
 > ... but would not publish a patch version for the 1.5 feature release.
