@@ -60,7 +60,7 @@ There are a selection of tags to help you get the versions you need:
 
    - `clamav/clamav:<MAJOR.MINOR>_base` and `clamav/clamav:<MAJOR.MINOR>`: This is a tag for the latest patch version of any given ClamAV feature version. For example, when ClamAV 1.0.9 was published, the `clamav/clamav:1.0` tag was updated from pointing to `clamav/clamav:1.0.8` to point to `clamav/clamav:1.0.9`.
 
-   - `clamav/clamav:stable_base` and `clamav/clamav:stable`: These tags point to the latest stable patch version image. We use the word "stable" to make it clear that these do not track the latest commit in Github. As of 2025-10-01, that makes these equivalent to `1.4` and `1.4_base`. When 1.5 is released, these will be updated to track `1.5` and `1.5_base`.
+   - `clamav/clamav:stable_base` and `clamav/clamav:stable`: These tags point to the latest stable patch version image. We use the word "stable" to make it clear that these do not track the latest commit in Github. At present, these are equivalent to `1.5` and `1.5_base`.
 
    - `clamav/clamav:latest_base` and `clamav/clamav:latest`: These are the same as `clamav/clamav:stable_base` and `clamav/clamav:stable`. They exist because many users expect all images to have a "latest".
 
